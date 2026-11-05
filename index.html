@@ -245,6 +245,18 @@ blockquote { margin: 24px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(-
 .patto span { color: var(--ink2); font-size: .97rem; }
 @media (max-width: 820px) { .patto { grid-template-columns: 1fr; } }
 
+/* ---------- Video ---------- */
+.video-blocco { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 48px; align-items: center; }
+.video-cornice { margin: 0; border-radius: 22px; overflow: hidden; background: var(--notte); box-shadow: 0 24px 50px rgba(20,35,46,.22); border: 6px solid var(--notte); }
+.video-cornice video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: var(--notte); }
+.video-testo { display: grid; gap: 16px; max-width: 60ch; }
+.rrr { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.rrr li { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: 12px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--linea); }
+.rrr b { font-family: var(--f-display); font-weight: 400; font-size: 1.2rem; color: var(--verde); }
+.rrr span { color: var(--ink2); }
+.video-nota { font-size: .9rem; color: var(--ink2); padding: 10px 14px; border-radius: 10px; background: var(--morbido); }
+@media (max-width: 820px) { .video-blocco { grid-template-columns: 1fr; gap: 28px; } .video-cornice { max-width: 320px; justify-self: center; width: 100%; } }
+
 /* ---------- Servizi e metodo ---------- */
 .servizi { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .serv { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 24px; display: grid; gap: 8px; align-content: start; }
@@ -684,6 +696,29 @@ footer a { color: var(--hero-ink2); }
       <div><b>Gratuito e libero</b><span>Codice MIT e contenuti Creative Commons. Chiunque può usarli, studiarli, migliorarli.</span></div>
       <div><b>Accessibile davvero</b><span>Testo grande, alto contrasto, lettura ad alta voce, modalità proiettore per l'aula.</span></div>
       <div><b>Non si blocca mai</b><span>Se l'IA non c'è o non risponde, la guida interna risponde lo stesso.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="blocco" id="video">
+  <div class="wrap video-blocco">
+    <figure class="video-cornice">
+      <video controls playsinline preload="none" poster="video/seconda-vita-digitale.jpg" width="720" height="1280" aria-describedby="video-nota">
+        <source src="video/seconda-vita-digitale.mp4" type="video/mp4">
+        Il vostro browser non riesce a mostrare il video: <a href="video/seconda-vita-digitale.mp4">scaricatelo qui</a>.
+      </video>
+    </figure>
+    <div class="video-testo">
+      <p class="label">Video · 2 minuti e mezzo</p>
+      <h2>Seconda vita digitale</h2>
+      <p class="lead">La sfida all'obsolescenza programmata comincia dal software libero: un computer che funziona si può aggiornare, migliorare e tenere in vita, invece di finire tra i rifiuti elettronici.</p>
+      <ul class="rrr">
+        <li><b>Ridurre</b><span>meno dispositivi nuovi, meno rifiuti elettronici</span></li>
+        <li><b>Riusare</b><span>il computer che avete già, con un sistema leggero</span></li>
+        <li><b>Riciclare</b><span>solo quello che davvero non si può più salvare</span></li>
+      </ul>
+      <p class="video-nota" id="video-nota">Video divulgativo con <b>presentatore virtuale creato con intelligenza artificiale</b> (HeyGen). Idea e testi di Danilo D'Auria. Musica: «Social Network» di Aylex, royalty-free.</p>
+      <p class="collegamenti"><a href="https://www.youtube.com/@Danilo-A6Zero/shorts" target="_blank" rel="noopener">Altri video sul canale YouTube</a></p>
     </div>
   </div>
 </section>
