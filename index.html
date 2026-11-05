@@ -135,6 +135,10 @@ section.blocco + section.blocco { border-top: 1px solid var(--linea); }
 .percorso .anno { font-family: var(--f-mono); font-size: .85rem; color: var(--brace); padding-top: 2px; font-variant-numeric: tabular-nums; }
 .percorso b { display: block; color: var(--ink); }
 .percorso div span { color: var(--ink2); font-size: .95rem; }
+.percorso { margin-bottom: 4px; }
+.percorso li { grid-template-columns: 5.6em minmax(0, 1fr); }
+@media (max-width: 600px) { .percorso li { grid-template-columns: 4.4em minmax(0, 1fr); } }
+.percorso li.futuro::before { background: var(--bg); border: 2px dashed var(--fuoco); box-shadow: none; width: 10px; height: 10px; }
 
 /* ---------- Listino ---------- */
 .listino { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 26px; }
@@ -408,7 +412,7 @@ footer a { color: var(--hero-ink2); }
         <li><span class="anno">2007</span><div><b>Regeneration Point</b><span>La mia prima impresa a Roma: riparazione di PC e stampanti e rigenerazione delle cartucce. Il riuso è il mio mestiere da allora.</span></div></li>
         <li><span class="anno">2011</span><div><b>Consulente informatico e sistemista</b><span>Installazione e manutenzione di sistemi per aziende e organizzazioni, reti e Wi-Fi, server Linux e Windows, sicurezza e videosorveglianza.</span></div></li>
         <li><span class="anno">2026</span><div><b>Tecnologia Gentile</b><span>Il libro, FeniceOS, il Professore Digitale e gli altri programmi liberi, insieme ai corsi nei centri anziani.</span></div></li>
-        <li><span class="anno">Ora</span><div><b>Hub Green-Tech a Roma Est</b><span>Un laboratorio di rigenerazione e un Repair Café di quartiere: PC rigenerati, riparazioni assistite, supporto a cittadini e piccole imprese.</span></div></li>
+        <li class="futuro"><span class="anno">Il progetto</span><div><b>Hub Green-Tech a Roma Est</b><span>Un'idea che sto preparando e che cerca partner per diventare realtà: un laboratorio di rigenerazione e un Repair Café di quartiere, con PC rigenerati, riparazioni assistite e supporto a cittadini e piccole imprese.</span></div></li>
       </ol>
       <p class="small" style="color:var(--ink2);font-size:.92rem">Diploma di Maestro d'Arte (disegno tecnico ed ebanisteria): l'abitudine di lavorare con le mani e con cura viene da lì. Formazione in rigenerazione delle cartucce, marketing digitale (certificato Google) e prompt engineering per l'Intelligenza Artificiale.</p>
     </div>
