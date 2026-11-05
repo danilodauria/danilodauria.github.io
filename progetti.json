@@ -6,7 +6,7 @@
       "nome": "psicologo-digitale",
       "titolo": "Psicologo Digitale",
       "descrizione": "Psicologo Digitale · La stanza d'ascolto — colloquio con Neura, sei questionari, percorso in otto tappe e relazione PDF per il professionista. PWA statica, offline, in italiano.",
-      "versione": "psd-v1.3.32",
+      "versione": "1.3.32",
       "sito": "https://danilodauria.github.io/psicologo-digitale/",
       "github": "https://github.com/danilodauria/psicologo-digitale",
       "linguaggio": "JavaScript",
@@ -81,7 +81,7 @@
     },
     {
       "nome": "Quiz-Interattivo-Terminale-Fenice-OS",
-      "titolo": "Quiz Interattivo Terminale Fenice OS",
+      "titolo": "Quiz Interattivo Terminale FeniceOS",
       "descrizione": "Il Grande Quiz dell’Informatica: pagine web autonome, pensate per funzionare anche senza connessione a internet, su Windows, Mac e Linux, con qualunque browser recente (Chrome, Firefox, Edge o Safari).",
       "versione": "",
       "sito": "https://danilodauria.github.io/Quiz-Interattivo-Terminale-Fenice-OS/",
