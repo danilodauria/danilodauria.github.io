@@ -1,0 +1,203 @@
+/* Libretto A4 di Danilo D'Auria — stessa identità del sito: notte, fuoco, oro, carta calda */
+:root {
+  --notte: #14232e; --notte2: #1d3443; --brace: #b8400c; --fuoco: #e8702a; --oro: #f2b33d; --alba: #fde9b0;
+  --carta: #fbf6ee; --foglio: #ffffff; --ink: #1c2730; --ink2: #4f5c68; --linea: #e3d8c6; --morbido: #fbeedd;
+  --verde: #2f7a4a; --verde-morbido: #e2f1e6; --urgente: #b42318;
+  --f-display: "Young Serif", "Noto Serif Display", Georgia, serif;
+  --f-body: "Atkinson Hyperlegible", "Noto Sans", sans-serif;
+  --f-mono: "DejaVu Sans Mono", monospace;
+}
+@page { size: A4; margin: 14mm 16mm 15mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: var(--f-body); font-size: 9.6pt; line-height: 1.5; color: var(--ink); background: #fff; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: 1.15; margin: 0; text-wrap: balance; }
+h1 { font-size: 21pt; margin: 1.5mm 0 3mm; }
+h2 { font-size: 15pt; margin: 1mm 0 3mm; }
+h3 { font-size: 11.5pt; }
+p { margin: 0; }
+a { color: var(--brace); text-decoration: none; }
+.occhiello { font-family: var(--f-mono); font-size: 6.6pt; letter-spacing: .14em; text-transform: uppercase; color: var(--brace); }
+.lead { font-size: 10.4pt; color: var(--ink2); max-width: 150mm; margin-bottom: 5mm; }
+.piccolo { font-size: 8pt; color: var(--ink2); margin-top: 3mm; }
+.sotto { font-size: 12pt; margin: 5mm 0 3mm; color: var(--ink); }
+.capitolo { break-before: page; }
+.due { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+.testo p { margin-bottom: 2.6mm; text-align: left; }
+
+/* ---------- copertina e retro a pagina intera ---------- */
+.copertina, .retro { width: 210mm; height: 297mm; overflow: hidden; color: #f6efe4; position: relative;
+  background: linear-gradient(180deg, #14232e 0%, #1d3443 52%, #5a3a2c 84%, #b8592a 100%); }
+.copertina { padding: 20mm 20mm 0; display: flex; flex-direction: column; }
+.cop-fenice { display: flex; justify-content: center; margin: 2mm 0 6mm; }
+.cop-fenice svg { width: 92mm; height: 92mm; }
+.cop-label { font-family: var(--f-mono); font-size: 7.6pt; letter-spacing: .16em; text-transform: uppercase; color: var(--oro); }
+.cop-titolo { font-size: 27pt; line-height: 1.12; margin: 4mm 0 5mm; color: #f6efe4; }
+.cop-titolo em { font-style: normal; color: var(--oro); }
+.cop-lead { font-size: 10.6pt; color: #c9d3da; max-width: 160mm; }
+.cop-lead strong { color: #f6efe4; }
+.cop-dati { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(253,233,176,.3); margin-top: 9mm; }
+.cop-dati div { padding: 4mm 3mm 0 0; }
+.cop-dati b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 17pt; color: var(--alba); }
+.cop-dati span { font-size: 8pt; color: #e8dccb; }
+.cop-piede { margin-top: auto; padding: 0 0 14mm; display: flex; justify-content: space-between; align-items: end; }
+.cop-piede div { display: grid; gap: 1mm; font-size: 8.5pt; color: #e8dccb; }
+.cop-piede b { font-size: 13pt; color: var(--alba); }
+.cop-piede svg { width: 24mm; height: 24mm; }
+.retro { padding: 26mm 22mm 0; display: flex; flex-direction: column; }
+.retro-titolo { font-size: 24pt; margin: 4mm 0 5mm; color: #f6efe4; }
+.retro-schede { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 8mm; margin: 12mm 0; }
+.retro-schede div { border-top: 1px solid rgba(253,233,176,.3); padding-top: 3mm; display: grid; gap: 1mm; }
+.retro-schede span { font-family: var(--f-mono); font-size: 7pt; letter-spacing: .14em; text-transform: uppercase; color: var(--oro); }
+.retro-schede b { font-size: 12pt; color: var(--alba); font-weight: 400; font-family: var(--f-display); }
+.retro-qr { display: flex; gap: 6mm; align-items: center; color: #c9d3da; font-size: 9.5pt; max-width: 120mm; }
+.retro-qr svg { width: 32mm; height: 32mm; flex: none; }
+.retro-lic { margin-top: auto; padding-bottom: 12mm; font-size: 7.5pt; color: #e8dccb; }
+
+/* versione per la stampante: copertina e retro chiari, niente fondo pieno */
+.stampa .copertina, .stampa .retro { background: #fff; color: var(--ink); border: 0; }
+.stampa .cop-titolo, .stampa .retro-titolo { color: var(--ink); }
+.stampa .cop-lead, .stampa .retro-qr { color: var(--ink2); }
+.stampa .cop-lead strong { color: var(--ink); }
+.stampa .cop-label, .stampa .retro-schede span { color: var(--brace); }
+.stampa .cop-titolo em { color: var(--fuoco); }
+.stampa .cop-dati { border-color: var(--linea); }
+.stampa .cop-dati b, .stampa .cop-piede b, .stampa .retro-schede b { color: var(--ink); }
+.stampa .cop-dati span, .stampa .cop-piede div, .stampa .retro-lic { color: var(--ink2); }
+.stampa .retro-schede div { border-color: var(--linea); }
+.stampa .cop-piede svg path, .stampa .retro-qr svg path { stroke: var(--ink); }
+.stampa .copertina { border-bottom: 3mm solid var(--fuoco); }
+
+/* ---------- chi sono ---------- */
+.metafora { margin: 3mm 0 0; padding: 4mm 5mm; border-left: 2.5px solid var(--oro); background: var(--morbido); border-radius: 0 3mm 3mm 0;
+  font-family: var(--f-display); font-size: 11pt; line-height: 1.45; break-inside: avoid; }
+.metafora span { display: block; margin-top: 2mm; font-family: var(--f-body); font-size: 8pt; color: var(--ink2); }
+.percorso { list-style: none; margin: 0; padding: 0; border-left: 1.5px solid var(--linea); }
+.percorso li { display: grid; grid-template-columns: 19mm 1fr; gap: 3mm; padding: 0 0 3.5mm 4mm; position: relative; break-inside: avoid; }
+.percorso li::before { content: ""; position: absolute; left: -1.6mm; top: 1.2mm; width: 2.8mm; height: 2.8mm; border-radius: 50%; background: var(--fuoco); }
+.percorso li.futuro::before { background: #fff; border: 1.3px dashed var(--fuoco); }
+.percorso .anno { font-family: var(--f-mono); font-size: 7.4pt; color: var(--brace); padding-top: .4mm; }
+.percorso b { display: block; }
+.percorso div span { color: var(--ink2); font-size: 8.6pt; }
+.marca { border: 1px solid var(--linea); border-radius: 3mm; padding: 5mm; background: var(--carta); break-inside: avoid; align-self: start; }
+.marca .motto { font-family: var(--f-mono); font-size: 6.8pt; letter-spacing: .14em; text-transform: uppercase; color: var(--verde); }
+.marca .nome { font-family: var(--f-display); font-size: 11.5pt; line-height: 1.25; margin: 2mm 0 3mm; }
+.pil { margin: 0; padding-left: 4mm; display: grid; gap: 1.6mm; font-size: 8.8pt; color: var(--ink2); }
+.pil b { color: var(--ink); }
+.pil li::marker { color: var(--verde); }
+.strum { font-family: var(--f-mono); font-size: 7pt; color: var(--ink2); margin-top: 3mm; line-height: 1.7; }
+
+/* ---------- profili ---------- */
+.profili { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.profilo { border: 1px solid var(--linea); border-radius: 3mm; padding: 4mm 4.5mm; break-inside: avoid; display: grid; gap: 1.8mm; align-content: start; }
+.profilo h3 { font-size: 11pt; }
+.profilo .perche { color: var(--ink2); font-size: 8.6pt; }
+.profilo ul { margin: 0; padding-left: 4mm; display: grid; gap: 1.2mm; font-size: 8.4pt; }
+.profilo li::marker { color: var(--fuoco); }
+.profilo .cons { font-family: var(--f-mono); font-size: 6.6pt; color: var(--ink2); }
+
+/* ---------- mappa e progetti ---------- */
+.mappa { border: 1px solid var(--linea); border-radius: 3mm; padding: 4mm; break-inside: avoid; }
+.mappa svg { width: 100%; height: auto; display: block; }
+.mappa .nodo rect { fill: var(--carta); stroke: var(--linea); stroke-width: 1.5; }
+.mappa .nodo.radice rect { fill: var(--notte); stroke: var(--notte); }
+.mappa .nodo text { fill: var(--ink); font-family: var(--f-body); }
+.mappa .nodo .t { font-family: var(--f-display); font-size: 19px; }
+.mappa .nodo .s { font-size: 13px; fill: var(--ink2); }
+.mappa .nodo.radice .t { fill: var(--alba); }
+.mappa .nodo.radice .s { fill: #c9d3da; }
+.mappa .filo { stroke: var(--fuoco); stroke-width: 2; fill: none; }
+.mappa .filo.tratto { stroke-dasharray: 5 5; stroke: var(--ink2); }
+.mappa .etichetta { font-family: var(--f-mono); font-size: 11px; fill: var(--ink2); }
+.prog { display: grid; grid-template-columns: 62mm 1fr; gap: 6mm; padding: 5mm 0; border-top: 1px solid var(--linea); break-inside: avoid; }
+.prog .scatto img { width: 100%; border: 1px solid var(--linea); border-radius: 2mm; display: block; }
+.prog .cima { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; }
+.prog h3 { font-size: 13pt; }
+.ver { font-family: var(--f-mono); font-size: 7pt; color: var(--verde); background: var(--verde-morbido); padding: .6mm 2mm; border-radius: 1.5mm; white-space: nowrap; }
+.ruolo { color: var(--ink2); margin: 1.5mm 0 2mm; }
+.prog ul { margin: 0; padding-left: 4mm; display: grid; gap: 1mm; font-size: 8.6pt; }
+.prog li::marker { color: var(--fuoco); }
+.piatt { font-family: var(--f-mono); font-size: 6.8pt; color: var(--ink2); margin-top: 2mm; }
+.link { font-size: 8.4pt; font-weight: 700; margin-top: 1.5mm; }
+.altri { margin: 0; padding-left: 4mm; font-size: 8.8pt; display: grid; gap: 1.5mm; }
+.altri .url { font-family: var(--f-mono); font-size: 7pt; color: var(--ink2); }
+
+/* ---------- libro e patto ---------- */
+.libro { display: grid; grid-template-columns: 46mm 1fr; gap: 8mm; align-items: start; margin-top: 2mm; }
+.libro img { width: 100%; border-radius: 1mm 2mm 2mm 1mm; box-shadow: 0 3mm 7mm rgba(20,35,46,.25); }
+.libro .lead { margin-bottom: 3mm; }
+.cit { margin: 0; padding-left: 4mm; border-left: 2.5px solid var(--oro); font-family: var(--f-display); font-size: 11pt; line-height: 1.4; }
+.capitoli { columns: 2; column-gap: 8mm; margin: 0; padding: 0; list-style: none; counter-reset: c; font-size: 8.6pt; }
+.capitoli li { counter-increment: c; break-inside: avoid; padding: 1.1mm 0; border-bottom: 1px solid var(--linea); display: grid; grid-template-columns: 7mm 1fr; }
+.capitoli li::before { content: counter(c, decimal-leading-zero); font-family: var(--f-mono); font-size: 6.8pt; color: var(--fuoco); padding-top: .5mm; }
+.patto-blocco { margin-top: 7mm; break-inside: avoid; }
+.patto { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); }
+.patto div { padding: 3mm 4mm 3.5mm 0; border-bottom: 1px solid var(--linea); display: grid; gap: 1mm; }
+.patto b { font-family: var(--f-display); font-weight: 400; font-size: 10.5pt; }
+.patto span { color: var(--ink2); font-size: 8.4pt; }
+
+/* ---------- video ---------- */
+.video { display: grid; grid-template-columns: 62mm 1fr; gap: 9mm; align-items: start; }
+.video > img { width: 100%; border-radius: 4mm; border: 1.5mm solid var(--notte); }
+.rrr { list-style: none; margin: 0 0 5mm; padding: 0; display: grid; gap: 2mm; }
+.rrr li { display: grid; grid-template-columns: 22mm 1fr; gap: 3mm; border-bottom: 1px solid var(--linea); padding-bottom: 2mm; }
+.rrr b { font-family: var(--f-display); font-weight: 400; font-size: 11pt; color: var(--verde); }
+.rrr span { color: var(--ink2); }
+.qr { display: flex; gap: 4mm; align-items: center; border: 1px solid var(--linea); border-radius: 3mm; padding: 3.5mm; background: var(--carta); }
+.qr svg { width: 24mm; height: 24mm; flex: none; }
+.qr p { font-size: 8.6pt; color: var(--ink2); }
+.qr b { display: block; color: var(--ink); font-size: 10pt; }
+
+/* ---------- servizi ---------- */
+.listino { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+.pacc { border: 1px solid var(--linea); border-radius: 3mm; padding: 4mm; display: grid; gap: 1.6mm; align-content: start; break-inside: avoid; }
+.pacc.top { border: 1.6px solid var(--verde); }
+.pacc .prezzo { font-family: var(--f-display); font-size: 19pt; line-height: 1; color: var(--verde); }
+.pacc p { font-size: 8.6pt; color: var(--ink2); }
+.pacc .ideale { color: var(--ink); border-top: 1px dashed var(--linea); padding-top: 1.6mm; }
+.flex { margin-top: 4mm; padding: 3.5mm 4.5mm; border-radius: 3mm; background: var(--verde-morbido); display: grid; gap: 1mm; break-inside: avoid; }
+.flex b { font-family: var(--f-display); font-weight: 400; font-size: 11pt; }
+.flex span { color: var(--ink2); font-size: 8.8pt; }
+.servizi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+.serv { border: 1px solid var(--linea); border-radius: 3mm; padding: 3.5mm 4mm; break-inside: avoid; display: grid; gap: 1.2mm; align-content: start; }
+.serv h3 { font-size: 10.5pt; }
+.serv p:not(.occhiello) { font-size: 8.3pt; color: var(--ink2); }
+.metodo { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm; counter-reset: m; }
+.metodo li { counter-increment: m; display: grid; gap: 1mm; align-content: start; font-size: 8.4pt; }
+.metodo li::before { content: counter(m); width: 6.5mm; height: 6.5mm; border-radius: 50%; background: var(--notte); color: var(--alba); display: grid; place-items: center; font-family: var(--f-mono); font-size: 7.4pt; }
+.metodo span { color: var(--ink2); }
+
+/* ---------- bandi ---------- */
+.bandi { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.bando { border: 1px solid var(--linea); border-radius: 3mm; padding: 3.8mm 4.2mm; display: grid; gap: 1.4mm; align-content: start; break-inside: avoid; font-size: 8.4pt; }
+.bando .cima { display: flex; justify-content: space-between; gap: 3mm; align-items: start; }
+.bando h3 { font-size: 10pt; }
+.bando .ente { color: var(--ink2); font-size: 7.8pt; }
+.bando .dati { font-size: 8pt; }
+.bando .nota { color: var(--ink2); }
+.bando .aiuto { background: var(--carta); border-left: 2px solid var(--oro); padding: 1.6mm 2.4mm; font-size: 8pt; }
+.stato { font-family: var(--f-mono); font-size: 6.6pt; padding: .5mm 1.8mm; border-radius: 1.2mm; white-space: nowrap; }
+.stato.aperto { background: var(--verde-morbido); color: var(--verde); }
+.stato.arrivo { background: var(--morbido); color: var(--brace); }
+.stato.chiuso { border: 1px solid var(--linea); color: var(--ink2); }
+
+/* ---------- domande ---------- */
+.faq { columns: 2; column-gap: 8mm; }
+.faq div { break-inside: avoid; padding: 0 0 4mm; }
+.faq h3 { font-size: 10.6pt; margin-bottom: 1.4mm; }
+.faq p { color: var(--ink2); font-size: 8.8pt; }
+
+/* tre stampe dallo stesso documento: copertina, corpo, retro */
+.segnaposto { display: none; }
+.corpo .copertina, .corpo .retro { display: none; }
+.corpo .segnaposto { display: block; height: 10mm; break-after: page; }
+.corpo .segnaposto + .capitolo { break-before: auto; }
+.solo-cop > *:not(.copertina), .solo-retro > *:not(.retro) { display: none !important; }
+/* Chi sono su una pagina */
+.capitolo:first-of-type .testo p { margin-bottom: 2mm; }
+.percorso li { padding-bottom: 2.4mm; }
+.percorso div span { font-size: 8.1pt; line-height: 1.4; }
+.metafora { padding: 3mm 4.5mm; font-size: 10.4pt; }
+
+/* codici QR: sempre scuri su bianco, con margine, per essere letti da ogni telefono */
+svg.segno, .qr svg, .cop-piede svg, .retro-qr svg { border-radius: 2mm; background: #fff; }

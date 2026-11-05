@@ -10,6 +10,7 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `progetti.json` | I progetti e le loro versioni: lo aggiorna da solo ogni giorno GitHub Actions |
 | `strumenti/aggiorna-progetti.py` | Lo script che legge i repository di danilodauria su GitHub |
 | `.github/workflows/progetti.yml` | L'aggiornamento automatico (ogni giorno, e con il pulsante «Run workflow» nella scheda Actions) |
+| `pdf/` | Il profilo in PDF: per lo schermo e da stampare (rigenerarlo: `python3 strumenti/pdf/libretto.py https://danilodauria.github.io/ pdf`) |
 | `anteprima.png` | L'immagine che compare quando si condivide il link su WhatsApp e social |
 
 Per aggiornare solo i bandi basta modificare `bandi.json`: la pagina non va toccata.
