@@ -127,6 +127,15 @@ section.blocco + section.blocco { border-top: 1px solid var(--linea); }
 .pilastri span { color: var(--ink2); font-size: .95rem; }
 @media (max-width: 860px) { .chi { grid-template-columns: 1fr; gap: 28px; } }
 
+.metafora { margin: 4px 0; padding: 16px 20px; border-left: 3px solid var(--oro); background: var(--morbido); border-radius: 0 10px 10px 0; font-family: var(--f-display); font-size: 1.15rem; line-height: 1.45; max-width: none; color: var(--ink); }
+.metafora span { display: block; margin-top: 8px; font-family: var(--f-body); font-size: .86rem; color: var(--ink2); }
+.percorso { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 0; border-left: 2px solid var(--linea); }
+.percorso li { display: grid; grid-template-columns: 4.2em minmax(0, 1fr); gap: 12px; padding: 0 0 18px 18px; position: relative; }
+.percorso li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--fuoco); box-shadow: 0 0 0 3px var(--bg); }
+.percorso .anno { font-family: var(--f-mono); font-size: .85rem; color: var(--brace); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.percorso b { display: block; color: var(--ink); }
+.percorso div span { color: var(--ink2); font-size: .95rem; }
+
 /* ---------- Listino ---------- */
 .listino { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 26px; }
 .pacchetto { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 26px; display: grid; gap: 10px; align-content: start; }
@@ -393,7 +402,15 @@ footer a { color: var(--hero-ink2); }
       <h2>Un tecnico che rigenera computer e li rimette nelle mani delle persone.</h2>
       <p>Sono <strong>Danilo D'Auria</strong>, esperto di <strong>rigenerazione hardware</strong> e di <strong>sistemi open source</strong>. Recupero PC datati con distribuzioni Linux e soluzioni di economia circolare, e lavoro ogni giorno per abbattere le barriere dell'<strong>obsolescenza programmata</strong>.</p>
       <p>Conosco a fondo le architetture hardware e le distribuzioni <strong>GNU/Linux su base Debian</strong>. Unisco l'ottimizzazione tecnica alla sostenibilità: con software libero e qualche intervento mirato sull'hardware, trasformo quelli che sembravano rifiuti elettronici in strumenti di lavoro sicuri e veloci. E i computer nuovi li configuro e li mantengo aggiornati perché durino a lungo.</p>
+      <blockquote class="metafora">«Il PC è la casa, la struttura. Il sistema pesante sono i mobili vecchi che la ingombrano. Linux è la ristrutturazione ecologica: stessa casa solida, di nuovo leggera e luminosa.»<span>La metafora della casa, il metodo con cui spiego l'informatica ai miei corsisti</span></blockquote>
       <p>Sono anche <strong>formatore e relatore</strong>: accompagno le persone verso l'<strong>indipendenza informatica</strong> nei laboratori, nei centri sociali e nei centri anziani. Per me salvare un computer dalla discarica e insegnare a un anziano a usare lo smartphone sono due facce della stessa medaglia. Da questa esperienza sono nati il libro <strong>«Tecnologia Gentile: Informatica Sostenibile»</strong> e i programmi che trovate qui sotto.</p>
+      <ol class="percorso" aria-label="Il mio percorso">
+        <li><span class="anno">2007</span><div><b>Regeneration Point</b><span>La mia prima impresa a Roma: riparazione di PC e stampanti e rigenerazione delle cartucce. Il riuso è il mio mestiere da allora.</span></div></li>
+        <li><span class="anno">2011</span><div><b>Consulente informatico e sistemista</b><span>Installazione e manutenzione di sistemi per aziende e organizzazioni, reti e Wi-Fi, server Linux e Windows, sicurezza e videosorveglianza.</span></div></li>
+        <li><span class="anno">2026</span><div><b>Tecnologia Gentile</b><span>Il libro, FeniceOS, il Professore Digitale e gli altri programmi liberi, insieme ai corsi nei centri anziani.</span></div></li>
+        <li><span class="anno">Ora</span><div><b>Hub Green-Tech a Roma Est</b><span>Un laboratorio di rigenerazione e un Repair Café di quartiere: PC rigenerati, riparazioni assistite, supporto a cittadini e piccole imprese.</span></div></li>
+      </ol>
+      <p class="small" style="color:var(--ink2);font-size:.92rem">Diploma di Maestro d'Arte (disegno tecnico ed ebanisteria): l'abitudine di lavorare con le mani e con cura viene da lì. Formazione in rigenerazione delle cartucce, marketing digitale (certificato Google) e prompt engineering per l'Intelligenza Artificiale.</p>
     </div>
     <aside class="marca-green" aria-label="Green Computing">
       <p class="motto">Ridurre · Riusare · Riciclare</p>
