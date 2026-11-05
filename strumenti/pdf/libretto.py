@@ -4,12 +4,16 @@ Legge i testi dal sito (così PDF e sito dicono le stesse cose), compone un docu
 copertina e retro a pagina intera, e lo stampa con Chromium. Due uscite:
   Danilo_DAuria_Tecnologia_Gentile.pdf        (per lo schermo, con collegamenti cliccabili)
   Danilo_DAuria_Tecnologia_Gentile_stampa.pdf (uguale, ma le pagine colorate a fondo pieno si stampano chiare)
-Uso: python3 libretto.py URL_DEL_SITO CARTELLA_USCITA"""
-import base64, html, io, json, json as _j, os, sys, time
+Uso: python3 libretto.py URL_DEL_SITO CARTELLA_USCITA [--sempre]
+Rifà i PDF solo se i contenuti sono cambiati (impronta in CARTELLA_USCITA/impronta.txt); --sempre li rifà comunque.
+Lo esegue da solo GitHub Actions (.github/workflows/pdf.yml). Autore: Danilo D'Auria - licenza MIT."""
+import base64, hashlib, html, io, json, os, sys, tempfile, time
 import segno
 from playwright.sync_api import sync_playwright
 
 URL, OUT = sys.argv[1], sys.argv[2]
+SEMPRE = "--sempre" in sys.argv
+CHROME = os.environ.get("CHROME") or (os.path.exists("/usr/bin/google-chrome") and "/usr/bin/google-chrome") or None
 QUI = os.path.dirname(os.path.abspath(__file__))
 SITO = "https://danilodauria.github.io/"
 REPO = os.path.dirname(os.path.dirname(QUI))
@@ -25,7 +29,7 @@ def data_uri(path, tipo):
     return "data:%s;base64,%s" % (tipo, base64.b64encode(open(path, "rb").read()).decode())
 
 with sync_playwright() as p:
-    br = p.chromium.launch(executable_path="/usr/bin/google-chrome", args=["--no-sandbox"])
+    br = p.chromium.launch(executable_path=CHROME, args=["--no-sandbox"])
     pg = br.new_page(viewport={"width": 1280, "height": 900})
     pg.goto(URL, wait_until="load"); time.sleep(1.5)
     D = pg.evaluate(open(os.path.join(QUI, "estrai.js")).read())
@@ -34,6 +38,20 @@ with sync_playwright() as p:
 bandi = json.load(open(os.path.join(REPO, "bandi.json")))
 OGGI = time.strftime("%Y-%m-%d")
 MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"]
+# ---------------- impronta dei contenuti: se nulla è cambiato, i PDF restano quelli di prima
+def _stato_bando(b):
+    if b.get("previsto"): return "arrivo"
+    if not b.get("scadenza"): return "aperto"
+    return "chiuso" if b["scadenza"] < OGGI else "aperto"
+_contenuti = json.dumps([D, [(b, _stato_bando(b)) for b in bandi["bandi"]],
+                         open(os.path.join(QUI, "libretto.css")).read(), open(__file__).read()], sort_keys=True, ensure_ascii=False)
+IMPRONTA = hashlib.sha256(_contenuti.encode("utf-8")).hexdigest()
+_file_impronta = os.path.join(OUT, "impronta.txt")
+if not SEMPRE and os.path.exists(_file_impronta) and open(_file_impronta).read().strip() == IMPRONTA \
+        and os.path.exists(os.path.join(OUT, "Danilo_DAuria_Tecnologia_Gentile.pdf")):
+    print("PDF già aggiornati: nessuna novità nei contenuti.")
+    sys.exit(0)
+
 def data_it(iso):
     a, m, g = iso.split("-"); return "%d %s %s" % (int(g), MESI[int(m) - 1], a)
 
@@ -223,7 +241,7 @@ pagina = f"""<!doctype html><html lang="it"><head><meta charset="utf-8"><title>D
 {faq()}
 {retro()}
 </body></html>"""
-html_path = os.path.join(OUT, "libretto.html")
+html_path = os.path.join(tempfile.mkdtemp(prefix="libretto-html-"), "libretto.html")
 open(html_path, "w", encoding="utf-8").write(pagina)
 
 FOOTER = ('<div style="width:100%;font-family:\'Atkinson Hyperlegible\',sans-serif;font-size:7.5px;color:#4f5c68;'
@@ -231,10 +249,9 @@ FOOTER = ('<div style="width:100%;font-family:\'Atkinson Hyperlegible\',sans-ser
           "<span>Danilo D'Auria · Tecnologia Gentile · danilodauria.github.io</span>"
           '<span class="pageNumber"></span></div>')
 from pypdf import PdfReader, PdfWriter
-import tempfile
 tmp = tempfile.mkdtemp(prefix="libretto-")
 with sync_playwright() as p:
-    br = p.chromium.launch(executable_path="/usr/bin/google-chrome", args=["--no-sandbox"])
+    br = p.chromium.launch(executable_path=CHROME, args=["--no-sandbox"])
     pg = br.new_page()
     pg.goto("file://" + html_path, wait_until="load"); pg.evaluate("document.fonts.ready"); time.sleep(.8)
     for nome, extra in [("Danilo_DAuria_Tecnologia_Gentile.pdf", ""), ("Danilo_DAuria_Tecnologia_Gentile_stampa.pdf", "stampa")]:
@@ -259,4 +276,5 @@ with sync_playwright() as p:
         with open(os.path.join(OUT, nome), "wb") as fh:
             w.write(fh)
     br.close()
-print("ok")
+open(_file_impronta, "w").write(IMPRONTA + "\n")
+print("PDF rifatti:", os.path.join(OUT, "Danilo_DAuria_Tecnologia_Gentile.pdf"))

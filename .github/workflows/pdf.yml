@@ -1,0 +1,66 @@
+name: Aggiorna il PDF
+
+# Rifà il profilo in PDF (pdf/) quando cambia il sito, quando cambiano i progetti,
+# e ogni giorno (per lo stato dei bandi). Se i contenuti non cambiano, non tocca nulla.
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["pdf/**", "progetti.json"]
+  workflow_run:
+    workflows: ["Aggiorna i progetti"]
+    types: [completed]
+  schedule:
+    - cron: "47 5 * * *"   # ogni giorno alle 05:47 UTC, dopo il controllo dei progetti
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggiorna-pdf
+  cancel-in-progress: false
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Programmi e caratteri del sito
+        run: |
+          pip install playwright==1.48.0 segno pypdf
+          python -m playwright install --with-deps chromium
+          mkdir -p ~/.fonts && cd ~/.fonts
+          base=https://raw.githubusercontent.com/google/fonts/main/ofl
+          curl -sfLO $base/youngserif/YoungSerif-Regular.ttf
+          curl -sfLO $base/atkinsonhyperlegible/AtkinsonHyperlegible-Regular.ttf
+          curl -sfLO $base/atkinsonhyperlegible/AtkinsonHyperlegible-Bold.ttf
+          curl -sfLO $base/atkinsonhyperlegible/AtkinsonHyperlegible-Italic.ttf
+          sudo apt-get install -y -qq fonts-dejavu-core fonts-noto-core >/dev/null
+          fc-cache -f
+      - name: Rifai il PDF se i contenuti sono cambiati
+        env:
+          CHROME: ""
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
+          sleep 2
+          python strumenti/pdf/libretto.py http://127.0.0.1:8765/ pdf
+      - name: Salva se qualcosa è cambiato
+        run: |
+          if git diff --quiet -- pdf; then
+            echo "Nessuna novità."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add pdf
+            git commit -m "PDF aggiornato in automatico"
+            for prova in 1 2 3; do
+              git pull --rebase origin main && git push && exit 0
+              sleep 10
+            done
+            exit 1
+          fi
