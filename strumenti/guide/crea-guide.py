@@ -171,6 +171,7 @@ a { color: var(--brace); }
   .barra .azioni { display: none; }
   main { padding: 6mm 0 0; max-width: none; }
   h2 { break-after: avoid; } li, .box { break-inside: avoid; }
+  .piede a[data-torna], .piede a[data-torna] + br { display: none; }
 }
 """
 

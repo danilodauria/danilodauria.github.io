@@ -57,6 +57,9 @@ async () => {
     corsie: $$('.corsia', of).map(c => ({ nome: t($('h3', c)), sotto: t($('.corsia-sotto', c)),
       eventi: $$('.evento', c).map(e => ({ titolo: t($('h4', e)), quando: t($('.quando', e)), stimato: !!$('.chip.stima', e), testo: t($$('p', e)[1]), consiglio: t($('.consiglio', e)) })) })),
     cerca: $$('.prodotto', of).map(p => [t($('h4', p)), t($('.listino-p', p))]), nota: t($('#avviso-off')) } : null;
+  const sez = id => { const x = $('#' + id); return x ? { label: t($('.label', x)), h2: t($('h2', x)), lead: t($('.testa .lead', x)) } : null; };
+  d.strumenti = { test: sez('test'), calcola: sez('calcola'), guide: sez('guide'), fonte: t($('.calc-fonte')),
+    voci: $$('.guida').map(g => [t($('h3', g)), t($$('p', g)[0])]) };
   d.faq = $$('.faq details').map(x => [t($('summary', x)), t($('p', x))]);
   const co = $('#contatti');
   d.contatti = { h2: t($('h2', co)), lead: t($('.lead', co)), email: t($('#email')) };

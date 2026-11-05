@@ -255,6 +255,24 @@ def bandi_pag():
   <p class="piccolo">{E(bandi['nota'])}</p>
 </section>"""
 
+def strumenti_pag():
+    st = D.get("strumenti")
+    if not st or not st.get("test"):
+        return ""
+    def blocco(x, ancora, extra=""):
+        return (f'<div class="sito-s"><div class="sito-s-testo"><p class="occhiello">{E(x["label"])}</p><h3>{E(x["h2"])}</h3>'
+                f'<p>{E(x["lead"])}</p>{extra}</div><div class="sito-s-qr">{qr(SITO + "#" + ancora)}<span>{E(SITO.replace("https://", ""))}#{ancora}</span></div></div>')
+    guide = "<ul class=\"sito-s-guide\">" + "".join("<li><b>%s</b> %s</li>" % (E(a), E(b)) for a, b in st["voci"]) + "</ul>"
+    return f"""
+<section class="capitolo">
+  <p class="occhiello">Gratis, sul sito</p>
+  <h1>Strumenti da usare subito, anche dal telefono.</h1>
+  <p class="lead">Il sito si installa come un'app, funziona anche senza Internet e si legge in sei lingue: italiano, inglese, francese, spagnolo, tedesco e rumeno. Inquadrate il codice accanto a ogni strumento.</p>
+  {blocco(st["test"], "test")}
+  {blocco(st["calcola"], "calcola", '<p class="piccolo">' + E(st["fonte"].replace("Leggi la sintesi dello studio", "").strip()) + '</p>')}
+  {blocco(st["guide"], "guide", guide)}
+</section>"""
+
 def faq():
     return """
 <section class="capitolo">
@@ -290,7 +308,7 @@ def retro():
       <div><span>Progetti</span><b>github.com/danilodauria</b></div>
       <div><span>Video</span><b>youtube.com/@Danilo-A6Zero</b></div>
     </div>
-    <div class="retro-qr">{qr(SITO, '#fde9b0')}<p>Inquadrate il codice per aprire il sito: progetti, bandi e novità sempre aggiornati.</p></div>
+    <div class="retro-qr">{qr(SITO, '#fde9b0')}<p>Inquadrate il codice per aprire il sito: progetti, test del PC, preventivo, guide, offerte e bandi sempre aggiornati, in sei lingue.</p></div>
   </div>
   <p class="retro-lic">© 2026 Danilo D'Auria · testi e grafica CC BY-NC-SA 4.0 · logo FeniceOS © Danilo D'Auria</p>
 </section>"""
@@ -308,6 +326,7 @@ pagina = f"""<!doctype html><html lang="it"><head><meta charset="utf-8"><title>D
 {servizi()}
 {windows_mac()}
 {offerte_pag()}
+{strumenti_pag()}
 {bandi_pag()}
 {faq()}
 {retro()}
