@@ -5,7 +5,7 @@ Lo esegue da solo GitHub Actions (ogni giorno e a ogni modifica del sito): legge
 repository, la versione di ognuno (ultima Release, oppure i file VERSION, VERSIONE, version.txt,
 package.json) e l'indirizzo del sito pubblicato. La pagina index.html legge poi progetti.json.
 Solo libreria standard di Python. Autore: Danilo D'Auria - licenza MIT."""
-import datetime, json, os, sys, urllib.error, urllib.request
+import datetime, json, os, re, sys, urllib.error, urllib.request
 
 UTENTE = "danilodauria"
 ESCLUSI = {"danilodauria.github.io"}  # il sito stesso
@@ -18,6 +18,7 @@ TITOLI = {
     "feniceos": "FeniceOS",
     "grande-quiz": "Il Grande Quiz dell'Informatica",
     "nonni-teach": "Nonni Teach",
+    "Quiz-Interattivo-Terminale-Fenice-OS": "Quiz Interattivo Terminale FeniceOS",
 }
 
 
@@ -39,15 +40,22 @@ def titolo(nome):
     return TITOLI.get(nome) or " ".join(p[:1].upper() + p[1:] for p in nome.replace("_", "-").split("-"))
 
 
+def pulisci(v):
+    """«psd-v1.3.32», «v2.2», «2.2» -> «1.3.32», «2.2», «2.2»."""
+    m = re.search(r"\d+(?:\.\d+)+", v or "")
+    return m.group(0) if m else ""
+
+
 def versione(repo):
     nome, ramo = repo["name"], repo.get("default_branch") or "main"
     rel = chiedi("https://api.github.com/repos/%s/%s/releases/latest" % (UTENTE, nome))
     if rel and rel.get("tag_name"):
-        return rel["tag_name"].lstrip("vV")
+        if pulisci(rel["tag_name"]):
+            return pulisci(rel["tag_name"])
     for f in ("VERSION", "VERSIONE", "version.txt"):
         t = chiedi("https://raw.githubusercontent.com/%s/%s/%s/%s" % (UTENTE, nome, ramo, f), json_atteso=False)
         if t and t.strip() and len(t.strip()) < 20 and "\n" not in t.strip():
-            return t.strip()
+            return pulisci(t.strip()) or t.strip()
     pkg = chiedi("https://raw.githubusercontent.com/%s/%s/%s/package.json" % (UTENTE, nome, ramo), json_atteso=False)
     if pkg:
         try:

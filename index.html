@@ -986,7 +986,7 @@ footer a { color: var(--hero-ink2); }
       var card = vetrina[pr.nome];
       if (card) {
         var v = card.querySelector(".versione");
-        if (v && pr.versione && /^[0-9]/.test(pr.versione)) v.textContent = "v" + pr.versione;
+        var nv = (pr.versione || "").match(/\d+(?:\.\d+)+/); if (v && nv) v.textContent = "v" + nv[0];
       } else if (pr.nome !== UTENTE + ".github.io") { altri.push(pr); }
     });
     $("n-progetti").textContent = Object.keys(vetrina).length + altri.length;
