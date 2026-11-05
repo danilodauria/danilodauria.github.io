@@ -1196,7 +1196,7 @@ footer a { color: var(--hero-ink2); }
 </section>
 <footer>
   <div class="wrap">
-    <span>© 2026 Danilo D'Auria · testi CC BY-NC-SA 4.0 · logo FeniceOS © Danilo D'Auria · Questo sito non usa cookie e non raccoglie dati personali.</span>
+    <span>© 2026 Danilo D'Auria · testi CC BY-NC-SA 4.0 · logo FeniceOS © Danilo D'Auria · Questo sito non usa cookie e non raccoglie dati personali: solo statistiche anonime delle visite con GoatCounter.</span>
     <span><a href="https://github.com/danilodauria" target="_blank" rel="noopener">github.com/danilodauria</a></span>
   </div>
 </footer>
@@ -1842,7 +1842,7 @@ footer a { color: var(--hero-ink2); }
   try { fetch("casi.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(disegnaCasi).catch(function () {}); } catch (e) {}
 
   /* ---- Statistiche senza cookie (GoatCounter). Si attiva scrivendo qui il codice scelto all'iscrizione gratuita. ---- */
-  var STATISTICHE = "";
+  var STATISTICHE = "danilodauria";
   if (STATISTICHE && /github\.io$/.test(location.hostname) && navigator.doNotTrack !== "1") {
     var gc = document.createElement("script"); gc.async = true; gc.src = "https://gc.zgo.at/count.js";
     gc.setAttribute("data-goatcounter", "https://" + STATISTICHE + ".goatcounter.com/count"); document.head.appendChild(gc);
