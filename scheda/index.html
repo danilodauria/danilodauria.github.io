@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="it">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Scheda intervento · Danilo D'Auria</title>
+<link rel="icon" href="../fenice.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#14232e">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap">
+<style>
+/* Scheda intervento: si compila sul telefono o sul computer, resta salvata qui, si stampa per il cliente
+   e, con il consenso, prepara il «caso reale» da pubblicare sul sito. Nessun dato lascia il dispositivo da solo. */
+:root { --notte:#14232e; --notte2:#1d3443; --brace:#b8400c; --fuoco:#e8702a; --oro:#f2b33d; --alba:#fde9b0; --bg:#fbf6ee; --foglio:#fff; --ink:#1c2730; --ink2:#4f5c68; --linea:#e6dccb; --morbido:#fbeedd; --verde:#2f7a4a; --verde-morbido:#e2f1e6; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0f1a22; --foglio:#16242f; --ink:#ecf1f4; --ink2:#a7b5c0; --linea:#263a48; --morbido:#2a2117; --brace:#f2a35c; --verde:#74cf98; --verde-morbido:#15301f; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.55 "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif; }
+.barra { position: sticky; top: 0; z-index: 3; background: var(--notte); color: #f6efe4; padding: 10px max(16px, env(safe-area-inset-left)); display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.barra b { font-family: "Young Serif", Georgia, serif; font-weight: 400; font-size: 1.1rem; }
+.barra .azioni { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px; }
+.barra button, .barra a { font: 700 .86rem "Atkinson Hyperlegible", sans-serif; padding: 7px 12px; border-radius: 99px; border: 1.5px solid rgba(253,233,176,.4); background: transparent; color: var(--alba); cursor: pointer; text-decoration: none; }
+.barra .pieno { background: var(--oro); border-color: var(--oro); color: var(--notte); }
+main { max-width: 900px; margin: 0 auto; padding: 22px 16px 60px; }
+.avviso { font-size: .92rem; color: var(--ink2); margin: 0 0 18px; }
+fieldset { border: 1px solid var(--linea); background: var(--foglio); border-radius: 14px; padding: 16px 18px 18px; margin: 0 0 16px; }
+legend { font-family: "Young Serif", Georgia, serif; font-size: 1.15rem; padding: 0 6px; }
+.griglia { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+label { display: grid; gap: 4px; font-size: .84rem; font-weight: 700; color: var(--ink2); }
+input, select, textarea { font: 1rem "Atkinson Hyperlegible", sans-serif; color: var(--ink); background: var(--bg); border: 1.5px solid var(--linea); border-radius: 9px; padding: 9px 10px; width: 100%; min-width: 0; }
+textarea { min-height: 76px; resize: vertical; }
+.largo { grid-column: 1 / -1; }
+.spunte { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 6px 14px; margin-bottom: 10px; }
+.spunte label, .consenso > label { display: flex; gap: 8px; align-items: center; font-weight: 400; color: var(--ink); font-size: .95rem; }
+.spunte input, .consenso > label input { width: 20px; height: 20px; flex: none; accent-color: var(--fuoco); }
+.totale { font-family: "Young Serif", Georgia, serif; font-size: 1.6rem; color: var(--verde); }
+.consenso { background: var(--verde-morbido); }
+#caso-box { margin-top: 12px; }
+#caso-json { font: .82rem/1.4 "JetBrains Mono", monospace; min-height: 160px; }
+.riga-azioni { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 10px; }
+.btn { font: 700 .95rem "Atkinson Hyperlegible", sans-serif; padding: 10px 16px; border-radius: 99px; border: 2px solid var(--linea); background: var(--foglio); color: var(--ink); cursor: pointer; text-decoration: none; }
+.btn.pieno { background: var(--oro); border-color: var(--oro); color: var(--notte); }
+.esito { font-size: .9rem; color: var(--verde); min-height: 1.2em; }
+#stampa { display: none; }
+@media print {
+  @page { size: A4; margin: 14mm 15mm 16mm; }
+  body { background: #fff; color: #1c2730; font-size: 10pt; }
+  .barra, main { display: none !important; }
+  #stampa { display: block; }
+  #stampa h1 { font: 400 17pt "Young Serif", Georgia, serif; margin: 0 0 2mm; }
+  #stampa .testa { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #e8702a; padding-bottom: 3mm; margin-bottom: 4mm; }
+  #stampa .testa svg { width: 16mm; height: 16mm; }
+  #stampa h2 { font: 400 11.5pt "Young Serif", Georgia, serif; margin: 4mm 0 1.5mm; }
+  #stampa table { width: 100%; border-collapse: collapse; }
+  #stampa td { padding: 1.2mm 2mm; border-bottom: 1px solid #e6dccb; vertical-align: top; }
+  #stampa td:first-child { width: 38%; color: #4f5c68; }
+  #stampa ul { margin: 0; padding-left: 5mm; }
+  #stampa .firme { display: grid; grid-template-columns: 1fr 1fr; gap: 14mm; margin-top: 14mm; }
+  #stampa .firme div { border-top: 1px solid #1c2730; padding-top: 1.5mm; font-size: 8.5pt; color: #4f5c68; }
+  #stampa .nota { font-size: 8pt; color: #4f5c68; margin-top: 6mm; }
+  #stampa .tot { font-weight: 700; font-size: 11pt; }
+}
+</style>
+<body>
+<header class="barra">
+  <b>Scheda intervento</b>
+  <div class="azioni">
+    <button type="button" id="nuova">Nuova scheda</button>
+    <button type="button" id="salva-file">Salva in un file</button>
+    <button type="button" id="apri-file">Apri un file</button>
+    <button type="button" class="pieno" id="stampa-btn">Stampa per il cliente</button>
+    <a href="../">Sito</a>
+  </div>
+  <input type="file" id="file" accept=".json,application/json" hidden>
+</header>
+<main>
+  <p class="avviso">Si compila sul posto, dal telefono o dal computer. Resta salvata in questo browser mentre scrivete; con «Salva in un file» ne tenete una copia. Nessun dato viene inviato da solo a nessuno.</p>
+  <form id="f" autocomplete="off">
+    <fieldset><legend>Intervento</legend>
+      <div class="griglia">
+        <label>Data<input type="date" name="data"></label>
+        <label>Numero scheda<input name="numero"></label>
+        <label>Cliente (nome o ente)<input name="cliente"></label>
+        <label>Contatto del cliente<input name="contatto" placeholder="telefono o email"></label>
+      </div>
+    </fieldset>
+    <fieldset><legend>Dispositivo</legend>
+      <div class="griglia">
+        <label>Tipo<select name="tipo"><option>Portatile</option><option>PC fisso</option><option>Mac</option><option>iPhone o iPad</option><option>Telefono Android</option><option>Altro</option></select></label>
+        <label>Marca e modello<input name="modello"></label>
+        <label>Anno<input name="anno" inputmode="numeric"></label>
+        <label>Processore<input name="cpu"></label>
+        <label>Memoria RAM<input name="ram" placeholder="es. 4 GB"></label>
+        <label>Disco<input name="disco" placeholder="es. HDD 500 GB"></label>
+        <label>Sistema prima<input name="sistema_prima" placeholder="es. Windows 10"></label>
+        <label>Numero di serie<input name="seriale"></label>
+      </div>
+    </fieldset>
+    <fieldset><legend>Prima</legend>
+      <div class="griglia">
+        <label class="largo">Problemi segnalati dal cliente<textarea name="problemi"></textarea></label>
+        <label class="largo">Esito del check-up<textarea name="checkup"></textarea></label>
+        <label>Avvio prima (secondi)<input name="avvio_prima" type="number" min="0" inputmode="numeric"></label>
+      </div>
+    </fieldset>
+    <fieldset><legend>Lavori eseguiti</legend>
+      <div class="spunte" id="spunte"></div>
+      <div class="griglia">
+        <label>Sistema installato<input name="sistema_dopo" placeholder="es. Linux Lite, FeniceOS, Windows 11"></label>
+        <label>Avvio dopo (secondi)<input name="avvio_dopo" type="number" min="0" inputmode="numeric"></label>
+        <label class="largo">Altri lavori e ricambi montati<textarea name="altri_lavori" placeholder="es. SSD Crucial 500 GB, batteria nuova"></textarea></label>
+        <label class="largo">Consigli e note per il cliente<textarea name="consigli"></textarea></label>
+        <label>Garanzia sul lavoro<input name="garanzia"></label>
+      </div>
+    </fieldset>
+    <fieldset><legend>Costi</legend>
+      <div class="griglia">
+        <label>Servizio<select name="pacchetto">
+          <option>Check-up diagnostico (gratuito)</option><option>Seconda vita · Linux</option><option>Turbo · Linux</option>
+          <option>Seconda vita · Windows</option><option>Turbo · Windows</option><option>Seconda vita · Mac</option><option>Turbo · Mac</option>
+          <option>iPhone o iPad · configurazione</option><option>Intervento su misura</option></select></label>
+        <label>Servizio (€)<input name="costo_servizio" type="number" min="0" step="0.01" inputmode="decimal"></label>
+        <label>Ricambi (€)<input name="costo_ricambi" type="number" min="0" step="0.01" inputmode="decimal"></label>
+        <label>Licenze (€)<input name="costo_licenze" type="number" min="0" step="0.01" inputmode="decimal"></label>
+        <label>Pagamento<select name="pagamento"><option></option><option>Contanti</option><option>Bonifico</option><option>PayPal</option><option>Postepay</option><option>Altro</option></select></label>
+        <div><span class="avviso" style="margin:0">Totale</span><div class="totale" id="totale">0 €</div></div>
+      </div>
+    </fieldset>
+    <fieldset class="consenso"><legend>Caso reale per il sito</legend>
+      <label><input type="checkbox" name="consenso"> Il cliente acconsente a pubblicare questo intervento sul sito, in forma anonima</label>
+      <div class="griglia" style="margin-top:10px">
+        <label>Come chiamarlo sul sito<input name="pubblico_chi" placeholder="es. Maria, 78 anni · Associazione di quartiere"></label>
+        <label>Comune<input name="pubblico_dove"></label>
+        <label class="largo">Titolo del caso<input name="pubblico_titolo" placeholder="es. Il portatile del 2012 torna a scuola"></label>
+        <label class="largo">Una frase del cliente (facoltativa)<input name="pubblico_frase"></label>
+      </div>
+      <div class="riga-azioni"><button type="button" class="btn pieno" id="prepara">Prepara il caso per il sito</button><span class="avviso" style="margin:0">Nome, contatti e numero di serie non vengono mai inclusi.</span></div>
+      <div id="caso-box" hidden>
+        <textarea id="caso-json" readonly aria-label="Caso pronto per il sito"></textarea>
+        <div class="riga-azioni"><button type="button" class="btn" id="copia-caso">Copia</button><a class="btn" id="invia-caso" href="#">Mandalo per email</a></div>
+        <p class="avviso">Per pubblicarlo: incollatelo nella chat con Claude, oppure su GitHub aprite casi.json, premete la matita e aggiungetelo dentro «casi».</p>
+      </div>
+      <p class="esito" id="esito" aria-live="polite"></p>
+    </fieldset>
+  </form>
+</main>
+<div id="stampa"></div>
+<script>
+(function () {
+  var LAVORI = ["Pulizia interna e ventole", "Pasta termica nuova", "SSD nuovo al posto del disco", "Memoria RAM aggiunta", "Batteria nuova",
+    "Copia di sicurezza dei dati", "Trasferimento dei dati", "Installazione pulita del sistema", "Aggiornamenti e driver", "Sicurezza e antivirus",
+    "Cifratura del disco", "Backup automatico configurato", "Cancellazione sicura dei dati", "Account scollegati", "Programmi installati e configurati", "Spiegazione d'uso al cliente"];
+  var CHIAVE = "dd-scheda-bozza", f = document.getElementById("f"), $ = function (id) { return document.getElementById(id); };
+  $("spunte").innerHTML = LAVORI.map(function (l, i) { return '<label><input type="checkbox" name="lavoro" value="' + l + '"> ' + l + "</label>"; }).join("");
+  function due(n) { return (n < 10 ? "0" : "") + n; }
+  function nuovoNumero() { var d = new Date(); return d.getFullYear() + "-" + due(d.getMonth() + 1) + due(d.getDate()) + "-" + due(d.getHours()) + due(d.getMinutes()); }
+  function leggi() {
+    var o = { lavori: [] };
+    Array.prototype.forEach.call(f.elements, function (el) {
+      if (!el.name) return;
+      if (el.name === "lavoro") { if (el.checked) o.lavori.push(el.value); }
+      else if (el.type === "checkbox") o[el.name] = el.checked;
+      else o[el.name] = el.value;
+    });
+    return o;
+  }
+  function scrivi(o) {
+    Array.prototype.forEach.call(f.elements, function (el) {
+      if (!el.name) return;
+      if (el.name === "lavoro") el.checked = (o.lavori || []).indexOf(el.value) !== -1;
+      else if (el.type === "checkbox") el.checked = !!o[el.name];
+      else if (el.tagName === "SELECT" && !o[el.name]) el.selectedIndex = 0;
+      else el.value = o[el.name] == null ? "" : o[el.name];
+    });
+    totale();
+  }
+  function num(v) { return parseFloat(String(v || "0").replace(",", ".")) || 0; }
+  function euro(n) { return (Math.round(n * 100) / 100).toFixed(2).replace(".", ",").replace(",00", "") + " €"; }
+  function totale() { var o = leggi(); $("totale").textContent = euro(num(o.costo_servizio) + num(o.costo_ricambi) + num(o.costo_licenze)); }
+  function salva() { try { localStorage.setItem(CHIAVE, JSON.stringify(leggi())); } catch (e) {} }
+  function vuota() { var d = new Date(); scrivi({ data: d.getFullYear() + "-" + due(d.getMonth() + 1) + "-" + due(d.getDate()), numero: nuovoNumero(), lavori: [] }); }
+  var bozza = null; try { bozza = JSON.parse(localStorage.getItem(CHIAVE) || "null"); } catch (e) {}
+  if (bozza) scrivi(bozza); else vuota();
+  f.addEventListener("input", function () { totale(); salva(); });
+  f.addEventListener("change", function () { totale(); salva(); });
+  $("nuova").addEventListener("click", function () {
+    if (!confirm("Iniziare una scheda nuova? Quella attuale verrà svuotata: se vi serve, salvatela prima in un file.")) return;
+    vuota(); salva(); $("caso-box").hidden = true;
+  });
+  $("salva-file").addEventListener("click", function () {
+    var o = leggi(), a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(o, null, 1)], { type: "application/json" }));
+    a.download = "scheda-" + (o.numero || nuovoNumero()) + ".json"; document.body.appendChild(a); a.click(); setTimeout(function () { a.remove(); }, 500);
+  });
+  $("apri-file").addEventListener("click", function () { $("file").click(); });
+  $("file").addEventListener("change", function () {
+    var file = $("file").files[0]; if (!file) return;
+    var r = new FileReader(); r.onload = function () { try { scrivi(JSON.parse(r.result)); salva(); $("esito").textContent = "Scheda aperta."; } catch (e) { $("esito").textContent = "Questo file non sembra una scheda."; } $("file").value = ""; };
+    r.readAsText(file);
+  });
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function riga(a, b) { return b ? "<tr><td>" + esc(a) + "</td><td>" + esc(b).replace(/\n/g, "<br>") + "</td></tr>" : ""; }
+  $("stampa-btn").addEventListener("click", function () {
+    var o = leggi(), dataIt = o.data ? o.data.split("-").reverse().join("/") : "";
+    var logo = '<img src="../fenice.svg" alt="" style="width:18mm;height:18mm">';
+    $("stampa").innerHTML = '<div class="testa"><div><h1>Scheda tecnica e lavori eseguiti</h1><div>Scheda n. ' + esc(o.numero) + " · " + esc(dataIt) + '</div></div>' + logo + "</div>" +
+      "<h2>Cliente e dispositivo</h2><table>" + riga("Cliente", o.cliente) + riga("Contatto", o.contatto) + riga("Dispositivo", [o.tipo, o.modello, o.anno].filter(Boolean).join(" · ")) +
+      riga("Processore", o.cpu) + riga("Memoria", o.ram) + riga("Disco", o.disco) + riga("Numero di serie", o.seriale) + riga("Sistema prima", o.sistema_prima) + "</table>" +
+      "<h2>Prima dell'intervento</h2><table>" + riga("Problemi segnalati", o.problemi) + riga("Esito del check-up", o.checkup) + riga("Avvio (secondi)", o.avvio_prima) + "</table>" +
+      "<h2>Lavori eseguiti</h2>" + (o.lavori.length ? "<ul>" + o.lavori.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>" : "") +
+      "<table>" + riga("Sistema installato", o.sistema_dopo) + riga("Altri lavori e ricambi", o.altri_lavori) + riga("Avvio dopo (secondi)", o.avvio_dopo) + riga("Garanzia sul lavoro", o.garanzia) + "</table>" +
+      (o.consigli ? "<h2>Consigli per voi</h2><p>" + esc(o.consigli).replace(/\n/g, "<br>") + "</p>" : "") +
+      "<h2>Costi</h2><table>" + riga("Servizio", o.pacchetto + (o.costo_servizio ? " · " + euro(num(o.costo_servizio)) : "")) + riga("Ricambi", o.costo_ricambi ? euro(num(o.costo_ricambi)) : "") +
+      riga("Licenze", o.costo_licenze ? euro(num(o.costo_licenze)) : "") + '<tr class="tot"><td>Totale</td><td>' + $("totale").textContent + "</td></tr>" + riga("Pagamento", o.pagamento) + "</table>" +
+      '<div class="firme"><div>Il tecnico · Danilo D\'Auria</div><div>Il cliente</div></div>' +
+      '<p class="nota">Danilo D\'Auria · danilodauria.site@gmail.com · danilodauria.github.io<br>Questa scheda descrive il lavoro eseguito e non sostituisce ricevuta o fattura.</p>';
+    setTimeout(function () { window.print(); }, 300);
+  });
+  var testoCaso = "";
+  $("prepara").addEventListener("click", function () {
+    var o = leggi();
+    if (!o.consenso) { $("esito").textContent = "Serve prima il consenso del cliente: spuntate la casella."; return; }
+    var caso = { id: (o.numero || nuovoNumero()).replace(/[^0-9a-z-]/gi, ""), data: o.data, titolo: o.pubblico_titolo || (({ "Portatile": "Un portatile", "PC fisso": "Un PC fisso", "Mac": "Un Mac", "iPhone o iPad": "Un iPhone", "Telefono Android": "Un telefono Android" })[o.tipo] || "Un dispositivo") + " che torna a funzionare",
+      chi: o.pubblico_chi || "", dove: o.pubblico_dove || "", dispositivo: [o.tipo, o.anno ? "del " + o.anno : "", o.ram, o.disco].filter(Boolean).join(", "),
+      prima: { avvio: o.avvio_prima ? +o.avvio_prima : null, sistema: o.sistema_prima || "", problemi: o.problemi || "" },
+      dopo: { avvio: o.avvio_dopo ? +o.avvio_dopo : null, sistema: o.sistema_dopo || "" },
+      lavori: o.lavori, servizio: o.pacchetto, costo: euro(num(o.costo_servizio) + num(o.costo_ricambi) + num(o.costo_licenze)), frase: o.pubblico_frase || "" };
+    testoCaso = JSON.stringify(caso, null, 1);
+    $("caso-json").value = testoCaso; $("caso-box").hidden = false;
+    $("invia-caso").href = "mailto:danilodauria.site@gmail.com?subject=" + encodeURIComponent("Caso reale per il sito: " + caso.titolo) + "&body=" + encodeURIComponent(testoCaso);
+    $("esito").textContent = "Controllate il testo: niente nomi o dati che il cliente non vuole mostrare.";
+  });
+  $("copia-caso").addEventListener("click", function () {
+    try { navigator.clipboard.writeText(testoCaso).then(function () { $("esito").textContent = "Copiato."; }, function () { $("caso-json").select(); }); } catch (e) { $("caso-json").select(); }
+  });
+})();
+</script>
+</body>
+</html>

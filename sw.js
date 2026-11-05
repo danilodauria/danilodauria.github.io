@@ -1,0 +1,44 @@
+/* Il sito funziona anche senza Internet. Strategia semplice e sicura:
+   - pagine e dati del sito: prima la rete (sempre aggiornati), se manca Internet la copia salvata;
+   - caratteri di Google: la copia salvata, aggiornata in sottofondo;
+   - tutto il resto (GitHub, comparatori…): solo rete.
+   Autore: Danilo D'Auria · licenza MIT */
+var VERSIONE = "dd-2026-11-06";
+var BASE = [
+  "./", "index.html", "fenice.svg", "manifest.webmanifest", "bandi.json", "offerte.json", "progetti.json", "casi.json",
+  "icone/icona-192.png", "icone/icona-512.png", "icone/apple-touch-icon.png",
+  "guide/backup.html", "guide/truffe.html", "guide/vendere-donare.html", "guide/password.html", "guide/pc-veloce.html",
+  "i18n/en.json", "i18n/fr.json", "i18n/es.json", "i18n/de.json", "i18n/ro.json",
+  "scheda/", "pdf/leggi.html"
+];
+self.addEventListener("install", function (e) {
+  e.waitUntil(caches.open(VERSIONE).then(function (c) {
+    return Promise.all(BASE.map(function (u) { return c.add(u).catch(function () {}); }));
+  }).then(function () { return self.skipWaiting(); }));
+});
+self.addEventListener("activate", function (e) {
+  e.waitUntil(caches.keys().then(function (k) {
+    return Promise.all(k.filter(function (n) { return n !== VERSIONE; }).map(function (n) { return caches.delete(n); }));
+  }).then(function () { return self.clients.claim(); }));
+});
+self.addEventListener("fetch", function (e) {
+  var r = e.request; if (r.method !== "GET") return;
+  var u = new URL(r.url);
+  if (u.origin === location.origin) {
+    e.respondWith(fetch(r).then(function (risp) {
+      if (risp && risp.ok && !u.pathname.endsWith(".pdf") && !u.pathname.endsWith(".mp4")) {
+        var copia = risp.clone(), chiave = u.search ? u.origin + u.pathname : r; caches.open(VERSIONE).then(function (c) { c.put(chiave, copia); });
+      }
+      return risp;
+    }).catch(function () {
+      return caches.match(r, { ignoreSearch: true }).then(function (m) {
+        return m || (r.mode === "navigate" ? caches.match("./") : Response.error());
+      });
+    }));
+  } else if (/fonts\.(googleapis|gstatic)\.com$/.test(u.hostname)) {
+    e.respondWith(caches.match(r).then(function (m) {
+      var rete = fetch(r).then(function (risp) { var c2 = risp.clone(); caches.open(VERSIONE).then(function (c) { c.put(r, c2); }); return risp; }).catch(function () { return m; });
+      return m || rete;
+    }));
+  }
+});

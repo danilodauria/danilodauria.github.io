@@ -30,8 +30,8 @@ def data_uri(path, tipo):
 
 with sync_playwright() as p:
     br = p.chromium.launch(executable_path=CHROME, args=["--no-sandbox"])
-    pg = br.new_page(viewport={"width": 1280, "height": 900})
-    pg.goto(URL, wait_until="load"); time.sleep(1.5)
+    pg = br.new_page(viewport={"width": 1280, "height": 900}, locale="it-IT")
+    pg.goto(URL.rstrip("/") + "/?lang=it", wait_until="load"); time.sleep(1.5)
     D = pg.evaluate(open(os.path.join(QUI, "estrai.js")).read())
     br.close()
 

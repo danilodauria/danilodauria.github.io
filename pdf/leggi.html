@@ -35,11 +35,13 @@ html, body { margin: 0; background: var(--carta); font-family: "Atkinson Hyperle
 (function () {
   var consentiti = ["Danilo_DAuria_Tecnologia_Gentile.pdf", "Danilo_DAuria_Tecnologia_Gentile_stampa.pdf"];
   var nome = decodeURIComponent((location.hash || "").slice(1));
-  if (consentiti.indexOf(nome) === -1) nome = consentiti[0];
+  var guida = /^guide\/[a-z0-9-]+\.pdf$/.test(nome);
+  if (consentiti.indexOf(nome) === -1 && !guida) nome = consentiti[0];
   var stampa = nome.indexOf("_stampa") !== -1;
   document.getElementById("scarica").href = nome;
-  document.getElementById("titolo").firstChild.textContent = stampa ? "Profilo da stampare" : "Profilo di Danilo D'Auria";
-  document.title = (stampa ? "Profilo da stampare" : "Profilo in PDF") + " · Danilo D'Auria";
+  var titolo = guida ? "Guida gratuita" : stampa ? "Profilo da stampare" : "Profilo di Danilo D'Auria";
+  document.getElementById("titolo").firstChild.textContent = titolo;
+  document.title = (guida ? "Guida in PDF" : stampa ? "Profilo da stampare" : "Profilo in PDF") + " · Danilo D'Auria";
   var stato = document.getElementById("stato"), box = document.getElementById("pagine");
   function errore() {
     box.innerHTML = '<div class="avviso">Non riesco a mostrare il PDF qui. <a href="' + nome + '">Apritelo o scaricatelo direttamente</a>.</div>';

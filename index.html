@@ -12,6 +12,10 @@
 <meta property="og:url" content="https://danilodauria.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="fenice.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#14232e">
+<link rel="apple-touch-icon" href="icone/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Danilo D'Auria">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -73,6 +77,17 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .barra nav a:hover { color: var(--oro); }
 @media (max-width: 760px) { .barra nav a:not(.btn-mini) { display: none; } }
 .btn-mini { color: var(--notte) !important; background: var(--oro); padding: 4px 12px; border-radius: 99px; font-weight: 700; }
+
+.lingua { position: relative; }
+#btn-lingua { display: inline-flex; align-items: center; gap: 5px; width: auto !important; padding: 0 9px; font: 700 .85rem var(--f-body); }
+.menu-lingue { position: absolute; right: 0; top: calc(100% + 8px); z-index: 20; min-width: 170px; background: var(--foglio); border: 1px solid var(--linea); border-radius: 12px; box-shadow: 0 10px 30px rgba(20,35,46,.25); padding: 6px; display: grid; gap: 2px; }
+.menu-lingue[hidden] { display: none; }
+.menu-lingue button { text-align: left; font: 1rem var(--f-body); color: var(--ink); background: none; border: 0; border-radius: 8px; padding: 9px 12px; cursor: pointer; width: 100%; height: auto; }
+.menu-lingue button:hover, .menu-lingue button:focus-visible { background: var(--morbido); }
+.menu-lingue button[aria-current="true"] { font-weight: 700; color: var(--brace); }
+.invito-lingua { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: center; padding: 8px 16px; background: var(--alba); color: var(--notte); font-size: .95rem; }
+.invito-lingua button { font: 700 .9rem var(--f-body); border-radius: 99px; border: 0; padding: 6px 14px; background: var(--notte); color: var(--alba); cursor: pointer; }
+.invito-lingua button[data-no] { background: transparent; color: var(--notte); font-size: 1.2rem; padding: 2px 8px; }
 
 /* ---------- Apertura: notte → alba ---------- */
 .hero { background: linear-gradient(180deg, var(--notte) 0%, var(--notte2) 58%, #5a3a2c 86%, #b8592a 100%); color: var(--hero-ink); overflow: hidden; position: relative; }
@@ -279,6 +294,10 @@ blockquote { margin: 24px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(-
 .accesso button[aria-pressed="true"] { background: var(--oro); color: var(--notte); border-color: var(--oro); }
 .marchio { white-space: nowrap; }
 @media (max-width: 760px) { .barra .wrap { gap: 12px; } .accesso { order: 3; } }
+.accesso .menu-lingue button { display: block; text-align: left; font: 1rem var(--f-body); color: var(--ink); background: none; border: 0; border-radius: 8px; padding: 9px 12px; height: auto; min-width: 0; width: 100%; }
+.accesso .menu-lingue button:hover, .accesso .menu-lingue button:focus-visible { background: var(--morbido); color: var(--ink); }
+.accesso .menu-lingue button[aria-current="true"] { font-weight: 700; color: var(--brace); }
+@media (max-width: 400px) { .barra .wrap { gap: 8px; } .barra nav .btn-mini { display: none; } .marchio { font-size: 1rem; gap: 6px; } .marchio svg { width: 30px; height: 30px; } #lingua-sigla { display: none; } .accesso { gap: 4px; } .accesso button { min-width: 36px; padding: 0 7px; } }
 @media (max-width: 440px) { .marchio { font-size: 1rem; } .btn-mini { display: none; } }
 
 /* ---------- Schermate ---------- */
@@ -334,6 +353,77 @@ blockquote { margin: 24px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(-
 .os-prezzo a { font-weight: 700; }
 @media (max-width: 900px) { .licenze { grid-template-columns: 1fr; } }
 
+/* ---------- Test del computer ---------- */
+.test { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: clamp(18px, 3vw, 34px); max-width: 860px; }
+.test-barra { height: 6px; border-radius: 99px; background: var(--morbido); overflow: hidden; margin-bottom: 18px; }
+.test-barra span { display: block; height: 100%; background: var(--fuoco); transition: width .3s; }
+.test-passo { font-family: var(--f-mono); font-size: .78rem; color: var(--ink2); letter-spacing: .08em; text-transform: uppercase; }
+.test h3 { margin: 6px 0 8px; font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem); }
+.test-aiuto { color: var(--ink2); font-size: .95rem; margin-bottom: 16px; }
+.test-scelte { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.test-scelte button { text-align: left; font: 700 1rem var(--f-body); color: var(--ink); background: var(--bg); border: 2px solid var(--linea); border-radius: 12px; padding: 14px 16px; cursor: pointer; min-height: 54px; }
+.test-scelte button:hover { border-color: var(--fuoco); }
+.test-scelte button[aria-pressed="true"] { border-color: var(--fuoco); background: var(--morbido); }
+.test-piede { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-top: 18px; }
+.btn-testo { font: 700 .95rem var(--f-body); background: none; border: 0; color: var(--brace); cursor: pointer; padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; }
+.btn-testo:disabled { opacity: .4; cursor: default; }
+.test-rileva { font-size: .9rem; color: var(--ink2); }
+.esito-test h3 { color: var(--verde); }
+.esito-test .perche { margin: 12px 0 16px; padding-left: 20px; color: var(--ink2); }
+.esito-test .perche li { margin: 4px 0; }
+.esito-pacc { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 14px 18px; border-radius: 12px; background: var(--verde-morbido); margin: 14px 0; }
+.esito-pacc b { font-family: var(--f-display); font-weight: 400; font-size: 1.6rem; color: var(--verde); }
+.esito-alt { font-size: .95rem; color: var(--ink2); padding: 10px 14px; border-left: 3px solid var(--oro); background: var(--bg); border-radius: 0 8px 8px 0; }
+.esito-azioni { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-top: 18px; }
+.esito-azioni .btn.vuoto, .riep-azioni .btn.vuoto { color: var(--ink); border-color: var(--linea); }
+@media (max-width: 640px) { .test-scelte { grid-template-columns: 1fr; } }
+
+/* ---------- Calcolatori ---------- */
+.schede-calc { display: inline-flex; gap: 4px; padding: 4px; border-radius: 99px; background: var(--foglio); border: 1px solid var(--linea); margin-bottom: 20px; max-width: 100%; }
+.schede-calc button { font: 700 .98rem var(--f-body); border: 0; border-radius: 99px; padding: 9px 18px; background: transparent; color: var(--ink2); cursor: pointer; }
+.schede-calc button[aria-selected="true"] { background: var(--notte); color: var(--alba); }
+.calc-griglia { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.calc-titolo { font-size: 1.2rem; margin-bottom: 10px; }
+.calc-nota { font-size: .9rem; color: var(--ink2); }
+.righe-prev { display: grid; gap: 10px; margin-bottom: 8px; }
+.riga-prev { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) 84px 36px; gap: 8px; align-items: end; background: var(--foglio); border: 1px solid var(--linea); border-radius: 12px; padding: 12px; }
+.riga-prev label, .campi-ris label, .lic-prev label { display: grid; gap: 4px; font-size: .82rem; color: var(--ink2); font-weight: 700; }
+.calc-griglia select, .calc-griglia input[type="number"] { font: 1rem var(--f-body); color: var(--ink); background: var(--bg); border: 1.5px solid var(--linea); border-radius: 9px; padding: 9px 10px; width: 100%; min-width: 0; }
+.riga-prev .togli { width: 36px; height: 40px; border-radius: 9px; border: 1.5px solid var(--linea); background: var(--bg); color: var(--ink2); font-size: 1.2rem; cursor: pointer; }
+.licenze-prev { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .licenze-prev { grid-template-columns: 1fr; } }
+.lic-prev { display: grid; grid-template-columns: minmax(0, 1fr) 84px; gap: 10px; align-items: center; background: var(--foglio); border: 1px solid var(--linea); border-radius: 12px; padding: 10px 12px; }
+.lic-prev .nome { font-weight: 700; font-size: .95rem; }
+.lic-prev .nome small { display: block; font-weight: 400; color: var(--ink2); font-size: .85rem; }
+.riepilogo { position: sticky; top: 84px; background: var(--notte); color: var(--hero-ink); border-radius: var(--r); padding: 22px; display: grid; gap: 12px; }
+.riepilogo .label { color: var(--oro); }
+.riepilogo dl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 14px; margin: 0; font-size: .93rem; }
+.riepilogo dt { color: var(--hero-ink2); }
+.riepilogo dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.riep-totale { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-top: 1px solid rgba(253,233,176,.25); padding-top: 12px; }
+.riep-totale b { font-family: var(--f-display); font-weight: 400; font-size: 2rem; color: var(--alba); font-variant-numeric: tabular-nums; }
+.riepilogo .calc-nota { color: var(--hero-ink2); }
+.riep-azioni { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
+.riepilogo .btn-testo { color: var(--oro); }
+.esito-calc { font-size: .9rem; color: #9fe3b8; min-height: 1.2em; }
+.campi-ris { display: grid; gap: 14px; background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 20px; }
+.campi-ris input[type="range"] { width: 100%; accent-color: var(--fuoco); }
+.valore-range { font-family: var(--f-mono); color: var(--ink); font-size: .9rem; }
+.ris-numeri { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ris-numeri div { display: grid; gap: 2px; }
+.ris-numeri b { font-family: var(--f-display); font-weight: 400; font-size: 1.7rem; color: var(--alba); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.ris-numeri span { font-size: .86rem; color: var(--hero-ink2); }
+.calc-fonte { margin-top: 16px; font-size: .86rem; color: var(--ink2); max-width: 90ch; }
+@media (max-width: 900px) { .calc-griglia { grid-template-columns: 1fr; } .riepilogo { position: static; } }
+@media (max-width: 560px) { .riga-prev { grid-template-columns: minmax(0, 1fr) 72px 36px; } .riga-prev label:nth-child(2) { grid-column: 1 / -1; grid-row: 2; } }
+@media print {
+  html.solo-preventivo body * { visibility: hidden; }
+  html.solo-preventivo #calcola .riepilogo, html.solo-preventivo #calcola .riepilogo * { visibility: visible; }
+  html.solo-preventivo #calcola .riepilogo { position: absolute; left: 0; top: 0; width: 100%; background: #fff; color: #000; }
+  html.solo-preventivo .riepilogo * { color: #000 !important; }
+  html.solo-preventivo .riep-azioni, html.solo-preventivo .esito-calc { display: none; }
+}
+
 /* ---------- Offerte ---------- */
 .corsie { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start; }
 .corsia { display: grid; gap: 10px; }
@@ -358,6 +448,34 @@ blockquote { margin: 24px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(-
 .prodotto .vai a.uff { background: var(--notte); color: var(--alba); border-color: var(--notte); }
 .cerca.spento .vai a { opacity: .5; }
 @media (max-width: 900px) { .corsie, .cerca { grid-template-columns: 1fr; } }
+
+/* ---------- Calendario e guide ---------- */
+.btn-cal { display: inline-flex; align-items: center; gap: 8px; font: 700 .92rem var(--f-body); padding: 8px 14px; border-radius: 99px; border: 1.5px solid var(--linea); background: var(--foglio); color: var(--ink); cursor: pointer; }
+.btn-cal:hover { border-color: var(--fuoco); }
+.btn-cal svg { width: 18px; height: 18px; flex: none; color: var(--brace); }
+.link-card { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: center; font-size: .9rem; }
+.link-card .btn-testo { font-size: .9rem; padding: 0; }
+.guide { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.guida { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 22px; display: grid; gap: 8px; align-content: start; }
+.guida svg { width: 34px; height: 34px; color: var(--fuoco); }
+.guida h3 { font-size: 1.2rem; }
+.guida p { color: var(--ink2); font-size: .95rem; }
+.guida .guida-link { color: var(--ink2); font-weight: 700; }
+#installa { font-family: var(--f-body); }
+
+/* ---------- Prima e dopo ---------- */
+.casi { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+.caso { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 22px; display: grid; gap: 10px; align-content: start; }
+.caso h3 { font-size: 1.2rem; }
+.caso .chi { font-size: .9rem; color: var(--ink2); }
+.avvio { display: grid; gap: 6px; }
+.avvio div { display: grid; grid-template-columns: 4.2em minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: .88rem; }
+.avvio .barra-av { height: 10px; border-radius: 99px; background: var(--urgente); }
+.avvio .dopo .barra-av { background: var(--verde); }
+.avvio b { font-family: var(--f-mono); font-weight: 600; font-variant-numeric: tabular-nums; }
+.caso ul { margin: 0; padding-left: 18px; color: var(--ink2); font-size: .93rem; }
+.caso .frase { font-family: var(--f-display); font-size: 1.05rem; border-left: 3px solid var(--oro); padding-left: 12px; }
+.caso .costo-caso { font-weight: 700; }
 
 /* ---------- Bandi ---------- */
 .bandi-testa { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; justify-content: space-between; margin-bottom: 22px; }
@@ -443,15 +561,27 @@ footer a { color: var(--hero-ink2); }
 </defs><circle cx="120" cy="112" r="100" fill="url(#m-sole)"/><path d="M104.8 138.0 C100.9 162.0 -10.2 182.0 31.6 218.0 C15.8 186.0 127.3 166.0 120.2 138.0Z" fill="url(#m-fiamma)" opacity="0.95"/><path d="M119.8 138.0 C112.7 162.0 228.2 182.0 208.4 218.0 C237.4 186.0 139.1 166.0 135.2 138.0Z" fill="url(#m-fiamma)" opacity="0.91"/><path d="M107.1 138.0 C102.9 166.8 34.2 190.8 66.0 234.0 C58.8 195.6 131.7 171.6 123.9 138.0Z" fill="url(#m-fiamma)" opacity="0.87"/><path d="M116.1 138.0 C108.3 166.8 181.8 190.8 174.0 234.0 C195.6 195.6 137.1 171.6 132.9 138.0Z" fill="url(#m-fiamma)" opacity="0.83"/><path d="M110.5 138.0 C106.4 170.4 78.4 197.4 98.2 246.0 C98.4 202.8 132.8 175.8 126.0 138.0Z" fill="url(#m-fiamma)" opacity="0.79"/><path d="M114.0 138.0 C107.2 170.4 139.6 197.4 141.8 246.0 C154.8 202.8 133.6 175.8 129.4 138.0Z" fill="url(#m-fiamma)" opacity="0.75"/><path d="M113.7 138.0 C109.2 165.6 111.0 188.6 120.0 230.0 C125.4 193.2 130.8 170.2 126.3 138.0Z" fill="url(#m-fiamma)" opacity="0.71"/><g transform="translate(76.0 82.0) rotate(190.0)" opacity="1"><path d="M0 0 C8.0 15.4 17.1 40.2 5.9 61.8 C5.9 43.3 -8.0 18.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.1 Q4.9 30.9 5.9 59.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(75.4 82.4) rotate(182.2)" opacity="1"><path d="M0 0 C8.0 16.3 17.6 42.4 6.3 65.2 C6.4 45.6 -8.0 19.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.3 Q5.2 32.6 6.3 62.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(74.8 82.8) rotate(174.4)" opacity="1"><path d="M0 0 C8.0 17.1 18.2 44.6 6.6 68.6 C7.0 48.0 -8.0 20.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.4 Q5.5 34.3 6.6 65.9" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(74.2 83.2) rotate(166.6)" opacity="1"><path d="M0 0 C8.0 18.0 18.7 46.8 6.9 72.0 C7.5 50.4 -8.0 21.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.6 Q5.8 36.0 6.9 69.1" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(73.6 83.6) rotate(158.8)" opacity="1"><path d="M0 0 C8.0 17.1 18.2 44.6 6.6 68.6 C7.0 48.0 -8.0 20.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.4 Q5.5 34.3 6.6 65.9" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(73.0 84.0) rotate(151.0)" opacity="1"><path d="M0 0 C8.0 16.3 17.6 42.4 6.3 65.2 C6.4 45.6 -8.0 19.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.3 Q5.2 32.6 6.3 62.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(72.4 84.4) rotate(143.2)" opacity="1"><path d="M0 0 C8.0 15.4 17.1 40.2 5.9 61.8 C5.9 43.3 -8.0 18.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.1 Q4.9 30.9 5.9 59.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(71.8 84.8) rotate(135.4)" opacity="1"><path d="M0 0 C8.0 14.6 16.5 38.0 5.6 58.4 C5.3 40.9 -8.0 17.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 2.9 Q4.7 29.2 5.6 56.1" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(71.2 85.2) rotate(127.6)" opacity="1"><path d="M0 0 C8.0 13.8 16.0 35.8 5.3 55.0 C4.8 38.5 -8.0 16.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 2.8 Q4.4 27.5 5.3 52.8" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(70.6 85.6) rotate(119.8)" opacity="1"><path d="M0 0 C8.0 12.9 15.5 33.5 5.0 51.6 C4.3 36.1 -8.0 15.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 2.6 Q4.1 25.8 5.0 49.5" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(70.0 86.0) rotate(112.0)" opacity="1"><path d="M0 0 C8.0 12.1 14.9 31.3 4.6 48.2 C3.7 33.7 -8.0 14.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 2.4 Q3.9 24.1 4.6 46.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(106.0 94.0) rotate(85.0)" opacity="1"><path d="M0 0 C8.0 13.0 14.5 33.8 4.4 52.0 C3.3 36.4 -8.0 15.6 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.6 Q3.6 26.0 4.4 49.9" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(101.7 91.1) rotate(92.1)" opacity="1"><path d="M0 0 C8.0 12.7 14.3 33.1 4.3 50.9 C3.1 35.6 -8.0 15.3 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.5 Q3.6 25.4 4.3 48.8" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(97.4 88.3) rotate(99.3)" opacity="1"><path d="M0 0 C8.0 12.4 14.2 32.3 4.2 49.7 C3.0 34.8 -8.0 14.9 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.5 Q3.5 24.9 4.2 47.7" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(93.1 85.4) rotate(106.4)" opacity="1"><path d="M0 0 C8.0 12.1 14.0 31.6 4.1 48.6 C2.8 34.0 -8.0 14.6 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.4 Q3.4 24.3 4.1 46.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(88.9 82.6) rotate(113.6)" opacity="1"><path d="M0 0 C8.0 11.9 13.8 30.8 4.0 47.4 C2.6 33.2 -8.0 14.2 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.4 Q3.3 23.7 4.0 45.5" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(84.6 79.7) rotate(120.7)" opacity="1"><path d="M0 0 C8.0 11.6 13.7 30.1 3.9 46.3 C2.5 32.4 -8.0 13.9 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.3 Q3.2 23.1 3.9 44.4" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(80.3 76.9) rotate(127.9)" opacity="1"><path d="M0 0 C8.0 11.3 13.5 29.3 3.8 45.1 C2.3 31.6 -8.0 13.5 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.3 Q3.2 22.6 3.8 43.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(76.0 74.0) rotate(135.0)" opacity="1"><path d="M0 0 C8.0 11.0 13.4 28.6 3.7 44.0 C2.2 30.8 -8.0 13.2 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.2 Q3.1 22.0 3.7 42.2" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(110.0 90.0) rotate(85.0)" opacity="1"><path d="M0 0 C7.0 6.0 8.7 15.6 1.4 24.0 C-1.1 16.8 -7.0 7.2 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.2 Q1.2 12.0 1.4 23.0" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(106.2 87.6) rotate(89.4)" opacity="1"><path d="M0 0 C7.0 5.9 8.7 15.3 1.4 23.6 C-1.1 16.5 -7.0 7.1 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.2 Q1.2 11.8 1.4 22.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(102.4 85.1) rotate(93.9)" opacity="1"><path d="M0 0 C7.0 5.8 8.6 15.0 1.4 23.1 C-1.2 16.2 -7.0 6.9 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.2 Q1.2 11.6 1.4 22.2" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(98.7 82.7) rotate(98.3)" opacity="1"><path d="M0 0 C7.0 5.7 8.6 14.7 1.4 22.7 C-1.2 15.9 -7.0 6.8 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q1.1 11.3 1.4 21.8" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(94.9 80.2) rotate(102.8)" opacity="1"><path d="M0 0 C7.0 5.6 8.5 14.4 1.3 22.2 C-1.3 15.6 -7.0 6.7 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q1.1 11.1 1.3 21.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(91.1 77.8) rotate(107.2)" opacity="1"><path d="M0 0 C7.0 5.4 8.5 14.2 1.3 21.8 C-1.3 15.2 -7.0 6.5 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q1.1 10.9 1.3 20.9" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(87.3 75.3) rotate(111.7)" opacity="1"><path d="M0 0 C7.0 5.3 8.4 13.9 1.3 21.3 C-1.4 14.9 -7.0 6.4 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q1.1 10.7 1.3 20.5" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(83.6 72.9) rotate(116.1)" opacity="1"><path d="M0 0 C7.0 5.2 8.4 13.6 1.3 20.9 C-1.4 14.6 -7.0 6.3 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.0 Q1.0 10.4 1.3 20.1" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(79.8 70.4) rotate(120.6)" opacity="1"><path d="M0 0 C7.0 5.1 8.3 13.3 1.2 20.4 C-1.5 14.3 -7.0 6.1 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.0 Q1.0 10.2 1.2 19.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(76.0 68.0) rotate(125.0)" opacity="1"><path d="M0 0 C7.0 5.0 8.3 13.0 1.2 20.0 C-1.5 14.0 -7.0 6.0 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.0 Q1.0 10.0 1.2 19.2" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(164.0 82.0) rotate(-190.0)" opacity="1"><path d="M0 0 C8.0 15.4 -2.7 40.2 -5.9 61.8 C-13.9 43.3 -8.0 18.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.1 Q-4.9 30.9 -5.9 59.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(164.6 82.4) rotate(-182.2)" opacity="1"><path d="M0 0 C8.0 16.3 -3.2 42.4 -6.3 65.2 C-14.4 45.6 -8.0 19.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.3 Q-5.2 32.6 -6.3 62.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(165.2 82.8) rotate(-174.4)" opacity="1"><path d="M0 0 C8.0 17.1 -3.8 44.6 -6.6 68.6 C-15.0 48.0 -8.0 20.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.4 Q-5.5 34.3 -6.6 65.9" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(165.8 83.2) rotate(-166.6)" opacity="1"><path d="M0 0 C8.0 18.0 -4.3 46.8 -6.9 72.0 C-15.5 50.4 -8.0 21.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.6 Q-5.8 36.0 -6.9 69.1" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(166.4 83.6) rotate(-158.8)" opacity="1"><path d="M0 0 C8.0 17.1 -3.8 44.6 -6.6 68.6 C-15.0 48.0 -8.0 20.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.4 Q-5.5 34.3 -6.6 65.9" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(167.0 84.0) rotate(-151.0)" opacity="1"><path d="M0 0 C8.0 16.3 -3.2 42.4 -6.3 65.2 C-14.4 45.6 -8.0 19.6 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.3 Q-5.2 32.6 -6.3 62.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(167.6 84.4) rotate(-143.2)" opacity="1"><path d="M0 0 C8.0 15.4 -2.7 40.2 -5.9 61.8 C-13.9 43.3 -8.0 18.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 3.1 Q-4.9 30.9 -5.9 59.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(168.2 84.8) rotate(-135.4)" opacity="1"><path d="M0 0 C8.0 14.6 -2.1 38.0 -5.6 58.4 C-13.3 40.9 -8.0 17.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 2.9 Q-4.7 29.2 -5.6 56.1" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(168.8 85.2) rotate(-127.6)" opacity="1"><path d="M0 0 C8.0 13.8 -1.6 35.8 -5.3 55.0 C-12.8 38.5 -8.0 16.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 2.8 Q-4.4 27.5 -5.3 52.8" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(169.4 85.6) rotate(-119.8)" opacity="1"><path d="M0 0 C8.0 12.9 -1.1 33.5 -5.0 51.6 C-12.3 36.1 -8.0 15.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 2.6 Q-4.1 25.8 -5.0 49.5" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(170.0 86.0) rotate(-112.0)" opacity="1"><path d="M0 0 C8.0 12.1 -0.5 31.3 -4.6 48.2 C-11.7 33.7 -8.0 14.5 0 0Z" fill="url(#m-pPrim)"/><path d="M0 2.4 Q-3.9 24.1 -4.6 46.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(134.0 94.0) rotate(-85.0)" opacity="1"><path d="M0 0 C8.0 13.0 -0.1 33.8 -4.4 52.0 C-11.3 36.4 -8.0 15.6 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.6 Q-3.6 26.0 -4.4 49.9" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(138.3 91.1) rotate(-92.1)" opacity="1"><path d="M0 0 C8.0 12.7 0.1 33.1 -4.3 50.9 C-11.1 35.6 -8.0 15.3 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.5 Q-3.6 25.4 -4.3 48.8" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(142.6 88.3) rotate(-99.3)" opacity="1"><path d="M0 0 C8.0 12.4 0.2 32.3 -4.2 49.7 C-11.0 34.8 -8.0 14.9 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.5 Q-3.5 24.9 -4.2 47.7" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(146.9 85.4) rotate(-106.4)" opacity="1"><path d="M0 0 C8.0 12.1 0.4 31.6 -4.1 48.6 C-10.8 34.0 -8.0 14.6 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.4 Q-3.4 24.3 -4.1 46.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(151.1 82.6) rotate(-113.6)" opacity="1"><path d="M0 0 C8.0 11.9 0.6 30.8 -4.0 47.4 C-10.6 33.2 -8.0 14.2 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.4 Q-3.3 23.7 -4.0 45.5" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(155.4 79.7) rotate(-120.7)" opacity="1"><path d="M0 0 C8.0 11.6 0.7 30.1 -3.9 46.3 C-10.5 32.4 -8.0 13.9 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.3 Q-3.2 23.1 -3.9 44.4" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(159.7 76.9) rotate(-127.9)" opacity="1"><path d="M0 0 C8.0 11.3 0.9 29.3 -3.8 45.1 C-10.3 31.6 -8.0 13.5 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.3 Q-3.2 22.6 -3.8 43.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(164.0 74.0) rotate(-135.0)" opacity="1"><path d="M0 0 C8.0 11.0 1.0 28.6 -3.7 44.0 C-10.2 30.8 -8.0 13.2 0 0Z" fill="url(#m-pSec)"/><path d="M0 2.2 Q-3.1 22.0 -3.7 42.2" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(130.0 90.0) rotate(-85.0)" opacity="1"><path d="M0 0 C7.0 6.0 3.9 15.6 -1.4 24.0 C-5.9 16.8 -7.0 7.2 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.2 Q-1.2 12.0 -1.4 23.0" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(133.8 87.6) rotate(-89.4)" opacity="1"><path d="M0 0 C7.0 5.9 3.9 15.3 -1.4 23.6 C-5.9 16.5 -7.0 7.1 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.2 Q-1.2 11.8 -1.4 22.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(137.6 85.1) rotate(-93.9)" opacity="1"><path d="M0 0 C7.0 5.8 4.0 15.0 -1.4 23.1 C-5.8 16.2 -7.0 6.9 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.2 Q-1.2 11.6 -1.4 22.2" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(141.3 82.7) rotate(-98.3)" opacity="1"><path d="M0 0 C7.0 5.7 4.0 14.7 -1.4 22.7 C-5.8 15.9 -7.0 6.8 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q-1.1 11.3 -1.4 21.8" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(145.1 80.2) rotate(-102.8)" opacity="1"><path d="M0 0 C7.0 5.6 4.1 14.4 -1.3 22.2 C-5.7 15.6 -7.0 6.7 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q-1.1 11.1 -1.3 21.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(148.9 77.8) rotate(-107.2)" opacity="1"><path d="M0 0 C7.0 5.4 4.1 14.2 -1.3 21.8 C-5.7 15.2 -7.0 6.5 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q-1.1 10.9 -1.3 20.9" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(152.7 75.3) rotate(-111.7)" opacity="1"><path d="M0 0 C7.0 5.3 4.2 13.9 -1.3 21.3 C-5.6 14.9 -7.0 6.4 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q-1.1 10.7 -1.3 20.5" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(156.4 72.9) rotate(-116.1)" opacity="1"><path d="M0 0 C7.0 5.2 4.2 13.6 -1.3 20.9 C-5.6 14.6 -7.0 6.3 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.0 Q-1.0 10.4 -1.3 20.1" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(160.2 70.4) rotate(-120.6)" opacity="1"><path d="M0 0 C7.0 5.1 4.3 13.3 -1.2 20.4 C-5.5 14.3 -7.0 6.1 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.0 Q-1.0 10.2 -1.2 19.6" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(164.0 68.0) rotate(-125.0)" opacity="1"><path d="M0 0 C7.0 5.0 4.3 13.0 -1.2 20.0 C-5.5 14.0 -7.0 6.0 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.0 Q-1.0 10.0 -1.2 19.2" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><path d="M120 62 C135 62 140 80 137 100 C134 122 130 138 120 150 C110 138 106 122 103 100 C100 80 105 62 120 62Z" fill="url(#m-corpo)"/><ellipse cx="120" cy="100" rx="13" ry="28" fill="url(#m-petto)"/><path d="M108.0 84.0 Q112.0 90.0 116.0 84.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M116.0 84.0 Q120.0 90.0 124.0 84.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M124.0 84.0 Q128.0 90.0 132.0 84.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M112.0 93.0 Q116.0 99.0 120.0 93.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M120.0 93.0 Q124.0 99.0 128.0 93.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M108.0 102.0 Q112.0 108.0 116.0 102.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M116.0 102.0 Q120.0 108.0 124.0 102.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M124.0 102.0 Q128.0 108.0 132.0 102.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M112.0 111.0 Q116.0 117.0 120.0 111.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M120.0 111.0 Q124.0 117.0 128.0 111.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M108.0 120.0 Q112.0 126.0 116.0 120.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M116.0 120.0 Q120.0 126.0 124.0 120.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M124.0 120.0 Q128.0 126.0 132.0 120.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M112.0 129.0 Q116.0 135.0 120.0 129.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M120.0 129.0 Q124.0 135.0 128.0 129.0" fill="none" stroke="#b8400c" stroke-opacity=".45" stroke-width=".9"/><path d="M111 72 C110 58 114 44 122 40 C130 37 135 44 133 52 C131 60 129 66 129 74Z" fill="url(#m-corpo)"/><g transform="translate(119.0 42.0) rotate(-215.0)" opacity="1"><path d="M0 0 C4.2 6.5 -4.0 16.9 -4.7 26.0 C-9.9 18.2 -4.2 7.8 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.3 Q-3.9 13.0 -4.7 25.0" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(122.0 40.0) rotate(-200.0)" opacity="1"><path d="M0 0 C4.2 7.5 -5.2 19.5 -5.4 30.0 C-11.1 21.0 -4.2 9.0 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.5 Q-4.5 15.0 -5.4 28.8" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(125.0 40.0) rotate(-185.0)" opacity="1"><path d="M0 0 C4.2 5.5 -2.8 14.3 -4.0 22.0 C-8.7 15.4 -4.2 6.6 0 0Z" fill="url(#m-pCop)"/><path d="M0 1.1 Q-3.3 11.0 -4.0 21.1" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><g transform="translate(116.0 45.0) rotate(-230.0)" opacity="1"><path d="M0 0 C4.2 4.5 -1.6 11.7 -3.2 18.0 C-7.5 12.6 -4.2 5.4 0 0Z" fill="url(#m-pCop)"/><path d="M0 0.9 Q-2.7 9.0 -3.2 17.3" fill="none" stroke="#7a1e05" stroke-opacity=".35" stroke-width=".7"/></g><path d="M131 46 C138 45 143 48 144 53 C141 51 137 51 133 52Z" fill="url(#m-becco)"/><path d="M133 52 C137 52 140 53 141 54.5 C138 55 135 55 132 54Z" fill="#b5761a"/><circle cx="127" cy="46" r="2.6" fill="#14232e"/><circle cx="127.8" cy="45.2" r=".9" fill="#fff4cf"/><path d="M123 44 Q127 41.5 131 43.5" fill="none" stroke="#7a1e05" stroke-width=".9" stroke-opacity=".6"/><circle cx="95.3" cy="162.4" r="1.4" fill="#ffd76a" opacity="0.39"/><circle cx="125.0" cy="180.0" r="0.7" fill="#ffd76a" opacity="0.63"/><circle cx="55.2" cy="185.6" r="0.7" fill="#ffd76a" opacity="0.40"/><circle cx="109.4" cy="217.8" r="0.7" fill="#ffd76a" opacity="0.47"/><circle cx="137.8" cy="227.7" r="1.3" fill="#ffd76a" opacity="0.57"/><circle cx="186.7" cy="153.8" r="1.6" fill="#ffd76a" opacity="0.51"/><circle cx="70.2" cy="159.7" r="1.0" fill="#ffd76a" opacity="0.80"/><circle cx="75.3" cy="197.7" r="1.4" fill="#ffd76a" opacity="0.55"/><circle cx="126.7" cy="155.1" r="0.7" fill="#ffd76a" opacity="0.46"/><circle cx="145.3" cy="185.1" r="1.0" fill="#ffd76a" opacity="0.67"/><circle cx="113.4" cy="174.6" r="1.6" fill="#ffd76a" opacity="0.73"/><circle cx="84.2" cy="197.1" r="1.2" fill="#ffd76a" opacity="0.83"/><circle cx="152.1" cy="173.6" r="1.8" fill="#ffd76a" opacity="0.41"/><circle cx="108.5" cy="212.1" r="0.8" fill="#ffd76a" opacity="0.62"/><circle cx="55.5" cy="204.8" r="1.5" fill="#ffd76a" opacity="0.67"/><circle cx="172.6" cy="175.7" r="1.4" fill="#ffd76a" opacity="0.68"/><circle cx="131.2" cy="187.4" r="1.6" fill="#ffd76a" opacity="0.87"/><circle cx="116.4" cy="204.5" r="0.7" fill="#ffd76a" opacity="0.74"/><circle cx="140.6" cy="231.4" r="1.6" fill="#ffd76a" opacity="0.51"/><circle cx="104.0" cy="204.8" r="0.6" fill="#ffd76a" opacity="0.60"/><circle cx="73.5" cy="159.6" r="0.7" fill="#ffd76a" opacity="0.77"/><circle cx="68.1" cy="170.3" r="1.1" fill="#ffd76a" opacity="0.83"/></svg>Danilo D'Auria</a>
     <nav aria-label="Sezioni">
       <a href="#chi-sono">Chi sono</a>
-      <a href="#per-voi">Per voi</a>
       <a href="#progetti">Progetti</a>
-      <a href="#libro">Il libro</a>
       <a href="#servizi">Servizi</a>
+      <a href="#test">Test PC</a>
+      <a href="#calcola">Preventivo</a>
       <a href="#offerte">Offerte</a>
       <a href="#bandi">Bandi</a>
+      <a href="#guide">Guide</a>
       <a class="btn-mini" href="#contatti">Contatti</a>
     </nav>
     <div class="accesso" role="group" aria-label="Leggibilità">
+      <div class="lingua notranslate" translate="no">
+        <button type="button" id="btn-lingua" aria-haspopup="true" aria-expanded="false" aria-controls="menu-lingue" title="Lingua · Language · Langue · Idioma · Sprache · Limba" aria-label="Lingua · Language"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 10h15M10 2.5c2.2 2.3 3.2 4.8 3.2 7.5s-1 5.2-3.2 7.5c-2.2-2.3-3.2-4.8-3.2-7.5s1-5.2 3.2-7.5z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span id="lingua-sigla">IT</span></button>
+        <div class="menu-lingue" id="menu-lingue" hidden>
+          <button type="button" lang="it" data-l="it">Italiano</button>
+          <button type="button" lang="en" data-l="en">English</button>
+          <button type="button" lang="fr" data-l="fr">Français</button>
+          <button type="button" lang="es" data-l="es">Español</button>
+          <button type="button" lang="de" data-l="de">Deutsch</button>
+          <button type="button" lang="ro" data-l="ro">Română</button>
+        </div>
+      </div>
       <button type="button" id="btn-testo" aria-pressed="false" title="Testo più grande" aria-label="Testo più grande">A+</button>
       <button type="button" id="btn-contrasto" aria-pressed="false" title="Alto contrasto" aria-label="Alto contrasto"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 2.5a7.5 7.5 0 0 1 0 15z" fill="currentColor"/></svg></button>
     </div>
@@ -467,8 +597,10 @@ footer a { color: var(--hero-ink2); }
       <p class="lead">Sono <strong>Danilo D'Auria</strong>, ideatore e sviluppatore di <strong>FeniceOS</strong> e autore del libro <strong>«Tecnologia Gentile: Informatica Sostenibile»</strong>. Creo programmi liberi che funzionano senza Internet, anche su PC ricondizionati, per centri anziani, scuole, biblioteche, associazioni, aziende e famiglie.</p>
       <div class="azioni">
         <a class="btn pieno" href="#per-voi">Cosa posso fare per voi</a>
+        <a class="btn vuoto" href="#test">Test del vostro PC · 1 minuto</a>
         <a class="btn vuoto" href="#chi-sono">Chi sono</a>
-        <a class="btn vuoto btn-pdf" href="pdf/Danilo_DAuria_Tecnologia_Gentile.pdf" target="_blank" rel="noopener" title="Profilo completo in PDF, 14 pagine A4"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 2.5v10m0 0-4-4m4 4 4-4M3.5 15.5h13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Profilo in PDF</a>
+        <button type="button" class="btn vuoto" id="installa" hidden>Installa l'app</button>
+        <a class="btn vuoto btn-pdf" href="pdf/Danilo_DAuria_Tecnologia_Gentile.pdf" target="_blank" rel="noopener" title="Profilo completo in PDF, pagine A4"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 2.5v10m0 0-4-4m4 4 4-4M3.5 15.5h13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Profilo in PDF</a>
       </div>
     </div>
     <div class="fenice" aria-hidden="true"><svg viewBox="0 0 240 240"><defs>
@@ -864,6 +996,96 @@ footer a { color: var(--hero-ink2); }
   </div>
 </section>
 
+<section class="blocco" id="test">
+  <div class="wrap">
+    <div class="testa">
+      <p class="label">Test gratuito · un minuto</p>
+      <h2>Il vostro computer può tornare a volare?</h2>
+      <p class="lead">Sette domande semplici. Alla fine vi dico quale strada consiglio, quanto costa e cosa fare adesso. Se non sapete una risposta, scegliete «Non lo so»: lo verifico io al check-up gratuito.</p>
+    </div>
+    <div class="test" id="test-box" aria-live="polite">
+      <noscript><p>Il test ha bisogno di JavaScript. Scrivetemi: vi rispondo io.</p></noscript>
+    </div>
+  </div>
+</section>
+
+<section class="blocco" id="calcola">
+  <div class="wrap">
+    <div class="testa">
+      <p class="label">Calcolate voi</p>
+      <h2>Quanto costa e quanto si risparmia.</h2>
+      <p class="lead">Due calcolatori con i prezzi del listino: il preventivo per uno o più computer, e il risparmio in euro e per l'ambiente rispetto a comprare nuovo.</p>
+    </div>
+    <div class="schede-calc" role="tablist" aria-label="Calcolatori">
+      <button type="button" role="tab" id="tab-prev" aria-controls="pan-prev" aria-selected="true">Preventivo</button>
+      <button type="button" role="tab" id="tab-ris" aria-controls="pan-ris" aria-selected="false" tabindex="-1">Quanto risparmio</button>
+    </div>
+
+    <div class="pannello-calc" role="tabpanel" id="pan-prev" aria-labelledby="tab-prev">
+      <div class="calc-griglia">
+        <div>
+          <h3 class="calc-titolo">I computer</h3>
+          <div class="righe-prev" id="righe-prev"></div>
+          <button type="button" class="btn-testo" id="aggiungi-riga">+ Aggiungi un altro computer o telefono</button>
+          <h3 class="calc-titolo" style="margin-top:26px">Licenze, solo se servono</h3>
+          <p class="calc-nota">Prezzi di listino ufficiali: le licenze si comprano a parte.</p>
+          <div class="licenze-prev" id="licenze-prev"></div>
+        </div>
+        <aside class="riepilogo" aria-live="polite">
+          <p class="label">Riepilogo</p>
+          <dl id="riep-voci"></dl>
+          <p class="riep-totale"><span>Totale indicativo</span><b id="riep-totale">0 €</b></p>
+          <p class="calc-nota" id="riep-note"></p>
+          <div class="riep-azioni">
+            <a class="btn pieno" id="prev-email" href="#">Inviate la richiesta</a>
+            <button type="button" class="btn-testo" id="prev-copia">Copia il riepilogo</button>
+            <button type="button" class="btn-testo" id="prev-stampa">Stampa o salva in PDF</button>
+          </div>
+          <p class="esito-calc" id="prev-esito" aria-live="polite"></p>
+        </aside>
+      </div>
+    </div>
+
+    <div class="pannello-calc" role="tabpanel" id="pan-ris" aria-labelledby="tab-ris" hidden>
+      <div class="calc-griglia">
+        <div class="campi-ris">
+          <label>Quanti computer<input type="number" id="ris-n" min="1" max="500" value="1" inputmode="numeric"></label>
+          <label>Che tipo<select id="ris-tipo"><option value="portatile">Portatili</option><option value="fisso">PC fissi</option></select></label>
+          <label>Rigenerazione scelta<select id="ris-pacc"></select></label>
+          <label>Prezzo di un computer nuovo simile (€)<input type="number" id="ris-nuovo" min="0" max="10000" step="10" value="500" inputmode="numeric"></label>
+          <label>Anni di vita in più<input type="range" id="ris-anni" min="1" max="6" value="3"><span class="valore-range" id="ris-anni-v">3 anni</span></label>
+        </div>
+        <aside class="riepilogo">
+          <p class="label">Il vostro risparmio</p>
+          <div class="ris-numeri">
+            <div><b id="ris-euro">0 €</b><span>risparmiati rispetto al nuovo</span></div>
+            <div><b id="ris-co2">0 kg</b><span>di CO₂ evitata</span></div>
+            <div><b id="ris-mat">0 kg</b><span>di materie prime non estratte</span></div>
+            <div><b id="ris-raee">0 kg</b><span>di rifiuti elettronici in meno</span></div>
+          </div>
+          <div class="riep-azioni">
+            <button type="button" class="btn pieno" id="ris-copia">Copia per il bilancio di sostenibilità</button>
+            <button type="button" class="btn-testo" id="ris-prev">Portate questi computer nel preventivo</button>
+          </div>
+          <p class="esito-calc" id="ris-esito" aria-live="polite"></p>
+        </aside>
+      </div>
+      <p class="calc-fonte">Stime basate sullo studio ADEME (Agenzia francese per la transizione ecologica, 2022) sull'impatto dei computer ricondizionati. Valori per ogni anno di utilizzo: portatile 27,3 kg di CO₂e, 126,7 kg di materie prime e 0,31 kg di rifiuti elettronici evitati; PC fisso 42,5 kg, 259,3 kg e 1,08 kg. Sono ordini di grandezza, non una certificazione. <a href="https://cdurable.info/wp-content/uploads/2024/10/ademe_impact_environnemental_reconditionnement_synthese.pdf" target="_blank" rel="noopener">Leggi la sintesi dello studio</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="blocco" id="casi" hidden>
+  <div class="wrap">
+    <div class="testa">
+      <p class="label">Prima e dopo</p>
+      <h2>Lavori veri, raccontati con il permesso dei clienti.</h2>
+      <p class="lead">Computer che sembravano da buttare e oggi lavorano ancora. Tempi di avvio misurati prima e dopo, lavori fatti e costo reale.</p>
+    </div>
+    <div class="casi" id="lista-casi"></div>
+  </div>
+</section>
+
 <section class="blocco" id="offerte">
   <div class="wrap">
     <div class="testa">
@@ -873,6 +1095,7 @@ footer a { color: var(--hero-ink2); }
     </div>
     <div class="bandi-testa">
       <div class="stato-rete" aria-live="polite"><span class="led" id="led-off" aria-hidden="true"></span><span id="stato-off">Controllo la connessione…</span><button type="button" id="ricontrolla-off">Ricontrolla</button></div>
+      <button type="button" class="btn-cal" id="cal-offerte"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5.5h13v11h-13zM3.5 9h13M7 3v4m6-4v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Tutto il calendario nel vostro telefono</button>
     </div>
     <div class="corsie">
       <div class="corsia" data-corsia="adesso"><h3>Adesso</h3><p class="corsia-sotto">Offerte e opportunità in corso</p><div class="eventi" id="ev-adesso"></div></div>
@@ -895,6 +1118,7 @@ footer a { color: var(--hero-ink2); }
     </div>
     <div class="bandi-testa">
       <div class="stato-rete" aria-live="polite"><span class="led" id="led" aria-hidden="true"></span><span id="stato-testo">Controllo la connessione…</span><button type="button" id="ricontrolla">Ricontrolla</button></div>
+      <button type="button" class="btn-cal" id="cal-bandi"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5.5h13v11h-13zM3.5 9h13M7 3v4m6-4v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Tutte le scadenze nel vostro calendario</button>
     </div>
     <div class="filtri">
       <div class="gruppo" role="group" aria-label="Stato del bando" id="filtro-stato"></div>
@@ -902,6 +1126,29 @@ footer a { color: var(--hero-ink2); }
     </div>
     <div class="lista-bandi" id="lista-bandi"></div>
     <p class="avviso" id="avviso-bandi"></p>
+  </div>
+</section>
+
+<section class="blocco" id="guide">
+  <div class="wrap">
+    <div class="testa">
+      <p class="label">Guide gratuite</p>
+      <h2>Piccole guide da leggere, stampare e regalare.</h2>
+      <p class="lead">Le domande che mi fanno più spesso, spiegate passo per passo. Gratuite, da stampare per un corso, un centro anziani o i vostri genitori.</p>
+    </div>
+    <div class="guide">
+      <article class="guida"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15.5h14a3 3 0 0 0 0-6 5 5 0 0 0-9.6-1.6A4 4 0 0 0 5 15.5zM12 11v7m0 0-3-3m3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Il backup: foto e documenti al sicuro</h3><p>La regola del 3-2-1 e come attivare la copia automatica su Windows, Mac, Linux e telefono.</p>
+        <p class="guida-link"><a href="guide/backup.html">Leggi la guida</a> · <a href="pdf/guide/backup.pdf" target="_blank" rel="noopener">PDF da stampare</a></p></article><article class="guida"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6zM12 8v5m0 3h.01" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Truffe online: come riconoscerle e cosa fare</h3><p>I segnali d&#x27;allarme, le truffe più diffuse e cosa fare subito se ci siete cascati.</p>
+        <p class="guida-link"><a href="guide/truffe.html">Leggi la guida</a> · <a href="pdf/guide/truffe.pdf" target="_blank" rel="noopener">PDF da stampare</a></p></article><article class="guida"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1.5 12h-13zM9 7V5h6v2M10 11v5m4-5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Prima di vendere, regalare o buttare un computer o un telefono</h3><p>Copiare i dati, uscire dagli account, cancellare tutto in sicurezza e dove portarlo.</p>
+        <p class="guida-link"><a href="guide/vendere-donare.html">Leggi la guida</a> · <a href="pdf/guide/vendere-donare.pdf" target="_blank" rel="noopener">PDF da stampare</a></p></article><article class="guida"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Password e accessi sicuri, senza impazzire</h3><p>Password che si ricordano, un gestore di password, la verifica in due passaggi, SPID e CIE.</p>
+        <p class="guida-link"><a href="guide/password.html">Leggi la guida</a> · <a href="pdf/guide/password.pdf" target="_blank" rel="noopener">PDF da stampare</a></p></article><article class="guida"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v11H3zM8 20h8M12 16v4M13 7l-3 4h4l-3 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Un computer più veloce, gratis, in un pomeriggio</h3><p>Programmi all&#x27;avvio, spazio libero, browser, pulizia e quando conviene un SSD.</p>
+        <p class="guida-link"><a href="guide/pc-veloce.html">Leggi la guida</a> · <a href="pdf/guide/pc-veloce.pdf" target="_blank" rel="noopener">PDF da stampare</a></p></article>
+    </div>
   </div>
 </section>
 
@@ -915,6 +1162,8 @@ footer a { color: var(--hero-ink2); }
       <details><summary>Serve Internet per usare i programmi?</summary><p>No. Lezioni, guida, lavagna, quiz e strumenti funzionano sul computer. Internet serve solo quando lo chiedete voi: per scaricare un aggiornamento, installare l'IA locale o leggere le notizie.</p></details>
       <details><summary>Funzionano sui nostri computer vecchi?</summary><p>Sì, sono pensati proprio per questo. Il Professore Digitale funziona da Windows XP a Windows 11, su Linux e su macOS. Se il PC è troppo lento per il suo sistema, FeniceOS gli dà una seconda vita partendo da una chiavetta USB.</p></details>
       <details><summary>Quanto costano i programmi?</summary><p>Niente. Sono gratuiti e lo resteranno: codice con licenza MIT e contenuti Creative Commons. Si pagano solo i servizi, come installazione, corsi, recupero dei PC e assistenza, con un preventivo chiaro prima di iniziare. Per la rigenerazione c'è un listino fisso: check-up sempre GRATIS; con Linux «Seconda vita» 45 € e «Turbo» 85 €; con Windows 55 € e 95 €; su Mac 60 € e da 110 €.</p></details>
+      <details><summary>Posso tenere il sito sul telefono come un'app?</summary><p>Sì, e funziona anche senza Internet: listino, guide, test e calcolatori restano a portata di mano. Su Android e sul computer, con Chrome o Edge, premete «Installa l'app» in alto o nel menu del browser. Su iPhone e iPad, in Safari, premete il pulsante Condividi e poi «Aggiungi alla schermata Home».</p></details>
+      <details><summary>Come capisco se il mio computer si può recuperare?</summary><p>Fate il test di un minuto nella sezione «Test PC»: vi dico la strada che consiglio e quanto costa. Poi il check-up è gratuito: guardo il computer dal vivo e vi do un preventivo chiaro, senza impegno.</p></details>
       <details><summary>Devo comprare una nuova licenza di Windows o di Office?</summary><p>Spesso no. La licenza di Windows già presente sul computer si riattiva da sola dopo un'installazione pulita, e Windows 10 riceve aggiornamenti di sicurezza gratuiti fino al 12 ottobre 2027. Per i documenti bastano spesso LibreOffice, Pages o Office sul web, che sono gratuiti. Se la licenza serve davvero, nella sezione «Offerte» trovate i prezzi di oggi e i momenti in cui conviene comprarla.</p></details>
       <details><summary>Dove finiscono i dati delle persone?</summary><p>Restano sul computer. I programmi non hanno telemetria e non inviano dati in rete senza consenso. Anche l'Intelligenza Artificiale, quando c'è, lavora sul PC.</p></details>
       <details><summary>Cosa resta a noi alla fine del lavoro?</summary><p>I programmi installati, i vademecum da stampare, le schede tecniche e dei lavori eseguiti. L'obiettivo è che poi possiate andare avanti da soli.</p></details>
@@ -947,7 +1196,7 @@ footer a { color: var(--hero-ink2); }
 </section>
 <footer>
   <div class="wrap">
-    <span>© 2026 Danilo D'Auria · testi CC BY-NC-SA 4.0 · logo FeniceOS © Danilo D'Auria</span>
+    <span>© 2026 Danilo D'Auria · testi CC BY-NC-SA 4.0 · logo FeniceOS © Danilo D'Auria · Questo sito non usa cookie e non raccoglie dati personali.</span>
     <span><a href="https://github.com/danilodauria" target="_blank" rel="noopener">github.com/danilodauria</a></span>
   </div>
 </footer>
@@ -1113,7 +1362,8 @@ footer a { color: var(--hero-ink2); }
         '<p class="ente">' + esc(b.ente) + "</p><p>" + esc(b.cosa) + "</p>" +
         "<dl><dt>Importo</dt><dd>" + esc(b.importo) + "</dd><dt>" + (st.k === "chiuso" ? "Chiuso il" : "Scadenza") + "</dt><dd>" + sc + (b.nota_scadenza ? ' <span style="color:var(--ink2)">(' + esc(b.nota_scadenza) + ")</span>" : "") + "</dd></dl>" +
         '<p class="aiuto"><b>Come posso aiutarvi:</b> ' + esc(b.aiuto) + "</p>" +
-        '<p style="font-size:.9rem"><a href="' + esc(b.fonte) + '" target="_blank" rel="noopener">Leggi la fonte</a></p></article>';
+        '<p class="link-card"><a href="' + esc(b.fonte) + '" target="_blank" rel="noopener">Leggi la fonte</a>' +
+        (b.scadenza && st.k !== "chiuso" ? '<button type="button" class="btn-testo" data-ics-bando="' + esc(b.id) + '">Aggiungi al calendario</button>' : "") + "</p></article>";
     }).join("") : '<p class="vuoto-bandi">Nessun bando con questi filtri. Provate «Tutti» oppure scrivetemi: cerco io quello adatto a voi.</p>';
     $("avviso-bandi").textContent = dati.nota + " Elenco aggiornato al " + data(dati.aggiornato) + ".";
   }
@@ -1249,7 +1499,8 @@ footer a { color: var(--hero-ink2); }
         return '<article class="evento" data-id="' + esc(e.id) + '"><div class="chips"><span class="chip ' + x.chip[1] + '">' + esc(x.chip[0]) + "</span>" +
           (e.stimato ? '<span class="chip stima">data stimata</span>' : "") + "</div><h4>" + esc(e.titolo) + '</h4><p class="quando">' + periodo(x.q) + "</p>" +
           "<p>" + esc(e.testo) + "</p>" + (e.consiglio ? '<p class="consiglio"><b>Il mio consiglio:</b> ' + esc(e.consiglio) + "</p>" : "") +
-          (e.fonte ? '<p style="font-size:.88rem"><a href="' + esc(e.fonte) + '" target="_blank" rel="noopener">Leggi la fonte</a></p>' : "") + "</article>";
+          '<p class="link-card">' + (e.fonte ? '<a href="' + esc(e.fonte) + '" target="_blank" rel="noopener">Leggi la fonte</a>' : "") +
+          (x.q.sempre ? "" : '<button type="button" class="btn-testo" data-ics-ev="' + esc(e.id) + '">Aggiungi al calendario</button>') + "</p></article>";
       }).join("") : '<p class="vuoto-bandi">Niente in questo periodo.</p>';
     });
     var qq = function (t) { return encodeURIComponent(t); };
@@ -1284,6 +1535,446 @@ footer a { color: var(--hero-ink2); }
   window.addEventListener("online", controllaOfferte);
   window.addEventListener("offline", controllaOfferte);
   document.addEventListener("visibilitychange", function () { if (!document.hidden) disegnaOfferte(); });
+
+  /* ---- Statistiche rispettose (GoatCounter): conta solo azioni, mai dati personali ---- */
+  function conta(evento) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "azione-" + evento, title: evento, event: true }); } catch (e) {} }
+  var EMAIL = "danilodauria.site@gmail.com";
+  function posta(oggetto, testo) { return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(oggetto) + "&body=" + encodeURIComponent(testo); }
+  function migliaia(n) { var t = String(Math.abs(Math.round(n))).replace(/\B(?=(\d{3})+(?!\d))/g, "."); return (n < 0 ? "−" : "") + t; }
+  function euro(n) { return migliaia(n) + " €"; }
+  function copiaTesto(testo, esito) {
+    function ok() { esito.textContent = "Copiato: incollatelo dove volete."; }
+    function no() { esito.textContent = "Non riesco a copiare da qui: selezionate il testo e copiatelo."; }
+    try { navigator.clipboard.writeText(testo).then(ok, no); } catch (e) { no(); }
+  }
+
+  /* ---- Listino unico, usato da test e calcolatori ---- */
+  var LISTINO = {
+    linux:   { nome: "Linux", pacc: [["check", "Check-up diagnostico", 0], ["seconda", "Seconda vita", 45], ["turbo", "Turbo · hardware + software", 85]] },
+    windows: { nome: "Windows", pacc: [["check", "Check-up diagnostico", 0], ["seconda", "Seconda vita Windows", 55], ["turbo", "Turbo Windows · hardware + software", 95]] },
+    mac:     { nome: "Mac", pacc: [["check", "Check-up diagnostico", 0], ["seconda", "Seconda vita Mac", 60], ["turbo", "Turbo Mac · hardware + software", 110, true]] },
+    telefono:{ nome: "iPhone o iPad", pacc: [["config", "Configurazione e trasferimento dati", 30]] }
+  };
+  var LICENZE_P = [["w11home", "Windows 11 Home", "una tantum", 145], ["w11pro", "Windows 11 Pro", "una tantum", 259], ["o2024", "Office Home 2024", "una tantum", 149],
+    ["o2024b", "Office Home & Business 2024", "una tantum", 299], ["m365p", "Microsoft 365 Personal", "un anno", 99], ["m365f", "Microsoft 365 Family", "un anno, fino a 6 persone", 129]];
+  function paccDi(sist, k) { var l = LISTINO[sist].pacc; for (var i = 0; i < l.length; i++) if (l[i][0] === k) return l[i]; return l[0]; }
+
+  /* ---- Test: il vostro computer può tornare a volare? ---- */
+  var ANNO = new Date().getFullYear();
+  var DOMANDE = [
+    { id: "tipo", q: "Che computer è?", aiuto: "", o: [["portatile", "Un portatile (Windows o altra marca)"], ["fisso", "Un PC fisso"], ["mac", "Un Mac di Apple"]] },
+    { id: "eta", q: "Quanti anni ha, più o meno?", aiuto: "Lo trovate sulla fattura, sull'etichetta sotto il portatile o nelle informazioni di sistema.",
+      o: [["nuovo", "Meno di 7 anni (dal " + (ANNO - 6) + " in poi)"], ["medio", "Da 7 a 11 anni (" + (ANNO - 11) + "–" + (ANNO - 7) + ")"], ["vecchio", "Più di 11 anni (prima del " + (ANNO - 11) + ")"], ["?", "Non lo so"]] },
+    { id: "ram", q: "Quanta memoria (RAM) ha?", aiuto: "Su Windows: Impostazioni › Sistema › Informazioni. Su Mac: menu Apple › Informazioni su questo Mac.",
+      o: [["2", "2 GB o meno"], ["4", "4 GB"], ["8", "8 GB o più"], ["?", "Non lo so"]] },
+    { id: "disco", q: "Il disco è un SSD?", aiuto: "Su Windows: Gestione attività › Prestazioni dice «SSD» o «HDD». Se all'accensione sentite il disco lavorare a lungo, è quasi sicuramente meccanico.",
+      o: [["ssd", "Sì, è un SSD"], ["hdd", "No, è un disco meccanico (HDD)"], ["?", "Non lo so"]] },
+    { id: "sistema", q: "Che sistema ha adesso?", aiuto: "", salta: function (r) { return r.tipo === "mac"; },
+      o: [["win78", "Windows 7 o 8"], ["win10", "Windows 10"], ["win11", "Windows 11"], ["linux", "Linux o altro"], ["?", "Non lo so"]] },
+    { id: "uso", q: "A cosa vi serve soprattutto?", aiuto: "",
+      o: [["base", "Internet, email, videochiamate, studio"], ["ufficio", "Ufficio: documenti, fogli di calcolo, gestionali"], ["pesante", "Foto, video, grafica o giochi"], ["semplice", "Per un bambino o una persona anziana"]] },
+    { id: "prog", q: "Usate programmi che funzionano solo su Windows o solo su Mac?", aiuto: "Per esempio un gestionale, un programma della banca o della scuola, un software professionale.",
+      o: [["si", "Sì, mi servono"], ["no", "No"], ["?", "Non lo so"]] }
+  ];
+  var risposte = {}, passo = 0, box = $("test-box");
+  function domandeAttive() { return DOMANDE.filter(function (d) { return !(d.salta && d.salta(risposte)); }); }
+  function etichetta(d, v) { for (var i = 0; i < d.o.length; i++) if (d.o[i][0] === v) return d.o[i][1]; return ""; }
+  function mostraDomanda() {
+    var att = domandeAttive();
+    if (passo >= att.length) return mostraEsito();
+    var d = att[passo];
+    box.innerHTML = '<div class="test-barra" aria-hidden="true"><span style="width:' + Math.round(passo / att.length * 100) + '%"></span></div>' +
+      '<p class="test-passo">Domanda ' + (passo + 1) + ' di ' + att.length + '</p><h3 tabindex="-1" id="test-q">' + esc(d.q) + '</h3>' +
+      (d.aiuto ? '<p class="test-aiuto">' + esc(d.aiuto) + '</p>' : '<p class="test-aiuto"></p>') +
+      '<div class="test-scelte" role="group" aria-labelledby="test-q">' + d.o.map(function (o) {
+        return '<button type="button" data-v="' + o[0] + '" aria-pressed="' + (risposte[d.id] === o[0]) + '">' + esc(o[1]) + "</button>"; }).join("") + "</div>" +
+      '<div class="test-piede"><button type="button" class="btn-testo" id="test-indietro"' + (passo ? "" : " disabled") + '>← Indietro</button>' +
+      (passo === 0 ? '<button type="button" class="btn-testo" id="test-rileva">Sto usando proprio quel computer: rispondete voi dove si può</button>' : "") +
+      '<span class="test-rileva" id="test-rilevato"></span></div>';
+    box.querySelectorAll(".test-scelte button").forEach(function (b) {
+      b.addEventListener("click", function () { risposte[d.id] = b.getAttribute("data-v"); passo++; mostraDomanda(); focusTest(); });
+    });
+    $("test-indietro").addEventListener("click", function () { if (passo) { passo--; mostraDomanda(); focusTest(); } });
+    if ($("test-rileva")) $("test-rileva").addEventListener("click", rileva);
+  }
+  function focusTest() { var h = $("test-q") || box.querySelector("h3"); if (h) { h.focus({ preventScroll: true }); } var r = box.getBoundingClientRect(); if (r.top < 60 || r.top > innerHeight * .6) box.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  function rileva() {
+    var ua = navigator.userAgent, n = 0, fatto = function () { $("test-rilevato").textContent = n ? "Ho preparato " + n + " risposte: controllatele andando avanti." : "Da questo dispositivo non riesco a capire molto: rispondete voi."; };
+    if (/iPhone|iPad|Android|Mobile/i.test(ua)) { $("test-rilevato").textContent = "State usando un telefono o un tablet: fate il test dal computer da controllare, oppure rispondete a memoria."; return; }
+    if (/Macintosh|Mac OS X/.test(ua)) { risposte.tipo = "mac"; n++; }
+    else if (/Windows/.test(ua)) { risposte.sistema = "win10"; n++; }
+    else if (/Linux|X11|CrOS/.test(ua)) { risposte.sistema = "linux"; n++; }
+    if (navigator.deviceMemory) { risposte.ram = navigator.deviceMemory <= 2 ? "2" : navigator.deviceMemory < 8 ? "4" : "8"; n++; }
+    var uad = navigator.userAgentData;
+    if (uad && uad.getHighEntropyValues && /Windows/.test(ua)) {
+      uad.getHighEntropyValues(["platformVersion"]).then(function (v) { if (parseInt(v.platformVersion, 10) >= 13) risposte.sistema = "win11"; fatto(); }, fatto);
+    } else fatto();
+    box.querySelectorAll(".test-scelte button").forEach(function (b) { b.setAttribute("aria-pressed", String(risposte.tipo === b.getAttribute("data-v"))); });
+  }
+  function consiglio(r) {
+    var perche = [], alt = "", sist, pk, titolo;
+    var vecchio = r.eta === "vecchio", nuovo = r.eta === "nuovo", hdd = r.disco === "hdd", ram2 = r.ram === "2", serveOS = r.prog === "si";
+    if (r.tipo === "mac") {
+      sist = "mac";
+      if (vecchio && !serveOS) { titolo = "Seconda vita con Linux, oppure l'ultimo macOS che riceve"; perche.push("Un Mac di più di 11 anni non riceve più il macOS attuale: Linux lo rende di nuovo sicuro e aggiornato."); alt = "Se vi servono programmi solo per Mac, valutiamo l'ultimo macOS possibile o OpenCore Legacy Patcher, con un backup completo prima."; }
+      else if (vecchio) { titolo = "L'ultimo macOS possibile, con prudenza"; perche.push("Vi servono programmi per Mac: teniamo macOS, all'ultima versione che il modello può ricevere."); alt = "Senza programmi indispensabili, Linux lo terrebbe aggiornato per anni."; }
+      else if (nuovo) { titolo = "Mac pulito e aggiornato all'ultimo macOS"; perche.push("Il vostro Mac riceve ancora gli aggiornamenti di Apple: basta rimetterlo in ordine."); }
+      else { titolo = "Il macOS più recente supportato"; perche.push("Controllo quale versione di macOS può ricevere: i Mac Intel arrivano al massimo a macOS 26 Tahoe."); alt = "Se il modello è escluso dagli aggiornamenti: Linux, oppure OpenCore Legacy Patcher."; }
+    } else {
+      var compat = nuovo && r.ram !== "2";
+      if (serveOS && compat) { sist = "windows"; titolo = "Windows 11, pulito e veloce"; perche.push("Il computer è abbastanza recente per Windows 11 e vi servono programmi per Windows."); perche.push("La licenza già presente si riattiva: di solito non c'è niente da comprare."); }
+      else if (serveOS) { sist = "windows"; titolo = "Windows 10 con gli aggiornamenti gratuiti, e un piano per dopo"; perche.push("Vi servono programmi per Windows, ma il computer probabilmente non è adatto a Windows 11."); perche.push("Windows 10 riceve aggiornamenti di sicurezza gratuiti fino al 12 ottobre 2027: c'è tempo per decidere."); alt = "Intanto verifico se i vostri programmi hanno un'alternativa su Linux o sul web: così il computer potrà durare ancora anni."; }
+      else if (r.uso === "pesante" && vecchio) { sist = "linux"; titolo = "Un check-up prima di decidere"; perche.push("Per video, grafica e giochi un computer di più di 11 anni fatica anche rigenerato."); perche.push("Con il check-up gratuito vi dico onestamente se conviene rigenerarlo o affiancarlo a uno nuovo."); }
+      else if (compat && (r.uso === "ufficio" || r.uso === "pesante")) { sist = "windows"; titolo = "Windows 11, pulito e veloce"; perche.push("Il computer è abbastanza recente per Windows 11, adatto all'uso che ne fate."); alt = "Se preferite un sistema libero e senza licenze, Linux va benissimo anche qui."; }
+      else {
+        sist = "linux"; titolo = ram2 ? "Seconda vita con un Linux leggero" : "Seconda vita con Linux (FeniceOS o Linux Lite)";
+        perche.push(compat ? "Il computer funziona ancora bene: Linux lo rende più veloce, sicuro e senza licenze da pagare." : "Probabilmente il computer non è adatto a Windows 11: con Linux torna sicuro e aggiornato, senza scadenze.");
+        if (r.uso === "base" || r.uso === "semplice") { perche.push("Per Internet, email, videochiamate e studio Linux ha tutto, gratis."); if (!ram2) alt = "Per chi vuole solo navigare, anche ChromeOS Flex di Google è un'ottima scelta: semplice e sempre aggiornato."; }
+        if (ram2) perche.push("Con 2 GB di memoria serve un sistema leggero; se si può, aggiungere memoria costa poco e cambia molto.");
+      }
+    }
+    pk = hdd ? "turbo" : "seconda";
+    if (hdd) perche.push("Il disco è meccanico: sostituirlo con un SSD è il cambio che si sente di più.");
+    if (r.disco === "?" && !nuovo) perche.push("Se il disco è meccanico, consiglio il pacchetto Turbo con un SSD nuovo: lo verifico al check-up.");
+    if (r.ram === "?" || r.eta === "?") perche.push("Le risposte «Non lo so» le verifico io al check-up gratuito.");
+    if (titolo === "Un check-up prima di decidere") pk = "check";
+    return { titolo: titolo, perche: perche, alt: alt, sist: sist, pk: pk };
+  }
+  var ultimoEsito = null;
+  function mostraEsito() {
+    var e = consiglio(risposte), p = paccDi(e.sist, e.pk); ultimoEsito = e;
+    var riep = domandeAttive().map(function (d) { return "- " + d.q + " " + etichetta(d, risposte[d.id]); }).join("\n");
+    var testo = "Buongiorno Danilo,\nho fatto il test sul vostro sito. Vorrei prenotare il check-up gratuito.\n\nLe mie risposte:\n" + riep +
+      "\n\nIl test consiglia: " + e.titolo + " (" + p[1] + ", " + LISTINO[e.sist].nome + ").\n\nGrazie,\n";
+    box.innerHTML = '<div class="esito-test"><div class="test-barra" aria-hidden="true"><span style="width:100%"></span></div><p class="test-passo">Il mio consiglio</p>' +
+      '<h3 tabindex="-1" id="test-q">' + esc(e.titolo) + '</h3><ul class="perche">' + e.perche.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
+      '<div class="esito-pacc"><span>' + esc(p[1]) + " · " + esc(LISTINO[e.sist].nome) + "</span><b>" + (p[2] ? (p[3] ? "da " : "") + euro(p[2]) : "GRATIS") + "</b><span>a computer · il check-up è sempre gratuito</span></div>" +
+      (e.alt ? '<p class="esito-alt"><b>In alternativa:</b> ' + esc(e.alt) + "</p>" : "") +
+      '<div class="esito-azioni"><a class="btn pieno" id="test-mail" href="' + posta("Check-up gratuito del mio computer", testo) + '">Prenotate il check-up GRATIS</a>' +
+      '<button type="button" class="btn vuoto" id="test-prev">Calcolate il preventivo</button>' +
+      '<button type="button" class="btn-testo" id="test-ris">Quanto risparmio?</button>' +
+      '<button type="button" class="btn-testo" id="test-rifai">Rifate il test</button></div></div>';
+    $("test-mail").addEventListener("click", function () { conta("test-email"); });
+    $("test-prev").addEventListener("click", function () { righe = [{ sist: e.sist, pk: e.pk === "check" ? "seconda" : e.pk, n: 1 }]; disegnaPrev(); apriCalc("prev"); });
+    $("test-ris").addEventListener("click", function () { $("ris-tipo").value = risposte.tipo === "fisso" ? "fisso" : "portatile"; impostaPaccRis(e.sist + ":" + (e.pk === "check" ? "seconda" : e.pk)); calcolaRis(); apriCalc("ris"); });
+    $("test-rifai").addEventListener("click", function () { risposte = {}; passo = 0; mostraDomanda(); focusTest(); });
+    conta("test-completato");
+  }
+  mostraDomanda();
+  window.__test = { consiglio: consiglio, DOMANDE: DOMANDE, LISTINO: LISTINO };
+
+  /* ---- Calcolatori: schede ---- */
+  function apriCalc(quale) {
+    [["prev", "tab-prev", "pan-prev"], ["ris", "tab-ris", "pan-ris"]].forEach(function (x) {
+      var su = x[0] === quale; $(x[1]).setAttribute("aria-selected", String(su)); $(x[1]).tabIndex = su ? 0 : -1; $(x[2]).hidden = !su;
+    });
+    $("calcola").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  ["prev", "ris"].forEach(function (q) {
+    $("tab-" + q).addEventListener("click", function () { apriCalc(q); });
+    $("tab-" + q).addEventListener("keydown", function (ev) { if (ev.key === "ArrowRight" || ev.key === "ArrowLeft") { var a = q === "prev" ? "ris" : "prev"; apriCalc(a); $("tab-" + a).focus(); } });
+  });
+
+  /* ---- Preventivo ---- */
+  var righe = [{ sist: "linux", pk: "seconda", n: 1 }], licQ = {};
+  function opz(lista, cur) { return lista.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === cur ? " selected" : "") + ">" + esc(o[1]) + "</option>"; }).join(""); }
+  function disegnaPrev() {
+    $("righe-prev").innerHTML = righe.map(function (r, i) {
+      var sist = Object.keys(LISTINO).map(function (k) { return [k, LISTINO[k].nome]; });
+      var pac = LISTINO[r.sist].pacc.map(function (p) { return [p[0], p[1] + (p[2] ? " · " + (p[3] ? "da " : "") + euro(p[2]) : " · GRATIS")]; });
+      return '<div class="riga-prev" data-i="' + i + '"><label>Sistema<select data-k="sist">' + opz(sist, r.sist) + '</select></label>' +
+        '<label>Servizio<select data-k="pk">' + opz(pac, r.pk) + '</select></label>' +
+        '<label>Quanti<input type="number" data-k="n" min="1" max="200" value="' + r.n + '" inputmode="numeric"></label>' +
+        '<button type="button" class="togli" aria-label="Togli questa riga" title="Togli"' + (righe.length < 2 ? " disabled" : "") + '>×</button></div>';
+    }).join("");
+    $("righe-prev").querySelectorAll(".riga-prev").forEach(function (div) {
+      var i = +div.getAttribute("data-i");
+      div.querySelectorAll("[data-k]").forEach(function (el) {
+        el.addEventListener("change", function () {
+          var k = el.getAttribute("data-k");
+          if (k === "n") righe[i].n = Math.max(1, Math.min(200, parseInt(el.value, 10) || 1));
+          else righe[i][k] = el.value;
+          if (k === "sist") righe[i].pk = LISTINO[el.value].pacc[Math.min(1, LISTINO[el.value].pacc.length - 1)][0];
+          disegnaPrev();
+        });
+      });
+      div.querySelector(".togli").addEventListener("click", function () { righe.splice(i, 1); disegnaPrev(); });
+    });
+    $("licenze-prev").innerHTML = LICENZE_P.map(function (l) {
+      return '<div class="lic-prev"><span class="nome">' + esc(l[1]) + "<small>" + euro(l[3]) + " · " + esc(l[2]) + '</small></span><label>Quante<input type="number" data-lic="' + l[0] + '" min="0" max="200" value="' + (licQ[l[0]] || 0) + '" inputmode="numeric"></label></div>';
+    }).join("");
+    $("licenze-prev").querySelectorAll("[data-lic]").forEach(function (el) {
+      el.addEventListener("change", function () { licQ[el.getAttribute("data-lic")] = Math.max(0, Math.min(200, parseInt(el.value, 10) || 0)); el.value = licQ[el.getAttribute("data-lic")]; riepilogo(); });
+    });
+    riepilogo();
+  }
+  var testoPrev = "";
+  function riepilogo() {
+    var voci = [], tot = 0, totLic = 0, pezzi = 0, da = false, righeTesto = [];
+    righe.forEach(function (r) {
+      var p = paccDi(r.sist, r.pk), imp = p[2] * r.n; tot += imp; pezzi += r.n; if (p[3]) da = true;
+      voci.push([r.n + " × " + p[1] + " (" + LISTINO[r.sist].nome + ")", p[2] ? (p[3] ? "da " : "") + euro(imp) : "GRATIS"]);
+    });
+    LICENZE_P.forEach(function (l) { var q = licQ[l[0]] || 0; if (q) { totLic += q * l[3]; voci.push([q + " × " + l[1], euro(q * l[3])]); } });
+    $("riep-voci").innerHTML = voci.map(function (v) { return "<dt>" + esc(v[0]) + "</dt><dd>" + esc(v[1]) + "</dd>"; }).join("");
+    $("riep-totale").textContent = (da ? "da " : "") + euro(tot + totLic);
+    var note = [];
+    if (totLic) note.push("Servizi " + euro(tot) + " + licenze " + euro(totLic) + " a prezzo di listino.");
+    if (pezzi >= 6) note.push("Per 6 o più computer vi faccio un prezzo dedicato: chiedetemelo.");
+    if (da) note.push("Per il Turbo Mac il ricambio dipende dal modello e lo concordiamo prima.");
+    note.push("È una stima: il prezzo definitivo arriva dopo il check-up gratuito.");
+    $("riep-note").innerHTML = note.map(function (x) { return "<span>" + esc(x) + "</span>"; }).join(" ");
+    testoPrev = "Richiesta di preventivo dal sito\n\n" + voci.map(function (v) { return "- " + v[0] + ": " + v[1]; }).join("\n") + "\n\nTotale indicativo: " + $("riep-totale").textContent + "\n" + note.join(" ") + "\n";
+    $("prev-email").href = posta("Richiesta di preventivo", "Buongiorno Danilo,\n\n" + testoPrev + "\nChi siamo e dove ci troviamo: \n\nGrazie,\n");
+  }
+  $("aggiungi-riga").addEventListener("click", function () { righe.push({ sist: "windows", pk: "seconda", n: 1 }); disegnaPrev(); var s = $("righe-prev").lastElementChild.querySelector("select"); if (s) s.focus(); });
+  $("prev-copia").addEventListener("click", function () { copiaTesto(testoPrev, $("prev-esito")); conta("preventivo-copiato"); });
+  $("prev-email").addEventListener("click", function () { conta("preventivo-email"); });
+  $("prev-stampa").addEventListener("click", function () {
+    document.documentElement.classList.add("solo-preventivo");
+    setTimeout(function () { window.print(); setTimeout(function () { document.documentElement.classList.remove("solo-preventivo"); }, 300); }, 50);
+  });
+  disegnaPrev();
+
+  /* ---- Quanto risparmio (stime ADEME 2022, per anno di utilizzo) ---- */
+  var ADEME = { portatile: { co2: 27.3, mat: 126.7, raee: 0.314 }, fisso: { co2: 42.5, mat: 259.3, raee: 1.08 } };
+  var tocchiNuovo = false;
+  function impostaPaccRis(v) {
+    $("ris-pacc").innerHTML = ["linux", "windows", "mac"].map(function (k) {
+      return LISTINO[k].pacc.filter(function (p) { return p[2]; }).map(function (p) { var val = k + ":" + p[0]; return '<option value="' + val + '"' + (val === v ? " selected" : "") + ">" + esc(p[1] + " (" + LISTINO[k].nome + ") · " + (p[3] ? "da " : "") + euro(p[2])) + "</option>"; }).join("");
+    }).join("");
+  }
+  function numIt(n, dec) { if (!dec) return migliaia(n); var x = Math.round(n * 10) / 10, i = Math.floor(x); return migliaia(i) + "," + Math.round((x - i) * 10); }
+  var testoRis = "";
+  function calcolaRis() {
+    var n = Math.max(1, Math.min(500, parseInt($("ris-n").value, 10) || 1)), tipo = $("ris-tipo").value, anni = +$("ris-anni").value;
+    if (!tocchiNuovo) $("ris-nuovo").value = tipo === "fisso" ? 650 : 500;
+    var nuovo = Math.max(0, parseInt($("ris-nuovo").value, 10) || 0), sel = $("ris-pacc").value.split(":"), p = paccDi(sel[0], sel[1]);
+    var a = ADEME[tipo], risp = n * (nuovo - p[2]);
+    $("ris-anni-v").textContent = anni + (anni === 1 ? " anno" : " anni");
+    $("ris-euro").textContent = euro(Math.max(0, risp));
+    $("ris-co2").textContent = numIt(n * anni * a.co2) + " kg";
+    $("ris-mat").textContent = numIt(n * anni * a.mat) + " kg";
+    $("ris-raee").textContent = numIt(n * anni * a.raee, 1) + " kg";
+    testoRis = "Rigenerazione di " + n + " " + (tipo === "fisso" ? "PC fissi" : "portatili") + " per " + anni + " " + (anni === 1 ? "anno" : "anni") + " di utilizzo in più:\n" +
+      "- risparmio stimato: " + $("ris-euro").textContent + " rispetto all'acquisto di computer nuovi da " + euro(nuovo) + "\n" +
+      "- CO2 equivalente evitata: circa " + $("ris-co2").textContent + "\n- materie prime non estratte: circa " + $("ris-mat").textContent + "\n- rifiuti elettronici evitati: circa " + $("ris-raee").textContent + "\n" +
+      "Fonte dei fattori: ADEME (2022), studio sull'impatto ambientale dei computer ricondizionati. Rigenerazione a cura di Danilo D'Auria, danilodauria.github.io\n";
+  }
+  impostaPaccRis("linux:seconda");
+  ["ris-n", "ris-tipo", "ris-pacc", "ris-anni"].forEach(function (id) { $(id).addEventListener("input", calcolaRis); $(id).addEventListener("change", calcolaRis); });
+  $("ris-nuovo").addEventListener("input", function () { tocchiNuovo = true; calcolaRis(); });
+  $("ris-copia").addEventListener("click", function () { copiaTesto(testoRis, $("ris-esito")); conta("risparmio-copiato"); });
+  $("ris-prev").addEventListener("click", function () { var sel = $("ris-pacc").value.split(":"); righe = [{ sist: sel[0], pk: sel[1], n: Math.max(1, parseInt($("ris-n").value, 10) || 1) }]; disegnaPrev(); apriCalc("prev"); });
+  calcolaRis();
+
+  /* ---- Aggiungi al calendario (.ics): bandi e offerte, con promemoria ---- */
+  function due(n) { return (n < 10 ? "0" : "") + n; }
+  function icsGiorno(d) { return d.getFullYear() + due(d.getMonth() + 1) + due(d.getDate()); }
+  function icsTesto(t) { return String(t).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n"); }
+  function piega(riga) { var out = [], r = riga; while (r.length > 72) { out.push(r.slice(0, 72)); r = " " + r.slice(72); } out.push(r); return out.join("\r\n"); }
+  function vevento(uid, titolo, dal, al, descr, url, avviso) {
+    var ora = new Date(), stamp = ora.getUTCFullYear() + due(ora.getUTCMonth() + 1) + due(ora.getUTCDate()) + "T" + due(ora.getUTCHours()) + due(ora.getUTCMinutes()) + "00Z";
+    var fine = new Date(al.getFullYear(), al.getMonth(), al.getDate() + 1);
+    return ["BEGIN:VEVENT", "UID:" + uid + "@danilodauria.github.io", "DTSTAMP:" + stamp, "DTSTART;VALUE=DATE:" + icsGiorno(dal), "DTEND;VALUE=DATE:" + icsGiorno(fine),
+      "SUMMARY:" + icsTesto(titolo), "DESCRIPTION:" + icsTesto(descr), url ? "URL:" + url : "", "TRANSP:TRANSPARENT",
+      "BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + icsTesto(titolo), "TRIGGER:-P" + avviso + "D", "END:VALARM", "END:VEVENT"].filter(Boolean).map(piega).join("\r\n");
+  }
+  function scaricaIcs(nome, eventi) {
+    if (!eventi.length) return false;
+    var testo = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Danilo D'Auria//Tecnologia Gentile//IT", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"].join("\r\n") + "\r\n" + eventi.join("\r\n") + "\r\nEND:VCALENDAR\r\n";
+    var a = document.createElement("a");
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) a.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(testo);
+    else { try { a.href = URL.createObjectURL(new Blob([testo], { type: "text/calendar;charset=utf-8" })); } catch (e) { a.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(testo); } }
+    a.download = nome + ".ics"; document.body.appendChild(a); a.click(); setTimeout(function () { a.remove(); }, 1000);
+    conta("calendario-" + nome); return true;
+  }
+  var SITO = "https://danilodauria.github.io/";
+  function evBando(b) {
+    var d = giorno(b.scadenza);
+    return vevento("bando-" + b.id, "Scadenza bando: " + b.titolo, d, d, b.ente + ". " + b.cosa + (b.nota_scadenza ? " (" + b.nota_scadenza + ")" : "") + "\nFonte: " + b.fonte + "\nVerificate sempre la data sul sito ufficiale.", b.fonte, 7);
+  }
+  function evOfferta(ev) {
+    var o0 = oggi(), q = quando(ev, o0); if (!q || q.sempre) return null;
+    var dal = q.dal, al = q.al, tit = ev.titolo;
+    if ((q.al - q.dal) / 864e5 > 31) { if (q.dal > o0) { al = dal; tit = "Inizia: " + tit; } else { dal = al; tit = "Ultimo giorno: " + tit; } }
+    return vevento("offerta-" + ev.id + "-" + q.dal.getFullYear(), tit + (ev.stimato ? " (data stimata)" : ""), dal, al, ev.testo + (ev.consiglio ? "\nIl consiglio di Danilo: " + ev.consiglio : ""), SITO + "#offerte", ev.scadenza ? 30 : 1);
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("[data-ics-bando],[data-ics-ev]") : null;
+    if (!t) return;
+    if (t.hasAttribute("data-ics-bando")) { var id = t.getAttribute("data-ics-bando"); dati.bandi.forEach(function (b) { if (b.id === id && b.scadenza) scaricaIcs("bando-" + id, [evBando(b)]); }); }
+    else { var ide = t.getAttribute("data-ics-ev"); off.eventi.forEach(function (ev) { if (ev.id === ide) { var x = evOfferta(ev); if (x) scaricaIcs("offerta-" + ide, [x]); } }); }
+  });
+  $("cal-bandi").addEventListener("click", function () {
+    var o0 = oggi(), ev = dati.bandi.filter(function (b) { return b.scadenza && giorno(b.scadenza) >= o0; }).map(evBando);
+    if (!scaricaIcs("scadenze-bandi", ev)) $("stato-testo").textContent = "Nessuna scadenza aperta da aggiungere.";
+  });
+  $("cal-offerte").addEventListener("click", function () { scaricaIcs("calendario-offerte", off.eventi.map(evOfferta).filter(Boolean)); });
+
+  /* ---- Sito installabile come app, che funziona anche senza Internet ---- */
+  var sitoVero = /github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname);
+  if (sitoVero && "serviceWorker" in navigator) { try { navigator.serviceWorker.register("sw.js").catch(function () {}); } catch (e) {} }
+  var richiestaInstalla = null;
+  window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); richiestaInstalla = e; $("installa").hidden = false; });
+  $("installa").addEventListener("click", function () {
+    if (!richiestaInstalla) return;
+    richiestaInstalla.prompt(); richiestaInstalla.userChoice.then(function (c) { if (c && c.outcome === "accepted") { $("installa").hidden = true; conta("app-installata"); } richiestaInstalla = null; });
+  });
+  window.addEventListener("appinstalled", function () { $("installa").hidden = true; });
+
+  /* ---- Prima e dopo: casi reali (casi.json), la sezione compare dal primo caso ---- */
+  function disegnaCasi(j) {
+    var c = (j && j.casi) || []; if (!c.length) { $("casi").hidden = true; return; }
+    c = c.slice().sort(function (a, b) { return (b.data || "").localeCompare(a.data || ""); });
+    $("lista-casi").innerHTML = c.map(function (k) {
+      var pa = k.prima && k.prima.avvio, da = k.dopo && k.dopo.avvio, mx = Math.max(pa || 0, da || 0) || 1;
+      var av = pa && da ? '<div class="avvio"><div class="prima"><span>Prima</span><span class="barra-av" style="width:' + Math.round(pa / mx * 100) + '%"></span><b>' + pa + ' s</b></div>' +
+        '<div class="dopo"><span>Dopo</span><span class="barra-av" style="width:' + Math.max(4, Math.round(da / mx * 100)) + '%"></span><b>' + da + " s</b></div></div>" : "";
+      return '<article class="caso"><h3>' + esc(k.titolo) + '</h3><p class="chi">' + esc([k.chi, k.dove, k.data ? data(k.data) : ""].filter(Boolean).join(" · ")) + "</p>" +
+        (k.dispositivo ? "<p>" + esc(k.dispositivo) + (k.prima && k.prima.sistema ? " · prima " + esc(k.prima.sistema) : "") + (k.dopo && k.dopo.sistema ? " · dopo " + esc(k.dopo.sistema) : "") + "</p>" : "") + av +
+        (k.lavori && k.lavori.length ? "<ul>" + k.lavori.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>" : "") +
+        (k.costo ? '<p class="costo-caso">' + esc(k.servizio || "Costo") + ": " + esc(k.costo) + "</p>" : "") +
+        (k.frase ? '<p class="frase">«' + esc(k.frase) + "»</p>" : "") + "</article>";
+    }).join("");
+    $("casi").hidden = false;
+  }
+  try { fetch("casi.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(disegnaCasi).catch(function () {}); } catch (e) {}
+
+  /* ---- Statistiche senza cookie (GoatCounter). Si attiva scrivendo qui il codice scelto all'iscrizione gratuita. ---- */
+  var STATISTICHE = "";
+  if (STATISTICHE && /github\.io$/.test(location.hostname) && navigator.doNotTrack !== "1") {
+    var gc = document.createElement("script"); gc.async = true; gc.src = "https://gc.zgo.at/count.js";
+    gc.setAttribute("data-goatcounter", "https://" + STATISTICHE + ".goatcounter.com/count"); document.head.appendChild(gc);
+  }
+
+  /* ---- Il sito in sei lingue: traduce i testi della pagina, anche quelli disegnati dopo ---- */
+  (function () {
+    var SIGLE = ["it", "en", "fr", "es", "de", "ro"];
+    var MESI_L = {
+      en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      fr: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+      es: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+      de: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+      ro: ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"] };
+    var RE = /(\d{1,2}) (gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)(?: (\d{4}))?|\d+(?:[.,]\d+)*/g;
+    var DIZ = {}, lingua = "it", orig = new WeakMap(), messo = new WeakMap(), attrOrig = new WeakMap(), titoloOrig = document.title, osserva = null;
+    function chiave(t) {
+      var d = [], n = [];
+      var k = t.replace(/\s+/g, " ").trim().replace(RE, function (m, g, me, a) {
+        if (me) { d.push([+g, MESI.indexOf(me), a || ""]); return "{d" + (d.length - 1) + "}"; }
+        n.push(m); return "{n" + (n.length - 1) + "}";
+      });
+      return { k: k, d: d, n: n };
+    }
+    function numero(x) { return lingua === "en" ? x.replace(/[.,]/g, function (c) { return c === "." ? "," : "."; }) : x; }
+    function dataL(d) {
+      var m = MESI_L[lingua][d[1]], a = d[2];
+      if (lingua === "en") return m + " " + d[0] + (a ? ", " + a : "");
+      if (lingua === "es") return d[0] + " de " + m + (a ? " de " + a : "");
+      if (lingua === "de") return d[0] + ". " + m + (a ? " " + a : "");
+      return d[0] + " " + m + (a ? " " + a : "");
+    }
+    function traduci(testo) {
+      var core = testo.replace(/\s+/g, " ").trim();
+      if (!core || !/[A-Za-zÀ-ÿ]/.test(core)) return null;
+      var c = chiave(core), t = DIZ[c.k];
+      if (t == null || t === "") return null;
+      return t.replace(/\{([dn])(\d+)\}/g, function (m, tipo, i) { i = +i; return tipo === "n" ? (c.n[i] != null ? numero(c.n[i]) : m) : (c.d[i] ? dataL(c.d[i]) : m); });
+    }
+    function escluso(el) { return !el || (el.closest && el.closest("script,style,noscript,.notranslate,[translate='no'],textarea,.email,title")); }
+    function nodo(n) {
+      var o = orig.get(n);
+      if (o === undefined || messo.get(n) !== n.nodeValue) { o = n.nodeValue; orig.set(n, o); }
+      var v = o;
+      if (lingua !== "it") { var t = traduci(o); if (t != null) { if (/['’]\s*$/.test(o) && !/['’]$/.test(t)) t += " "; v = (o.match(/^\s*/)[0]) + t + (o.match(/\s*$/)[0]); } }
+      if (n.nodeValue !== v) n.nodeValue = v;
+      messo.set(n, v);
+    }
+    var ATTR = ["title", "aria-label", "placeholder", "alt"];
+    function attributi(el) {
+      if (escluso(el)) return;
+      var o = attrOrig.get(el);
+      if (!o) { o = {}; ATTR.forEach(function (a) { if (el.hasAttribute(a)) o[a] = el.getAttribute(a); }); attrOrig.set(el, o); }
+      Object.keys(o).forEach(function (a) { var t = lingua === "it" ? null : traduci(o[a]); el.setAttribute(a, t == null ? o[a] : t); });
+    }
+    function percorri(radice) {
+      if (radice.nodeType === 3) { if (!escluso(radice.parentNode)) nodo(radice); return; }
+      if (radice.nodeType !== 1 || escluso(radice)) return;
+      var w = document.createTreeWalker(radice, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return escluso(n.parentNode) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }), n;
+      var lista = []; while ((n = w.nextNode())) lista.push(n);
+      lista.forEach(nodo);
+      if (radice.matches && radice.matches("[title],[aria-label],[placeholder],[alt]")) attributi(radice);
+      radice.querySelectorAll("[title],[aria-label],[placeholder],[alt]").forEach(attributi);
+    }
+    function avviaOsservatore() {
+      if (osserva || !window.MutationObserver) return;
+      osserva = new MutationObserver(function (lista) {
+        lista.forEach(function (m) {
+          if (m.type === "characterData") { if (messo.get(m.target) !== m.target.nodeValue && !escluso(m.target.parentNode)) nodo(m.target); }
+          else m.addedNodes.forEach(percorri);
+        });
+      });
+      osserva.observe(document.body, { childList: true, subtree: true, characterData: true });
+    }
+    function applica() {
+      document.documentElement.lang = lingua;
+      percorri(document.body);
+      var t = lingua === "it" ? null : traduci(titoloOrig); document.title = t || titoloOrig;
+      $("lingua-sigla").textContent = lingua.toUpperCase();
+      document.querySelectorAll("#menu-lingue [data-l]").forEach(function (b) { b.setAttribute("aria-current", String(b.getAttribute("data-l") === lingua)); });
+      if (lingua !== "it") avviaOsservatore();
+    }
+    function carica(l, poi) {
+      if (l === "it") { DIZ = {}; return poi(true); }
+      var fatto = false;
+      function prova(url, altrimenti) {
+        try {
+          fetch(url, { cache: "no-cache" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) { if (fatto) return; fatto = true; DIZ = j || {}; poi(true); })
+            .catch(function () { if (altrimenti) altrimenti(); else poi(false); });
+        } catch (e) { if (altrimenti) altrimenti(); else poi(false); }
+      }
+      prova("i18n/" + l + ".json", function () { prova("https://raw.githubusercontent.com/danilodauria/danilodauria.github.io/main/i18n/" + l + ".json"); });
+    }
+    function scegli(l, salva) {
+      if (SIGLE.indexOf(l) === -1) l = "it";
+      carica(l, function (ok) {
+        lingua = ok ? l : "it"; applica();
+        if (salva) { try { localStorage.setItem("dd-lingua", lingua); } catch (e) {} conta("lingua-" + lingua); }
+      });
+    }
+    var menu = $("menu-lingue"), btn = $("btn-lingua");
+    function chiudi() { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); }
+    btn.addEventListener("click", function (e) { e.stopPropagation(); var su = menu.hidden; menu.hidden = !su; btn.setAttribute("aria-expanded", String(su)); if (su) { var c = menu.querySelector('[aria-current="true"]') || menu.querySelector("button"); c.focus(); } });
+    menu.addEventListener("click", function (e) { var b = e.target.closest("[data-l]"); if (!b) return; chiudi(); btn.focus(); scegli(b.getAttribute("data-l"), true); });
+    menu.addEventListener("keydown", function (e) {
+      var v = Array.prototype.slice.call(menu.querySelectorAll("button")), i = v.indexOf(document.activeElement);
+      if (e.key === "ArrowDown") { e.preventDefault(); v[(i + 1) % v.length].focus(); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); v[(i - 1 + v.length) % v.length].focus(); }
+      else if (e.key === "Escape") { chiudi(); btn.focus(); }
+    });
+    document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".lingua")) chiudi(); });
+    document.querySelectorAll("#menu-lingue [data-l]").forEach(function (b) { b.setAttribute("aria-current", String(b.getAttribute("data-l") === "it")); });
+    window.__i18n = { chiave: function (t) { return chiave(t).k; }, scegli: scegli, attuale: function () { return lingua; } };
+    var iniziale = null, q = /[?&]lang=([a-z]{2})/.exec(location.search);
+    if (q) iniziale = q[1];
+    if (!iniziale) { try { iniziale = localStorage.getItem("dd-lingua"); } catch (e) {} }
+    if (iniziale && iniziale !== "it") scegli(iniziale, false);
+    else if (!iniziale) {
+      /* nessuna scelta salvata: se il browser parla un'altra delle nostre lingue, lo proponiamo (senza cambiare da soli) */
+      var INVITO = { en: ["This site is also available in English.", "Read in English"], fr: ["Ce site existe aussi en français.", "Lire en français"],
+        es: ["Este sitio también está en español.", "Leer en español"], de: ["Diese Seite gibt es auch auf Deutsch.", "Auf Deutsch lesen"], ro: ["Acest site este disponibil și în limba română.", "Citește în română"] };
+      var proposta = null;
+      (navigator.languages || [navigator.language || "it"]).some(function (x) { var c = String(x).slice(0, 2).toLowerCase(); if (c === "it") return true; if (INVITO[c]) { proposta = c; return true; } return false; });
+      if (proposta) {
+        var bar = document.createElement("div"); bar.className = "invito-lingua notranslate"; bar.setAttribute("translate", "no"); bar.lang = proposta;
+        bar.innerHTML = '<span>' + INVITO[proposta][0] + '</span><button type="button" data-si>' + INVITO[proposta][1] + '</button><button type="button" data-no aria-label="Chiudi · Close">×</button>';
+        var barra = document.querySelector(".barra"); barra.parentNode.insertBefore(bar, barra.nextSibling);
+        bar.querySelector("[data-si]").addEventListener("click", function () { bar.remove(); scegli(proposta, true); });
+        bar.querySelector("[data-no]").addEventListener("click", function () { bar.remove(); try { localStorage.setItem("dd-lingua", "it"); } catch (e) {} });
+      }
+    }
+  })();
 
   /* ---- PDF: sul telefono si aprono nel lettore del sito, in una nuova scheda ---- */
   var telefono = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer: coarse)").matches);
