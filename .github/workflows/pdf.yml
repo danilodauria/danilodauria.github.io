@@ -12,6 +12,11 @@ on:
   schedule:
     - cron: "47 5 * * *"   # ogni giorno alle 05:47 UTC, dopo il controllo dei progetti
   workflow_dispatch:
+    inputs:
+      sempre:
+        description: "Rifai il PDF anche se i contenuti non sono cambiati"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -48,7 +53,7 @@ jobs:
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
           sleep 2
-          python strumenti/pdf/libretto.py http://127.0.0.1:8765/ pdf
+          python strumenti/pdf/libretto.py http://127.0.0.1:8765/ pdf ${{ inputs.sempre && '--sempre' || '' }}
       - name: Salva se qualcosa è cambiato
         run: |
           if git diff --quiet -- pdf; then
