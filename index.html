@@ -1983,6 +1983,13 @@ footer a { color: var(--hero-ink2); }
       a.setAttribute("href", "pdf/leggi.html#" + a.getAttribute("href").slice(4));
       a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
     });
+    /* sul telefono e sul tablet ogni collegamento che porta fuori da questa pagina si apre in una nuova scheda (anche quelli disegnati dopo) */
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest("a[href]") : null; if (!a) return;
+      var h = a.getAttribute("href") || "";
+      if (!h || h.charAt(0) === "#" || /^(mailto|tel|sms|javascript|data|blob):/i.test(h) || a.hasAttribute("download")) return;
+      a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
+    }, true);
   }
 
   document.querySelectorAll(".mappa [data-vai]").forEach(function (g) {

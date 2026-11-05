@@ -81,5 +81,17 @@ a { color: var(--brace); }
   <p class="box">Volete sapere cosa conviene fare con il vostro computer? Fate il test di un minuto sul sito: vi dico la strada e il costo.</p>
   <p class="piede">Guida di Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com<br>Testo con licenza Creative Commons BY-NC-SA 4.0: potete stamparla e condividerla liberamente, senza scopo di lucro, citando l'autore.</p>
 </main>
+<script>
+/* sul telefono e sul tablet ogni collegamento si apre in una nuova scheda */
+(function () {
+  if (!(/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer: coarse)").matches))) return;
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href]") : null; if (!a) return;
+    var h = a.getAttribute("href") || "";
+    if (!h || h.charAt(0) === "#" || /^(mailto|tel|sms|javascript|data|blob):/i.test(h) || a.hasAttribute("download")) return;
+    a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
+  }, true);
+})();
+</script>
 </body>
 </html>
