@@ -1,0 +1,42 @@
+name: Aggiorna i progetti
+
+# Ogni giorno controlla i repository pubblici di danilodauria e aggiorna progetti.json:
+# i nuovi progetti e le nuove versioni compaiono sul sito da soli.
+on:
+  schedule:
+    - cron: "17 5 * * *"   # ogni giorno alle 05:17 UTC
+  workflow_dispatch:        # pulsante «Run workflow» nella scheda Actions
+  push:
+    branches: [main]
+    paths-ignore: [progetti.json]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggiorna-progetti
+  cancel-in-progress: false
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Leggi i repository e le versioni
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 strumenti/aggiorna-progetti.py
+      - name: Salva se qualcosa è cambiato
+        run: |
+          if git diff --quiet -- progetti.json; then
+            echo "Nessuna novità."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add progetti.json
+            git commit -m "Progetti aggiornati in automatico"
+            git push
+          fi

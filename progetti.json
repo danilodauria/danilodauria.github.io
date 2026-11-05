@@ -1,0 +1,83 @@
+{
+  "aggiornato": "2026-11-05",
+  "controllato": "2026-11-05",
+  "progetti": [
+    {
+      "nome": "psicologo-digitale",
+      "titolo": "Psicologo Digitale",
+      "descrizione": "",
+      "versione": "1.3.32",
+      "sito": "https://danilodauria.github.io/psicologo-digitale/",
+      "github": "https://github.com/danilodauria/psicologo-digitale",
+      "linguaggio": "",
+      "creato": "2026-11-04",
+      "aggiornato": "2026-11-05"
+    },
+    {
+      "nome": "naturopata-digitale",
+      "titolo": "Naturopata Digitale",
+      "descrizione": "",
+      "versione": "1.3.10",
+      "sito": "https://danilodauria.github.io/naturopata-digitale/",
+      "github": "https://github.com/danilodauria/naturopata-digitale",
+      "linguaggio": "",
+      "creato": "2026-11-04",
+      "aggiornato": "2026-11-05"
+    },
+    {
+      "nome": "consulente-digitale",
+      "titolo": "Consulente Digitale",
+      "descrizione": "",
+      "versione": "1.5.2",
+      "sito": "https://danilodauria.github.io/consulente-digitale/",
+      "github": "https://github.com/danilodauria/consulente-digitale",
+      "linguaggio": "",
+      "creato": "2026-10-20",
+      "aggiornato": "2026-11-05"
+    },
+    {
+      "nome": "nonni-teach",
+      "titolo": "Nonni Teach",
+      "descrizione": "",
+      "versione": "",
+      "sito": "https://danilodauria.github.io/nonni-teach/",
+      "github": "https://github.com/danilodauria/nonni-teach",
+      "linguaggio": "",
+      "creato": "2026-10-15",
+      "aggiornato": "2026-11-05"
+    },
+    {
+      "nome": "grande-quiz",
+      "titolo": "Il Grande Quiz dell'Informatica",
+      "descrizione": "",
+      "versione": "1.0.0",
+      "sito": "https://danilodauria.github.io/grande-quiz/",
+      "github": "https://github.com/danilodauria/grande-quiz",
+      "linguaggio": "",
+      "creato": "2026-10-12",
+      "aggiornato": "2026-11-05"
+    },
+    {
+      "nome": "feniceos",
+      "titolo": "FeniceOS",
+      "descrizione": "",
+      "versione": "2.2",
+      "sito": "https://danilodauria.github.io/feniceos/",
+      "github": "https://github.com/danilodauria/feniceos",
+      "linguaggio": "",
+      "creato": "2026-10-12",
+      "aggiornato": "2026-11-05"
+    },
+    {
+      "nome": "professore-digitale",
+      "titolo": "Professore Digitale",
+      "descrizione": "",
+      "versione": "3.8.0",
+      "sito": "https://danilodauria.github.io/professore-digitale/",
+      "github": "https://github.com/danilodauria/professore-digitale",
+      "linguaggio": "",
+      "creato": "2026-09-01",
+      "aggiornato": "2026-11-05"
+    }
+  ]
+}

@@ -7,8 +7,13 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `index.html` | La pagina completa (progetti, libro, servizi, bandi, domande frequenti, contatti) |
 | `bandi.json` | L'elenco dei bandi: la pagina lo rilegge a ogni apertura (LED verde) |
 | `fenice.svg` | Il logo della fenice, usato anche come icona della scheda |
+| `progetti.json` | I progetti e le loro versioni: lo aggiorna da solo ogni giorno GitHub Actions |
+| `strumenti/aggiorna-progetti.py` | Lo script che legge i repository di danilodauria su GitHub |
+| `.github/workflows/progetti.yml` | L'aggiornamento automatico (ogni giorno, e con il pulsante «Run workflow» nella scheda Actions) |
 | `anteprima.png` | L'immagine che compare quando si condivide il link su WhatsApp e social |
 
 Per aggiornare solo i bandi basta modificare `bandi.json`: la pagina non va toccata.
+
+I nuovi progetti pubblicati su GitHub compaiono da soli nella sezione «Gli altri progetti», e i numeri di versione delle schede si aggiornano da soli.
 
 Testi e grafica © 2026 Danilo D'Auria, CC BY-NC-SA 4.0 · codice MIT.
