@@ -1,0 +1,154 @@
+{
+  "aggiornato": "2026-11-05",
+  "nota": "Calendario informativo curato da Danilo D'Auria. Le date con la dicitura «stimata» seguono gli anni passati: i negozi le confermano poche settimane prima. Non ricevo commissioni dai negozi.",
+  "eventi": [
+    {
+      "id": "esu",
+      "titolo": "Windows 10: aggiornamenti di sicurezza gratuiti",
+      "dal": "2025-10-14",
+      "al": "2027-10-12",
+      "testo": "Per i PC di casa con Windows 10 gli aggiornamenti estesi (ESU) sono gratuiti fino al 12 ottobre 2027.",
+      "consiglio": "Iscrivete il PC da Impostazioni › Windows Update: è il tempo giusto per decidere con calma tra Windows 11, Linux o ChromeOS Flex.",
+      "fonte": "https://bleepingcomputer.com/news/microsoft/microsoft-quietly-extends-free-windows-10-esu-support-to-october-2027"
+    },
+    {
+      "id": "scuola",
+      "titolo": "Prezzi scuola Apple e Microsoft",
+      "sempre": true,
+      "testo": "Studenti, docenti e personale della scuola hanno sconti tutto l'anno su Mac, iPad e Microsoft 365.",
+      "consiglio": "Prima di comprare un Mac nuovo confrontatelo con un ricondizionato Apple: stessa garanzia di un anno."
+    },
+    {
+      "id": "singles",
+      "titolo": "Singles Day",
+      "regola": "singles-day",
+      "testo": "Giornata di sconti nata in Cina e ripresa da molti negozi online, anche in Italia.",
+      "consiglio": "Buona per accessori, SSD e memorie; per le licenze comprate solo da rivenditori autorizzati."
+    },
+    {
+      "id": "black-friday",
+      "titolo": "Black Friday e Cyber Monday",
+      "regola": "black-friday",
+      "testo": "Le offerte più forti dell'anno su SSD, memorie, portatili e abbonamenti Microsoft 365. Molti negozi partono già una settimana prima.",
+      "consiglio": "Segnatevi oggi il prezzo di ciò che vi serve: così vedete se lo sconto è vero."
+    },
+    {
+      "id": "natale",
+      "titolo": "Regali di Natale",
+      "regola": "natale",
+      "testo": "Dopo il Cyber Monday molti prezzi risalgono; a ridosso di Natale tornano offerte mirate.",
+      "consiglio": "Un PC rigenerato con un SSD nuovo è un regalo utile e sostenibile."
+    },
+    {
+      "id": "saldi-inverno",
+      "titolo": "Saldi invernali",
+      "regola": "saldi-invernali",
+      "stimato": true,
+      "testo": "Nei negozi, di solito dal primo sabato di gennaio per circa due mesi. La data la fissa ogni Regione.",
+      "consiglio": "Buon momento per i portatili dell'anno precedente."
+    },
+    {
+      "id": "scuola-apple",
+      "titolo": "Promozione Apple per la scuola",
+      "regola": "apple-scuola",
+      "stimato": true,
+      "testo": "In estate Apple aggiunge di solito un regalo all'acquisto di Mac e iPad con i prezzi scuola.",
+      "consiglio": "Conviene a chi deve comprare comunque un Mac per studiare."
+    },
+    {
+      "id": "saldi-estate",
+      "titolo": "Saldi estivi",
+      "regola": "saldi-estivi",
+      "stimato": true,
+      "testo": "Nei negozi, di solito dal primo sabato di luglio per circa due mesi. La data la fissa ogni Regione.",
+      "consiglio": ""
+    },
+    {
+      "id": "prime-day",
+      "titolo": "Prime Day",
+      "regola": "prime-day",
+      "stimato": true,
+      "testo": "Giornate di offerte Amazon per gli iscritti a Prime, di solito a metà luglio.",
+      "consiglio": "Ottimo per SSD e memorie; Amazon annuncia le date qualche settimana prima."
+    },
+    {
+      "id": "nuovi-iphone",
+      "titolo": "Nuovi iPhone: calano i modelli precedenti",
+      "regola": "nuovi-iphone",
+      "stimato": true,
+      "testo": "A settembre Apple presenta i nuovi iPhone: i modelli precedenti e i ricondizionati diventano più convenienti.",
+      "consiglio": "Per un nonno o un ragazzo, un iPhone dell'anno prima basta e avanza."
+    },
+    {
+      "id": "festa-prime",
+      "titolo": "Festa delle Offerte Prime",
+      "regola": "festa-prime",
+      "stimato": true,
+      "testo": "Seconda tornata di offerte Amazon, di solito nella prima metà di ottobre.",
+      "consiglio": ""
+    },
+    {
+      "id": "fine-esu",
+      "titolo": "Finiscono gli aggiornamenti gratuiti di Windows 10",
+      "dal": "2027-10-12",
+      "al": "2027-10-12",
+      "scadenza": true,
+      "testo": "Dopo il 12 ottobre 2027 un PC con Windows 10 non riceve più correzioni di sicurezza.",
+      "consiglio": "Pianifichiamo prima il passaggio: Windows 11, Linux o ChromeOS Flex, secondo il computer."
+    }
+  ],
+  "cerca": [
+    {
+      "nome": "Windows 11 Home",
+      "listino": "145 €",
+      "q": "Windows 11 Home",
+      "ufficiale": [
+        "Microsoft Store",
+        "https://www.microsoft.com/it-it/d/windows-11-home/dg7gmgf0krt0"
+      ]
+    },
+    {
+      "nome": "Windows 11 Pro",
+      "listino": "259 €",
+      "q": "Windows 11 Pro",
+      "ufficiale": [
+        "Microsoft Store",
+        "https://www.microsoft.com/it-it/d/windows-11-pro/dg7gmgf0d8h4"
+      ]
+    },
+    {
+      "nome": "Microsoft 365 Family",
+      "listino": "129 € l'anno",
+      "q": "Microsoft 365 Family 12 mesi",
+      "ufficiale": [
+        "Microsoft",
+        "https://www.microsoft.com/it-it/microsoft-365/buy/compare-all-microsoft-365-products"
+      ]
+    },
+    {
+      "nome": "Office Home 2024",
+      "listino": "149 €",
+      "q": "Office Home 2024",
+      "ufficiale": [
+        "Microsoft",
+        "https://www.microsoft.com/it-it/microsoft-365/buy/compare-all-microsoft-365-products"
+      ]
+    },
+    {
+      "nome": "SSD 500 GB per il «Turbo»",
+      "listino": "il pezzo che rende veloce un vecchio PC",
+      "q": "SSD 500GB SATA 2,5",
+      "ufficiale": null
+    },
+    {
+      "nome": "Mac ricondizionato",
+      "listino": "garanzia di un anno dal ricondizionato Apple",
+      "q": "MacBook Air M1 ricondizionato",
+      "ufficiale": [
+        "Apple ricondizionati",
+        "https://www.apple.com/it/shop/refurbished/mac"
+      ],
+      "usato": true
+    }
+  ]
+}

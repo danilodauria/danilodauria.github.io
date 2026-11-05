@@ -228,3 +228,22 @@ svg.segno, .qr svg, .cop-piede svg, .retro-qr svg { border-radius: 2mm; backgrou
 .scelte li { padding: 1.4mm 2.2mm; border-left: 2px solid var(--oro); background: var(--carta); color: var(--ink2); font-size: 8pt; }
 .scelte b { display: block; color: var(--ink); }
 .os-prezzo { padding: 3mm 4.5mm; border-radius: 3mm; background: var(--verde-morbido); font-size: 9.4pt; }
+
+/* listini Windows e Apple, licenze, offerte */
+.os-extra { border: 1px dashed var(--linea); border-radius: 3mm; padding: 2.4mm 4mm; font-size: 8.8pt; margin-top: 3mm; }
+.licenze { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 2mm; }
+.lic { border: 1px solid var(--linea); border-radius: 3mm; padding: 3mm 3.6mm; break-inside: avoid; }
+.lic h3 { font-size: 10.5pt; margin-bottom: 1.5mm; }
+.lic p { display: flex; justify-content: space-between; gap: 2.5mm; font-size: 7.8pt; padding: 1.6mm 0; border-top: 1px solid var(--linea); }
+.lic .voce { color: var(--ink2); }
+.lic .voce b { color: var(--ink); display: block; }
+.lic .costo { white-space: nowrap; font-weight: 700; }
+.os-avviso { margin-top: 4mm; padding: 2.6mm 4mm; border-left: 2px solid var(--fuoco, #c8501a); background: var(--carta); font-size: 8.6pt; }
+.corsie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; align-items: start; }
+.corsia h2 { font-size: 13pt; }
+.ev { border: 1px solid var(--linea); border-radius: 3mm; padding: 2mm 3mm; margin-top: 2mm; break-inside: avoid; font-size: 7.4pt; display: grid; gap: .8mm; }
+.ev h3 { font-size: 9.4pt; }
+.ev .quando { color: var(--ink2); }
+.ev .consiglio { background: var(--carta); border-left: 2px solid var(--oro); padding: 1.2mm 2mm; }
+.a-capo { break-before: page; }
+.lic p { font-size: 8.4pt; padding: 2mm 0; }

@@ -185,6 +185,49 @@ def windows_mac():
   {''.join(blocchi)}
   <p class="os-prezzo">{E(w['prezzo'])}</p>
   <p class="piccolo">{E(w['nota'])}</p>
+</section>
+{listini_os(w)}"""
+
+def listini_os(w):
+    if not w.get("listini"):
+        return ""
+    lis = ""
+    for l in w["listini"]:
+        pac = "".join(f'<div class="pacc{" top" if x["top"] else ""}"><p class="occhiello">{E(x["nome"])}</p><p class="prezzo">{E(x["prezzo"].replace(" a computer", ""))}</p><p>{E(x["testo"])}</p><p class="ideale">{E(x["ideale"])}</p></div>' for x in l["pacc"])
+        lis += f'<h3 class="sotto">Listino fisso {E(l["os"])}</h3><div class="listino">{pac}</div>'
+    lic = "".join('<div class="lic"><h3>%s</h3>%s</div>' % (E(c["titolo"]), "".join(
+        '<p><span class="voce"><b>%s</b> %s</span><span class="costo">%s</span></p>' % (E(a), E(b), E(p)) for a, b, p in c["righe"])) for c in w["licenze"])
+    return f"""
+<section class="capitolo">
+  <p class="occhiello">Windows e Apple · prezzi</p>
+  <h1>Listino fisso e costi delle licenze.</h1>
+  {lis}
+  <p class="os-extra">{E(w['extra'])}</p>
+  <h3 class="sotto a-capo">Quanto costano le licenze</h3>
+  <p class="piccolo">{E(w['intro'])}</p>
+  <div class="licenze">{lic}</div>
+  <p class="os-avviso">{E(w['avviso'])}</p>
+</section>"""
+
+def offerte_pag():
+    o = D.get("offerte")
+    if not o:
+        return ""
+    cor = ""
+    for n, c in enumerate(o["corsie"]):
+        ev = "".join('<div class="ev"><h3>%s</h3><p class="quando">%s%s</p><p>%s</p>%s</div>' % (
+            E(e["titolo"]), E(e["quando"]), " · data stimata" if e["stimato"] else "", E(e["testo"]),
+            '<p class="consiglio">%s</p>' % E(e["consiglio"]) if e["consiglio"] and n < 2 else "") for e in c["eventi"])   # sulla carta, «Più avanti» senza consigli: sta in una pagina
+        cor += f'<div class="corsia"><h2>{E(c["nome"])}</h2><p class="piccolo">{E(c["sotto"])}</p>{ev}</div>'
+    cerca = " · ".join("<b>%s</b> (%s)" % (E(a), E(b.replace("Listino ufficiale: ", "listino "))) for a, b in o["cerca"])
+    return f"""
+<section class="capitolo">
+  <p class="occhiello">{E(o['label'])}</p>
+  <h1>{E(o['h2'])}</h1>
+  <p class="lead">Situazione al {data_it(OGGI)}. Sul sito, nella sezione «Offerte», il calendario si ricalcola ogni giorno e i pulsanti aprono i prezzi di oggi nei comparatori.</p>
+  <div class="corsie">{cor}</div>
+  <p class="piccolo"><b>Prezzi di oggi a un clic sul sito per:</b> {cerca}.</p>
+  <p class="piccolo">{E(o['nota'])}</p>
 </section>"""
 
 def stato(b):
@@ -264,6 +307,7 @@ pagina = f"""<!doctype html><html lang="it"><head><meta charset="utf-8"><title>D
 {video()}
 {servizi()}
 {windows_mac()}
+{offerte_pag()}
 {bandi_pag()}
 {faq()}
 {retro()}

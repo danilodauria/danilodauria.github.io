@@ -47,7 +47,16 @@ async () => {
     os: $$('article.os', wm).map(o => ({ nome: t($('h3', o)), sotto: t($('.os-testa p', o)),
       passi: $$('.os-passi > li', o).map(li => ({ lettera: t($('.os-lettera', li)), titolo: t($('.os-cima b', li)), erre: t($('.erre', li)),
         testo: t(li.querySelector(':scope > div > p:not(.os-cima)')), scelte: $$('.os-scelte li', li).map(x => [t($('b', x)), t(x).replace(t($('b', x)), '').trim()]) })) })),
+    listini: $$('.listino-os', wm).map(l => ({ os: l.dataset.os, pacc: $$('.pacchetto', l).map(x => ({ nome: t($('.label', x)), prezzo: t($('.prezzo', x)), testo: t($$('p', x)[2]), ideale: t($('.ideale', x)), top: x.classList.contains('top') })) })),
+    extra: t($('.os-extra', wm)), intro: t($('.os-intro', wm)),
+    licenze: $$('.lic-col', wm).map(c => ({ titolo: t($('h4', c)), righe: $$('li', c).map(li => [t($('b', li)), t($('div span', li)), t($('.costo', li))]) })),
+    avviso: t($('.os-avviso', wm)),
     prezzo: t($('.os-prezzo', wm)), nota: t($('.os-nota', wm)) } : null;
+  const of = $('#offerte');
+  d.offerte = of ? { label: t($('.label', of)), h2: t($('h2', of)),
+    corsie: $$('.corsia', of).map(c => ({ nome: t($('h3', c)), sotto: t($('.corsia-sotto', c)),
+      eventi: $$('.evento', c).map(e => ({ titolo: t($('h4', e)), quando: t($('.quando', e)), stimato: !!$('.chip.stima', e), testo: t($$('p', e)[1]), consiglio: t($('.consiglio', e)) })) })),
+    cerca: $$('.prodotto', of).map(p => [t($('h4', p)), t($('.listino-p', p))]), nota: t($('#avviso-off')) } : null;
   d.faq = $$('.faq details').map(x => [t($('summary', x)), t($('p', x))]);
   const co = $('#contatti');
   d.contatti = { h2: t($('h2', co)), lead: t($('.lead', co)), email: t($('#email')) };

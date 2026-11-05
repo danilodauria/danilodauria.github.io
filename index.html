@@ -314,6 +314,51 @@ blockquote { margin: 24px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(-
 .os-nota { margin-top: 12px; font-size: .86rem; color: var(--ink2); max-width: 90ch; }
 @media (max-width: 900px) { .os-percorsi, .tre-erre { grid-template-columns: 1fr; } .os-passi { padding: 6px 16px 14px; } .os-testa { padding: 16px; } }
 
+/* ---------- Listini Windows e Apple, licenze ---------- */
+.os-sotto { margin: 40px 0 16px; }
+.listino-os { margin-bottom: 18px; }
+.os-extra { padding: 12px 16px; border-radius: var(--r); border: 1px dashed var(--linea); color: var(--ink2); }
+.os-extra b { color: var(--ink); }
+.os-intro { color: var(--ink2); margin: -6px 0 16px; max-width: 80ch; }
+.licenze { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.lic-col { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 20px 22px 8px; }
+.lic-col h4 { font-family: var(--f-display); font-weight: 400; font-size: 1.2rem; margin: 0 0 6px; }
+.lic-col ul { list-style: none; margin: 0; padding: 0; }
+.lic-col li { display: flex; justify-content: space-between; gap: 14px; padding: 12px 0; border-top: 1px solid var(--linea); align-items: baseline; }
+.lic-col li div { display: grid; gap: 3px; min-width: 0; }
+.lic-col li span { color: var(--ink2); font-size: .9rem; }
+.lic-col li b { font-size: .98rem; }
+.lic-col .costo { flex: none; font-family: var(--f-mono); font-size: .9rem; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lic-col .costo.gratis { color: var(--verde); font-weight: 700; }
+.os-avviso { margin-top: 18px; padding: 14px 18px; border-radius: var(--r); background: var(--morbido); border-left: 4px solid var(--fuoco); }
+.os-prezzo a { font-weight: 700; }
+@media (max-width: 900px) { .licenze { grid-template-columns: 1fr; } }
+
+/* ---------- Offerte ---------- */
+.corsie { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start; }
+.corsia { display: grid; gap: 10px; }
+.corsia h3 { font-size: 1.3rem; }
+.corsia-sotto { color: var(--ink2); font-size: .9rem; margin-top: -8px; }
+.eventi { display: grid; gap: 12px; }
+.evento { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 16px 18px; display: grid; gap: 7px; }
+.corsia[data-corsia="adesso"] .evento { border-color: var(--verde); }
+.evento h4 { font-family: var(--f-display); font-weight: 400; font-size: 1.08rem; margin: 0; }
+.evento .quando { font-size: .88rem; color: var(--ink2); font-variant-numeric: tabular-nums; }
+.evento p { font-size: .93rem; color: var(--ink2); }
+.evento .consiglio { color: var(--ink); padding: 8px 10px; border-radius: 8px; background: var(--bg); border-left: 3px solid var(--oro); }
+.evento .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip.stima { border: 1px dashed var(--linea); color: var(--ink2); }
+.cerca { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.prodotto { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 18px; display: grid; gap: 8px; align-content: start; }
+.prodotto h4 { font-size: 1.02rem; margin: 0; }
+.prodotto .listino-p { font-size: .88rem; color: var(--ink2); }
+.prodotto .vai { display: flex; flex-wrap: wrap; gap: 6px; }
+.prodotto .vai a { font: 700 .86rem var(--f-body); padding: 7px 12px; border-radius: 99px; border: 1.5px solid var(--linea); color: var(--ink); text-decoration: none; background: var(--bg); }
+.prodotto .vai a:hover, .prodotto .vai a:focus-visible { border-color: var(--fuoco); }
+.prodotto .vai a.uff { background: var(--notte); color: var(--alba); border-color: var(--notte); }
+.cerca.spento .vai a { opacity: .5; }
+@media (max-width: 900px) { .corsie, .cerca { grid-template-columns: 1fr; } }
+
 /* ---------- Bandi ---------- */
 .bandi-testa { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; justify-content: space-between; margin-bottom: 22px; }
 .stato-rete { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 12px; border-radius: 99px; background: var(--foglio); border: 1px solid var(--linea); font-size: .92rem; max-width: 100%; }
@@ -402,6 +447,7 @@ footer a { color: var(--hero-ink2); }
       <a href="#progetti">Progetti</a>
       <a href="#libro">Il libro</a>
       <a href="#servizi">Servizi</a>
+      <a href="#offerte">Offerte</a>
       <a href="#bandi">Bandi</a>
       <a class="btn-mini" href="#contatti">Contatti</a>
     </nav>
@@ -804,8 +850,39 @@ footer a { color: var(--hero-ink2); }
       <article class="os"><div class="os-testa"><h3>Windows</h3><p>PC fissi e portatili di qualsiasi marca</p></div><ol class="os-passi"><li><span class="os-lettera" aria-hidden="true">A</span><div><p class="os-cima"><b>Diagnosi e inventario</b><span class="erre erre-ridurre">Ridurre</span></p><p>Modello, processore, memoria, salute del disco, batteria. Controllo i requisiti di Windows 11: TPM 2.0, avvio protetto UEFI, processore Intel di 8ª generazione o AMD Ryzen 2000 e successivi, 4 GB di RAM, 64 GB di spazio.</p></div></li><li><span class="os-lettera" aria-hidden="true">B</span><div><p class="os-cima"><b>Dati, account e licenza</b><span class="erre erre-riusare">Riusare</span></p><p>Copia di sicurezza dei dati, chiave di ripristino BitLocker se il disco è cifrato, account Microsoft. Verifico la licenza: quella preinstallata (OEM o digitale) resta legata a quel computer e si riattiva da sola dopo un&#x27;installazione pulita.</p></div></li><li><span class="os-lettera" aria-hidden="true">C</span><div><p class="os-cima"><b>La scelta del sistema giusto</b><span class="erre erre-riusare">Riusare</span></p><p>Decido dopo la diagnosi, con voi, tra quattro strade:</p><ul class="os-scelte"><li><b>PC compatibile</b> passaggio pulito a Windows 11, con la stessa licenza.</li><li><b>PC non compatibile, ma serve Windows</b> Windows 10 con gli aggiornamenti di sicurezza estesi (ESU), gratuiti per i privati fino al 12 ottobre 2027; intanto pianifichiamo il passaggio.</li><li><b>Windows 11 su PC non compatibile</b> Microsoft lo permette ma non garantisce gli aggiornamenti: non lo consiglio per il lavoro.</li><li><b>Seconda vita libera</b> Linux (FeniceOS, Linux Lite, Mint) o ChromeOS Flex: sicuri e aggiornati, senza scadenze.</li></ul></div></li><li><span class="os-lettera" aria-hidden="true">D</span><div><p class="os-cima"><b>Potenziamento</b><span class="erre erre-ridurre">Ridurre</span></p><p>SSD al posto del disco meccanico, più RAM, pasta termica nuova, pulizia delle ventole, batteria se serve. Spesso basta questo per un PC che sembra nuovo.</p></div></li><li><span class="os-lettera" aria-hidden="true">E</span><div><p class="os-cima"><b>Installazione pulita e sicura</b><span class="erre erre-riusare">Riusare</span></p><p>Driver dai siti ufficiali, tutti gli aggiornamenti, Microsoft Defender attivo, nessun programma inutile preinstallato, cifratura del disco e backup automatico.</p></div></li><li><span class="os-lettera" aria-hidden="true">F</span><div><p class="os-cima"><b>Fine vita responsabile</b><span class="erre erre-riciclare">Riciclare</span></p><p>Se il PC cambia proprietario: cancellazione sicura dei dati e scollegamento dall&#x27;account Microsoft. Quello che non si recupera va ai RAEE: all&#x27;isola ecologica del Comune, oppure al negozio quando comprate un apparecchio nuovo (ritiro «uno contro uno»).</p></div></li></ol></article>
       <article class="os"><div class="os-testa"><h3>Apple</h3><p>Mac, iPhone e iPad</p></div><ol class="os-passi"><li><span class="os-lettera" aria-hidden="true">A</span><div><p class="os-cima"><b>Diagnosi e inventario</b><span class="erre erre-ridurre">Ridurre</span></p><p>Modello e anno dal numero di serie, processore (Intel, Intel con chip T2 o Apple Silicon), cicli e salute della batteria, Apple Diagnostics. Per iPhone e iPad: il modello e l&#x27;ultima versione di iOS che può ricevere.</p></div></li><li><span class="os-lettera" aria-hidden="true">B</span><div><p class="os-cima"><b>Account e Blocco attivazione</b><span class="erre erre-riusare">Riusare</span></p><p>Prima di tutto «Trova il mio» e iCloud: con il Blocco attivazione attivo serve il proprietario con il suo ID Apple. Solo Apple può toglierlo, con la prova d&#x27;acquisto. Non lavoro su dispositivi bloccati di provenienza incerta.</p></div></li><li><span class="os-lettera" aria-hidden="true">C</span><div><p class="os-cima"><b>La scelta del sistema giusto</b><span class="erre erre-riusare">Riusare</span></p><p>Le regole di Apple dipendono dal modello:</p><ul class="os-scelte"><li><b>Mac con chip Apple (M1 e successivi)</b> macOS più recente, davanti ancora molti anni di aggiornamenti.</li><li><b>Mac Intel ancora supportati</b> macOS 26 Tahoe è l&#x27;ultima versione per Intel (MacBook Pro 16&quot; 2019, MacBook Pro 13&quot; 2020 a quattro porte, iMac 27&quot; 2020, Mac Pro 2019); Apple ha annunciato tre anni di aggiornamenti di sicurezza.</li><li><b>Mac esclusi</b> OpenCore Legacy Patcher, progetto indipendente non di Apple, solo con backup completo e con cautela sui Mac con chip T2; oppure Linux, o ChromeOS Flex sui modelli che Google certifica.</li><li><b>iPhone e iPad</b> iOS 26 va da iPhone 11 in poi; i modelli più vecchi ricevono ancora alcune correzioni di sicurezza e possono avere una seconda funzione: telefono semplice per un nonno, cornice di foto, telecomando di casa.</li></ul></div></li><li><span class="os-lettera" aria-hidden="true">D</span><div><p class="os-cima"><b>Riparazione e potenziamento</b><span class="erre erre-ridurre">Ridurre</span></p><p>Batteria, pulizia, SSD e RAM dove sono sostituibili. Ricambi originali con il programma Self Service Repair di Apple, attivo anche in Italia, o ricambi di qualità dai riparatori indipendenti.</p></div></li><li><span class="os-lettera" aria-hidden="true">E</span><div><p class="os-cima"><b>Ripristino pulito</b><span class="erre erre-riusare">Riusare</span></p><p>«Inizializza contenuti e impostazioni» oppure reinstallazione di macOS dal Recupero; aggiornamenti, FileVault, Time Machine o un altro backup.</p></div></li><li><span class="os-lettera" aria-hidden="true">F</span><div><p class="os-cima"><b>Fine vita responsabile</b><span class="erre erre-riciclare">Riciclare</span></p><p>Disattivazione di «Trova il mio» e uscita da iCloud prima di vendere o donare. Quello che non si recupera va ai RAEE oppure al programma di riciclo Apple.</p></div></li></ol></article>
     </div>
-    <p class="os-prezzo"><b>Check-up GRATIS anche per Windows e Apple.</b> Dopo la diagnosi ricevete un preventivo chiaro: i prezzi dipendono dal modello e dai ricambi.</p>
-    <p class="os-nota">Regole verificate a novembre 2026. Microsoft e Apple cambiano spesso tempi e requisiti: prima di ogni intervento controllo le condizioni aggiornate. Il diritto europeo alla riparazione è in vigore dal 31 luglio 2026; in Italia il recepimento è ancora in corso.</p>
+    <h3 class="os-sotto" id="listino-windows">Listino fisso Windows</h3>
+    <div class="listino listino-os" data-os="Windows"><div class="pacchetto"><p class="label">1 · Check-up diagnostico</p><p class="prezzo">GRATIS</p><p>Requisiti di Windows 11, salute del disco e della batteria, licenza già presente sul computer.</p><p class="ideale">Per sapere se il PC passa a Windows 11 o resta su Windows 10 con gli aggiornamenti estesi.</p></div><div class="pacchetto top"><p class="label">2 · Seconda vita Windows</p><p class="prezzo">55 € <small>a computer</small></p><p>Pulizia interna, copia dei dati, installazione pulita di Windows 11 (o Windows 10 con ESU), driver, aggiornamenti, sicurezza e backup. La licenza già presente si riattiva.</p><p class="ideale">Per tenere i vostri programmi Windows su un PC di nuovo veloce.</p></div><div class="pacchetto"><p class="label">3 · Turbo Windows · hardware + software</p><p class="prezzo">95 € <small>a computer</small></p><p>Tutto il pacchetto «Seconda vita» più la sostituzione del vecchio disco con un nuovo SSD, con il trasferimento dei dati.</p><p class="ideale">Il PC Windows che sembra nuovo, senza comprarne uno.</p></div></div>
+    <h3 class="os-sotto" id="listino-apple">Listino fisso Apple</h3>
+    <div class="listino listino-os" data-os="Apple"><div class="pacchetto"><p class="label">1 · Check-up diagnostico</p><p class="prezzo">GRATIS</p><p>Modello e anno, ultima versione di macOS o iOS che può ricevere, salute della batteria, Blocco attivazione.</p><p class="ideale">Per capire quanti anni di vita ha ancora il vostro Mac.</p></div><div class="pacchetto top"><p class="label">2 · Seconda vita Mac</p><p class="prezzo">60 € <small>a computer</small></p><p>Pulizia interna, inizializzazione sicura, il macOS più recente supportato (o Linux sui Mac esclusi), aggiornamenti, FileVault e Time Machine.</p><p class="ideale">Per un Mac pulito, sicuro e pronto per altri anni.</p></div><div class="pacchetto"><p class="label">3 · Turbo Mac · hardware + software</p><p class="prezzo">da 110 € <small>a computer</small></p><p>Tutto il pacchetto «Seconda vita» più SSD o batteria nuova, sui modelli in cui si possono sostituire. Il ricambio dipende dal modello e lo concordiamo prima.</p><p class="ideale">Il Mac datato che torna reattivo e dura una giornata.</p></div></div>
+    <p class="os-extra"><b>iPhone e iPad · 30 €</b> configurazione, trasferimento dei dati dal vecchio telefono, sicurezza e copia su iCloud o sul computer.</p>
+    <h3 class="os-sotto" id="licenze">Quanto costano le licenze</h3>
+    <p class="os-intro">Le licenze non sono comprese nel listino: si pagano a parte, solo se servono davvero. Prezzi di listino ufficiali in Italia, IVA inclusa.</p>
+    <div class="licenze"><div class="lic-col"><h4>Windows</h4><ul><li><div><b>Windows 11 Home</b><span>Una tantum. Spesso non serve: la licenza originale già presente si riattiva gratis.</span></div><span class="costo">145 €</span></li><li><div><b>Windows 11 Pro</b><span>Una tantum. Per studi e aziende: cifratura BitLocker, desktop remoto, gestione dei PC.</span></div><span class="costo">259 €</span></li><li><div><b>Windows 10 · aggiornamenti estesi (ESU)</b><span>Per i privati fino al 12 ottobre 2027: in Europa basta accedere con un account Microsoft.</span></div><span class="costo gratis">GRATIS</span></li></ul></div><div class="lic-col"><h4>Microsoft Office</h4><ul><li><div><b>Microsoft 365 Personal</b><span>Oppure 10 € al mese. Una persona, 1 TB di spazio online, sempre aggiornato.</span></div><span class="costo">99 € l&#x27;anno</span></li><li><div><b>Microsoft 365 Family</b><span>Oppure 13 € al mese. Fino a 6 persone, 1 TB ciascuna.</span></div><span class="costo">129 € l&#x27;anno</span></li><li><div><b>Office Home 2024</b><span>Una tantum: Word, Excel, PowerPoint e OneNote su un PC o un Mac.</span></div><span class="costo">149 €</span></li><li><div><b>Office Home &amp; Business 2024</b><span>Una tantum: anche Outlook e uso commerciale, su un PC o un Mac.</span></div><span class="costo">299 €</span></li></ul></div><div class="lic-col"><h4>Apple e alternative gratuite</h4><ul><li><div><b>macOS, iOS e i loro aggiornamenti</b><span>Inclusi con il Mac, l&#x27;iPhone e l&#x27;iPad.</span></div><span class="costo gratis">GRATIS</span></li><li><div><b>Pages, Numbers e Keynote</b><span>Testi, fogli di calcolo e presentazioni di Apple, aprono anche i file di Office.</span></div><span class="costo gratis">GRATIS</span></li><li><div><b>LibreOffice</b><span>Suite libera per Windows, Mac e Linux: per molti basta e avanza.</span></div><span class="costo gratis">GRATIS</span></li><li><div><b>Word, Excel e PowerPoint sul web</b><span>Nel browser, con un account Microsoft: funzioni essenziali.</span></div><span class="costo gratis">GRATIS</span></li></ul></div></div>
+    <p class="os-avviso"><b>Attenzione alle chiavi a pochi euro.</b> Le licenze di provenienza incerta vendute a 10 o 20 € possono essere bloccate in seguito. Office 2019 e Office 2021 non ricevono più aggiornamenti di sicurezza (Office 2021 dal 13 ottobre 2026): meglio un'alternativa gratuita che una versione scaduta.</p>
+    <p class="os-prezzo"><b>Check-up GRATIS anche per Windows e Apple.</b> I prezzi del listino valgono per un computer; per un'aula o un ufficio intero faccio un preventivo a parte. <a href="#offerte">Volete comprare una licenza o un ricambio? Guardate prima le offerte →</a></p>
+    <p class="os-nota">Regole e prezzi delle licenze verificati il 5 novembre 2026. Microsoft e Apple cambiano spesso tempi e requisiti: prima di ogni intervento controllo le condizioni aggiornate. Il diritto europeo alla riparazione è in vigore dal 31 luglio 2026; in Italia il recepimento è ancora in corso.</p>
+  </div>
+</section>
+
+<section class="blocco" id="offerte">
+  <div class="wrap">
+    <div class="testa">
+      <p class="label">Offerte e momenti giusti</p>
+      <h2>Quando conviene comprare: le offerte di adesso e quelle in arrivo.</h2>
+      <p class="lead">Prima di comprare una licenza, un SSD o un computer, guardate qui. Il calendario si ricalcola ogni giorno; con Internet si aggiorna e i pulsanti aprono i prezzi di oggi nei comparatori.</p>
+    </div>
+    <div class="bandi-testa">
+      <div class="stato-rete" aria-live="polite"><span class="led" id="led-off" aria-hidden="true"></span><span id="stato-off">Controllo la connessione…</span><button type="button" id="ricontrolla-off">Ricontrolla</button></div>
+    </div>
+    <div class="corsie">
+      <div class="corsia" data-corsia="adesso"><h3>Adesso</h3><p class="corsia-sotto">Offerte e opportunità in corso</p><div class="eventi" id="ev-adesso"></div></div>
+      <div class="corsia" data-corsia="breve"><h3>A breve</h3><p class="corsia-sotto">Entro due mesi</p><div class="eventi" id="ev-breve"></div></div>
+      <div class="corsia" data-corsia="lungo"><h3>Più avanti</h3><p class="corsia-sotto">Nei prossimi mesi</p><div class="eventi" id="ev-lungo"></div></div>
+    </div>
+    <h3 class="os-sotto">Il prezzo migliore di oggi</h3>
+    <p class="os-intro">Ogni pulsante apre, in una nuova scheda, i prezzi aggiornati in questo momento. Il prezzo di listino vi aiuta a capire se lo sconto è vero.</p>
+    <div class="cerca" id="cerca"></div>
+    <p class="avviso" id="avviso-off"></p>
   </div>
 </section>
 
@@ -837,7 +914,8 @@ footer a { color: var(--hero-ink2); }
     <div class="faq">
       <details><summary>Serve Internet per usare i programmi?</summary><p>No. Lezioni, guida, lavagna, quiz e strumenti funzionano sul computer. Internet serve solo quando lo chiedete voi: per scaricare un aggiornamento, installare l'IA locale o leggere le notizie.</p></details>
       <details><summary>Funzionano sui nostri computer vecchi?</summary><p>Sì, sono pensati proprio per questo. Il Professore Digitale funziona da Windows XP a Windows 11, su Linux e su macOS. Se il PC è troppo lento per il suo sistema, FeniceOS gli dà una seconda vita partendo da una chiavetta USB.</p></details>
-      <details><summary>Quanto costano i programmi?</summary><p>Niente. Sono gratuiti e lo resteranno: codice con licenza MIT e contenuti Creative Commons. Si pagano solo i servizi, come installazione, corsi, recupero dei PC e assistenza, con un preventivo chiaro prima di iniziare. Per la rigenerazione c'è un listino fisso: check-up GRATIS, «Seconda vita» 45 €, «Turbo» 85 €.</p></details>
+      <details><summary>Quanto costano i programmi?</summary><p>Niente. Sono gratuiti e lo resteranno: codice con licenza MIT e contenuti Creative Commons. Si pagano solo i servizi, come installazione, corsi, recupero dei PC e assistenza, con un preventivo chiaro prima di iniziare. Per la rigenerazione c'è un listino fisso: check-up sempre GRATIS; con Linux «Seconda vita» 45 € e «Turbo» 85 €; con Windows 55 € e 95 €; su Mac 60 € e da 110 €.</p></details>
+      <details><summary>Devo comprare una nuova licenza di Windows o di Office?</summary><p>Spesso no. La licenza di Windows già presente sul computer si riattiva da sola dopo un'installazione pulita, e Windows 10 riceve aggiornamenti di sicurezza gratuiti fino al 12 ottobre 2027. Per i documenti bastano spesso LibreOffice, Pages o Office sul web, che sono gratuiti. Se la licenza serve davvero, nella sezione «Offerte» trovate i prezzi di oggi e i momenti in cui conviene comprarla.</p></details>
       <details><summary>Dove finiscono i dati delle persone?</summary><p>Restano sul computer. I programmi non hanno telemetria e non inviano dati in rete senza consenso. Anche l'Intelligenza Artificiale, quando c'è, lavora sul PC.</p></details>
       <details><summary>Cosa resta a noi alla fine del lavoro?</summary><p>I programmi installati, i vademecum da stampare, le schede tecniche e dei lavori eseguiti. L'obiettivo è che poi possiate andare avanti da soli.</p></details>
       <details><summary>Possiamo adattare lezioni e domande alla nostra realtà?</summary><p>Sì. Nel Professore Digitale si aggiungono domande e lezioni con semplici pacchetti di contenuti, senza reinstallare. Posso prepararli io per voi.</p></details>
@@ -1120,6 +1198,92 @@ footer a { color: var(--hero-ink2); }
       .catch(function () { /* resta l'elenco gia' mostrato */ });
   }
   caricaProgetti();
+
+  /* ---- Offerte: calendario che si ricalcola da solo + prezzi di oggi nei comparatori ---- */
+  var OFF_SALVATE = {"aggiornato": "2026-11-05", "nota": "Calendario informativo curato da Danilo D'Auria. Le date con la dicitura «stimata» seguono gli anni passati: i negozi le confermano poche settimane prima. Non ricevo commissioni dai negozi.", "eventi": [{"id": "esu", "titolo": "Windows 10: aggiornamenti di sicurezza gratuiti", "dal": "2025-10-14", "al": "2027-10-12", "testo": "Per i PC di casa con Windows 10 gli aggiornamenti estesi (ESU) sono gratuiti fino al 12 ottobre 2027.", "consiglio": "Iscrivete il PC da Impostazioni › Windows Update: è il tempo giusto per decidere con calma tra Windows 11, Linux o ChromeOS Flex.", "fonte": "https://bleepingcomputer.com/news/microsoft/microsoft-quietly-extends-free-windows-10-esu-support-to-october-2027"}, {"id": "scuola", "titolo": "Prezzi scuola Apple e Microsoft", "sempre": true, "testo": "Studenti, docenti e personale della scuola hanno sconti tutto l'anno su Mac, iPad e Microsoft 365.", "consiglio": "Prima di comprare un Mac nuovo confrontatelo con un ricondizionato Apple: stessa garanzia di un anno."}, {"id": "singles", "titolo": "Singles Day", "regola": "singles-day", "testo": "Giornata di sconti nata in Cina e ripresa da molti negozi online, anche in Italia.", "consiglio": "Buona per accessori, SSD e memorie; per le licenze comprate solo da rivenditori autorizzati."}, {"id": "black-friday", "titolo": "Black Friday e Cyber Monday", "regola": "black-friday", "testo": "Le offerte più forti dell'anno su SSD, memorie, portatili e abbonamenti Microsoft 365. Molti negozi partono già una settimana prima.", "consiglio": "Segnatevi oggi il prezzo di ciò che vi serve: così vedete se lo sconto è vero."}, {"id": "natale", "titolo": "Regali di Natale", "regola": "natale", "testo": "Dopo il Cyber Monday molti prezzi risalgono; a ridosso di Natale tornano offerte mirate.", "consiglio": "Un PC rigenerato con un SSD nuovo è un regalo utile e sostenibile."}, {"id": "saldi-inverno", "titolo": "Saldi invernali", "regola": "saldi-invernali", "stimato": true, "testo": "Nei negozi, di solito dal primo sabato di gennaio per circa due mesi. La data la fissa ogni Regione.", "consiglio": "Buon momento per i portatili dell'anno precedente."}, {"id": "scuola-apple", "titolo": "Promozione Apple per la scuola", "regola": "apple-scuola", "stimato": true, "testo": "In estate Apple aggiunge di solito un regalo all'acquisto di Mac e iPad con i prezzi scuola.", "consiglio": "Conviene a chi deve comprare comunque un Mac per studiare."}, {"id": "saldi-estate", "titolo": "Saldi estivi", "regola": "saldi-estivi", "stimato": true, "testo": "Nei negozi, di solito dal primo sabato di luglio per circa due mesi. La data la fissa ogni Regione.", "consiglio": ""}, {"id": "prime-day", "titolo": "Prime Day", "regola": "prime-day", "stimato": true, "testo": "Giornate di offerte Amazon per gli iscritti a Prime, di solito a metà luglio.", "consiglio": "Ottimo per SSD e memorie; Amazon annuncia le date qualche settimana prima."}, {"id": "nuovi-iphone", "titolo": "Nuovi iPhone: calano i modelli precedenti", "regola": "nuovi-iphone", "stimato": true, "testo": "A settembre Apple presenta i nuovi iPhone: i modelli precedenti e i ricondizionati diventano più convenienti.", "consiglio": "Per un nonno o un ragazzo, un iPhone dell'anno prima basta e avanza."}, {"id": "festa-prime", "titolo": "Festa delle Offerte Prime", "regola": "festa-prime", "stimato": true, "testo": "Seconda tornata di offerte Amazon, di solito nella prima metà di ottobre.", "consiglio": ""}, {"id": "fine-esu", "titolo": "Finiscono gli aggiornamenti gratuiti di Windows 10", "dal": "2027-10-12", "al": "2027-10-12", "scadenza": true, "testo": "Dopo il 12 ottobre 2027 un PC con Windows 10 non riceve più correzioni di sicurezza.", "consiglio": "Pianifichiamo prima il passaggio: Windows 11, Linux o ChromeOS Flex, secondo il computer."}], "cerca": [{"nome": "Windows 11 Home", "listino": "145 €", "q": "Windows 11 Home", "ufficiale": ["Microsoft Store", "https://www.microsoft.com/it-it/d/windows-11-home/dg7gmgf0krt0"]}, {"nome": "Windows 11 Pro", "listino": "259 €", "q": "Windows 11 Pro", "ufficiale": ["Microsoft Store", "https://www.microsoft.com/it-it/d/windows-11-pro/dg7gmgf0d8h4"]}, {"nome": "Microsoft 365 Family", "listino": "129 € l'anno", "q": "Microsoft 365 Family 12 mesi", "ufficiale": ["Microsoft", "https://www.microsoft.com/it-it/microsoft-365/buy/compare-all-microsoft-365-products"]}, {"nome": "Office Home 2024", "listino": "149 €", "q": "Office Home 2024", "ufficiale": ["Microsoft", "https://www.microsoft.com/it-it/microsoft-365/buy/compare-all-microsoft-365-products"]}, {"nome": "SSD 500 GB per il «Turbo»", "listino": "il pezzo che rende veloce un vecchio PC", "q": "SSD 500GB SATA 2,5", "ufficiale": null}, {"nome": "Mac ricondizionato", "listino": "garanzia di un anno dal ricondizionato Apple", "q": "MacBook Air M1 ricondizionato", "ufficiale": ["Apple ricondizionati", "https://www.apple.com/it/shop/refurbished/mac"], "usato": true}]};
+  var off = OFF_SALVATE, offOnline = false;
+  function piu(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+  function ennesimo(a, m, gs, n) { var d = new Date(a, m, 1); return new Date(a, m, 1 + (gs - d.getDay() + 7) % 7 + 7 * (n - 1)); }
+  var REGOLE = {
+    "singles-day": function (a) { var d = new Date(a, 10, 11); return [d, d]; },
+    "black-friday": function (a) { var v = piu(ennesimo(a, 10, 4, 4), 1); return [v, piu(v, 3)]; },
+    "natale": function (a) { return [new Date(a, 11, 1), new Date(a, 11, 24)]; },
+    "saldi-invernali": function (a) { var d = ennesimo(a, 0, 6, 1); return [d, piu(d, 59)]; },
+    "saldi-estivi": function (a) { var d = ennesimo(a, 6, 6, 1); return [d, piu(d, 59)]; },
+    "prime-day": function (a) { var d = ennesimo(a, 6, 2, 2); return [d, piu(d, 3)]; },
+    "festa-prime": function (a) { var s = new Date(a, 9, 7), d = piu(s, (2 - s.getDay() + 7) % 7); return [d, piu(d, 1)]; },
+    "apple-scuola": function (a) { return [new Date(a, 5, 17), new Date(a, 8, 30)]; },
+    "nuovi-iphone": function (a) { var d = ennesimo(a, 8, 2, 2); return [d, piu(d, 20)]; }
+  };
+  function quando(ev, oggi0) {
+    if (ev.sempre) return { sempre: true };
+    if (ev.dal) { var x = { dal: giorno(ev.dal), al: giorno(ev.al || ev.dal) }; return x.al < oggi0 ? null : x; }
+    var f = REGOLE[ev.regola]; if (!f) return null;
+    for (var a = oggi0.getFullYear() - 1; a <= oggi0.getFullYear() + 1; a++) { var r = f(a); if (r[1] >= oggi0) return { dal: r[0], al: r[1] }; }
+    return null;
+  }
+  function gma(d, anno) { return d.getDate() + " " + MESI[d.getMonth()] + (anno ? " " + d.getFullYear() : ""); }
+  function periodo(q) {
+    if (q.sempre) return "Tutto l'anno";
+    if (+q.dal === +q.al) return gma(q.dal, true);
+    return gma(q.dal, q.dal.getFullYear() !== q.al.getFullYear()) + " – " + gma(q.al, true);
+  }
+  function disegnaOfferte() {
+    var o0 = oggi(), corsie = { adesso: [], breve: [], lungo: [] };
+    off.eventi.forEach(function (ev) {
+      var q = quando(ev, o0); if (!q) return;
+      var c, chip;
+      if (q.sempre) { c = "adesso"; chip = ["Tutto l'anno", "aperto"]; }
+      else {
+        var g = Math.round((q.dal - o0) / 864e5), fine = Math.round((q.al - o0) / 864e5);
+        if (g <= 0) { c = "adesso"; chip = [fine === 0 ? "Ultimo giorno" : "Ancora " + fine + " giorni", fine <= 7 ? "urgente" : "aperto"]; }
+        else { c = g <= 60 ? "breve" : "lungo"; chip = [g === 1 ? "Domani" : "Tra " + g + " giorni", ev.scadenza ? "urgente" : "arrivo"]; }
+        if (ev.scadenza && g > 0) chip[0] = "Scadenza tra " + g + " giorni";
+      }
+      corsie[c].push({ ev: ev, q: q, chip: chip, ord: q.sempre ? 9e15 : +q.dal });
+    });
+    ["adesso", "breve", "lungo"].forEach(function (c) {
+      var l = corsie[c].sort(function (a, b) { return c === "adesso" ? (+a.q.al || 9e15) - (+b.q.al || 9e15) : a.ord - b.ord; });
+      $("ev-" + c).innerHTML = l.length ? l.map(function (x) {
+        var e = x.ev;
+        return '<article class="evento" data-id="' + esc(e.id) + '"><div class="chips"><span class="chip ' + x.chip[1] + '">' + esc(x.chip[0]) + "</span>" +
+          (e.stimato ? '<span class="chip stima">data stimata</span>' : "") + "</div><h4>" + esc(e.titolo) + '</h4><p class="quando">' + periodo(x.q) + "</p>" +
+          "<p>" + esc(e.testo) + "</p>" + (e.consiglio ? '<p class="consiglio"><b>Il mio consiglio:</b> ' + esc(e.consiglio) + "</p>" : "") +
+          (e.fonte ? '<p style="font-size:.88rem"><a href="' + esc(e.fonte) + '" target="_blank" rel="noopener">Leggi la fonte</a></p>' : "") + "</article>";
+      }).join("") : '<p class="vuoto-bandi">Niente in questo periodo.</p>';
+    });
+    var qq = function (t) { return encodeURIComponent(t); };
+    $("cerca").className = "cerca" + (offOnline ? "" : " spento");
+    $("cerca").innerHTML = off.cerca.map(function (p) {
+      var v = [["Trovaprezzi", "https://www.trovaprezzi.it/categoria.aspx?libera=" + qq(p.q) + "&id=-1"],
+               ["Google Shopping", "https://www.google.com/search?tbm=shop&q=" + qq(p.q)],
+               ["Amazon", "https://www.amazon.it/s?k=" + qq(p.q)]];
+      if (p.usato) v.splice(1, 1, ["Back Market", "https://www.backmarket.it/it-it/search?q=" + qq(p.q)]);
+      if (p.ufficiale) v.unshift([p.ufficiale[0], p.ufficiale[1], "uff"]);
+      return '<div class="prodotto"><h4>' + esc(p.nome) + '</h4><p class="listino-p">' + (/€/.test(p.listino) ? "Listino ufficiale: <b>" + esc(p.listino) + "</b>" : esc(p.listino)) + '</p><div class="vai">' +
+        v.map(function (l) { return '<a href="' + esc(l[1]) + '" target="_blank" rel="noopener"' + (l[2] ? ' class="uff"' : "") + ">" + esc(l[0]) + "</a>"; }).join("") + "</div></div>";
+    }).join("");
+    $("avviso-off").textContent = off.nota + " Calendario aggiornato al " + data(off.aggiornato) + ".";
+  }
+  function ledOff(colore, testo) { $("led-off").className = "led " + colore; $("stato-off").textContent = testo; }
+  function controllaOfferte() {
+    if (navigator.onLine === false) { off = OFF_SALVATE; offOnline = false; disegnaOfferte(); ledOff("arancio", "Senza connessione: calendario salvato del " + data(OFF_SALVATE.aggiornato) + ". I prezzi di oggi si aprono quando torna Internet."); return; }
+    ledOff("", "Controllo le offerte aggiornate…");
+    var fatto = false, t = setTimeout(function () { if (!fatto) { fatto = true; giallo(); } }, 8000);
+    function giallo() { off = OFF_SALVATE; offOnline = true; disegnaOfferte(); ledOff("", "Online, ma il calendario aggiornato non è raggiungibile: mostro quello salvato. I prezzi di oggi si aprono comunque."); }
+    try {
+      fetch("offerte.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) {
+        if (fatto) return; fatto = true; clearTimeout(t);
+        if (!j || !j.eventi || !j.cerca) throw 0;
+        off = j; offOnline = true; disegnaOfferte(); ledOff("verde", "Online: calendario aggiornato al " + data(j.aggiornato) + ", prezzi di oggi a un clic.");
+      }).catch(function () { if (!fatto) { fatto = true; clearTimeout(t); giallo(); } });
+    } catch (e) { fatto = true; clearTimeout(t); giallo(); }
+  }
+  disegnaOfferte(); controllaOfferte();
+  $("ricontrolla-off").addEventListener("click", controllaOfferte);
+  window.addEventListener("online", controllaOfferte);
+  window.addEventListener("offline", controllaOfferte);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) disegnaOfferte(); });
 
   /* ---- PDF: sul telefono si aprono nel lettore del sito, in una nuova scheda ---- */
   var telefono = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer: coarse)").matches);
