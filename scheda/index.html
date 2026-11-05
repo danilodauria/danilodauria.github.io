@@ -68,7 +68,7 @@ textarea { min-height: 76px; resize: vertical; }
     <button type="button" id="salva-file">Salva in un file</button>
     <button type="button" id="apri-file">Apri un file</button>
     <button type="button" class="pieno" id="stampa-btn">Stampa per il cliente</button>
-    <a href="../">Sito</a>
+    <a href="../" data-torna>← Sito</a>
   </div>
   <input type="file" id="file" accept=".json,application/json" hidden>
 </header>
@@ -144,6 +144,7 @@ textarea { min-height: 76px; resize: vertical; }
   </form>
 </main>
 <div id="stampa"></div>
+<script src="../torna.js"></script>
 <script>
 (function () {
   var LAVORI = ["Pulizia interna e ventole", "Pasta termica nuova", "SSD nuovo al posto del disco", "Memoria RAM aggiunta", "Batteria nuova",

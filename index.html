@@ -1988,6 +1988,13 @@ footer a { color: var(--hero-ink2); }
       var a = e.target.closest ? e.target.closest("a[href]") : null; if (!a) return;
       var h = a.getAttribute("href") || "";
       if (!h || h.charAt(0) === "#" || /^(mailto|tel|sms|javascript|data|blob):/i.test(h) || a.hasAttribute("download")) return;
+      /* i siti dei progetti (danilodauria.github.io/progetto/) si aprono con la barra del sito in alto e il pulsante «Sito» per tornare */
+      try {
+        var x = new URL(a.href, location.href), primo = x.pathname.split("/")[1] || "";
+        if (x.origin === location.origin && primo && !/^(guide|pdf|scheda|video|i18n|icone|strumenti|vista\.html|index\.html|torna\.js)$/.test(primo) && !/\.(pdf|deb|iso|zip|exe|msi|apk|mp4)$/i.test(x.pathname)) {
+          var sez = a.closest("section[id]"); a.setAttribute("href", "vista.html?u=" + encodeURIComponent(x.href) + "&da=" + (sez ? sez.id : "progetti"));
+        }
+      } catch (z) {}
       a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
     }, true);
   }

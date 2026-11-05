@@ -200,7 +200,7 @@ for g in GUIDE:
 <header class="barra">
   <a class="marchio" href="../">{FENICE}<span>Danilo D'Auria · Guide gratuite</span></a>
   <div class="azioni">
-    <a href="../#guide">Tutte le guide</a>
+    <a href="../#guide" data-torna>← Sito</a>
     <button type="button" class="pieno" onclick="window.print()">Stampa o salva in PDF</button>
   </div>
 </header>
@@ -210,8 +210,9 @@ for g in GUIDE:
   <p class="intro">{E(g['intro'])}</p>
   {sez}
   <p class="box">{E(g['box'])}</p>
-  <p class="piede">Guida di Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com<br>Testo con licenza Creative Commons BY-NC-SA 4.0: potete stamparla e condividerla liberamente, senza scopo di lucro, citando l'autore.</p>
+  <p class="piede"><a href="../#guide" data-torna>← Torna al sito e alle altre guide</a><br>Guida di Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com<br>Testo con licenza Creative Commons BY-NC-SA 4.0: potete stamparla e condividerla liberamente, senza scopo di lucro, citando l'autore.</p>
 </main>
+<script src="../torna.js"></script>
 <script>
 /* sul telefono e sul tablet ogni collegamento si apre in una nuova scheda */
 (function () {{
