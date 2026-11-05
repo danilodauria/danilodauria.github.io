@@ -21,14 +21,17 @@ jobs:
         with:
           python-version: "3.12"
       - name: Frasi da tradurre
+        timeout-minutes: 12
+        continue-on-error: true
         run: |
           pip install playwright==1.48.0
           python -m playwright install --with-deps chromium
           python -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
           sleep 2
-          python strumenti/i18n/estrai-testi.py http://127.0.0.1:8765/ || echo "Estrazione delle frasi non riuscita"
+          timeout 420 python strumenti/i18n/estrai-testi.py http://127.0.0.1:8765/ || echo "Estrazione delle frasi non riuscita"
       - name: Controllo
         id: c
+        timeout-minutes: 10
         run: python strumenti/controllo-settimanale.py
       - name: Avviso nella scheda Issues
         env:
