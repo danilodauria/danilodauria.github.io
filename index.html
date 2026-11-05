@@ -286,6 +286,34 @@ blockquote { margin: 24px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(-
 .scatto::before { content: ""; display: block; height: 18px; background: radial-gradient(circle at 12px 9px, #e8702a 3.5px, transparent 4px), radial-gradient(circle at 24px 9px, #f2b33d 3.5px, transparent 4px), radial-gradient(circle at 36px 9px, #8fb3a0 3.5px, transparent 4px), var(--morbido); border-bottom: 1px solid var(--linea); }
 .scatto img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; object-position: top; }
 
+/* ---------- Windows e Mac ---------- */
+.tre-erre { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--verde); margin-bottom: 28px; }
+.tre-erre div { padding: 14px 18px 16px 0; display: grid; gap: 4px; }
+.tre-erre b { font-family: var(--f-display); font-weight: 400; font-size: 1.3rem; color: var(--verde); }
+.tre-erre span { color: var(--ink2); font-size: .95rem; }
+.os-percorsi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.os { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); overflow: hidden; }
+.os-testa { background: var(--notte); color: var(--hero-ink); padding: 18px 24px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.os-testa h3 { color: var(--alba); font-size: 1.5rem; }
+.os-testa p { color: var(--hero-ink2); font-size: .92rem; }
+.os-passi { list-style: none; margin: 0; padding: 8px 24px 20px; display: grid; }
+.os-passi > li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--linea); }
+.os-passi > li:last-child { border-bottom: 0; }
+.os-lettera { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; font-family: var(--f-display); font-size: 1.1rem; background: var(--morbido); color: var(--brace); }
+.os-cima { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+.os-passi p { color: var(--ink2); font-size: .96rem; }
+.os-passi .os-cima b { color: var(--ink); font-size: 1.02rem; }
+.erre { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+.erre-ridurre { background: var(--verde-morbido); color: var(--verde); }
+.erre-riusare { background: var(--morbido); color: var(--brace); }
+.erre-riciclare { border: 1px solid var(--linea); color: var(--ink2); }
+.os-scelte { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.os-scelte li { padding: 8px 12px; border-radius: 8px; background: var(--bg); border-left: 3px solid var(--oro); font-size: .93rem; color: var(--ink2); }
+.os-scelte b { display: block; color: var(--ink); }
+.os-prezzo { margin-top: 22px; padding: 14px 18px; border-radius: var(--r); background: var(--verde-morbido); color: var(--ink); }
+.os-nota { margin-top: 12px; font-size: .86rem; color: var(--ink2); max-width: 90ch; }
+@media (max-width: 900px) { .os-percorsi, .tre-erre { grid-template-columns: 1fr; } .os-passi { padding: 6px 16px 14px; } .os-testa { padding: 16px; } }
+
 /* ---------- Bandi ---------- */
 .bandi-testa { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; justify-content: space-between; margin-bottom: 22px; }
 .stato-rete { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 12px; border-radius: 99px; background: var(--foglio); border: 1px solid var(--linea); font-size: .92rem; max-width: 100%; }
@@ -740,6 +768,7 @@ footer a { color: var(--hero-ink2); }
       <div class="pacchetto"><p class="label">3 · Turbo · hardware + software</p><p class="prezzo">85 € <small>a computer</small></p><p>Installazione di Linux e sostituzione del vecchio disco con un nuovo SSD, molto più veloce.</p><p class="ideale">Il massimo della prestazione per il vostro vecchio PC.</p></div>
     </div>
     <div class="flex-nota"><span class="ico" aria-hidden="true">Flex</span><div><b>Servizio di punta: ChromeOS Flex di Google</b><p style="color:var(--ink2);font-size:.96rem">Un PC o un Mac datato diventa un computer moderno, sicuro e veloce: avvio in pochi secondi, aggiornamenti automatici, ideale per web, Google Workspace e streaming.</p></div></div>
+    <p style="margin:-24px 0 36px;font-weight:700"><a href="#windows-mac">Avete Windows o un Mac e volete tenerli? Ecco il percorso dalla A alla Z →</a></p>
     <h3 style="margin-bottom:16px">Altri servizi</h3>
     <div class="servizi">
       <div class="serv"><p class="label">Formazione</p><h3>Corsi e laboratori</h3><p>Alfabetizzazione digitale per gruppi, associazioni, scuole e biblioteche: dal primo clic a SPID, truffe online e Intelligenza Artificiale. Con il Professore Digitale proiettato e il Grande Quiz a squadre.</p></div>
@@ -756,6 +785,27 @@ footer a { color: var(--hero-ink2); }
       <li><b>Intervento</b><span>Installazione, corso o recupero.</span></li>
       <li><b>Vi lascio autonomi</b><span>Schede, vademecum e programmi che restano vostri.</span></li>
     </ol>
+  </div>
+</section>
+
+<section class="blocco" id="windows-mac">
+  <div class="wrap">
+    <div class="testa">
+      <p class="label">Anche per Windows e Mac</p>
+      <h2>Rigenerare senza cambiare sistema: Windows e Apple, dalla A alla Z.</h2>
+      <p class="lead">Non tutti vogliono passare a Linux, e va bene. Rigenero anche computer Windows, Mac, iPhone e iPad, rispettando le regole di Microsoft e di Apple. Il sistema lo scegliamo insieme, solo dopo la diagnosi.</p>
+    </div>
+    <div class="tre-erre">
+      <div><b>Ridurre</b><span>Allungare la vita di ciò che avete già: meno acquisti, meno rifiuti elettronici.</span></div>
+      <div><b>Riusare</b><span>Lo stesso hardware con il sistema giusto, oppure una seconda funzione in casa o in ufficio.</span></div>
+      <div><b>Riciclare</b><span>Dati cancellati in sicurezza, account scollegati, e solo alla fine i RAEE.</span></div>
+    </div>
+    <div class="os-percorsi">
+      <article class="os"><div class="os-testa"><h3>Windows</h3><p>PC fissi e portatili di qualsiasi marca</p></div><ol class="os-passi"><li><span class="os-lettera" aria-hidden="true">A</span><div><p class="os-cima"><b>Diagnosi e inventario</b><span class="erre erre-ridurre">Ridurre</span></p><p>Modello, processore, memoria, salute del disco, batteria. Controllo i requisiti di Windows 11: TPM 2.0, avvio protetto UEFI, processore Intel di 8ª generazione o AMD Ryzen 2000 e successivi, 4 GB di RAM, 64 GB di spazio.</p></div></li><li><span class="os-lettera" aria-hidden="true">B</span><div><p class="os-cima"><b>Dati, account e licenza</b><span class="erre erre-riusare">Riusare</span></p><p>Copia di sicurezza dei dati, chiave di ripristino BitLocker se il disco è cifrato, account Microsoft. Verifico la licenza: quella preinstallata (OEM o digitale) resta legata a quel computer e si riattiva da sola dopo un&#x27;installazione pulita.</p></div></li><li><span class="os-lettera" aria-hidden="true">C</span><div><p class="os-cima"><b>La scelta del sistema giusto</b><span class="erre erre-riusare">Riusare</span></p><p>Decido dopo la diagnosi, con voi, tra quattro strade:</p><ul class="os-scelte"><li><b>PC compatibile</b> passaggio pulito a Windows 11, con la stessa licenza.</li><li><b>PC non compatibile, ma serve Windows</b> Windows 10 con gli aggiornamenti di sicurezza estesi (ESU), gratuiti per i privati fino al 12 ottobre 2027; intanto pianifichiamo il passaggio.</li><li><b>Windows 11 su PC non compatibile</b> Microsoft lo permette ma non garantisce gli aggiornamenti: non lo consiglio per il lavoro.</li><li><b>Seconda vita libera</b> Linux (FeniceOS, Linux Lite, Mint) o ChromeOS Flex: sicuri e aggiornati, senza scadenze.</li></ul></div></li><li><span class="os-lettera" aria-hidden="true">D</span><div><p class="os-cima"><b>Potenziamento</b><span class="erre erre-ridurre">Ridurre</span></p><p>SSD al posto del disco meccanico, più RAM, pasta termica nuova, pulizia delle ventole, batteria se serve. Spesso basta questo per un PC che sembra nuovo.</p></div></li><li><span class="os-lettera" aria-hidden="true">E</span><div><p class="os-cima"><b>Installazione pulita e sicura</b><span class="erre erre-riusare">Riusare</span></p><p>Driver dai siti ufficiali, tutti gli aggiornamenti, Microsoft Defender attivo, nessun programma inutile preinstallato, cifratura del disco e backup automatico.</p></div></li><li><span class="os-lettera" aria-hidden="true">F</span><div><p class="os-cima"><b>Fine vita responsabile</b><span class="erre erre-riciclare">Riciclare</span></p><p>Se il PC cambia proprietario: cancellazione sicura dei dati e scollegamento dall&#x27;account Microsoft. Quello che non si recupera va ai RAEE: all&#x27;isola ecologica del Comune, oppure al negozio quando comprate un apparecchio nuovo (ritiro «uno contro uno»).</p></div></li></ol></article>
+      <article class="os"><div class="os-testa"><h3>Apple</h3><p>Mac, iPhone e iPad</p></div><ol class="os-passi"><li><span class="os-lettera" aria-hidden="true">A</span><div><p class="os-cima"><b>Diagnosi e inventario</b><span class="erre erre-ridurre">Ridurre</span></p><p>Modello e anno dal numero di serie, processore (Intel, Intel con chip T2 o Apple Silicon), cicli e salute della batteria, Apple Diagnostics. Per iPhone e iPad: il modello e l&#x27;ultima versione di iOS che può ricevere.</p></div></li><li><span class="os-lettera" aria-hidden="true">B</span><div><p class="os-cima"><b>Account e Blocco attivazione</b><span class="erre erre-riusare">Riusare</span></p><p>Prima di tutto «Trova il mio» e iCloud: con il Blocco attivazione attivo serve il proprietario con il suo ID Apple. Solo Apple può toglierlo, con la prova d&#x27;acquisto. Non lavoro su dispositivi bloccati di provenienza incerta.</p></div></li><li><span class="os-lettera" aria-hidden="true">C</span><div><p class="os-cima"><b>La scelta del sistema giusto</b><span class="erre erre-riusare">Riusare</span></p><p>Le regole di Apple dipendono dal modello:</p><ul class="os-scelte"><li><b>Mac con chip Apple (M1 e successivi)</b> macOS più recente, davanti ancora molti anni di aggiornamenti.</li><li><b>Mac Intel ancora supportati</b> macOS 26 Tahoe è l&#x27;ultima versione per Intel (MacBook Pro 16&quot; 2019, MacBook Pro 13&quot; 2020 a quattro porte, iMac 27&quot; 2020, Mac Pro 2019); Apple ha annunciato tre anni di aggiornamenti di sicurezza.</li><li><b>Mac esclusi</b> OpenCore Legacy Patcher, progetto indipendente non di Apple, solo con backup completo e con cautela sui Mac con chip T2; oppure Linux, o ChromeOS Flex sui modelli che Google certifica.</li><li><b>iPhone e iPad</b> iOS 26 va da iPhone 11 in poi; i modelli più vecchi ricevono ancora alcune correzioni di sicurezza e possono avere una seconda funzione: telefono semplice per un nonno, cornice di foto, telecomando di casa.</li></ul></div></li><li><span class="os-lettera" aria-hidden="true">D</span><div><p class="os-cima"><b>Riparazione e potenziamento</b><span class="erre erre-ridurre">Ridurre</span></p><p>Batteria, pulizia, SSD e RAM dove sono sostituibili. Ricambi originali con il programma Self Service Repair di Apple, attivo anche in Italia, o ricambi di qualità dai riparatori indipendenti.</p></div></li><li><span class="os-lettera" aria-hidden="true">E</span><div><p class="os-cima"><b>Ripristino pulito</b><span class="erre erre-riusare">Riusare</span></p><p>«Inizializza contenuti e impostazioni» oppure reinstallazione di macOS dal Recupero; aggiornamenti, FileVault, Time Machine o un altro backup.</p></div></li><li><span class="os-lettera" aria-hidden="true">F</span><div><p class="os-cima"><b>Fine vita responsabile</b><span class="erre erre-riciclare">Riciclare</span></p><p>Disattivazione di «Trova il mio» e uscita da iCloud prima di vendere o donare. Quello che non si recupera va ai RAEE oppure al programma di riciclo Apple.</p></div></li></ol></article>
+    </div>
+    <p class="os-prezzo"><b>Check-up GRATIS anche per Windows e Apple.</b> Dopo la diagnosi ricevete un preventivo chiaro: i prezzi dipendono dal modello e dai ricambi.</p>
+    <p class="os-nota">Regole verificate a novembre 2026. Microsoft e Apple cambiano spesso tempi e requisiti: prima di ogni intervento controllo le condizioni aggiornate. Il diritto europeo alla riparazione è in vigore dal 31 luglio 2026; in Italia il recepimento è ancora in corso.</p>
   </div>
 </section>
 
@@ -1070,6 +1120,15 @@ footer a { color: var(--hero-ink2); }
       .catch(function () { /* resta l'elenco gia' mostrato */ });
   }
   caricaProgetti();
+
+  /* ---- PDF: sul telefono si aprono nel lettore del sito, in una nuova scheda ---- */
+  var telefono = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer: coarse)").matches);
+  if (telefono) {
+    document.querySelectorAll('a[href^="pdf/"][href$=".pdf"]').forEach(function (a) {
+      a.setAttribute("href", "pdf/leggi.html#" + a.getAttribute("href").slice(4));
+      a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
+    });
+  }
 
   document.querySelectorAll(".mappa [data-vai]").forEach(function (g) {
     g.setAttribute("tabindex", "0"); g.setAttribute("role", "link");

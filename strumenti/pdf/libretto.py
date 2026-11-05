@@ -161,6 +161,32 @@ def servizi():
   <ol class="metodo">{met}</ol>
 </section>"""
 
+def windows_mac():
+    w = D.get("wm")
+    if not w:
+        return ""
+    erre = "".join("<div><b>%s</b><span>%s</span></div>" % (E(a), E(b)) for a, b in w["erre"])
+    blocchi = []
+    for o in w["os"]:
+        passi = []
+        for x in o["passi"]:
+            sc = ""
+            if x["scelte"]:
+                sc = '<ul class="scelte">' + "".join("<li><b>%s</b> %s</li>" % (E(a), E(b)) for a, b in x["scelte"]) + "</ul>"
+            passi.append('<li><span class="lettera">%s</span><div><p class="cima"><b>%s</b><span class="erre %s">%s</span></p><p>%s</p>%s</div></li>'
+                         % (E(x["lettera"]), E(x["titolo"]), E(x["erre"].lower()), E(x["erre"]), E(x["testo"]), sc))
+        blocchi.append('<div class="os"><div class="os-testa"><h2>%s</h2><span>%s</span></div><ol class="os-passi">%s</ol></div>' % (E(o["nome"]), E(o["sotto"]), "".join(passi)))
+    return f"""
+<section class="capitolo">
+  <p class="occhiello">{E(w['label'])}</p>
+  <h1>{E(w['h2'])}</h1>
+  <p class="lead">{E(w['lead'])}</p>
+  <div class="tre-erre">{erre}</div>
+  {''.join(blocchi)}
+  <p class="os-prezzo">{E(w['prezzo'])}</p>
+  <p class="piccolo">{E(w['nota'])}</p>
+</section>"""
+
 def stato(b):
     if b.get("previsto"): return ("In arrivo", "arrivo")
     if not b.get("scadenza"): return ("Aperto", "aperto")
@@ -237,6 +263,7 @@ pagina = f"""<!doctype html><html lang="it"><head><meta charset="utf-8"><title>D
 {libro_patto()}
 {video()}
 {servizi()}
+{windows_mac()}
 {bandi_pag()}
 {faq()}
 {retro()}

@@ -41,6 +41,13 @@ async () => {
     flex: [t($('.flex-nota b', se)), t($('.flex-nota p', se))],
     altri: $$('.serv', se).map(x => [t($('.label', x)), t($('h3', x)), t($('p:not(.label)', x))]),
     metodo: $$('.metodo li', se).map(x => [t($('b', x)), t($('span', x))]) };
+  const wm = $('#windows-mac');
+  d.wm = wm ? { label: t($('.label', wm)), h2: t($('h2', wm)), lead: t($('.testa .lead', wm)),
+    erre: $$('.tre-erre div', wm).map(x => [t($('b', x)), t($('span', x))]),
+    os: $$('article.os', wm).map(o => ({ nome: t($('h3', o)), sotto: t($('.os-testa p', o)),
+      passi: $$('.os-passi > li', o).map(li => ({ lettera: t($('.os-lettera', li)), titolo: t($('.os-cima b', li)), erre: t($('.erre', li)),
+        testo: t(li.querySelector(':scope > div > p:not(.os-cima)')), scelte: $$('.os-scelte li', li).map(x => [t($('b', x)), t(x).replace(t($('b', x)), '').trim()]) })) })),
+    prezzo: t($('.os-prezzo', wm)), nota: t($('.os-nota', wm)) } : null;
   d.faq = $$('.faq details').map(x => [t($('summary', x)), t($('p', x))]);
   const co = $('#contatti');
   d.contatti = { h2: t($('h2', co)), lead: t($('.lead', co)), email: t($('#email')) };

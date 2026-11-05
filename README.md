@@ -10,6 +10,7 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `progetti.json` | I progetti e le loro versioni: lo aggiorna da solo ogni giorno GitHub Actions |
 | `strumenti/aggiorna-progetti.py` | Lo script che legge i repository di danilodauria su GitHub |
 | `.github/workflows/progetti.yml` | L'aggiornamento automatico (ogni giorno, e con il pulsante «Run workflow» nella scheda Actions) |
+| `pdf/leggi.html` | Il lettore dei PDF per i telefoni: si apre in una nuova scheda (usa PDF.js, licenza Apache 2.0, in `pdf/pdfjs/`) |
 | `pdf/` | Il profilo in PDF, per lo schermo e da stampare: lo rifà da solo GitHub Actions (`.github/workflows/pdf.yml`) quando cambia il sito, quando cambiano i progetti e ogni giorno per i bandi |
 | `anteprima.png` | L'immagine che compare quando si condivide il link su WhatsApp e social |
 
