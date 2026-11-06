@@ -2,26 +2,66 @@
  {
   "id": "backup",
   "titolo": "Il backup: foto e documenti al sicuro",
-  "breve": "La regola del 3-2-1 e come attivare la copia automatica su Windows, Mac, Linux e telefono."
+  "breve": "La regola del 3-2-1 e come attivare la copia automatica su Windows, Mac, Linux e telefono.",
+  "lingue": [
+   "it",
+   "en",
+   "fr",
+   "es",
+   "de",
+   "ro"
+  ]
  },
  {
   "id": "truffe",
   "titolo": "Truffe online: come riconoscerle e cosa fare",
-  "breve": "I segnali d'allarme, le truffe più diffuse e cosa fare subito se ci siete cascati."
+  "breve": "I segnali d'allarme, le truffe più diffuse e cosa fare subito se ci siete cascati.",
+  "lingue": [
+   "it",
+   "en",
+   "fr",
+   "es",
+   "de",
+   "ro"
+  ]
  },
  {
   "id": "vendere-donare",
   "titolo": "Prima di vendere, regalare o buttare un computer o un telefono",
-  "breve": "Copiare i dati, uscire dagli account, cancellare tutto in sicurezza e dove portarlo."
+  "breve": "Copiare i dati, uscire dagli account, cancellare tutto in sicurezza e dove portarlo.",
+  "lingue": [
+   "it",
+   "en",
+   "fr",
+   "es",
+   "de",
+   "ro"
+  ]
  },
  {
   "id": "password",
   "titolo": "Password e accessi sicuri, senza impazzire",
-  "breve": "Password che si ricordano, un gestore di password, la verifica in due passaggi, SPID e CIE."
+  "breve": "Password che si ricordano, un gestore di password, la verifica in due passaggi, SPID e CIE.",
+  "lingue": [
+   "it",
+   "en",
+   "fr",
+   "es",
+   "de",
+   "ro"
+  ]
  },
  {
   "id": "pc-veloce",
   "titolo": "Un computer più veloce, gratis, in un pomeriggio",
-  "breve": "Programmi all'avvio, spazio libero, browser, pulizia e quando conviene un SSD."
+  "breve": "Programmi all'avvio, spazio libero, browser, pulizia e quando conviene un SSD.",
+  "lingue": [
+   "it",
+   "en",
+   "fr",
+   "es",
+   "de",
+   "ro"
+  ]
  }
 ]

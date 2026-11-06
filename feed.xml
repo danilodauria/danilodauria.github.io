@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="it">
+  <title>Novità di Danilo D'Auria</title>
+  <subtitle>Programmi liberi, guide gratuite e servizi del sito danilodauria.github.io</subtitle>
+  <link href="https://danilodauria.github.io/"/>
+  <link rel="self" href="https://danilodauria.github.io/feed.xml"/>
+  <id>https://danilodauria.github.io/</id>
+  <updated>2026-11-06T06:00:00Z</updated>
+  <author><name>Danilo D'Auria</name></author>
+  <entry>
+    <title>Prenotate il check-up gratuito dal sito</title>
+    <link href="https://danilodauria.github.io/#prenota"/>
+    <id>https://danilodauria.github.io/#novita-sito-prenota</id>
+    <updated>2026-11-06T06:00:00Z</updated>
+    <summary>Scegliete i giorni e la fascia oraria: la richiesta parte dalla vostra email.</summary>
+  </entry>
+  <entry>
+    <title>Volantino, biglietti da visita e kit per i bandi</title>
+    <link href="https://danilodauria.github.io/#materiali"/>
+    <id>https://danilodauria.github.io/#novita-sito-materiali</id>
+    <updated>2026-11-06T06:00:00Z</updated>
+    <summary>Materiali pronti da stampare e una scheda di progetto da adattare per comuni, scuole e associazioni.</summary>
+  </entry>
+  <entry>
+    <title>Le guide gratuite in sei lingue</title>
+    <link href="https://danilodauria.github.io/#guide"/>
+    <id>https://danilodauria.github.io/#novita-sito-guide-lingue</id>
+    <updated>2026-11-06T06:00:00Z</updated>
+    <summary>Backup, truffe, password e le altre guide ora anche in inglese, francese, spagnolo, tedesco e rumeno.</summary>
+  </entry>
+  <entry>
+    <title>Il sito in sei lingue e come app</title>
+    <link href="https://danilodauria.github.io/#test"/>
+    <id>https://danilodauria.github.io/#novita-sito-lingue-app</id>
+    <updated>2026-11-05T06:00:00Z</updated>
+    <summary>Test del PC, preventivo, calcolo del risparmio e guide funzionano anche senza Internet.</summary>
+  </entry>
+  <entry>
+    <title>Psicologo Digitale 1.3.32</title>
+    <link href="https://danilodauria.github.io/psicologo-digitale/"/>
+    <id>https://danilodauria.github.io/#novita-psicologo-digitale@1.3.32</id>
+    <updated>2026-11-04T06:00:00Z</updated>
+    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
+  </entry>
+  <entry>
+    <title>Naturopata Digitale 1.3.10</title>
+    <link href="https://danilodauria.github.io/naturopata-digitale/"/>
+    <id>https://danilodauria.github.io/#novita-naturopata-digitale@1.3.10</id>
+    <updated>2026-11-04T06:00:00Z</updated>
+    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
+  </entry>
+  <entry>
+    <title>Consulente Digitale 1.5.2</title>
+    <link href="https://danilodauria.github.io/consulente-digitale/"/>
+    <id>https://danilodauria.github.io/#novita-consulente-digitale@1.5.2</id>
+    <updated>2026-11-04T06:00:00Z</updated>
+    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
+  </entry>
+  <entry>
+    <title>FeniceOS 2.2</title>
+    <link href="https://danilodauria.github.io/feniceos/"/>
+    <id>https://danilodauria.github.io/#novita-feniceos@2.2</id>
+    <updated>2026-11-04T06:00:00Z</updated>
+    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
+  </entry>
+  <entry>
+    <title>Il Grande Quiz dell&#x27;Informatica 1.0.0</title>
+    <link href="https://danilodauria.github.io/grande-quiz/"/>
+    <id>https://danilodauria.github.io/#novita-grande-quiz@1.0.0</id>
+    <updated>2026-11-04T06:00:00Z</updated>
+    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
+  </entry>
+  <entry>
+    <title>Professore Digitale 3.8.0</title>
+    <link href="https://danilodauria.github.io/professore-digitale/"/>
+    <id>https://danilodauria.github.io/#novita-professore-digitale@3.8.0</id>
+    <updated>2026-11-04T06:00:00Z</updated>
+    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
+  </entry>
+</feed>

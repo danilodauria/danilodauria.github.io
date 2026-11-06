@@ -13,11 +13,14 @@ elenco = json.load(open(os.path.join(REPO, "guide", "elenco.json"), encoding="ut
 f_imp = os.path.join(OUT, "impronte.json")
 impronte = json.load(open(f_imp)) if os.path.exists(f_imp) else {}
 motore = hashlib.sha256(open(__file__, "rb").read()).hexdigest()[:12]
+piedi = json.load(open(os.path.join(REPO, "guide", "piedi.json"), encoding="utf-8"))
 da_fare = []
 for g in elenco:
-    h = motore + hashlib.sha256(open(os.path.join(REPO, "guide", g["id"] + ".html"), "rb").read()).hexdigest()
-    if SEMPRE or impronte.get(g["id"]) != h or not os.path.exists(os.path.join(OUT, g["id"] + ".pdf")):
-        da_fare.append((g, h))
+    for l in g.get("lingue", ["it"]):
+        rel = g["id"] if l == "it" else l + "/" + g["id"]
+        h = motore + hashlib.sha256(open(os.path.join(REPO, "guide", rel + ".html"), "rb").read()).hexdigest()
+        if SEMPRE or impronte.get(rel) != h or not os.path.exists(os.path.join(OUT, rel + ".pdf")):
+            da_fare.append((rel, l, h))
 if not da_fare:
     print("Guide PDF già aggiornate."); sys.exit(0)
 PIEDE = ('<div style="width:100%;font-family:sans-serif;font-size:7.5px;color:#4f5c68;padding:0 16mm;display:flex;justify-content:space-between">'
@@ -25,12 +28,14 @@ PIEDE = ('<div style="width:100%;font-family:sans-serif;font-size:7.5px;color:#4
 with sync_playwright() as p:
     br = p.chromium.launch(executable_path=CHROME, args=["--no-sandbox"])
     pg = br.new_page()
-    for g, h in da_fare:
-        pg.goto(URL + "guide/" + g["id"] + ".html", wait_until="load"); pg.evaluate("document.fonts.ready"); time.sleep(.5)
+    for rel, l, h in da_fare:
+        os.makedirs(os.path.dirname(os.path.join(OUT, rel + ".pdf")), exist_ok=True)
+        pg.goto(URL + "guide/" + rel + ".html", wait_until="load"); pg.evaluate("document.fonts.ready"); time.sleep(.4)
         pg.emulate_media(media="print", color_scheme="light")
-        pg.pdf(path=os.path.join(OUT, g["id"] + ".pdf"), format="A4", print_background=True, display_header_footer=True,
-               header_template="<span></span>", footer_template=PIEDE, margin={"top": "16mm", "bottom": "18mm", "left": "16mm", "right": "16mm"})
-        impronte[g["id"]] = h
-        print("PDF:", g["id"])
+        piede = PIEDE.replace("Guide gratuite di Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0", piedi.get(l, piedi["it"]))
+        pg.pdf(path=os.path.join(OUT, rel + ".pdf"), format="A4", print_background=True, display_header_footer=True,
+               header_template="<span></span>", footer_template=piede, margin={"top": "16mm", "bottom": "18mm", "left": "16mm", "right": "16mm"})
+        impronte[rel] = h
+        print("PDF:", rel)
     br.close()
 json.dump(impronte, open(f_imp, "w"), indent=1, sort_keys=True)

@@ -1,0 +1,9 @@
+{
+ "_nota": "Giorni e orari che il sito propone per il check-up. giorni_settimana: 0=domenica … 6=sabato. preavviso: giorni minimi da oggi. chiusure: MM-GG ogni anno o AAAA-MM-GG una volta.",
+ "giorni_settimana": [1, 2, 3, 4, 5, 6],
+ "preavviso": 1,
+ "quanti": 12,
+ "fasce": [["mattina", "Mattina", "9–13"], ["pomeriggio", "Pomeriggio", "14–18"], ["sera", "Sera", "18–20"]],
+ "dove": [["domicilio", "A domicilio"], ["remoto", "In videochiamata"], ["concordare", "Da concordare"]],
+ "chiusure": ["01-01", "01-06", "04-25", "05-01", "06-02", "08-15", "11-01", "12-08", "12-25", "12-26"]
+}

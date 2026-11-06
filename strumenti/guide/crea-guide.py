@@ -161,6 +161,9 @@ p { margin: 0 0 10px; }
 ul { margin: 0 0 10px; padding-left: 22px; }
 li { margin: 6px 0; }
 .box { margin-top: 30px; padding: 16px 20px; border-radius: 14px; background: var(--verde-morbido); }
+.lingue { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 14px; }
+.lingue a { font: 700 .8rem "JetBrains Mono", ui-monospace, monospace; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--linea); color: var(--ink2); text-decoration: none; }
+.lingue a[aria-current="true"] { background: var(--notte); color: #fde9b0; border-color: var(--notte); }
 .piede { margin-top: 34px; padding-top: 14px; border-top: 1px solid var(--linea); font-size: .86rem; color: var(--ink2); }
 a { color: var(--brace); }
 @media print {
@@ -168,7 +171,7 @@ a { color: var(--brace); }
   :root { --bg:#fff; --foglio:#fff; --ink:#1c2730; --ink2:#4f5c68; --linea:#e6dccb; --verde-morbido:#eaf5ed; }
   body { font-size: 10.5pt; }
   .barra { background: none; color: var(--ink); padding: 0 0 6mm; border-bottom: 1px solid var(--linea); }
-  .barra .azioni { display: none; }
+  .barra .azioni, .lingue { display: none; }
   main { padding: 6mm 0 0; max-width: none; }
   h2 { break-after: avoid; } li, .box { break-inside: avoid; }
   .piede a[data-torna], .piede a[data-torna] + br { display: none; }
@@ -184,53 +187,85 @@ def corpo(blocchi):
             out.append("<p>%s</p>" % b)
     return "".join(out)
 
-for g in GUIDE:
-    sez = "".join("<h2>%s</h2>%s" % (E(t), corpo(bl)) for t, bl in g["sezioni"])
-    pagina = f"""<!doctype html>
-<html lang="it">
+UI_IT = {"marchio": "Danilo D'Auria · Guide gratuite", "sito": "← Sito", "stampa": "Stampa o salva in PDF",
+         "label": "Guida gratuita · aggiornata a " + AGGIORNATA, "torna": "← Torna al sito e alle altre guide",
+         "firma": "Guida di Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com",
+         "licenza": "Testo con licenza Creative Commons BY-NC-SA 4.0: potete stamparla e condividerla liberamente, senza scopo di lucro, citando l'autore.",
+         "titolo": "Guide gratuite di Danilo D'Auria", "piede_pdf": "Guide gratuite di Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
+import importlib.util
+def carica(l):
+    spec = importlib.util.spec_from_file_location("guide_" + l, os.path.join(QUI, "guide_%s.py" % l))
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m.UI, m.GUIDE
+LINGUE = {"it": (UI_IT, GUIDE)}
+for l in ["en", "fr", "es", "de", "ro"]:
+    LINGUE[l] = carica(l)
+NOMI = {"it": "IT", "en": "EN", "fr": "FR", "es": "ES", "de": "DE", "ro": "RO"}
+
+def percorso(l, gid):
+    return ("guide/%s.html" % gid) if l == "it" else ("guide/%s/%s.html" % (l, gid))
+
+SCRIPT_TEL = """<script>
+/* sul telefono e sul tablet ogni collegamento si apre in una nuova scheda */
+(function () {
+  if (!(/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer: coarse)").matches))) return;
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href]") : null; if (!a) return;
+    var h = a.getAttribute("href") || "";
+    if (!h || h.charAt(0) === "#" || /^(mailto|tel|sms|javascript|data|blob):/i.test(h) || a.hasAttribute("download") || a.hasAttribute("data-lingua")) return;
+    a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
+  }, true);
+})();
+</script>"""
+
+conta = 0
+for l, (UI, elenco) in LINGUE.items():
+    su = "../" if l == "it" else "../../"
+    if l != "it": os.makedirs(os.path.join(OUT, l), exist_ok=True)
+    ids = [g["id"] for g in elenco]
+    assert ids == [g["id"] for g in GUIDE], l
+    for g in elenco:
+        sez = "".join("<h2>%s</h2>%s" % (E(t), corpo(bl)) for t, bl in g["sezioni"])
+        lingue = " ".join('<a href="%s%s" lang="%s" hreflang="%s" data-lingua%s>%s</a>' % (su, percorso(x, g["id"]), x, x, ' aria-current="true"' if x == l else "", NOMI[x]) for x in LINGUE)
+        alt = "\n".join('<link rel="alternate" hreflang="%s" href="https://danilodauria.github.io/%s">' % (x, percorso(x, g["id"])) for x in LINGUE)
+        pagina = f"""<!doctype html>
+<html lang="{l}">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{E(g['titolo'])} · Guide gratuite di Danilo D'Auria</title>
+<title>{E(g['titolo'])} · {E(UI['titolo'])}</title>
 <meta name="description" content="{E(g['breve'])}">
-<link rel="icon" href="../fenice.svg" type="image/svg+xml">
-<link rel="manifest" href="../manifest.webmanifest">
+<link rel="canonical" href="https://danilodauria.github.io/{percorso(l, g['id'])}">
+{alt}
+<link rel="icon" href="{su}fenice.svg" type="image/svg+xml">
+<link rel="manifest" href="{su}manifest.webmanifest">
 <meta name="theme-color" content="#14232e">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap">
 <style>{CSS}</style>
 <body>
 <header class="barra">
-  <a class="marchio" href="../">{FENICE}<span>Danilo D'Auria · Guide gratuite</span></a>
+  <a class="marchio" href="{su}">{FENICE}<span>{E(UI['marchio'])}</span></a>
   <div class="azioni">
-    <a href="../#guide" data-torna>← Sito</a>
-    <button type="button" class="pieno" onclick="window.print()">Stampa o salva in PDF</button>
+    <a href="{su}#guide" data-torna>{E(UI['sito'])}</a>
+    <button type="button" class="pieno" onclick="window.print()">{E(UI['stampa'])}</button>
   </div>
 </header>
 <main>
-  <p class="label">Guida gratuita · aggiornata a {AGGIORNATA}</p>
+  <p class="lingue">{lingue}</p>
+  <p class="label">{E(UI['label'])}</p>
   <h1>{E(g['titolo'])}</h1>
   <p class="intro">{E(g['intro'])}</p>
   {sez}
   <p class="box">{E(g['box'])}</p>
-  <p class="piede"><a href="../#guide" data-torna>← Torna al sito e alle altre guide</a><br>Guida di Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com<br>Testo con licenza Creative Commons BY-NC-SA 4.0: potete stamparla e condividerla liberamente, senza scopo di lucro, citando l'autore.</p>
+  <p class="piede"><a href="{su}#guide" data-torna>{E(UI['torna'])}</a><br>{E(UI['firma'])}<br>{E(UI['licenza'])}</p>
 </main>
-<script src="../torna.js"></script>
-<script>
-/* sul telefono e sul tablet ogni collegamento si apre in una nuova scheda */
-(function () {{
-  if (!(/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer: coarse)").matches))) return;
-  document.addEventListener("click", function (e) {{
-    var a = e.target.closest ? e.target.closest("a[href]") : null; if (!a) return;
-    var h = a.getAttribute("href") || "";
-    if (!h || h.charAt(0) === "#" || /^(mailto|tel|sms|javascript|data|blob):/i.test(h) || a.hasAttribute("download")) return;
-    a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
-  }}, true);
-}})();
-</script>
+<script src="{su}torna.js"></script>
+{SCRIPT_TEL}
 </body>
 </html>
 """
-    open(os.path.join(OUT, g["id"] + ".html"), "w", encoding="utf-8").write(pagina)
+        dest = os.path.join(OUT, g["id"] + ".html") if l == "it" else os.path.join(OUT, l, g["id"] + ".html")
+        open(dest, "w", encoding="utf-8").write(pagina); conta += 1
 
-json.dump([{"id": g["id"], "titolo": g["titolo"], "breve": g["breve"]} for g in GUIDE],
+json.dump([{"id": g["id"], "titolo": g["titolo"], "breve": g["breve"], "lingue": list(LINGUE)} for g in GUIDE],
           open(os.path.join(OUT, "elenco.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print("guide create:", len(GUIDE))
+json.dump({l: UI["piede_pdf"] for l, (UI, _) in LINGUE.items()}, open(os.path.join(OUT, "piedi.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+print("guide create:", conta)

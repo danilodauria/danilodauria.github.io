@@ -1,6 +1,6 @@
 name: Controllo settimanale
 
-# Ogni lunedì controlla link delle fonti, bandi in scadenza, date da rivedere e traduzioni mancanti.
+# Ogni lunedì controlla link delle fonti, bandi in scadenza, date da rivedere, traduzioni mancanti e accessibilità.
 # Se c'è qualcosa da fare apre (o aggiorna) un avviso nella scheda «Issues»: GitHub vi manda un'email.
 # Se è tutto in ordine, chiude l'avviso aperto. Si può lanciare anche a mano: Actions › Controllo settimanale › Run workflow.
 on:
@@ -29,6 +29,12 @@ jobs:
           python -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
           sleep 2
           timeout 420 python strumenti/i18n/estrai-testi.py http://127.0.0.1:8765/ || echo "Estrazione delle frasi non riuscita"
+      - name: Accessibilità (axe-core)
+        timeout-minutes: 8
+        continue-on-error: true
+        run: |
+          npm install --prefix /tmp/axe axe-core@4.10.2 >/dev/null 2>&1
+          timeout 300 python strumenti/accessibilita/controlla.py http://127.0.0.1:8765/ /tmp/axe/node_modules/axe-core/axe.min.js || echo "Controllo di accessibilità non riuscito"
       - name: Controllo
         id: c
         timeout-minutes: 10

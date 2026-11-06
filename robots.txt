@@ -1,0 +1,8 @@
+# Danilo D'Auria · danilodauria.github.io
+User-agent: *
+Allow: /
+Disallow: /scheda/
+Disallow: /vista.html
+Disallow: /strumenti/
+
+Sitemap: https://danilodauria.github.io/sitemap.xml

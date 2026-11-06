@@ -1,11 +1,11 @@
 name: Aggiorna il PDF
 
-# Rifà il profilo in PDF e le guide in PDF (pdf/) quando cambia il sito, quando cambiano i progetti,
+# Rifà il profilo in PDF, le guide in PDF, il volantino e i biglietti da visita (pdf/) quando cambia il sito, quando cambiano i progetti,
 # e ogni giorno (per lo stato dei bandi). Se i contenuti non cambiano, non tocca nulla.
 on:
   push:
     branches: [main]
-    paths-ignore: ["pdf/**", "progetti.json"]
+    paths-ignore: ["pdf/**", "progetti.json", "novita.json", "feed.xml"]
   workflow_run:
     workflows: ["Aggiorna i progetti"]
     types: [completed]
@@ -55,6 +55,8 @@ jobs:
           sleep 2
           python strumenti/pdf/libretto.py http://127.0.0.1:8765/ pdf ${{ inputs.sempre && '--sempre' || '' }}
           python strumenti/pdf/guide-pdf.py http://127.0.0.1:8765/ ${{ inputs.sempre && '--sempre' || '' }}
+          python strumenti/stampa/stampa.py http://127.0.0.1:8765/ ${{ inputs.sempre && '--sempre' || '' }}
+          python strumenti/pdf/info.py
       - name: Salva se qualcosa è cambiato
         run: |
           if git diff --quiet -- pdf; then

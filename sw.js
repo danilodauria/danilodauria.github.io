@@ -3,9 +3,9 @@
    - caratteri di Google: la copia salvata, aggiornata in sottofondo;
    - tutto il resto (GitHub, comparatori…): solo rete.
    Autore: Danilo D'Auria · licenza MIT */
-var VERSIONE = "dd-2026-11-06b";
+var VERSIONE = "dd-2026-11-06c";
 var BASE = [
-  "./", "index.html", "fenice.svg", "manifest.webmanifest", "bandi.json", "offerte.json", "progetti.json", "casi.json",
+  "./", "index.html", "fenice.svg", "manifest.webmanifest", "bandi.json", "offerte.json", "progetti.json", "casi.json", "novita.json", "prenota.json", "pdf/info.json",
   "icone/icona-192.png", "icone/icona-512.png", "icone/apple-touch-icon.png",
   "guide/backup.html", "guide/truffe.html", "guide/vendere-donare.html", "guide/password.html", "guide/pc-veloce.html",
   "i18n/en.json", "i18n/fr.json", "i18n/es.json", "i18n/de.json", "i18n/ro.json",

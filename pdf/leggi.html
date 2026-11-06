@@ -12,31 +12,31 @@ html, body { margin: 0; background: var(--carta); font-family: "Atkinson Hyperle
 .barra { position: sticky; top: 0; z-index: 2; background: var(--notte); color: var(--ink);
   padding: calc(10px + env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) 10px max(14px, env(safe-area-inset-left, 0px));
   display: flex; align-items: center; gap: 10px; }
-.barra .titolo { flex: 1; min-width: 0; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.barra .titolo { margin: 0; font-weight: 400; flex: 1; min-width: 0; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .barra .titolo small { display: block; color: #c9d3da; font-size: .78rem; }
 .barra a { flex: none; color: var(--notte); background: var(--oro); text-decoration: none; font-weight: 700; font-size: .9rem; padding: 8px 14px; border-radius: 99px; }
 .barra a.chiaro { background: transparent; color: var(--alba); border: 1.5px solid rgba(253,233,176,.45); }
 .pagine { display: grid; gap: 12px; padding: 12px max(8px, env(safe-area-inset-left, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)); justify-items: center; }
 .pagina { width: 100%; max-width: 900px; aspect-ratio: 210 / 297; background: #fff; box-shadow: 0 2px 10px rgba(20,35,46,.18); position: relative; }
 .pagina canvas { width: 100%; height: 100%; display: block; }
-.pagina .n { position: absolute; right: 8px; bottom: 6px; font-size: .72rem; color: #8a96a0; }
+.pagina .n { position: absolute; right: 8px; bottom: 6px; font-size: .72rem; color: #5f6b75; }
 .avviso { max-width: 560px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 12px; color: #1c2730; line-height: 1.5; }
 .avviso a { color: #b8400c; font-weight: 700; }
 </style>
 <body>
-<div class="barra">
-  <div class="titolo" id="titolo">Profilo di Danilo D'Auria<small id="stato">Caricamento…</small></div>
+<header class="barra">
+  <h1 class="titolo" id="titolo">Profilo di Danilo D'Auria<small id="stato">Caricamento…</small></h1>
   <a class="chiaro" href="../" data-torna>← Sito</a>
   <a id="scarica" href="#" download>Scarica</a>
-</div>
-<div class="pagine" id="pagine"></div>
+</header>
+<main class="pagine" id="pagine"></main>
 <script src="../torna.js"></script>
 <script src="pdfjs/pdf.min.js"></script>
 <script>
 (function () {
   var consentiti = ["Danilo_DAuria_Tecnologia_Gentile.pdf", "Danilo_DAuria_Tecnologia_Gentile_stampa.pdf"];
   var nome = decodeURIComponent((location.hash || "").slice(1));
-  var guida = /^guide\/[a-z0-9-]+\.pdf$/.test(nome);
+  var guida = /^guide\/([a-z]{2}\/)?[a-z0-9-]+\.pdf$/.test(nome);
   if (consentiti.indexOf(nome) === -1 && !guida) nome = consentiti[0];
   var stampa = nome.indexOf("_stampa") !== -1;
   document.getElementById("scarica").href = nome;

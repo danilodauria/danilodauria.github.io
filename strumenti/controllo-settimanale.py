@@ -1,4 +1,4 @@
-"""Controllo settimanale del sito: link delle fonti, bandi in scadenza, date da rivedere, traduzioni mancanti, casi reali.
+"""Controllo settimanale del sito: link delle fonti, bandi in scadenza, date da rivedere, traduzioni mancanti, accessibilità, casi reali.
 Scrive il resoconto in controllo.md e dice (variabile PROBLEMI) se c'è qualcosa da fare. Lo esegue GitHub Actions (controllo.yml),
 che apre o aggiorna un avviso nella scheda «Issues» del repository: GitHub vi manda anche un'email.
 Uso locale: python3 strumenti/controllo-settimanale.py [CARTELLA_REPO]. Autore: Danilo D'Auria · MIT."""
@@ -92,6 +92,18 @@ if os.path.exists(f_trad):
     if tot:
         da_fare.append("Frasi del sito ancora da tradurre: " + ", ".join("%s %d" % (k.upper(), n) for k, n in sorted(tot.items())) +
                        ". Chiedete a Claude di completare le traduzioni (finché mancano, quelle frasi restano in italiano).")
+
+# ---- accessibilità (la prepara strumenti/accessibilita/controlla.py con axe-core, se è stato eseguito prima)
+f_acc = os.path.join(REPO, "accessibilita.json")
+if os.path.exists(f_acc):
+    for pag in json.load(open(f_acc, encoding="utf-8")):
+        if pag.get("errore"):
+            info.append("Accessibilità: la pagina «%s» non si è potuta controllare." % pag["pagina"])
+        for v in pag.get("violazioni", []):
+            voce = "Accessibilità, %s: %s (%s, %d punti, per esempio %s)." % (pag["pagina"], v["aiuto"], v["regola"], v["quanti"], ", ".join(v["dove"][:2]))
+            (da_fare if v.get("gravita") in ("critical", "serious") else attenzione).append(voce)
+    if not any(pag.get("violazioni") for pag in json.load(open(f_acc, encoding="utf-8"))):
+        info.append("Accessibilità (WCAG 2.1 AA, axe-core): nessun problema sulle pagine controllate.")
 
 # ---- resoconto
 def blocco(titolo, voci): return ("### %s\n\n" % titolo + "\n".join("- [ ] " + v if titolo.startswith("Da fare") else "- " + v for v in voci) + "\n\n") if voci else ""
