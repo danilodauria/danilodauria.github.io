@@ -3,7 +3,7 @@
    - caratteri di Google: la copia salvata, aggiornata in sottofondo;
    - tutto il resto (GitHub, comparatori…): solo rete.
    Autore: Danilo D'Auria · licenza MIT */
-var VERSIONE = "dd-2026-11-06c";
+var VERSIONE = "dd-2026-11-06d";
 var BASE = [
   "./", "index.html", "fenice.svg", "manifest.webmanifest", "bandi.json", "offerte.json", "progetti.json", "casi.json", "novita.json", "prenota.json", "pdf/info.json",
   "icone/icona-192.png", "icone/icona-512.png", "icone/apple-touch-icon.png",
