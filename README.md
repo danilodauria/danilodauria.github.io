@@ -11,7 +11,8 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `fonti/` | I caratteri del sito in `.woff2` (Young Serif, Atkinson Hyperlegible, JetBrains Mono) e `fonti.css`: si servono da qui, senza chiamare Google |
 | `progetti.json` | I progetti e le loro versioni: lo aggiorna da solo ogni giorno GitHub Actions |
 | `strumenti/aggiorna-progetti.py` | Lo script che legge i repository di danilodauria su GitHub |
-| `strumenti/controlla-pagine.py` | Controlla link e file locali, file JSON, lunghezza dei titoli, caratteri presi da Google (devono restare in `fonti/`) e indirizzi del sitemap: a mano (`python3 strumenti/controlla-pagine.py`) o dal robot settimanale |
+| `strumenti/versioni-schede.py` | Riallinea a `progetti.json` le versioni scritte dentro `index.html`: il badge di ogni scheda e la copia di riserva dell'elenco (`PROGETTI_SALVATI`), che si vede subito e anche senza rete. Lo lancia il robot dopo `aggiorna-progetti.py`, così non restano versioni vecchie |
+| `strumenti/controlla-pagine.py` | Controlla link e file locali, file JSON, lunghezza dei titoli, caratteri presi da Google (devono restare in `fonti/`) e indirizzi del sitemap: a mano (`python3 strumenti/controlla-pagine.py`), dal robot settimanale, oppure sulle pagine davvero online con `--pubblicato`, che apre sitemap, pagine, fogli di stile e caratteri del sito e segnala quello che non risponde 200 |
 | `.github/workflows/progetti.yml` | L'aggiornamento automatico (ogni giorno, e con il pulsante «Run workflow» nella scheda Actions) |
 | `pdf/leggi.html` | Il lettore dei PDF per i telefoni: si apre in una nuova scheda (usa PDF.js, licenza Apache 2.0, in `pdf/pdfjs/`) |
 | `pdf/` | Il profilo in PDF, per lo schermo e da stampare: lo rifà da solo GitHub Actions (`.github/workflows/pdf.yml`) quando cambia il sito, quando cambiano i progetti e ogni giorno per i bandi |

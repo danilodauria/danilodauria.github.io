@@ -8,7 +8,7 @@ on:
   workflow_dispatch:        # pulsante «Run workflow» nella scheda Actions
   push:
     branches: [main]
-    paths-ignore: [progetti.json, novita.json, feed.xml]
+    paths-ignore: [progetti.json, novita.json, feed.xml, index.html]
 
 permissions:
   contents: write
@@ -31,14 +31,16 @@ jobs:
         run: python3 strumenti/aggiorna-progetti.py
       - name: Novità e feed
         run: python3 strumenti/novita.py
+      - name: Versioni nelle schede della home
+        run: python3 strumenti/versioni-schede.py
       - name: Salva se qualcosa è cambiato
         run: |
-          if git diff --quiet -- progetti.json novita.json feed.xml; then
+          if git diff --quiet -- progetti.json novita.json feed.xml index.html; then
             echo "Nessuna novità."
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add progetti.json novita.json feed.xml
+            git add progetti.json novita.json feed.xml index.html
             git commit -m "Progetti aggiornati in automatico"
             for prova in 1 2 3; do
               git pull --rebase origin main && git push && exit 0
