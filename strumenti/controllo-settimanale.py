@@ -1,4 +1,5 @@
 """Controllo settimanale del sito: link delle fonti, link interni e file locali, bandi in scadenza, date da rivedere, traduzioni mancanti, accessibilità, casi reali, sito pubblicato.
+Il resoconto ha due parti separate: quello che c'è nei file del repository e quello che risponde davvero il sito online.
 Scrive il resoconto in controllo.md e dice (variabile PROBLEMI) se c'è qualcosa da fare. Lo esegue GitHub Actions (controllo.yml),
 che apre o aggiorna un avviso nella scheda «Issues» del repository: GitHub vi manda anche un'email.
 Uso locale: python3 strumenti/controllo-settimanale.py [CARTELLA_REPO]. Autore: Danilo D'Auria · MIT."""
@@ -12,6 +13,9 @@ def iso(s): return dt.date.fromisoformat(s)
 def leggi(nome): return json.load(open(os.path.join(REPO, nome), encoding="utf-8"))
 
 da_fare, attenzione, info = [], [], []
+# Le righe del sito online stanno a parte: nel resoconto hanno una sezione loro, così non si
+# confondono con quello che c'e' (o manca) nei file del repository.
+pubblicato, pubblicato_avvisi = [], 0
 
 
 def controllo_del_sito(modulo, pausa=40, tentativi=3):
@@ -157,20 +161,33 @@ except Exception as e:
     info.append("Controllo delle pagine non riuscito: %s" % e)
 
 # ---- il sito davvero online: quello che vede chi arriva (con la pazienza di controllo_del_sito)
+# Nel resoconto ha una sezione sua, separata dai problemi dei file: gli avvisi contano come
+# "problemi=si" (aprono l'avviso), ma non si mescolano con le cose da fare nel repository.
 if modulo:
     o_problemi, o_attenzione, o_info = controllo_del_sito(modulo)
-    attenzione += o_attenzione
-    info += o_info
+    pubblicato_avvisi = len(o_attenzione)
+    pubblicato += ["**Da guardare:** " + riga.replace("Sito pubblicato: ", "") for riga in o_attenzione]
+    pubblicato += [riga.replace("Sito pubblicato: ", "") for riga in o_info]
 
 # ---- resoconto
 def blocco(titolo, voci): return ("### %s\n\n" % titolo + "\n".join("- [ ] " + v if titolo.startswith("Da fare") else "- " + v for v in voci) + "\n\n") if voci else ""
+def blocco_pubblicato(voci):
+    if not voci: return ""
+    return ("### Sito pubblicato\n\n"
+            "Quello che risponde davvero online. Qui non c'e' niente da correggere nei file: se qualcosa non "
+            "torna, la pubblicazione non e' arrivata o non e' completa.\n\n"
+            + "\n".join("- " + v for v in voci) + "\n\n")
 corpo = "Controllo automatico del %s.\n\n" % d_it(OGGI)
-corpo += blocco("Da fare", da_fare) + blocco("Da tenere d'occhio", attenzione) + blocco("Per informazione", info)
-if not (da_fare or attenzione):
-    corpo += "Tutto in ordine: nessun link rotto, nessuna scadenza imminente, niente da rivedere.\n"
-corpo += "\n_Questo avviso lo scrive ogni lunedì il robot del sito (.github/workflows/controllo.yml)._\n"
+corpo += ("Due parti separate: **nei file** (quello che c'e' nel repository) e **sito pubblicato** "
+          "(quello che risponde davvero online).\n\n")
+corpo += (blocco("Da fare nei file", da_fare) + blocco_pubblicato(pubblicato)
+          + blocco("Da tenere d'occhio nei file", attenzione) + blocco("Per informazione", info))
+if not (da_fare or attenzione or pubblicato_avvisi):
+    corpo += ("Tutto in ordine: nessun link rotto, nessuna scadenza imminente, niente da rivedere, "
+              "e il sito online e' quello preparato qui.\n")
+corpo = corpo.rstrip() + "\n\n_Questo avviso lo scrive ogni lunedì il robot del sito (.github/workflows/controllo.yml)._\n"
 open(os.path.join(REPO, "controllo.md"), "w", encoding="utf-8").write(corpo)
 print(corpo)
-problemi = "si" if (da_fare or attenzione) else "no"
+problemi = "si" if (da_fare or attenzione or pubblicato_avvisi) else "no"
 if os.environ.get("GITHUB_OUTPUT"):
     open(os.environ["GITHUB_OUTPUT"], "a").write("problemi=%s\n" % problemi)
