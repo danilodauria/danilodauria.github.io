@@ -25,7 +25,8 @@ def controllo_del_sito(modulo, pausa=40, tentativi=3):
     secondo o al terzo tentativo torna a posto e non resta niente nel resoconto. Se invece
     non risponde affatto, e' un disservizio di GitHub e non una cosa da correggere qui.
     Quello che si vede online nasce da una pubblicazione, quindi i suoi problemi diventano
-    avvisi da tenere d'occhio, mai cose da fare. Restituisce (problemi, attenzione, info).
+    avvisi da tenere d'occhio, mai cose da fare. Restituisce (problemi, attenzione, info, stato),
+    dove lo stato e' "allineato", "da guardare" o "non controllato".
     """
     import time
     for tentativo in range(1, tentativi + 1):
@@ -36,21 +37,21 @@ def controllo_del_sito(modulo, pausa=40, tentativi=3):
                 continue
             causa = "risposta %d" % stato if stato else errore
             return [], [], ["Sito pubblicato: non ha risposto (%s). Se il sito si apre, era un "
-                            "disservizio passeggero di GitHub." % causa]
+                            "disservizio passeggero di GitHub." % causa], "non controllato"
         try:
             problemi, _, resoconto = modulo.controlla_pubblicato(modulo.SITO)
         except Exception as errore:
-            return [], [], ["Sito pubblicato: non si e' potuto controllare (%s)." % errore]
+            return [], [], ["Sito pubblicato: non si e' potuto controllare (%s)." % errore], "non controllato"
         if not problemi:
-            return [], [], ["Sito pubblicato: " + riga for riga in resoconto]
+            return [], [], ["Sito pubblicato: " + riga for riga in resoconto], "allineato"
         if tentativo == tentativi:
             avvisi = ["Sito pubblicato: il sito che risponde non e' ancora quello preparato qui."]
             avvisi += ["Sito pubblicato: " + riga for riga in problemi[:8]]
             avvisi.append("Sito pubblicato: se avete appena pubblicato, GitHub Pages puo' impiegare qualche "
                           "minuto. Altrimenti la pubblicazione non e' arrivata. In dubbio, rilanciate il controllo.")
-            return [], avvisi, []
+            return [], avvisi, [], "da guardare"
         time.sleep(pausa)
-    return [], [], []
+    return [], [], [], "non controllato"
 
 # ---- link delle fonti
 def prova(url, tentativi=2):
@@ -163,8 +164,9 @@ except Exception as e:
 # ---- il sito davvero online: quello che vede chi arriva (con la pazienza di controllo_del_sito)
 # Nel resoconto ha una sezione sua, separata dai problemi dei file: gli avvisi contano come
 # "problemi=si" (aprono l'avviso), ma non si mescolano con le cose da fare nel repository.
+sito_online = "non controllato"
 if modulo:
-    o_problemi, o_attenzione, o_info = controllo_del_sito(modulo)
+    o_problemi, o_attenzione, o_info, sito_online = controllo_del_sito(modulo)
     pubblicato_avvisi = len(o_attenzione)
     pubblicato += ["**Da guardare:** " + riga.replace("Sito pubblicato: ", "") for riga in o_attenzione]
     pubblicato += [riga.replace("Sito pubblicato: ", "") for riga in o_info]
@@ -177,7 +179,15 @@ def blocco_pubblicato(voci):
             "Quello che risponde davvero online. Qui non c'e' niente da correggere nei file: se qualcosa non "
             "torna, la pubblicazione non e' arrivata o non e' completa.\n\n"
             + "\n".join("- " + v for v in voci) + "\n\n")
+# Prima riga: a colpo d'occhio, se il sito che risponde e' quello preparato qui.
+RIGHE_STATO = {
+    "allineato": "**Sito online: allineato** - quello che risponde e' la versione preparata qui.",
+    "da guardare": "**Sito online: diverso da quello preparato** - i dettagli sono nella sezione «Sito pubblicato»; "
+                   "se avete appena pubblicato, puo' essere un ritardo di GitHub Pages.",
+    "non controllato": "**Sito online: non controllato** - il sito non ha risposto, oppure il controllo non e' partito.",
+}
 corpo = "Controllo automatico del %s.\n\n" % d_it(OGGI)
+corpo += RIGHE_STATO.get(sito_online, RIGHE_STATO["non controllato"]) + "\n\n"
 corpo += ("Due parti separate: **nei file** (quello che c'e' nel repository) e **sito pubblicato** "
           "(quello che risponde davvero online).\n\n")
 corpo += (blocco("Da fare nei file", da_fare) + blocco_pubblicato(pubblicato)
