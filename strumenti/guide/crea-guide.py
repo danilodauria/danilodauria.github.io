@@ -67,7 +67,7 @@ GUIDE = [
   ],
   "box": "Vergognarsi non serve: le truffe sono fatte da professionisti e colpiscono tutti. Parlarne aiuta anche gli altri a non cascarci."},
 
- {"id": "vendere-donare", "titolo": "Prima di vendere, regalare o buttare un computer o un telefono",
+ {"id": "vendere-donare", "titolo": "Prima di vendere, regalare o buttare un computer o un telefono", "titolo_breve": "Vendere, regalare o buttare un computer",
   "breve": "Copiare i dati, uscire dagli account, cancellare tutto in sicurezza e dove portarlo.",
   "intro": "Un computer o un telefono contiene la vostra vita: foto, documenti, password, accessi alla banca. Prima che cambi mano, quattro passi.",
   "sezioni": [
@@ -191,7 +191,7 @@ UI_IT = {"marchio": "Danilo D'Auria · Guide gratuite", "sito": "← Sito", "sta
          "label": "Guida gratuita · aggiornata a " + AGGIORNATA, "torna": "← Torna al sito e alle altre guide",
          "firma": "Guida di Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com",
          "licenza": "Testo con licenza Creative Commons BY-NC-SA 4.0: potete stamparla e condividerla liberamente, senza scopo di lucro, citando l'autore.",
-         "titolo": "Guide gratuite di Danilo D'Auria", "piede_pdf": "Guide gratuite di Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
+         "titolo": "Guide gratuite di Danilo D'Auria", "marca_titolo": "Danilo D'Auria", "piede_pdf": "Guide gratuite di Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
 import importlib.util
 def carica(l):
     spec = importlib.util.spec_from_file_location("guide_" + l, os.path.join(QUI, "guide_%s.py" % l))
@@ -231,7 +231,7 @@ for l, (UI, elenco) in LINGUE.items():
 <html lang="{l}">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{E(g['titolo'])} · {E(UI['titolo'])}</title>
+<title>{E(g.get('titolo_breve') or g['titolo'])} · {E(UI.get('marca_titolo') or UI['titolo'])}</title>
 <meta name="description" content="{E(g['breve'])}">
 <link rel="canonical" href="https://danilodauria.github.io/{percorso(l, g['id'])}">
 {alt}

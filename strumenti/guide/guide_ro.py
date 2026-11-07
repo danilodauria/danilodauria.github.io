@@ -3,7 +3,7 @@ UI = {"marchio": "Danilo D'Auria · Ghiduri gratuite", "sito": "← Site", "stam
       "label": "Ghid gratuit · actualizat în noiembrie 2026", "torna": "← Înapoi la site și la celelalte ghiduri",
       "firma": "Ghid de Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com",
       "licenza": "Text cu licență Creative Commons BY-NC-SA 4.0: îl puteți tipări și distribui liber, fără scop comercial, menționând autorul.",
-      "titolo": "Ghiduri gratuite de Danilo D'Auria", "piede_pdf": "Ghiduri gratuite de Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
+      "titolo": "Ghiduri gratuite de Danilo D'Auria", "marca_titolo": "Danilo D'Auria", "piede_pdf": "Ghiduri gratuite de Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
 GUIDE = [
  {"id": "backup", "titolo": "Backupul: fotografii și documente în siguranță",
   "breve": "Regula 3-2-1 și cum activați copia automată pe Windows, Mac, Linux și telefon.",
@@ -28,7 +28,7 @@ GUIDE = [
   ],
   "box": "Momentul potrivit pentru backup este înainte să se întâmple ceva. Dacă doriți, îl configurez eu împreună cu dumneavoastră."},
 
- {"id": "truffe", "titolo": "Înșelătorii online: cum le recunoașteți și ce să faceți",
+ {"id": "truffe", "titolo": "Înșelătorii online: cum le recunoașteți și ce să faceți", "titolo_breve": "Înșelătorii online: cum le recunoști",
   "breve": "Semnalele de alarmă, cele mai răspândite înșelătorii și ce să faceți imediat dacă ați căzut în capcană.",
   "intro": "Escrocii nu atacă calculatorul: atacă graba și încrederea. Aproape toate înșelătoriile au aceleași semnale, iar a învăța să le vedeți este cea mai bună apărare.",
   "sezioni": [
@@ -61,7 +61,7 @@ GUIDE = [
   ],
   "box": "Nu trebuie să vă fie rușine: înșelătoriile sunt făcute de profesioniști și pot păcăli pe oricine. A vorbi despre ele îi ajută și pe alții să nu cadă în capcană."},
 
- {"id": "vendere-donare", "titolo": "Înainte de a vinde, dărui sau arunca un calculator sau un telefon",
+ {"id": "vendere-donare", "titolo": "Înainte de a vinde, dărui sau arunca un calculator sau un telefon", "titolo_breve": "Vinde, dăruiește sau aruncă un calculator",
   "breve": "Copierea datelor, ieșirea din conturi, ștergerea sigură a tot și unde să-l duceți.",
   "intro": "Un calculator sau un telefon conține viața dumneavoastră: fotografii, documente, parole, accesul la bancă. Înainte să-și schimbe proprietarul, patru pași.",
   "sezioni": [
@@ -107,7 +107,7 @@ GUIDE = [
   ],
   "box": "Începeți cu un singur lucru: schimbați parola e-mailului și activați verificarea în doi pași. Este ușa către toate celelalte conturi."},
 
- {"id": "pc-veloce", "titolo": "Un calculator mai rapid, gratuit, într-o după-amiază",
+ {"id": "pc-veloce", "titolo": "Un calculator mai rapid, gratuit, într-o după-amiază", "titolo_breve": "Un calculator mai rapid, gratuit",
   "breve": "Programe la pornire, spațiu liber, browser, curățare și când merită un SSD.",
   "intro": "Înainte să vă gândiți la un calculator nou, încercați acești pași: adesea sunt suficienți.",
   "sezioni": [

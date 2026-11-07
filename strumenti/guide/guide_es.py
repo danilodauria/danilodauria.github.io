@@ -3,7 +3,7 @@ UI = {"marchio": "Danilo D'Auria · Guías gratuitas", "sito": "← Sitio", "sta
       "label": "Guía gratuita · actualizada en noviembre de 2026", "torna": "← Volver al sitio y a las demás guías",
       "firma": "Guía de Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com",
       "licenza": "Texto con licencia Creative Commons BY-NC-SA 4.0: puede imprimirla y compartirla libremente, sin ánimo de lucro, citando al autor.",
-      "titolo": "Guías gratuitas de Danilo D'Auria", "piede_pdf": "Guías gratuitas de Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
+      "titolo": "Guías gratuitas de Danilo D'Auria", "marca_titolo": "Danilo D'Auria", "piede_pdf": "Guías gratuitas de Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
 GUIDE = [
  {"id": "backup", "titolo": "La copia de seguridad: fotos y documentos a salvo",
   "breve": "La regla del 3-2-1 y cómo activar la copia automática en Windows, Mac, Linux y el teléfono.",
@@ -61,7 +61,7 @@ GUIDE = [
   ],
   "box": "No hay por qué avergonzarse: las estafas las hacen profesionales y afectan a todos. Hablar de ello ayuda también a los demás a no caer."},
 
- {"id": "vendere-donare", "titolo": "Antes de vender, regalar o tirar un ordenador o un teléfono",
+ {"id": "vendere-donare", "titolo": "Antes de vender, regalar o tirar un ordenador o un teléfono", "titolo_breve": "Vender, regalar o tirar un ordenador",
   "breve": "Copiar los datos, cerrar las cuentas, borrarlo todo de forma segura y dónde llevarlo.",
   "intro": "Un ordenador o un teléfono contiene su vida: fotos, documentos, contraseñas, acceso al banco. Antes de que cambie de manos, cuatro pasos.",
   "sezioni": [

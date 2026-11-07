@@ -3,7 +3,7 @@ UI = {"marchio": "Danilo D'Auria · Guides gratuits", "sito": "← Site", "stamp
       "label": "Guide gratuit · mis à jour en novembre 2026", "torna": "← Retour au site et aux autres guides",
       "firma": "Guide de Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com",
       "licenza": "Texte sous licence Creative Commons BY-NC-SA 4.0 : vous pouvez l'imprimer et le partager librement, sans but lucratif, en citant l'auteur.",
-      "titolo": "Guides gratuits de Danilo D'Auria", "piede_pdf": "Guides gratuits de Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
+      "titolo": "Guides gratuits de Danilo D'Auria", "marca_titolo": "Danilo D'Auria", "piede_pdf": "Guides gratuits de Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
 GUIDE = [
  {"id": "backup", "titolo": "La sauvegarde : photos et documents en sécurité",
   "breve": "La règle du 3-2-1 et comment activer la sauvegarde automatique sur Windows, Mac, Linux et téléphone.",
@@ -28,7 +28,7 @@ GUIDE = [
   ],
   "box": "Le bon moment pour faire une sauvegarde, c'est avant qu'il arrive quelque chose. Si vous voulez, je la configure avec vous."},
 
- {"id": "truffe", "titolo": "Arnaques en ligne : comment les reconnaître et que faire",
+ {"id": "truffe", "titolo": "Arnaques en ligne : comment les reconnaître et que faire", "titolo_breve": "Arnaques en ligne : les reconnaître et réagir",
   "breve": "Les signaux d'alerte, les arnaques les plus répandues et quoi faire tout de suite si vous vous êtes fait avoir.",
   "intro": "Les escrocs n'attaquent pas l'ordinateur : ils attaquent la précipitation et la confiance. Presque toutes les arnaques ont les mêmes signaux, et apprendre à les voir est la meilleure défense.",
   "sezioni": [
@@ -61,7 +61,7 @@ GUIDE = [
   ],
   "box": "Inutile d'avoir honte : les arnaques sont faites par des professionnels et touchent tout le monde. En parler aide aussi les autres à ne pas tomber dans le piège."},
 
- {"id": "vendere-donare", "titolo": "Avant de vendre, donner ou jeter un ordinateur ou un téléphone",
+ {"id": "vendere-donare", "titolo": "Avant de vendre, donner ou jeter un ordinateur ou un téléphone", "titolo_breve": "Vendre, donner ou jeter un ordinateur",
   "breve": "Copier les données, se déconnecter des comptes, tout effacer en sécurité et où l'apporter.",
   "intro": "Un ordinateur ou un téléphone contient votre vie : photos, documents, mots de passe, accès à la banque. Avant qu'il change de mains, quatre étapes.",
   "sezioni": [
@@ -107,7 +107,7 @@ GUIDE = [
   ],
   "box": "Commencez par une seule chose : changez le mot de passe de votre e-mail et activez la validation en deux étapes. C'est la porte de tous les autres comptes."},
 
- {"id": "pc-veloce", "titolo": "Un ordinateur plus rapide, gratuitement, en un après-midi",
+ {"id": "pc-veloce", "titolo": "Un ordinateur plus rapide, gratuitement, en un après-midi", "titolo_breve": "Un ordinateur plus rapide, gratuitement",
   "breve": "Programmes au démarrage, espace libre, navigateur, nettoyage et quand un SSD vaut la peine.",
   "intro": "Avant de penser à un ordinateur neuf, essayez ces étapes : souvent, elles suffisent.",
   "sezioni": [

@@ -3,7 +3,7 @@ UI = {"marchio": "Danilo D'Auria · Free guides", "sito": "← Website", "stampa
       "label": "Free guide · updated November 2026", "torna": "← Back to the website and the other guides",
       "firma": "Guide by Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com",
       "licenza": "Text licensed under Creative Commons BY-NC-SA 4.0: you may print and share it freely, not for profit, crediting the author.",
-      "titolo": "Free guides by Danilo D'Auria", "piede_pdf": "Free guides by Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
+      "titolo": "Free guides by Danilo D'Auria", "marca_titolo": "Danilo D'Auria", "piede_pdf": "Free guides by Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
 GUIDE = [
  {"id": "backup", "titolo": "Backups: keep your photos and documents safe",
   "breve": "The 3-2-1 rule and how to turn on automatic backup on Windows, Mac, Linux and your phone.",
@@ -61,7 +61,7 @@ GUIDE = [
   ],
   "box": "There's no need to feel ashamed: scams are made by professionals and can catch anyone. Talking about them helps others not to fall for them."},
 
- {"id": "vendere-donare", "titolo": "Before selling, giving away or throwing out a computer or a phone",
+ {"id": "vendere-donare", "titolo": "Before selling, giving away or throwing out a computer or a phone", "titolo_breve": "Selling, giving away or recycling a computer",
   "breve": "Copying your data, signing out of accounts, wiping everything safely and where to take it.",
   "intro": "A computer or a phone holds your life: photos, documents, passwords, access to your bank. Before it changes hands, four steps.",
   "sezioni": [

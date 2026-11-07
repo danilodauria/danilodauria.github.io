@@ -3,9 +3,9 @@ UI = {"marchio": "Danilo D'Auria · Kostenlose Ratgeber", "sito": "← Website",
       "label": "Kostenloser Ratgeber · Stand November 2026", "torna": "← Zurück zur Website und zu den anderen Ratgebern",
       "firma": "Ratgeber von Danilo D'Auria · danilodauria.github.io · danilodauria.site@gmail.com",
       "licenza": "Text unter der Lizenz Creative Commons BY-NC-SA 4.0: Sie dürfen ihn frei drucken und teilen, nicht kommerziell und mit Nennung des Autors.",
-      "titolo": "Kostenlose Ratgeber von Danilo D'Auria", "piede_pdf": "Kostenlose Ratgeber von Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
+      "titolo": "Kostenlose Ratgeber von Danilo D'Auria", "marca_titolo": "Danilo D'Auria", "piede_pdf": "Kostenlose Ratgeber von Danilo D'Auria · danilodauria.github.io · CC BY-NC-SA 4.0"}
 GUIDE = [
- {"id": "backup", "titolo": "Die Datensicherung: Fotos und Dokumente in Sicherheit",
+ {"id": "backup", "titolo": "Die Datensicherung: Fotos und Dokumente in Sicherheit", "titolo_breve": "Datensicherung: Fotos und Dokumente retten",
   "breve": "Die 3-2-1-Regel und wie Sie die automatische Sicherung unter Windows, Mac, Linux und auf dem Telefon einschalten.",
   "intro": "Ein Computer lässt sich reparieren oder neu kaufen, Familienfotos und Dokumente nicht. Die Datensicherung ist eine Sicherheitskopie: Beim ersten Mal dauert sie eine halbe Stunde, danach arbeitet sie von selbst.",
   "sezioni": [
@@ -61,7 +61,7 @@ GUIDE = [
   ],
   "box": "Schämen müssen Sie sich nicht: Betrug wird von Profis gemacht und trifft alle. Darüber zu sprechen hilft auch anderen, nicht hereinzufallen."},
 
- {"id": "vendere-donare", "titolo": "Bevor Sie einen Computer oder ein Telefon verkaufen, verschenken oder wegwerfen",
+ {"id": "vendere-donare", "titolo": "Bevor Sie einen Computer oder ein Telefon verkaufen, verschenken oder wegwerfen", "titolo_breve": "Computer oder Handy verkaufen und verschenken",
   "breve": "Daten kopieren, Konten abmelden, alles sicher löschen und wohin damit.",
   "intro": "Ein Computer oder ein Telefon enthält Ihr Leben: Fotos, Dokumente, Passwörter, Zugang zur Bank. Bevor es den Besitzer wechselt, vier Schritte.",
   "sezioni": [
@@ -86,7 +86,7 @@ GUIDE = [
   ],
   "box": "Wenn Sie nicht sicher sind, ob alles gelöscht ist, bringen Sie es zu mir: Ich erledige das und gebe Ihnen ein Protokoll dessen, was ich gemacht habe."},
 
- {"id": "password", "titolo": "Passwörter und sichere Anmeldung, ohne verrückt zu werden",
+ {"id": "password", "titolo": "Passwörter und sichere Anmeldung, ohne verrückt zu werden", "titolo_breve": "Passwörter und sichere Anmeldung",
   "breve": "Passwörter, die man sich merken kann, ein Passwort-Manager, die Zwei-Faktor-Authentifizierung, die digitale Identität.",
   "intro": "Sie brauchen kein Gedächtnis wie ein Meister: Ein paar Regeln und das richtige Werkzeug genügen.",
   "sezioni": [
@@ -107,7 +107,7 @@ GUIDE = [
   ],
   "box": "Fangen Sie mit einer einzigen Sache an: Ändern Sie das Passwort Ihrer E-Mail und schalten Sie die Zwei-Faktor-Authentifizierung ein. Sie ist die Tür zu allen anderen Konten."},
 
- {"id": "pc-veloce", "titolo": "Ein schnellerer Computer, kostenlos, an einem Nachmittag",
+ {"id": "pc-veloce", "titolo": "Ein schnellerer Computer, kostenlos, an einem Nachmittag", "titolo_breve": "Ein schnellerer Computer, kostenlos",
   "breve": "Autostart-Programme, freier Speicher, Browser, Reinigung und wann sich eine SSD lohnt.",
   "intro": "Bevor Sie an einen neuen Computer denken, probieren Sie diese Schritte: Oft reichen sie aus.",
   "sezioni": [
