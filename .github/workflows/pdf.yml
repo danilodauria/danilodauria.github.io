@@ -5,7 +5,7 @@ name: Aggiorna il PDF
 on:
   push:
     branches: [main]
-    paths-ignore: ["pdf/**", "progetti.json", "novita.json", "feed.xml"]
+    paths-ignore: ["pdf/**", "progetti.json", "novita.json", "feed.xml", "index.html"]
   workflow_run:
     workflows: ["Aggiorna i progetti"]
     types: [completed]
