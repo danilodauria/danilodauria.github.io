@@ -47,6 +47,45 @@ Il controllo settimanale non tocca il repository: se trova qualcosa apre un avvi
 
 Le ore sono UTC: in inverno in Italia sono un'ora più tardi (06:17, 06:47, 07:23), in estate due. Il registro di ogni esecuzione, con l'uscita di ogni passo, è nella scheda Actions del repository; da lì ogni robot si può anche lanciare a mano.
 
+## Quando il push non parte dalla sandbox
+
+A volte il lavoro viene preparato in un ambiente che non ha il token di GitHub: i commit restano lì e non possono uscire. In quel caso si porta tutto online con un **pacchetto** (`git bundle`), un file unico che contiene solo i commit nuovi.
+
+1. Scarica il pacchetto `aggiornamenti.bundle` dal pannello della chat e mettilo dove ti è comodo.
+2. Nella copia del repository sul tuo computer, con il **percorso assoluto** del pacchetto:
+
+   ```bash
+   cd /percorso/del/sito
+   git checkout main
+   git status --short                      # non deve stampare niente
+   git log --oneline -1                    # il commit da cui parte il pacchetto
+   git bundle verify /percorso/aggiornamenti.bundle
+   git pull /percorso/aggiornamenti.bundle main
+   ```
+
+   Il `verify` deve dire `is okay` ed elencare due riferimenti: quello **contenuto** (l'ultimo commit) e quello **richiesto** (il punto di partenza). Se la tua copia è più indietro di quel punto, prima `git pull origin main`, poi riparti da qui.
+
+3. Guarda l'esito del pull: deve comparire `Fast-forward`. Se invece leggi `merge made by`, hai commit tuoi in locale: fermati e sistemali prima di portare online, perché si sta unendo storia diversa.
+
+4. Porta online e confronta i due lati:
+
+   ```bash
+   git push origin main
+   git fetch origin
+   git log --oneline origin/main -1        # lo stesso commit che hai in locale
+   ```
+
+5. Aspetta un minuto o due che GitHub Pages pubblichi, poi controlla il sito vero:
+
+   ```bash
+   curl -s -o /dev/null -w '%{http_code}\n' 'https://danilodauria.github.io/fonti/fonti.css?v=1'
+   python3 strumenti/controlla-pagine.py --pubblicato
+   ```
+
+   Il primo comando deve dire `200`: è il modo più rapido per sapere se il sito è già la versione nuova, perché quel foglio arriva con i caratteri. Il secondo deve finire senza voci sui caratteri presi da Google.
+
+Due cose fanno perdere tempo: il percorso **relativo** del pacchetto (dopo un `cd` punta altrove, e il pull fallisce con un messaggio poco chiaro) e il push rifiutato con `! [rejected] ... fetch first`, che si risolve con `git pull --rebase origin main` e un secondo `git push`. Nessun segreto va salvato sulla macchina: al push git chiede utente e token una volta sola, e il portachiavi di sistema se li ricorda.
+
 Per aggiornare solo i bandi o le offerte basta modificare `bandi.json` o `offerte.json`: la pagina non va toccata.
 
 Statistiche senza cookie con GoatCounter (codice «danilodauria»): danilodauria.goatcounter.com.
