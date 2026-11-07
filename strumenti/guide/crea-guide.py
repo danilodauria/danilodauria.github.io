@@ -238,7 +238,7 @@ for l, (UI, elenco) in LINGUE.items():
 <link rel="icon" href="{su}fenice.svg" type="image/svg+xml">
 <link rel="manifest" href="{su}manifest.webmanifest">
 <meta name="theme-color" content="#14232e">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap">
+<link rel="stylesheet" href="{su}fonti/fonti.css">
 <style>{CSS}</style>
 <body>
 <header class="barra">

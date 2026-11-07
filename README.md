@@ -8,8 +8,10 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `bandi.json` | L'elenco dei bandi: la pagina lo rilegge a ogni apertura (LED verde) |
 | `offerte.json` | Calendario delle offerte e prodotti da confrontare: le date ricorrenti (Black Friday, saldi, Prime Day…) si ricalcolano da sole ogni anno |
 | `fenice.svg` | Il logo della fenice, usato anche come icona della scheda |
+| `fonti/` | I caratteri del sito in `.woff2` (Young Serif, Atkinson Hyperlegible, JetBrains Mono) e `fonti.css`: si servono da qui, senza chiamare Google |
 | `progetti.json` | I progetti e le loro versioni: lo aggiorna da solo ogni giorno GitHub Actions |
 | `strumenti/aggiorna-progetti.py` | Lo script che legge i repository di danilodauria su GitHub |
+| `strumenti/controlla-pagine.py` | Controlla link e file locali, file JSON, lunghezza dei titoli e indirizzi del sitemap: a mano (`python3 strumenti/controlla-pagine.py`) o dal robot settimanale |
 | `.github/workflows/progetti.yml` | L'aggiornamento automatico (ogni giorno, e con il pulsante «Run workflow» nella scheda Actions) |
 | `pdf/leggi.html` | Il lettore dei PDF per i telefoni: si apre in una nuova scheda (usa PDF.js, licenza Apache 2.0, in `pdf/pdfjs/`) |
 | `pdf/` | Il profilo in PDF, per lo schermo e da stampare: lo rifà da solo GitHub Actions (`.github/workflows/pdf.yml`) quando cambia il sito, quando cambiano i progetti e ogni giorno per i bandi |
@@ -18,7 +20,7 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `pdf/Kit_bandi_Danilo_DAuria.docx` / `.pdf` | Il kit per i bandi: scheda di progetto da adattare e lettera di adesione (`strumenti/kit/kit-bandi.py`) |
 | `pdf/info.json` | Il numero di pagine dei PDF: il sito lo legge e lo mostra sempre giusto |
 | `prenota.json` | I giorni e le fasce orarie proposti per prenotare il check-up: si cambia qui, senza toccare la pagina. La richiesta parte dall'email del cliente |
-| `novita.json`, `feed.xml` | Le novità del sito e il feed (Atom): nuove versioni e nuovi progetti si aggiungono da soli ogni giorno (`strumenti/novita.py`); le voci con `"a_mano": true` si scrivono a mano |
+| `novita.json`, `feed.xml` | Le novità del sito e il feed (Atom): nuove versioni e nuovi progetti si aggiungono da soli ogni giorno (`strumenti/novita.py`), con una sola voce per progetto all'ultima versione; le voci con `"a_mano": true` si scrivono a mano |
 | `sitemap.xml`, `robots.txt` | Per Google: l'elenco delle pagine in tutte le lingue. I dati strutturati nella pagina (persona, servizi con prezzi, libro, domande frequenti) li scrive `strumenti/seo/seo.py` rileggendo la pagina stessa |
 | `i18n/` | Il sito in inglese, francese, spagnolo, tedesco e rumeno. Le traduzioni si scrivono a mano in `i18n/fonti/<lingua>.tsv`, poi `python3 strumenti/i18n/componi.py`. Le frasi nuove ancora da tradurre restano in italiano e le segnala il controllo settimanale |
 | `casi.json` | I casi reali «prima e dopo», solo con il consenso del cliente: si preparano con la scheda intervento |

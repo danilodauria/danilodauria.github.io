@@ -1,4 +1,4 @@
-"""Controllo settimanale del sito: link delle fonti, bandi in scadenza, date da rivedere, traduzioni mancanti, accessibilità, casi reali.
+"""Controllo settimanale del sito: link delle fonti, link interni e file locali, bandi in scadenza, date da rivedere, traduzioni mancanti, accessibilità, casi reali.
 Scrive il resoconto in controllo.md e dice (variabile PROBLEMI) se c'è qualcosa da fare. Lo esegue GitHub Actions (controllo.yml),
 che apre o aggiorna un avviso nella scheda «Issues» del repository: GitHub vi manda anche un'email.
 Uso locale: python3 strumenti/controllo-settimanale.py [CARTELLA_REPO]. Autore: Danilo D'Auria · MIT."""
@@ -104,6 +104,21 @@ if os.path.exists(f_acc):
             (da_fare if v.get("gravita") in ("critical", "serious") else attenzione).append(voce)
     if not any(pag.get("violazioni") for pag in json.load(open(f_acc, encoding="utf-8"))):
         info.append("Accessibilità (WCAG 2.1 AA, axe-core): nessun problema sulle pagine controllate.")
+
+# ---- pagine: link locali, file JSON, lunghezza dei titoli, indirizzi del sitemap
+# Li controlla strumenti/controlla-pagine.py, lo stesso che si può lanciare a mano:
+#   python3 strumenti/controlla-pagine.py
+try:
+    import importlib.util
+    specifica = importlib.util.spec_from_file_location("controlla_pagine", os.path.join(REPO, "strumenti", "controlla-pagine.py"))
+    modulo = importlib.util.module_from_spec(specifica)
+    specifica.loader.exec_module(modulo)
+    p_problemi, p_attenzione, p_info = modulo.controlla(REPO)
+    da_fare += p_problemi
+    attenzione += p_attenzione
+    info += p_info
+except Exception as e:
+    info.append("Controllo delle pagine non riuscito: %s" % e)
 
 # ---- resoconto
 def blocco(titolo, voci): return ("### %s\n\n" % titolo + "\n".join("- [ ] " + v if titolo.startswith("Da fare") else "- " + v for v in voci) + "\n\n") if voci else ""

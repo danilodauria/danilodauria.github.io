@@ -8,7 +8,13 @@ Solo libreria standard di Python. Autore: Danilo D'Auria - licenza MIT."""
 import datetime, json, os, re, sys, urllib.error, urllib.request
 
 UTENTE = "danilodauria"
-ESCLUSI = {"danilodauria.github.io"}  # il sito stesso
+ESCLUSI = {
+    "danilodauria.github.io",  # il sito stesso
+    # Vecchia copia di «Il Grande Quiz dell'Informatica»: è lo stesso programma di grande-quiz,
+    # quindi non va contata due volte (la pagina resta online, ma il sito elenca solo grande-quiz).
+    # Per farla ricomparire basta togliere questa riga.
+    "Quiz-Interattivo-Terminale-Fenice-OS",
+}
 QUI = os.path.dirname(os.path.abspath(__file__))
 USCITA = os.path.join(os.path.dirname(QUI), "progetti.json")
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -18,7 +24,6 @@ TITOLI = {
     "feniceos": "FeniceOS",
     "grande-quiz": "Il Grande Quiz dell'Informatica",
     "nonni-teach": "Nonni Teach",
-    "Quiz-Interattivo-Terminale-Fenice-OS": "Quiz Interattivo Terminale FeniceOS",
 }
 
 

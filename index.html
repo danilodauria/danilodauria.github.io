@@ -336,9 +336,7 @@
 <meta name="theme-color" content="#14232e">
 <link rel="apple-touch-icon" href="icone/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-title" content="Danilo D'Auria">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="fonti/fonti.css">
 <style>
 /* Layout: una notte che diventa alba (la fenice) apre il dossier; sotto, fogli di vademecum su carta calda,
    colonna di lettura a 68ch con schede-progetto a griglia. Palette dal marchio FeniceOS. */
@@ -1832,6 +1830,10 @@ footer a { color: var(--hero-ink2); }
   /* ---- Progetti letti da GitHub: versioni e nuovi progetti, senza toccare la pagina ---- */
   var PROGETTI_SALVATI = {"aggiornato": "2026-11-05", "controllato": "2026-11-05", "progetti": [{"nome": "psicologo-digitale", "titolo": "Psicologo Digitale", "descrizione": "", "versione": "1.3.32", "sito": "https://danilodauria.github.io/psicologo-digitale/", "github": "https://github.com/danilodauria/psicologo-digitale", "linguaggio": "", "creato": "2026-11-04", "aggiornato": "2026-11-05"}, {"nome": "naturopata-digitale", "titolo": "Naturopata Digitale", "descrizione": "", "versione": "1.3.10", "sito": "https://danilodauria.github.io/naturopata-digitale/", "github": "https://github.com/danilodauria/naturopata-digitale", "linguaggio": "", "creato": "2026-11-04", "aggiornato": "2026-11-05"}, {"nome": "consulente-digitale", "titolo": "Consulente Digitale", "descrizione": "", "versione": "1.5.2", "sito": "https://danilodauria.github.io/consulente-digitale/", "github": "https://github.com/danilodauria/consulente-digitale", "linguaggio": "", "creato": "2026-10-20", "aggiornato": "2026-11-05"}, {"nome": "nonni-teach", "titolo": "Nonni Teach", "descrizione": "", "versione": "", "sito": "https://danilodauria.github.io/nonni-teach/", "github": "https://github.com/danilodauria/nonni-teach", "linguaggio": "", "creato": "2026-10-15", "aggiornato": "2026-11-05"}, {"nome": "grande-quiz", "titolo": "Il Grande Quiz dell'Informatica", "descrizione": "", "versione": "1.0.0", "sito": "https://danilodauria.github.io/grande-quiz/", "github": "https://github.com/danilodauria/grande-quiz", "linguaggio": "", "creato": "2026-10-12", "aggiornato": "2026-11-05"}, {"nome": "feniceos", "titolo": "FeniceOS", "descrizione": "", "versione": "2.2", "sito": "https://danilodauria.github.io/feniceos/", "github": "https://github.com/danilodauria/feniceos", "linguaggio": "", "creato": "2026-10-12", "aggiornato": "2026-11-05"}, {"nome": "professore-digitale", "titolo": "Professore Digitale", "descrizione": "", "versione": "3.8.0", "sito": "https://danilodauria.github.io/professore-digitale/", "github": "https://github.com/danilodauria/professore-digitale", "linguaggio": "", "creato": "2026-09-01", "aggiornato": "2026-11-05"}]};
   var UTENTE = "danilodauria";
+  /* Repository che non sono progetti a se': il sito stesso e la vecchia copia
+     di «Il Grande Quiz dell'Informatica» (lo stesso programma di grande-quiz).
+     Deve restare uguale a ESCLUSI in strumenti/aggiorna-progetti.py. */
+  var ESCLUSI = { "danilodauria.github.io": 1, "Quiz-Interattivo-Terminale-Fenice-OS": 1 };
   function dataIt(iso) { return iso ? data(iso) : ""; }
   function disegnaProgetti(elenco, fonte, quando) {
     var vetrina = {};
@@ -1842,7 +1844,7 @@ footer a { color: var(--hero-ink2); }
       if (card) {
         var v = card.querySelector(".versione");
         var nv = (pr.versione || "").match(/\d+(?:\.\d+)+/); if (v && nv) v.textContent = "v" + nv[0];
-      } else if (pr.nome !== UTENTE + ".github.io") { altri.push(pr); }
+      } else if (!ESCLUSI[pr.nome]) { altri.push(pr); }
     });
     $("n-progetti").textContent = Object.keys(vetrina).length + altri.length;
     var oggiMs = oggi().getTime();
@@ -1874,7 +1876,7 @@ footer a { color: var(--hero-ink2); }
           var noti = {}; j.progetti.forEach(function (pr) { noti[pr.nome] = true; });
           var tutti = j.progetti.slice();
           repos.forEach(function (r) {
-            if (noti[r.name] || r.fork || r.archived || r.private) return;
+            if (noti[r.name] || ESCLUSI[r.name] || r.fork || r.archived || r.private) return;
             tutti.unshift({ nome: r.name, titolo: titoloDa(r.name), descrizione: r.description || "", versione: "",
               sito: r.homepage || (r.has_pages ? "https://" + UTENTE + ".github.io/" + r.name + "/" : ""),
               github: r.html_url, linguaggio: r.language || "", creato: (r.created_at || "").slice(0, 10), aggiornato: (r.pushed_at || "").slice(0, 10) });

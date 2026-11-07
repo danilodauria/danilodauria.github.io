@@ -78,17 +78,6 @@
       "linguaggio": "JavaScript",
       "creato": "2026-10-11",
       "aggiornato": "2026-11-04"
-    },
-    {
-      "nome": "Quiz-Interattivo-Terminale-Fenice-OS",
-      "titolo": "Quiz Interattivo Terminale FeniceOS",
-      "descrizione": "Il Grande Quiz dell’Informatica: pagine web autonome, pensate per funzionare anche senza connessione a internet, su Windows, Mac e Linux, con qualunque browser recente (Chrome, Firefox, Edge o Safari).",
-      "versione": "",
-      "sito": "https://danilodauria.github.io/Quiz-Interattivo-Terminale-Fenice-OS/",
-      "github": "https://github.com/danilodauria/Quiz-Interattivo-Terminale-Fenice-OS",
-      "linguaggio": "HTML",
-      "creato": "2026-10-11",
-      "aggiornato": "2026-10-12"
     }
   ]
 }

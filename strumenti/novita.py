@@ -29,9 +29,19 @@ for x in sorted(voci, key=lambda x: (x["data"], x.get("a_mano", False)), reverse
     if x["id"] in visti:
         continue
     visti.add(x["id"]); unici.append(x)
-manuali = [x for x in unici if x.get("a_mano")]
-automatiche = [x for x in unici if not x.get("a_mano")][:MAX]
-voci = sorted(manuali + automatiche, key=lambda x: x["data"], reverse=True)
+# Una sola voce automatica per progetto, sempre la piu' recente (e quindi all'ultima versione):
+# le voci scritte a mano restano tutte, perche' raccontano il sito, non i programmi.
+manuali, automatiche, gia_visto = [], [], set()
+for x in unici:
+    if x.get("a_mano"):
+        manuali.append(x)
+        continue
+    progetto = (x.get("id") or "").split("@")[0]
+    if not progetto or progetto in gia_visto:
+        continue
+    gia_visto.add(progetto)
+    automatiche.append(x)
+voci = sorted(manuali + automatiche[:MAX], key=lambda x: x["data"], reverse=True)
 nuovo = {"versioni": dict(sorted(noti.items())), "voci": voci}
 if nuovo != {"versioni": dati.get("versioni", {}), "voci": dati.get("voci", [])}:
     nuovo["aggiornato"] = oggi

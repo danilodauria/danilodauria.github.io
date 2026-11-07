@@ -1,6 +1,6 @@
 name: Controllo settimanale
 
-# Ogni lunedì controlla link delle fonti, bandi in scadenza, date da rivedere, traduzioni mancanti e accessibilità.
+# Ogni lunedì controlla link delle fonti, link interni e file locali, bandi in scadenza, date da rivedere, traduzioni mancanti e accessibilità.
 # Se c'è qualcosa da fare apre (o aggiorna) un avviso nella scheda «Issues»: GitHub vi manda un'email.
 # Se è tutto in ordine, chiude l'avviso aperto. Si può lanciare anche a mano: Actions › Controllo settimanale › Run workflow.
 on:
