@@ -28,7 +28,7 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `scheda/` | La scheda intervento per il tecnico (danilodauria.github.io/scheda/): si compila sul posto, si stampa per il cliente, prepara il caso per il sito. Non è collegata dal sito |
 | `vista.html`, `torna.js` | Sul telefono i siti dei progetti si aprono con la barra del sito e il pulsante «← Sito» per tornare indietro |
 | `manifest.webmanifest`, `sw.js`, `icone/` | Il sito installabile come app, che funziona anche senza Internet |
-| `.github/workflows/controllo.yml` | Il controllo di ogni lunedì: link delle fonti, bandi in scadenza, prezzi da rivedere, traduzioni mancanti, accessibilità (WCAG 2.1 AA con axe-core, `strumenti/accessibilita/controlla.py`). Se c'è qualcosa da fare apre un avviso nella scheda «Issues» (e GitHub manda un'email) |
+| `.github/workflows/controllo.yml` | Il controllo di ogni lunedì: link delle fonti, bandi in scadenza, prezzi da rivedere, traduzioni mancanti, accessibilità (WCAG 2.1 AA con axe-core, `strumenti/accessibilita/controlla.py`) e il sito davvero online (`--pubblicato`, riprovando con calma per non prendere per guasto un ritardo di GitHub Pages). Se c'è qualcosa da fare apre un avviso nella scheda «Issues» (e GitHub manda un'email) |
 | `anteprima.png` | L'immagine che compare quando si condivide il link su WhatsApp e social |
 
 Per aggiornare solo i bandi o le offerte basta modificare `bandi.json` o `offerte.json`: la pagina non va toccata.

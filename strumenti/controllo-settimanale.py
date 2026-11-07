@@ -1,4 +1,4 @@
-"""Controllo settimanale del sito: link delle fonti, link interni e file locali, bandi in scadenza, date da rivedere, traduzioni mancanti, accessibilità, casi reali.
+"""Controllo settimanale del sito: link delle fonti, link interni e file locali, bandi in scadenza, date da rivedere, traduzioni mancanti, accessibilità, casi reali, sito pubblicato.
 Scrive il resoconto in controllo.md e dice (variabile PROBLEMI) se c'è qualcosa da fare. Lo esegue GitHub Actions (controllo.yml),
 che apre o aggiorna un avviso nella scheda «Issues» del repository: GitHub vi manda anche un'email.
 Uso locale: python3 strumenti/controllo-settimanale.py [CARTELLA_REPO]. Autore: Danilo D'Auria · MIT."""
@@ -12,6 +12,41 @@ def iso(s): return dt.date.fromisoformat(s)
 def leggi(nome): return json.load(open(os.path.join(REPO, nome), encoding="utf-8"))
 
 da_fare, attenzione, info = [], [], []
+
+
+def controllo_del_sito(modulo, pausa=40, tentativi=3):
+    """Il sito davvero online, con calma: un ritardo di GitHub Pages non deve far rumore.
+
+    Si riprova qualche volta aspettando: se il sito e' solo indietro di qualche minuto, al
+    secondo o al terzo tentativo torna a posto e non resta niente nel resoconto. Se invece
+    non risponde affatto, e' un disservizio di GitHub e non una cosa da correggere qui.
+    Quello che si vede online nasce da una pubblicazione, quindi i suoi problemi diventano
+    avvisi da tenere d'occhio, mai cose da fare. Restituisce (problemi, attenzione, info).
+    """
+    import time
+    for tentativo in range(1, tentativi + 1):
+        stato, _, _, errore = modulo.scarica(modulo.SITO + "/", {})
+        if stato != 200:
+            if tentativo < tentativi:
+                time.sleep(pausa)
+                continue
+            causa = "risposta %d" % stato if stato else errore
+            return [], [], ["Sito pubblicato: non ha risposto (%s). Se il sito si apre, era un "
+                            "disservizio passeggero di GitHub." % causa]
+        try:
+            problemi, _, resoconto = modulo.controlla_pubblicato(modulo.SITO)
+        except Exception as errore:
+            return [], [], ["Sito pubblicato: non si e' potuto controllare (%s)." % errore]
+        if not problemi:
+            return [], [], ["Sito pubblicato: " + riga for riga in resoconto]
+        if tentativo == tentativi:
+            avvisi = ["Sito pubblicato: il sito che risponde non e' ancora quello preparato qui."]
+            avvisi += ["Sito pubblicato: " + riga for riga in problemi[:8]]
+            avvisi.append("Sito pubblicato: se avete appena pubblicato, GitHub Pages puo' impiegare qualche "
+                          "minuto. Altrimenti la pubblicazione non e' arrivata. In dubbio, rilanciate il controllo.")
+            return [], avvisi, []
+        time.sleep(pausa)
+    return [], [], []
 
 # ---- link delle fonti
 def prova(url, tentativi=2):
@@ -108,6 +143,7 @@ if os.path.exists(f_acc):
 # ---- pagine: link locali, file JSON, lunghezza dei titoli, indirizzi del sitemap
 # Li controlla strumenti/controlla-pagine.py, lo stesso che si può lanciare a mano:
 #   python3 strumenti/controlla-pagine.py
+modulo = None
 try:
     import importlib.util
     specifica = importlib.util.spec_from_file_location("controlla_pagine", os.path.join(REPO, "strumenti", "controlla-pagine.py"))
@@ -119,6 +155,12 @@ try:
     info += p_info
 except Exception as e:
     info.append("Controllo delle pagine non riuscito: %s" % e)
+
+# ---- il sito davvero online: quello che vede chi arriva (con la pazienza di controllo_del_sito)
+if modulo:
+    o_problemi, o_attenzione, o_info = controllo_del_sito(modulo)
+    attenzione += o_attenzione
+    info += o_info
 
 # ---- resoconto
 def blocco(titolo, voci): return ("### %s\n\n" % titolo + "\n".join("- [ ] " + v if titolo.startswith("Da fare") else "- " + v for v in voci) + "\n\n") if voci else ""
