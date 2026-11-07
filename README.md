@@ -31,6 +31,22 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `.github/workflows/controllo.yml` | Il controllo di ogni lunedì: link delle fonti, bandi in scadenza, prezzi da rivedere, traduzioni mancanti, accessibilità (WCAG 2.1 AA con axe-core, `strumenti/accessibilita/controlla.py`) e il sito davvero online (`--pubblicato`, riprovando con calma per non prendere per guasto un ritardo di GitHub Pages). Se c'è qualcosa da fare apre un avviso nella scheda «Issues» (e GitHub manda un'email) |
 | `anteprima.png` | L'immagine che compare quando si condivide il link su WhatsApp e social |
 
+## I tre robot
+
+Tre robot di GitHub Actions si occupano del sito da soli. Ognuno scrive **solo i propri file**, e nessuno rifà partire sé stesso: così i robot non si pestano i piedi e non si accendono a vicenda all'infinito.
+
+| Robot | Quando parte | Cosa fa | Cosa scrive |
+|---|---|---|---|
+| **Aggiorna i progetti** (`.github/workflows/progetti.yml`) | ogni giorno alle 05:17 UTC, con il pulsante «Run workflow» della scheda Actions, e a ogni modifica del sito su `main` | legge i repository pubblici di danilodauria e le versioni, aggiorna le Novità e il feed, riallinea le versioni dentro `index.html` (badge delle schede e copia di riserva `PROGETTI_SALVATI`) | `progetti.json`, `novita.json`, `feed.xml`, `index.html` — e solo se qualcosa è davvero cambiato |
+| **Aggiorna il PDF** (`.github/workflows/pdf.yml`) | dopo ogni modifica del sito su `main`, dopo ogni esecuzione del robot dei progetti, e ogni giorno alle 05:47 UTC | rifà profilo, guide, volantino e biglietti da visita con i caratteri di `fonti/`, poi conta le pagine dei documenti | `pdf/` — e solo se i contenuti sono cambiati; il pulsante manuale ha l'opzione per rifare tutto comunque |
+| **Controllo settimanale** (`.github/workflows/controllo.yml`) | ogni lunedì alle 06:23 UTC, oppure a mano | cerca le frasi ancora da tradurre, controlla l'accessibilità con axe-core, poi link e file locali, bandi in scadenza, prezzi da rivedere e il sito davvero online | nessun file: scrive nella scheda «Issues» |
+
+Come si tengono separati: il robot dei progetti non riparte quando cambiano i suoi quattro file, e quello dei PDF non riparte quando cambia `pdf/` o quando cambia solo una versione in `index.html`. Per questo un commit di un robot non ne risveglia un altro.
+
+Il controllo settimanale non tocca il repository: se trova qualcosa apre un avviso nella scheda Issues con l'etichetta `controllo` (e GitHub manda un'email), lo aggiorna alla settimana dopo, e lo chiude da solo quando è tutto a posto. Il sito online lo guarda con qualche minuto di pazienza, riprovando, per non scambiare per guasto un ritardo di GitHub Pages; il resoconto comincia con una riga che dice a colpo d'occhio se il sito online è allineato a quello preparato qui.
+
+Le ore sono UTC: in inverno in Italia sono un'ora più tardi (06:17, 06:47, 07:23), in estate due. Il registro di ogni esecuzione, con l'uscita di ogni passo, è nella scheda Actions del repository; da lì ogni robot si può anche lanciare a mano.
+
 Per aggiornare solo i bandi o le offerte basta modificare `bandi.json` o `offerte.json`: la pagina non va toccata.
 
 Statistiche senza cookie con GoatCounter (codice «danilodauria»): danilodauria.goatcounter.com.

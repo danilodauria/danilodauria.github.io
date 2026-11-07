@@ -1,3 +1,6 @@
+# Come si ferma: scheda Actions › «Aggiorna il PDF» › menu «…» › Disable workflow (Enable lo riaccende).
+# Dal file: commentare il blocco `on:` qui sotto. Un'esecuzione già partita va avanti: si annulla con «Cancel run».
+
 name: Aggiorna il PDF
 
 # Rifà il profilo in PDF, le guide in PDF, il volantino e i biglietti da visita (pdf/) quando cambia il sito, quando cambiano i progetti,

@@ -1,3 +1,6 @@
+# Come si ferma: scheda Actions › «Aggiorna i progetti» › menu «…» › Disable workflow (Enable lo riaccende).
+# Dal file: commentare il blocco `on:` qui sotto. Un'esecuzione già partita va avanti: si annulla con «Cancel run».
+
 name: Aggiorna i progetti
 
 # Ogni giorno controlla i repository pubblici di danilodauria e aggiorna progetti.json:

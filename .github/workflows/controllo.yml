@@ -1,3 +1,6 @@
+# Come si ferma: scheda Actions › «Controllo settimanale» › menu «…» › Disable workflow (Enable lo riaccende).
+# Dal file: commentare il blocco `on:` qui sotto. Un'esecuzione già partita va avanti: si annulla con «Cancel run».
+
 name: Controllo settimanale
 
 # Ogni lunedì controlla link delle fonti, link interni e file locali, bandi in scadenza, date da rivedere, traduzioni
