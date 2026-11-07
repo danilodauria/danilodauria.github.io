@@ -36,15 +36,12 @@ jobs:
         with:
           python-version: "3.12"
       - name: Programmi e caratteri del sito
+        # Young Serif, Atkinson Hyperlegible e JetBrains Mono non si scaricano più da Google: gli script del PDF
+        # li leggono da fonti/ e li incorporano nel documento. Qui restano solo i caratteri di sistema,
+        # che servono ai ripieghi e al monospaziato.
         run: |
           pip install playwright==1.48.0 segno pypdf
           python -m playwright install --with-deps chromium
-          mkdir -p ~/.fonts && cd ~/.fonts
-          base=https://raw.githubusercontent.com/google/fonts/main/ofl
-          curl -sfLO $base/youngserif/YoungSerif-Regular.ttf
-          curl -sfLO $base/atkinsonhyperlegible/AtkinsonHyperlegible-Regular.ttf
-          curl -sfLO $base/atkinsonhyperlegible/AtkinsonHyperlegible-Bold.ttf
-          curl -sfLO $base/atkinsonhyperlegible/AtkinsonHyperlegible-Italic.ttf
           sudo apt-get install -y -qq fonts-dejavu-core fonts-noto-core >/dev/null
           fc-cache -f
       - name: Rifai il PDF se i contenuti sono cambiati

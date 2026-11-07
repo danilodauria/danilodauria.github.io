@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Controllo delle pagine del sito: link e file locali che non esistono, file JSON non validi,
-titoli piu' lunghi del limite, indirizzi del sitemap che non corrispondono a una pagina.
+titoli piu' lunghi del limite, caratteri presi da Google, indirizzi del sitemap che non
+corrispondono a una pagina.
 
 Legge soltanto, non tocca niente. Esce con 0 se non c'e' nulla da sistemare, con 1 se c'e'.
 
@@ -23,6 +24,9 @@ TITOLO_MAX = 70          # oltre questa lunghezza Google taglia il titolo nei ri
 SALTA = {".git", "node_modules"}
 SCHEMI = ("#", "//", "http://", "https://", "mailto:", "tel:", "sms:", "data:", "javascript:", "blob:")
 DETTAGLI_MAX = 10        # quanti esempi elencare per ogni tipo di problema
+# I caratteri stanno tutti in fonti/ (self-hosted): se ricompare uno di questi domini,
+# una pagina torna a scaricarli da Google, e va tolta la pagina a chi la visita.
+DOMINI_CARATTERI = ("fonts.googleapis.com", "fonts.gstatic.com")
 
 
 def relativo(percorso, radice):
@@ -103,6 +107,29 @@ def controlla_titoli(radice, pagine):
     return lunghi, senza
 
 
+def fogli_di_stile(radice):
+    """Tutti i fogli di stile .css del sito, in ordine: anche loro possono importare caratteri."""
+    fuori = []
+    for cartella, sottocartelle, nomi in os.walk(radice):
+        sottocartelle[:] = [s for s in sottocartelle if s not in SALTA]
+        for nome in nomi:
+            if nome.lower().endswith(".css"):
+                fuori.append(os.path.join(cartella, nome))
+    return sorted(fuori)
+
+
+def controlla_caratteri(radice, pagine):
+    """Caratteri presi da Google invece che da fonti/. Restituisce (colpevoli, quante_pagine, quanti_fogli)."""
+    fogli = fogli_di_stile(radice)
+    colpevoli = []
+    for percorso, testo in list(testi(pagine)) + list(testi(fogli)):
+        for dominio in DOMINI_CARATTERI:
+            if dominio in testo:
+                colpevoli.append("%s -> %s" % (relativo(percorso, radice), dominio))
+                break
+    return colpevoli, len(pagine), len(fogli)
+
+
 def controlla_sitemap(radice):
     """Indirizzi del sitemap senza pagina. Restituisce (mancanti, quanti_indirizzi)."""
     percorso = os.path.join(radice, "sitemap.xml")
@@ -156,6 +183,14 @@ def controlla(radice=None):
         problemi += mancanti[:DETTAGLI_MAX]
     elif quanti_url:
         info.append("Sitemap: %d indirizzi, tutti con la loro pagina." % quanti_url)
+
+    google, quante_pagine, quanti_fogli = controlla_caratteri(radice, pagine)
+    if google:
+        problemi.append("Caratteri caricati da Google invece che da fonti/: %d" % len(google))
+        problemi += google[:DETTAGLI_MAX]
+    else:
+        info.append("Caratteri: nessun riferimento a Google in %d pagine e %d fogli di stile."
+                    % (quante_pagine, quanti_fogli))
 
     lunghi, senza = controlla_titoli(radice, pagine)
     if senza:

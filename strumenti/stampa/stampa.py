@@ -2,7 +2,7 @@
 Prende prezzi e testi dal sito, così restano sempre uguali al listino. Rifà i PDF solo se qualcosa è cambiato.
 Uso: python3 strumenti/stampa/stampa.py URL_DEL_SITO [--sempre]   · Lo esegue GitHub Actions (pdf.yml).
 Autore: Danilo D'Auria · codice MIT, testi e grafica CC BY-NC-SA 4.0"""
-import hashlib, html, io, json, os, sys, time
+import base64, hashlib, html, io, json, os, re, sys, time
 import segno
 from playwright.sync_api import sync_playwright
 
@@ -15,6 +15,16 @@ SITO = "https://danilodauria.github.io/"
 EMAIL = "danilodauria.site@gmail.com"
 CHROME = os.environ.get("CHROME") or (os.path.exists("/usr/bin/google-chrome") and "/usr/bin/google-chrome") or None
 E = html.escape
+
+def caratteri_del_sito():
+    """I caratteri di fonti/ incorporati nel documento: nessuna richiesta a Google e nessun carattere da installare.
+    Sono gli stessi WOFF2 che serve il sito, messi dentro come data: URI."""
+    cartella = os.path.join(REPO, "fonti")
+    def dentro(m):
+        dati = base64.b64encode(open(os.path.join(cartella, m.group(1)), "rb").read()).decode()
+        return 'url("data:font/woff2;base64,%s") format("woff2")' % dati
+    css = open(os.path.join(cartella, "fonti.css"), encoding="utf-8").read()
+    return re.sub(r'url\("([^"]+\.woff2)"\) format\("woff2"\)', dentro, css)
 
 def qr(testo, scuro="#14232e", chiaro="#ffffff"):
     b = io.BytesIO()
@@ -99,6 +109,7 @@ body { margin: 0; font-family: "Atkinson Hyperlegible", "Noto Sans", sans-serif;
 .taglio { position: absolute; background: #9aa5ad; }
 .istr { position: absolute; left: 20mm; bottom: 6mm; font-size: 7pt; color: #4f5c68; }
 """
+CSS += caratteri_del_sito()
 
 def volantino(L):
     def colonna(titolo, pacc, nota=""):

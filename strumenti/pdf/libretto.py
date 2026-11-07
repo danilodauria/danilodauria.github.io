@@ -7,7 +7,7 @@ copertina e retro a pagina intera, e lo stampa con Chromium. Due uscite:
 Uso: python3 libretto.py URL_DEL_SITO CARTELLA_USCITA [--sempre]
 Rifà i PDF solo se i contenuti sono cambiati (impronta in CARTELLA_USCITA/impronta.txt); --sempre li rifà comunque.
 Lo esegue da solo GitHub Actions (.github/workflows/pdf.yml). Autore: Danilo D'Auria - licenza MIT."""
-import base64, hashlib, html, io, json, os, sys, tempfile, time
+import base64, hashlib, html, io, json, os, re, sys, tempfile, time
 import segno
 from playwright.sync_api import sync_playwright
 
@@ -313,7 +313,17 @@ def retro():
   <p class="retro-lic">© 2026 Danilo D'Auria · testi e grafica CC BY-NC-SA 4.0 · logo FeniceOS © Danilo D'Auria</p>
 </section>"""
 
-CSS = open(os.path.join(QUI, "libretto.css")).read()
+def caratteri_del_sito():
+    """I caratteri di fonti/ incorporati nel documento: nessuna richiesta a Google e nessun carattere da installare.
+    Sono gli stessi WOFF2 che serve il sito, messi dentro come data: URI (in tutto 207 KB)."""
+    cartella = os.path.join(REPO, "fonti")
+    def dentro(m):
+        dati = base64.b64encode(open(os.path.join(cartella, m.group(1)), "rb").read()).decode()
+        return 'url("data:font/woff2;base64,%s") format("woff2")' % dati
+    css = open(os.path.join(cartella, "fonti.css"), encoding="utf-8").read()
+    return re.sub(r'url\("([^"]+\.woff2)"\) format\("woff2"\)', dentro, css)
+
+CSS = caratteri_del_sito() + open(os.path.join(QUI, "libretto.css")).read()
 pagina = f"""<!doctype html><html lang="it"><head><meta charset="utf-8"><title>Danilo D'Auria · Tecnologia Gentile</title>
 <style>{CSS}</style></head><body>
 {copertina()}
