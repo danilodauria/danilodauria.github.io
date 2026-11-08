@@ -5,14 +5,15 @@ name: Controllo di sicurezza
 
 # Cerca segreti finiti per sbaglio nel repository, robot con permessi troppo larghi,
 # indirizzi che possono diventare comandi, file privati che GitHub Pages servirebbe,
-# e il lettore PDF da aggiornare. Non scrive niente: se trova qualcosa, l'esecuzione
-# diventa rossa e GitHub manda un'email.
+# il lettore PDF da aggiornare e la lista offline del service worker. Non scrive niente:
+# se trova qualcosa, l'esecuzione diventa rossa e GitHub manda un'email.
 on:
   push:
     branches: [main]
     paths:
       - ".github/**"
       - "index.html"
+      - "sw.js"              # decide cosa finisce sul disco di chi visita il sito
       - "scheda/**"
       - "pdf/leggi.html"
       - "pdf/pdfjs/**"

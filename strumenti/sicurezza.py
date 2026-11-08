@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Controllo di sicurezza del sito: segreti finiti per sbaglio, robot di GitHub troppo
-permissivi, indirizzi che diventano comandi, lettore PDF vecchio, file privati che GitHub
-Pages servirebbe lo stesso.
+permissivi, indirizzi che diventano comandi, lettore PDF vecchio, lista offline del service
+worker, file privati che GitHub Pages servirebbe lo stesso.
 
 Uso:
     python3 strumenti/sicurezza.py               # solo i file del repository
@@ -210,6 +210,57 @@ def controlla_lettore_pdf():
                  % (dichiarata, ".".join(map(str, PDFJS_SICURO))))
 
 
+def voce_esiste(voce):
+    """Una voce della lista offline può essere un file, una cartella con la barra finale,
+    oppure «./» che vuol dire la pagina iniziale."""
+    pulita = voce.split("?")[0].split("#")[0]
+    if pulita in ("", ".", "./"):
+        return os.path.exists(percorso("index.html"))
+    if pulita.endswith("/"):
+        return os.path.exists(percorso(pulita + "index.html"))
+    return os.path.exists(percorso(pulita))
+
+
+def controlla_offline():
+    """Il service worker pre-carica una lista di file all'installazione e salta in silenzio
+    quelli che non arrivano: un nome sbagliato non si vede online, si vede quando manca
+    la rete. Così la lista sbagliata la trova il robot, non chi apre il sito in treno."""
+    contenuto = testo_di("sw.js")
+    if contenuto is None:
+        problema("sw.js manca: senza il service worker il sito non funziona più senza rete")
+        return
+    versione = re.search(r'var VERSIONE = "([^"]+)"', contenuto)
+    if not versione or not re.match(r"^dd-\d{4}-\d{2}-\d{2}[a-z]$", versione.group(1)):
+        problema("sw.js: la versione della copia locale manca o non ha la forma "
+                 "dd-AAAA-MM-GGx, quindi il browser non si accorge che i file sono nuovi "
+                 "e continua a servire la copia vecchia")
+    blocco = re.search(r"var BASE = \[(.*?)\];", contenuto, re.S)
+    if not blocco:
+        problema("sw.js: non trovo la lista BASE dei file da tenere per l'offline")
+        return
+    voci = re.findall(r'"([^"]*)"', blocco.group(1))
+    if not voci:
+        problema("sw.js: la lista BASE è vuota: chi apre il sito senza rete non trova niente")
+        return
+    viste = set()
+    for voce in voci:
+        if voce in viste:
+            avviso("sw.js: «%s» compare due volte nella lista offline" % voce)
+        viste.add(voce)
+        if voce.startswith(("http://", "https://", "//")):
+            problema("sw.js: la lista offline contiene l'indirizzo esterno «%s»: il service "
+                     "worker salva solo file del sito, quello resterebbe fuori" % voce)
+            continue
+        if not voce_esiste(voce):
+            problema("sw.js: la lista offline cita «%s», che nel repository non c'è: "
+                     "l'installazione lo salta in silenzio e chi apre il sito senza rete "
+                     "non lo trova" % voce)
+    for lettore in ("pdf/pdfjs/pdf.min.mjs", "pdf/pdfjs/pdf.worker.min.mjs"):
+        if lettore not in voci:
+            problema("sw.js: %s non è nella lista offline, quindi pdf/leggi.html senza rete "
+                     "resta senza lettore" % lettore)
+
+
 def controlla_collegamenti_esterni(elenco):
     for relativo in elenco:
         if not relativo.endswith((".html", ".js")):
@@ -272,6 +323,7 @@ def main():
     controlla_workflow()
     controlla_indirizzi()
     controlla_lettore_pdf()
+    controlla_offline()
     controlla_collegamenti_esterni(elenco)
     controlla_file_generati()
     if pubblicato:
