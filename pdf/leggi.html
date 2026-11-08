@@ -51,7 +51,10 @@ html, body { margin: 0; background: var(--carta); font-family: "Atkinson Hyperle
   }
   if (!window.pdfjsLib) { errore(); return; }
   pdfjsLib.GlobalWorkerOptions.workerSrc = "pdfjs/pdf.worker.min.js";
-  pdfjsLib.getDocument(nome).promise.then(function (pdf) {
+  /* isEvalSupported: false — il lettore incluso è la 3.11.174, precedente alla 4.2.67 che
+     chiude CVE-2024-4367: senza questa riga un PDF costruito apposta può far eseguire
+     JavaScript dentro il sito. Toglietela solo aggiornando pdf/pdfjs/. */
+  pdfjsLib.getDocument({ url: nome, isEvalSupported: false }).promise.then(function (pdf) {
     stato.textContent = pdf.numPages + " pagine A4";
     var dpr = Math.min(window.devicePixelRatio || 1, 2.5);
     function disegna(div, n) {

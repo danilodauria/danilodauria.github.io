@@ -1,3 +1,6 @@
+# Questo file chiede ai motori di ricerca di non elencare alcune pagine: non è una serratura.
+# Su GitHub Pages tutto ciò che sta nel repository è raggiungibile da chi conosce l'indirizzo,
+# quindi qui dentro non va mai messo niente di privato.
 # Danilo D'Auria · danilodauria.github.io
 User-agent: *
 Allow: /

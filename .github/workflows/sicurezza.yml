@@ -1,0 +1,44 @@
+# Come si ferma: scheda Actions › «Controllo di sicurezza» › menu «…» › Disable workflow (Enable lo riaccende).
+# Dal file: commentare il blocco `on:` qui sotto. Un'esecuzione già partita va avanti: si annulla con «Cancel run».
+
+name: Controllo di sicurezza
+
+# Cerca segreti finiti per sbaglio nel repository, robot con permessi troppo larghi,
+# indirizzi che possono diventare comandi, file privati che GitHub Pages servirebbe,
+# e il lettore PDF da aggiornare. Non scrive niente: se trova qualcosa, l'esecuzione
+# diventa rossa e GitHub manda un'email.
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/**"
+      - "index.html"
+      - "scheda/**"
+      - "pdf/leggi.html"
+      - "pdf/pdfjs/**"
+      - "*.json"
+      - "strumenti/**"
+  schedule:
+    - cron: "13 6 * * 1"   # lunedì alle 06:13 UTC, subito prima del controllo settimanale
+  workflow_dispatch:        # pulsante «Run workflow» nella scheda Actions
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sicurezza
+  cancel-in-progress: true
+
+jobs:
+  sicurezza:
+    runs-on: ubuntu-latest
+    steps:
+      # Fissate all'impronta del commit, non all'etichetta «v4»/«v5»: un'etichetta si può
+      # riscrivere, un'impronta no. L'aggiornamento si fa cambiando lo sha (e il commento).
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Controllo
+        timeout-minutes: 5
+        run: python3 strumenti/sicurezza.py --pubblicato

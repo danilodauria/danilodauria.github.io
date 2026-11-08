@@ -2,7 +2,7 @@
    - pagine e dati del sito: prima la rete (sempre aggiornati), se manca Internet la copia salvata;
    - tutto il resto (GitHub, comparatori…): solo rete.
    Autore: Danilo D'Auria · licenza MIT */
-var VERSIONE = "dd-2026-11-08a";
+var VERSIONE = "dd-2026-11-08b";
 var BASE = [
   "./", "index.html", "fenice.svg", "manifest.webmanifest", "bandi.json", "offerte.json", "progetti.json", "casi.json", "novita.json", "prenota.json", "pdf/info.json",
   "icone/icona-192.png", "icone/icona-512.png", "icone/apple-touch-icon.png",

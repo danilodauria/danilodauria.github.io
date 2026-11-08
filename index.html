@@ -1864,6 +1864,9 @@ footer a { color: var(--hero-ink2); }
   function data(iso) { var d = giorno(iso); return d.getDate() + " " + MESI[d.getMonth()] + " " + d.getFullYear(); }
   function oggi() { var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  /* Un indirizzo che arriva da fuori (GitHub, novita.json) può essere «javascript:»: passa
+     solo se è web, email o relativo, altrimenti non diventa un collegamento. */
+  function indirizzo(u) { return /^(https?:\/\/|mailto:|\/|\.{1,2}\/|#)/i.test(String(u || "")) ? u : ""; }
   function stato(b) {
     if (b.previsto) return { k: "arrivo", chip: "In arrivo", cls: "arrivo" };
     if (!b.scadenza) return { k: "aperto", chip: "Aperto", cls: "aperto" };
@@ -1961,8 +1964,8 @@ footer a { color: var(--hero-ink2); }
         (nuovo ? '<span class="chip-nuovo">Nuovo</span>' : (pr.versione ? '<span class="versione">v' + esc(pr.versione) + "</span>" : "")) + "</div>" +
         (pr.descrizione ? "<p>" + esc(pr.descrizione) + "</p>" : "") +
         '<p class="meta">' + [pr.versione && nuovo ? "v" + pr.versione : "", pr.linguaggio, pr.aggiornato ? "aggiornato il " + dataIt(pr.aggiornato) : ""].filter(Boolean).map(esc).join(" · ") + "</p>" +
-        '<div class="collegamenti">' + (pr.sito ? '<a href="' + esc(pr.sito) + '" target="_blank" rel="noopener">Apri</a>' : "") +
-        '<a href="' + esc(pr.github) + '" target="_blank" rel="noopener">GitHub</a></div></article>';
+        '<div class="collegamenti">' + (indirizzo(pr.sito) ? '<a href="' + esc(indirizzo(pr.sito)) + '" target="_blank" rel="noopener">Apri</a>' : "") +
+        '<a href="' + esc(indirizzo(pr.github)) + '" target="_blank" rel="noopener">GitHub</a></div></article>';
     }).join("");
     $("lab-vuoto").hidden = altri.length > 0;
     $("lab-stato").textContent = fonte === "vivo" ? "Aggiornato in tempo reale da GitHub." : "Elenco dei progetti al " + dataIt(quando) + ".";
@@ -2635,7 +2638,8 @@ footer a { color: var(--hero-ink2); }
     function lista() {
       var mostra = tutte ? v : v.slice(0, 5);
       $("nov-lista").innerHTML = mostra.map(function (x) {
-        var t = esc(x.titolo); if (x.link) t = '<a href="' + esc(x.link) + '"' + (/^https?:/.test(x.link) ? ' target="_blank" rel="noopener"' : "") + ">" + t + "</a>";
+        var t = esc(x.titolo), u = indirizzo(x.link);
+        if (u) t = '<a href="' + esc(u) + '"' + (/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : "") + ">" + t + "</a>";
         return '<li><span class="quando">' + data(x.data) + "</span><span><b" + (x.nome ? ' class="notranslate" translate="no"' : "") + ">" + t + '</b><span class="t">' + esc(x.testo || "") + "</span></span></li>";
       }).join("");
       $("nov-tutte").hidden = tutte || v.length <= 5;
