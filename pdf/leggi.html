@@ -32,9 +32,10 @@ html, body { margin: 0; background: var(--carta); font-family: "Atkinson Hyperle
 </header>
 <main class="pagine" id="pagine"></main>
 <script src="../torna.js"></script>
-<script src="pdfjs/pdf.min.js"></script>
-<script>
-(function () {
+<script type="module">
+/* PDF.js 4.10.38, licenza Apache 2.0 (pdf/pdfjs/): dalla 4 è un modulo ES, per questo
+   il tag è type="module" e il file si importa. Il lavoratore resta un file a parte. */
+(async function () {
   var consentiti = ["Danilo_DAuria_Tecnologia_Gentile.pdf", "Danilo_DAuria_Tecnologia_Gentile_stampa.pdf"];
   var nome = decodeURIComponent((location.hash || "").slice(1));
   var guida = /^guide\/([a-z]{2}\/)?[a-z0-9-]+\.pdf$/.test(nome);
@@ -49,11 +50,15 @@ html, body { margin: 0; background: var(--carta); font-family: "Atkinson Hyperle
     box.innerHTML = '<div class="avviso">Non riesco a mostrare il PDF qui. <a href="' + nome + '">Apritelo o scaricatelo direttamente</a>.</div>';
     stato.textContent = "";
   }
-  if (!window.pdfjsLib) { errore(); return; }
-  pdfjsLib.GlobalWorkerOptions.workerSrc = "pdfjs/pdf.worker.min.js";
-  /* isEvalSupported: false — il lettore incluso è la 3.11.174, precedente alla 4.2.67 che
-     chiude CVE-2024-4367: senza questa riga un PDF costruito apposta può far eseguire
-     JavaScript dentro il sito. Toglietela solo aggiornando pdf/pdfjs/. */
+  var pdfjsLib;
+  try { pdfjsLib = await import("./pdfjs/pdf.min.mjs"); }
+  catch (e) {
+    box.innerHTML = '<div class="avviso">Non riesco a caricare il lettore PDF. <a href="' + nome + '">Aprite il PDF direttamente</a>.</div>';
+    stato.textContent = "";
+    return;
+  }
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "pdfjs/pdf.worker.min.mjs";
+  /* isEvalSupported: false resta come seconda serratura: la 4.10.38 chiude già CVE-2024-4367. */
   pdfjsLib.getDocument({ url: nome, isEvalSupported: false }).promise.then(function (pdf) {
     stato.textContent = pdf.numPages + " pagine A4";
     var dpr = Math.min(window.devicePixelRatio || 1, 2.5);

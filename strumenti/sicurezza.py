@@ -18,9 +18,9 @@ QUI = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(QUI)
 INDIRIZZO = "https://danilodauria.github.io/"
 
-# Il lettore PDF incluso è la 3.11.174, precedente alla 4.2.67 che chiude CVE-2024-4367
-# (JavaScript arbitrario dentro un PDF costruito apposta). Finché non si aggiorna, deve
-# restare spenta l'opzione che compila il codice dei caratteri: isEvalSupported: false.
+# Il lettore PDF deve restare almeno alla 4.2.67, che chiude CVE-2024-4367 (JavaScript
+# arbitrario dentro un PDF costruito apposta). La versione sta in pdf/pdfjs/versione.txt e
+# il controllo verifica che corrisponda davvero ai file, non solo alla riga scritta a mano.
 PDFJS_SICURO = (4, 2, 67)
 
 SCHEMI_BUONI = ("http://", "https://", "mailto:", "/", "#", "./", "../")
@@ -176,28 +176,38 @@ def controlla_indirizzi():
 
 
 def controlla_lettore_pdf():
-    contenuto = testo_di("pdf/pdfjs/pdf.min.js")
+    """Il lettore PDF è un modulo ES: la versione dichiarata in pdf/pdfjs/versione.txt deve
+    comparire anche dentro i file, così il numero non può restare indietro da solo."""
+    for vecchio in ("pdf/pdfjs/pdf.min.js", "pdf/pdfjs/pdf.worker.min.js"):
+        if os.path.exists(percorso(vecchio)):
+            problema("%s: è la copia vecchia del lettore PDF, va tolta" % vecchio)
+    contenuto = testo_di("pdf/pdfjs/pdf.min.mjs")
     if contenuto is None:
-        avviso("pdf/pdfjs/pdf.min.js non trovato: non ho potuto controllare il lettore PDF")
+        problema("pdf/pdfjs/pdf.min.mjs manca: il lettore PDF non si carica "
+                 "(pdf/leggi.html lo importa)")
         return
-    trovata = re.search(r'version\s*=\s*"(\d+)\.(\d+)\.(\d+)"', contenuto)
-    if not trovata:
-        avviso("non riesco a leggere la versione del lettore PDF")
+    dichiarata = (testo_di("pdf/pdfjs/versione.txt") or "").strip()
+    if not re.match(r"^\d+\.\d+\.\d+$", dichiarata):
+        problema("pdf/pdfjs/versione.txt manca o non contiene una versione (es. 4.10.38)")
         return
-    versione = tuple(int(n) for n in trovata.groups())
-    worker = testo_di("pdf/pdfjs/pdf.worker.min.js") or ""
-    lavoratore = re.search(r'version\s*=\s*"(\d+)\.(\d+)\.(\d+)"', worker)
-    if lavoratore and tuple(int(n) for n in lavoratore.groups()) != versione:
-        problema("pdf/pdfjs: pdf.min.js è %s ma pdf.worker.min.js è %s: devono essere uguali"
-                 % (".".join(map(str, versione)), ".".join(lavoratore.groups())))
-    if versione >= PDFJS_SICURO:
-        return
+    if dichiarata not in contenuto:
+        problema("pdf/pdfjs/versione.txt dice %s, ma dentro pdf.min.mjs quel numero non c'è: "
+                 "il file è stato sostituito senza aggiornare la versione" % dichiarata)
+    worker = testo_di("pdf/pdfjs/pdf.worker.min.mjs")
+    if worker is None:
+        problema("pdf/pdfjs/pdf.worker.min.mjs manca: il lettore non riesce a leggere i PDF")
+    elif dichiarata not in worker:
+        problema("pdf/pdfjs: pdf.min.mjs è la %s ma pdf.worker.min.mjs no: devono essere "
+                 "la stessa versione" % dichiarata)
     pagina = testo_di("pdf/leggi.html") or ""
-    if not re.search(r"isEvalSupported\s*:\s*false", pagina):
+    if "pdf.min.mjs" not in pagina:
+        problema("pdf/leggi.html non carica il lettore da pdf/pdfjs/pdf.min.mjs")
+    versione = tuple(int(n) for n in dichiarata.split("."))
+    if versione < PDFJS_SICURO and not re.search(r"isEvalSupported\s*:\s*false", pagina):
         problema("pdf/leggi.html: il lettore PDF è la %s, precedente alla %s che chiude "
                  "CVE-2024-4367; serve «isEvalSupported: false» in getDocument (oppure "
                  "l'aggiornamento del lettore)"
-                 % (".".join(map(str, versione)), ".".join(map(str, PDFJS_SICURO))))
+                 % (dichiarata, ".".join(map(str, PDFJS_SICURO))))
 
 
 def controlla_collegamenti_esterni(elenco):
