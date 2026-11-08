@@ -2,7 +2,7 @@
    - pagine e dati del sito: prima la rete (sempre aggiornati), se manca Internet la copia salvata;
    - tutto il resto (GitHub, comparatori…): solo rete.
    Autore: Danilo D'Auria · licenza MIT */
-var VERSIONE = "dd-2026-11-08c";
+var VERSIONE = "dd-2026-11-08d";
 var BASE = [
   "./", "index.html", "fenice.svg", "manifest.webmanifest", "bandi.json", "offerte.json", "progetti.json", "casi.json", "novita.json", "prenota.json", "pdf/info.json",
   "icone/icona-192.png", "icone/icona-512.png", "icone/apple-touch-icon.png",
@@ -10,7 +10,8 @@ var BASE = [
   "fonti/youngserif-400.woff2", "fonti/youngserif-400-ext.woff2", "fonti/jetbrains-400.woff2", "fonti/jetbrains-400-ext.woff2", "fonti/jetbrains-600.woff2", "fonti/jetbrains-600-ext.woff2",
   "guide/backup.html", "guide/truffe.html", "guide/vendere-donare.html", "guide/password.html", "guide/pc-veloce.html",
   "i18n/en.json", "i18n/fr.json", "i18n/es.json", "i18n/de.json", "i18n/ro.json",
-  "scheda/", "pdf/leggi.html", "vista.html", "torna.js"
+  "scheda/", "pdf/leggi.html", "vista.html", "torna.js",
+  "pdf/pdfjs/pdf.min.mjs", "pdf/pdfjs/pdf.worker.min.mjs"
 ];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(VERSIONE).then(function (c) {
