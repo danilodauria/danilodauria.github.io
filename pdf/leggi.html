@@ -50,6 +50,33 @@ html, body { margin: 0; background: var(--carta); font-family: "Atkinson Hyperle
     box.innerHTML = '<div class="avviso">Non riesco a mostrare il PDF qui. <a href="' + nome + '">Apritelo o scaricatelo direttamente</a>.</div>';
     stato.textContent = "";
   }
+  /* Il documento lo salva chi lo apre davvero: senza rete il lettore ritrova le pagine
+     invece dell'avviso. Nessun pre-caricamento, così chi il PDF non lo guarda non scarica
+     niente in più. Va nella stessa copia locale del service worker (quella che si chiama
+     dd-AAAA-MM-GGx), così vive e sparisce insieme al resto. */
+  function conserva(pdf) {
+    if (!("caches" in window)) return;
+    var chiave = new URL(nome, location.href).href;
+    caches.keys().then(function (nomi) {
+      var corrente = nomi.filter(function (n) { return /^dd-\d{4}-\d{2}-\d{2}[a-z]$/.test(n); })[0] || "pdf";
+      return caches.open(corrente).then(function (c) {
+        return c.match(chiave).then(function (gia) {
+          if (gia) return;
+          var byte = pdf && pdf.getData ? pdf.getData() : null;
+          return Promise.resolve(byte).then(function (dati) {
+            if (dati && dati.byteLength) {
+              return c.put(chiave, new Response(dati, {
+                headers: { "content-type": "application/pdf", "content-length": String(dati.byteLength) }
+              }));
+            }
+            return fetch(nome).then(function (r) {
+              if (r && r.ok && r.status === 200) return c.put(chiave, r);
+            });
+          });
+        });
+      });
+    }).catch(function () {});
+  }
   var pdfjsLib;
   try { pdfjsLib = await import("./pdfjs/pdf.min.mjs"); }
   catch (e) {
@@ -61,6 +88,7 @@ html, body { margin: 0; background: var(--carta); font-family: "Atkinson Hyperle
   /* isEvalSupported: false resta come seconda serratura: la 4.10.38 chiude già CVE-2024-4367. */
   pdfjsLib.getDocument({ url: nome, isEvalSupported: false }).promise.then(function (pdf) {
     stato.textContent = pdf.numPages + " pagine A4";
+    conserva(pdf);
     var dpr = Math.min(window.devicePixelRatio || 1, 2.5);
     function disegna(div, n) {
       if (div.dataset.fatto) return; div.dataset.fatto = "1";
