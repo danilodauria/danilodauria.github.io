@@ -45,6 +45,8 @@ Come si tengono separati: il robot dei progetti non riparte quando cambiano i su
 
 **Il quiz una volta sola.** «Il Grande Quiz dell'Informatica» esiste in due repository: quello buono (`grande-quiz`) e una copia vecchia (`Quiz-Interattivo-Terminale-Fenice-OS`), che è lo stesso programma. La copia sta nell'elenco `ESCLUSI` dentro `strumenti/aggiorna-progetti.py`, e prima di scrivere `progetti.json` il robot controlla cinque cose: che nessun nome escluso sia ricomparso, che i quiz elencati siano uno solo, e che due progetti non portino allo stesso indirizzo, non abbiano lo stesso titolo e non abbiano la stessa descrizione (spazi e maiuscole non contano, e i campi vuoti sono esclusi dal confronto). Se una di queste non torna non scrive niente e l'esecuzione diventa rossa nella scheda Actions: il doppione si vede subito, invece di finire online.
 
+**Chi può spostare `main`.** Due robot su tre scrivono sul ramo: «Aggiorna i progetti» (commit su `progetti.json`, `novita.json`, `feed.xml`, `index.html`) e «Aggiorna il PDF» (commit su `pdf/`). Il «Controllo settimanale» no: ha solo il permesso di lettura e al massimo apre un avviso nella scheda Issues. I due che scrivono riprovano tre volte, con `git pull --rebase` fra un tentativo e l'altro, quindi il peggio che può capitare al tuo push è di essere rifiutato con `fetch first`: non si perde niente, si riprova. Se mentre spedisci un pacchetto non vuoi che pubblichino, metti la variabile `PACCHETTO_IN_ARRIVO` a `1` (Settings › Secrets and variables › Actions › Variables) prima del push e riportala a `0` appena hai finito: i robot lavorano lo stesso, ma saltano il passo che salva, e nel log compare un avviso che lo dice. Non dimenticare lo `0`: finché è a `1` il sito non si aggiorna da solo.
+
 Il controllo settimanale non tocca il repository: se trova qualcosa apre un avviso nella scheda Issues con l'etichetta `controllo` (e GitHub manda un'email), lo aggiorna alla settimana dopo, e lo chiude da solo quando è tutto a posto. Il sito online lo guarda con qualche minuto di pazienza, riprovando, per non scambiare per guasto un ritardo di GitHub Pages; il resoconto comincia con una riga che dice a colpo d'occhio se il sito online è allineato a quello preparato qui.
 
 Le ore sono UTC: in inverno in Italia sono un'ora più tardi (06:17, 06:47, 07:23), in estate due. Il registro di ogni esecuzione, con l'uscita di ogni passo, è nella scheda Actions del repository; da lì ogni robot si può anche lanciare a mano.
@@ -72,7 +74,11 @@ A volte il lavoro viene preparato in un ambiente che non ha il token di GitHub: 
 4. Porta online e confronta i due lati:
 
    ```bash
-   git push origin main
+   for prova in 1 2 3; do                 # se un robot ha appena scritto, si riprova
+     git push origin main && break
+     git pull --rebase origin main
+     sleep 10
+   done
    git fetch origin
    git log --oneline origin/main -1        # lo stesso commit che hai in locale
    ```
@@ -86,7 +92,7 @@ A volte il lavoro viene preparato in un ambiente che non ha il token di GitHub: 
 
    Il primo comando deve dire `200`: è il modo più rapido per sapere se il sito è già la versione nuova, perché quel foglio arriva con i caratteri. Il secondo deve finire senza voci sui caratteri presi da Google.
 
-Due cose fanno perdere tempo: il percorso **relativo** del pacchetto (dopo un `cd` punta altrove, e il pull fallisce con un messaggio poco chiaro) e il push rifiutato con `! [rejected] ... fetch first`, che si risolve con `git pull --rebase origin main` e un secondo `git push`. Nessun segreto va salvato sulla macchina: al push git chiede utente e token una volta sola, e il portachiavi di sistema se li ricorda.
+Due cose fanno perdere tempo: il percorso **relativo** del pacchetto (dopo un `cd` punta altrove, e il pull fallisce con un messaggio poco chiaro) e il push rifiutato con `! [rejected] ... fetch first`, che il giro di ripetizioni del punto 4 risolve da solo. Dopo un `git pull --rebase` i tuoi commit hanno impronte nuove: il pacchetto vale per la copia da cui l'hai preso, non per una seconda macchina. Nessun segreto va salvato sulla macchina: al push git chiede utente e token una volta sola, e il portachiavi di sistema se li ricorda.
 
 Per aggiornare solo i bandi o le offerte basta modificare `bandi.json` o `offerte.json`: la pagina non va toccata.
 

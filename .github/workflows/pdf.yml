@@ -57,7 +57,12 @@ jobs:
           python strumenti/pdf/guide-pdf.py http://127.0.0.1:8765/ ${{ inputs.sempre && '--sempre' || '' }}
           python strumenti/stampa/stampa.py http://127.0.0.1:8765/ ${{ inputs.sempre && '--sempre' || '' }}
           python strumenti/pdf/info.py
+      - name: Pacchetto in arrivo
+        if: ${{ vars.PACCHETTO_IN_ARRIVO == '1' }}
+        run: |
+          echo "::notice title=Pacchetto in arrivo::Questa esecuzione non pubblica niente: sulla macchina di Danilo c'e' un aggiornamenti.bundle da spedire. Quando ha finito, riporta la variabile PACCHETTO_IN_ARRIVO a 0 (Settings, Secrets and variables, Actions, Variables)."
       - name: Salva se qualcosa è cambiato
+        if: ${{ vars.PACCHETTO_IN_ARRIVO != '1' }}
         run: |
           if git diff --quiet -- pdf; then
             echo "Nessuna novità."
