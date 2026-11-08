@@ -4,7 +4,7 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 
 | File | Cosa contiene |
 |---|---|
-| `index.html` | La pagina completa (progetti, libro, servizi, bandi, domande frequenti, contatti) |
+| `index.html` | La pagina completa (progetti, libro, servizi, Green-Tech, adesioni dei partner, bandi, domande frequenti, contatti) |
 | `bandi.json` | L'elenco dei bandi: la pagina lo rilegge a ogni apertura (LED verde) |
 | `offerte.json` | Calendario delle offerte e prodotti da confrontare: le date ricorrenti (Black Friday, saldi, Prime Day…) si ricalcolano da sole ogni anno |
 | `fenice.svg` | Il logo della fenice, usato anche come icona della scheda |
@@ -112,6 +112,30 @@ Il push che ha portato online i caratteri ospitati è arrivato la sera dell'8 no
 Il controllo del sito pubblicato, rifatto appena GitHub Pages ha servito la versione nuova, chiude con «Tutto a posto»: nessun riferimento a Google in 36 pagine e 1 foglio di stile, titoli tutti entro il limite, 12 file di caratteri raggiungibili.
 
 Per aggiornare solo i bandi o le offerte basta modificare `bandi.json` o `offerte.json`: la pagina non va toccata.
+
+## Il riquadro delle adesioni
+
+Dentro la sezione `#green-tech` c'è un riquadro per raccogliere le adesioni dei partner (`<form id="adesioni">`): nome e cognome, email, dove (quartiere o città), che tipo di partner (8 voci nella tendina: «Scegli…» più sette tipi), cosa si può offrire, e la casella del consenso con l'informativa apribile «Come tratto i dati». In tutto 11 elementi con un id `ad-*`, più lo specchio del messaggio composto e i pulsanti «Prepara la richiesta», «Apri l'email», «Copia il messaggio».
+
+Il modulo non ha un server: la richiesta si compone nel browser e parte dall'email di chi scrive, come per il preventivo. Il sito non salva niente e non mette i dati nell'indirizzo — se il programma non è ancora partito, il modulo ha un ripiego (`action="mailto:…"`) che apre l'email invece di fare un invio normale con i campi nella barra degli indirizzi. Il testo che si compone resta in italiano; etichette, consenso, informativa e messaggi d'errore sono tradotti.
+
+Per il modulo sono state tradotte **23 frasi nuove per lingua**: il sito passa così a **963 frasi** in ognuna delle sei lingue (`it, en, fr, es, de, ro`), e `python3 strumenti/i18n/componi.py` chiude con «errori: 0». Le frasi si scrivono in `i18n/fonti/<lingua>.tsv`: niente cifre, perché il motore le trasforma in segnaposto (`{n0}`) e la chiave non corrisponderebbe più — per questo l'informativa dice «come previsto dal GDPR» invece di citare l'articolo.
+
+## I numeri della sera dell'8 novembre 2026
+
+Il secondo push della giornata ha portato online la sezione e il riquadro: **5 commit** da `04eff18` a `698d74d`, **14 file**, `707 insertions(+), 2 deletions(-)`. Qualche minuto dopo il robot dei PDF ha aggiunto il suo `935b154` «PDF aggiornato in automatico», rifacendo profilo e profilo da stampa (303 righe cambiate, impronta del contenuto `87edc232…` → `03e09601…`); il profilo ora pesa 888 088 byte.
+
+| Cosa | Prima del push | Dopo il push |
+|---|---|---|
+| Sezioni della pagina | 18 | **19**, con `#green-tech` |
+| Voci di menu che portano a Green-Tech | 0 | **2** (desktop e telefono) |
+| Modulo delle adesioni | assente | **presente**: 11 elementi `ad-*`, 8 voci nella tendina |
+| Frasi per lingua | 914 | **963** in tutte e sei |
+| Service worker | `dd-2026-11-07a` | **`dd-2026-11-08a`** |
+| Profilo in PDF | 20 pagine, testo vecchio | 20 pagine, testo nuovo |
+| Indirizzi nel sitemap | 39 | **39**, tutti con la loro pagina |
+
+Controllato sulla pagina vera dopo la pubblicazione: `index.html` da 779 123 byte, con sezione, modulo, consenso e menu; le sei lingue servite da GitHub Pages con 963 frasi ciascuna; service worker nuovo; `pdf/info.json` a 20/1/2/4 pagine; `controlla-pagine.py` chiude con «Tutto a posto». I PDF rigenerati il 8 novembre alle 22:38 si aprono con il testo nuovo (impronta diversa da quella di prima), ma il robot rifà solo quello che cambia: volantino, biglietti e kit sono rimasti quelli di prima, perché non contengono la sezione.
 
 Statistiche senza cookie con GoatCounter (codice «danilodauria»): danilodauria.goatcounter.com.
 
