@@ -78,7 +78,9 @@ def controlla_elenco(progetti):
     La copia vecchia «Quiz-Interattivo-Terminale-Fenice-OS» è lo stesso programma di
     «grande-quiz», per questo sta in ESCLUSI. Se un giorno quella riga sparisse, o se il
     repository venisse rinominato, il sito mostrerebbe due quiz. Qui si guarda prima di
-    scrivere: meglio un'esecuzione rossa che un doppione online.
+    scrivere: meglio un'esecuzione rossa che un doppione online. Oltre al nome, due schede
+    non devono ripetere né l'indirizzo né il titolo né la descrizione: è così che un progetto
+    ricaricato con un altro nome si riconosce lo stesso.
     """
     problemi = []
     nomi = [p["nome"] for p in progetti]
@@ -89,16 +91,31 @@ def controlla_elenco(progetti):
     if quiz != ["grande-quiz"]:
         problemi.append("i quiz elencati dovrebbero essere solo grande-quiz, invece sono: %s"
                         % (", ".join(quiz) or "nessuno"))
-    siti = {}
+    problemi += _ripetuti(progetti, "sito", "%s e %s portano allo stesso sito (%s)")
+    problemi += _ripetuti(progetti, "titolo", "%s e %s hanno lo stesso titolo (%s)")
+    problemi += _ripetuti(progetti, "descrizione",
+                          "%s e %s hanno la stessa descrizione (%s)", taglia=60)
+    return problemi
+
+
+def _ripetuti(progetti, campo, frase, taglia=0):
+    """Progetti che ripetono lo stesso valore in `campo`, ignorando spazi e maiuscole.
+
+    I valori vuoti non contano: un progetto può non avere descrizione. `taglia` accorcia
+    il valore nel messaggio, per non stampare una descrizione intera."""
+    visti, problemi = {}, []
     for p in progetti:
-        indirizzo = (p.get("sito") or "").rstrip("/").lower()
-        if not indirizzo:
+        valore = " ".join((p.get(campo) or "").split())
+        if campo == "sito":
+            valore = valore.rstrip("/")
+        if not valore:
             continue
-        if indirizzo in siti:
-            problemi.append("%s e %s portano allo stesso sito (%s)"
-                            % (siti[indirizzo], p["nome"], indirizzo))
+        chiave = valore.casefold()
+        if chiave in visti:
+            breve = valore if not taglia or len(valore) <= taglia else valore[:taglia].rstrip() + "…"
+            problemi.append(frase % (visti[chiave], p["nome"], breve))
         else:
-            siti[indirizzo] = p["nome"]
+            visti[chiave] = p["nome"]
     return problemi
 
 
