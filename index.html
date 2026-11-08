@@ -608,6 +608,20 @@ blockquote { margin: 24px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(-
 /* ---------- Hub Green-Tech ---------- */
 .hub-perche { margin-top: 40px; }
 .hub-nota { margin-top: 28px; }
+.adesioni { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: clamp(18px, 3vw, 30px); margin-top: 30px; display: grid; gap: 16px; }
+.adesioni-campi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.adesioni label { display: grid; gap: 5px; font-size: .82rem; font-weight: 700; color: var(--ink2); }
+.adesioni label.largo { grid-column: 1 / -1; }
+.adesioni label span { font-weight: 400; }
+.adesioni input, .adesioni select, .adesioni textarea { font: 1rem var(--f-body); color: var(--ink); background: var(--bg); border: 1.5px solid var(--linea); border-radius: 9px; padding: 9px 10px; width: 100%; }
+.adesioni textarea { resize: vertical; }
+.adesioni .consenso { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; font-weight: 400; font-size: .95rem; color: var(--ink); }
+.adesioni .consenso input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--verde); }
+.adesioni .informativa { font-size: .92rem; color: var(--ink2); }
+.adesioni .informativa summary { cursor: pointer; color: var(--brace); font-weight: 700; padding: 4px 0; }
+.adesioni .informativa p { margin-top: 8px; }
+.adesioni .messaggio { font-size: .88rem; }
+@media (max-width: 700px) { .adesioni-campi { grid-template-columns: 1fr; } }
 
 /* ---------- Comandi di accessibilita' ---------- */
 .accesso { display: flex; gap: 6px; }
@@ -1093,6 +1107,46 @@ footer a { color: var(--hero-ink2); }
     <div class="os-avviso hub-nota">
       <p><b>Cerco partner e una community.</b> Associazioni, artigiani, negozi di quartiere, scuole e aziende che hanno PC da dismettere: insieme si può costruire un luogo dove le cose si riparano invece di buttarle. L'idea è creare una community che aiuti a sostenere, migliorare e condividere la filosofia che uso nel progetto: la tecnologia gentile.</p>
     </div>
+    <form class="adesioni" id="adesioni" action="mailto:danilodauria.site@gmail.com" method="post" enctype="text/plain" novalidate>
+      <div class="testa">
+        <p class="label">Adesioni</p>
+        <h3>Vuoi costruirlo con me?</h3>
+        <p class="lead">Compila i campi: la richiesta si prepara qui e parte dalla tua email. Il sito non salva niente.</p>
+      </div>
+      <div class="adesioni-campi">
+        <label for="ad-nome">Nome e cognome<input id="ad-nome" name="nome" autocomplete="name" required></label>
+        <label for="ad-email">Email<input id="ad-email" name="email" type="email" autocomplete="email" required></label>
+        <label for="ad-dove">Dove <span>(quartiere o città)</span><input id="ad-dove" name="dove" autocomplete="address-level2"></label>
+        <label for="ad-tipo">Che tipo di partner
+          <select id="ad-tipo" name="tipo">
+            <option value="">Scegli…</option>
+            <option>Associazione o comitato</option>
+            <option>Artigiano o officina</option>
+            <option>Negozio di quartiere</option>
+            <option>Scuola o biblioteca</option>
+            <option>Azienda con PC da dismettere</option>
+            <option>Istituzione o ente</option>
+            <option>Privato</option>
+          </select>
+        </label>
+        <label for="ad-nota" class="largo">Cosa puoi offrire o cosa ti interessa<textarea id="ad-nota" name="nota" rows="3"></textarea></label>
+      </div>
+      <label class="consenso" for="ad-consenso">
+        <input type="checkbox" id="ad-consenso" name="consenso" required>
+        <span>Ho letto l'informativa qui sotto e acconsento all'uso dei dati per essere ricontattato su questa proposta.</span>
+      </label>
+      <details class="informativa">
+        <summary>Come tratto i dati</summary>
+        <p>Chi li tratta: Danilo D'Auria, danilodauria.site@gmail.com. Quali dati: nome, email, zona, tipo di partner e il testo che scrivi. Perché: solo per risponderti su questa proposta e tenere traccia delle adesioni. Il sito non li salva: restano nel tuo browser finché non premi «Apri l'email» o «Copia il messaggio», e mi arrivano con la tua email. Non li do a nessuno e non li uso per pubblicità. Puoi chiedermi in ogni momento di farti vedere o cancellare i tuoi dati, scrivendo all'indirizzo qui sopra. Base giuridica: il tuo consenso, come previsto dal GDPR.</p>
+      </details>
+      <div class="azioni">
+        <button type="submit" class="btn pieno" id="ad-prepara">Prepara la richiesta</button>
+        <a class="btn scuro" id="ad-invia" href="#" hidden>Apri l'email</a>
+        <button type="button" class="btn-testo" id="ad-copia" hidden>Copia il messaggio</button>
+      </div>
+      <div class="messaggio" id="ad-messaggio" hidden></div>
+      <p class="esito-calc" id="ad-esito" aria-live="polite"></p>
+    </form>
     <p class="calc-nota" style="margin-top:14px">Non è ancora un servizio attivo: questa sezione raccoglie le adesioni di chi vuole costruirlo. I servizi disponibili oggi sono più sotto.</p>
     <div class="azioni">
       <a class="btn pieno" href="mailto:danilodauria.site@gmail.com?subject=Hub%20Green-Tech%20a%20Roma%20Est%20%C2%B7%20partner">Scrivimi per collaborare</a>
@@ -2618,6 +2672,48 @@ footer a { color: var(--hero-ink2); }
     g.setAttribute("tabindex", "0"); g.setAttribute("role", "link");
     function vai() { var el = document.getElementById(g.getAttribute("data-vai")); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
     g.addEventListener("click", vai); g.addEventListener("keydown", function (ev) { if (ev.key === "Enter") vai(); });
+  });
+})();
+</script>
+<script>
+(function () {
+  var f = document.getElementById("adesioni"); if (!f) return;
+  var nome = document.getElementById("ad-nome"), email = document.getElementById("ad-email"),
+      dove = document.getElementById("ad-dove"), tipo = document.getElementById("ad-tipo"),
+      nota = document.getElementById("ad-nota"), consenso = document.getElementById("ad-consenso"),
+      scatola = document.getElementById("ad-messaggio"), copia = document.getElementById("ad-copia"),
+      invia = document.getElementById("ad-invia"), esito = document.getElementById("ad-esito");
+  var INDIRIZZO = "danilodauria.site@gmail.com", OGGETTO = "Hub Green-Tech a Roma Est · adesione", pronta = "";
+  function scrivi(x) { esito.textContent = x; }
+  function valida(x) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x.trim()); }
+  function componi() {
+    var r = [OGGETTO, "", "Nome: " + nome.value.trim(), "Email: " + email.value.trim()];
+    if (dove.value.trim()) r.push("Dove: " + dove.value.trim());
+    if (tipo.value) r.push("Tipo di partner: " + tipo.value);
+    if (nota.value.trim()) r.push("", "Cosa posso offrire o cosa mi interessa:", nota.value.trim());
+    r.push("", "Consenso al trattamento dei dati per essere ricontattato: sì.");
+    return r.join("\n");
+  }
+  function nascondi() { pronta = ""; scatola.textContent = ""; scatola.hidden = true; copia.hidden = true; invia.hidden = true; }
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!nome.value.trim() || !valida(email.value) || !consenso.checked) {
+      nascondi(); scrivi("Mancano alcuni dati: servono il nome, un'email valida e il consenso.");
+      (!nome.value.trim() ? nome : (!valida(email.value) ? email : consenso)).focus();
+      return;
+    }
+    pronta = componi();
+    scatola.textContent = pronta; scatola.hidden = false;
+    invia.href = "mailto:" + INDIRIZZO + "?subject=" + encodeURIComponent(OGGETTO) + "&body=" + encodeURIComponent(pronta);
+    invia.hidden = false; copia.hidden = false;
+    scrivi("Richiesta pronta: aprila nella tua email oppure copiala.");
+  });
+  copia.addEventListener("click", function () {
+    if (!pronta) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(pronta).then(function () { scrivi("Copiato: ora incollalo nella tua email a " + INDIRIZZO + "."); },
+        function () { scrivi("Non riesco a copiare da qui: seleziona il testo e copialo."); });
+    } else { scrivi("Non riesco a copiare da qui: seleziona il testo e copialo."); }
   });
 })();
 </script>
