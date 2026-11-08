@@ -94,6 +94,21 @@ A volte il lavoro viene preparato in un ambiente che non ha il token di GitHub: 
 
 Due cose fanno perdere tempo: il percorso **relativo** del pacchetto (dopo un `cd` punta altrove, e il pull fallisce con un messaggio poco chiaro) e il push rifiutato con `! [rejected] ... fetch first`, che il giro di ripetizioni del punto 4 risolve da solo. Dopo un `git pull --rebase` i tuoi commit hanno impronte nuove: il pacchetto vale per la copia da cui l'hai preso, non per una seconda macchina. Nessun segreto va salvato sulla macchina: al push git chiede utente e token una volta sola, e il portachiavi di sistema se li ricorda.
 
+## Il push dell'8 novembre 2026
+
+Il push che ha portato online i caratteri ospitati è arrivato la sera dell'8 novembre 2026, fatto dal computer di Danilo col pacchetto perché la sandbox non ha il token: **16 commit** da `3098d6f` a `818fdb7`, 67 file, `988 insertions(+), 166 deletions(-)`. Subito dopo i robot hanno aggiunto i loro due, «Progetti aggiornati in automatico» e «PDF aggiornato in automatico». Il sito vero, misurato prima e dopo:
+
+| Cosa | Prima del push | Dopo il push |
+|---|---|---|
+| `fonti/fonti.css` | 404 | **200** |
+| File di caratteri raggiungibili | 0 su 12 | **12 su 12** |
+| Pagine che prendono i caratteri da Google | 36 | **0** |
+| Progetti in `progetti.json` | 8, con il quiz vecchio | **7, senza** |
+| Titoli più lunghi di 70 caratteri | 30 | **0** |
+| Voci «Da sistemare» in `controlla-pagine.py --pubblicato` | 11 | **0** |
+
+Il controllo del sito pubblicato, rifatto appena GitHub Pages ha servito la versione nuova, chiude con «Tutto a posto»: nessun riferimento a Google in 36 pagine e 1 foglio di stile, titoli tutti entro il limite, 12 file di caratteri raggiungibili.
+
 Per aggiornare solo i bandi o le offerte basta modificare `bandi.json` o `offerte.json`: la pagina non va toccata.
 
 Statistiche senza cookie con GoatCounter (codice «danilodauria»): danilodauria.goatcounter.com.
