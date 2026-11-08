@@ -72,6 +72,36 @@ def versione(repo):
     return ""
 
 
+def controlla_elenco(progetti):
+    """Un progetto, una scheda: il quiz non deve mai comparire due volte.
+
+    La copia vecchia «Quiz-Interattivo-Terminale-Fenice-OS» è lo stesso programma di
+    «grande-quiz», per questo sta in ESCLUSI. Se un giorno quella riga sparisse, o se il
+    repository venisse rinominato, il sito mostrerebbe due quiz. Qui si guarda prima di
+    scrivere: meglio un'esecuzione rossa che un doppione online.
+    """
+    problemi = []
+    nomi = [p["nome"] for p in progetti]
+    for escluso in sorted(ESCLUSI):
+        if escluso in nomi:
+            problemi.append("c'è %s, che deve restare fuori (vedi ESCLUSI)" % escluso)
+    quiz = [p["nome"] for p in progetti if "quiz" in p["nome"].lower()]
+    if quiz != ["grande-quiz"]:
+        problemi.append("i quiz elencati dovrebbero essere solo grande-quiz, invece sono: %s"
+                        % (", ".join(quiz) or "nessuno"))
+    siti = {}
+    for p in progetti:
+        indirizzo = (p.get("sito") or "").rstrip("/").lower()
+        if not indirizzo:
+            continue
+        if indirizzo in siti:
+            problemi.append("%s e %s portano allo stesso sito (%s)"
+                            % (siti[indirizzo], p["nome"], indirizzo))
+        else:
+            siti[indirizzo] = p["nome"]
+    return problemi
+
+
 def main():
     repos, pagina = [], 1
     while True:
@@ -99,6 +129,12 @@ def main():
             "aggiornato": (r.get("pushed_at") or "")[:10],
         })
     progetti.sort(key=lambda p: p["creato"], reverse=True)
+    problemi = controlla_elenco(progetti)
+    if problemi:
+        for problema in problemi:
+            print("Doppione nell'elenco: " + problema, file=sys.stderr)
+        print("progetti.json lasciato com'era: prima si sistema l'elenco.", file=sys.stderr)
+        return 1
     oggi = datetime.date.today().isoformat()
     vecchio = {}
     if os.path.exists(USCITA):

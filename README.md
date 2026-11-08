@@ -10,7 +10,7 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `fenice.svg` | Il logo della fenice, usato anche come icona della scheda |
 | `fonti/` | I caratteri del sito in `.woff2` (Young Serif, Atkinson Hyperlegible, JetBrains Mono) e `fonti.css`: si servono da qui, senza chiamare Google |
 | `progetti.json` | I progetti e le loro versioni: lo aggiorna da solo ogni giorno GitHub Actions |
-| `strumenti/aggiorna-progetti.py` | Lo script che legge i repository di danilodauria su GitHub |
+| `strumenti/aggiorna-progetti.py` | Lo script che legge i repository di danilodauria su GitHub. Prima di scrivere controlla che ogni progetto compaia una volta sola: il quiz vecchio non deve tornare |
 | `strumenti/versioni-schede.py` | Riallinea a `progetti.json` le versioni scritte dentro `index.html`: il badge di ogni scheda e la copia di riserva dell'elenco (`PROGETTI_SALVATI`), che si vede subito e anche senza rete. Lo lancia il robot dopo `aggiorna-progetti.py`, così non restano versioni vecchie |
 | `strumenti/controlla-pagine.py` | Controlla link e file locali, file JSON, lunghezza dei titoli, caratteri presi da Google (devono restare in `fonti/`) e indirizzi del sitemap: a mano (`python3 strumenti/controlla-pagine.py`), dal robot settimanale, oppure sulle pagine davvero online con `--pubblicato`, che apre sitemap, pagine, fogli di stile e caratteri del sito e segnala quello che non risponde 200 |
 | `.github/workflows/progetti.yml` | L'aggiornamento automatico (ogni giorno, e con il pulsante «Run workflow» nella scheda Actions) |
@@ -42,6 +42,8 @@ Tre robot di GitHub Actions si occupano del sito da soli. Ognuno scrive **solo i
 | **Controllo settimanale** (`.github/workflows/controllo.yml`) | ogni lunedì alle 06:23 UTC, oppure a mano | cerca le frasi ancora da tradurre, controlla l'accessibilità con axe-core, poi link e file locali, bandi in scadenza, prezzi da rivedere e il sito davvero online | nessun file: scrive nella scheda «Issues» |
 
 Come si tengono separati: il robot dei progetti non riparte quando cambiano i suoi quattro file, e quello dei PDF non riparte quando cambia `pdf/` o quando cambia solo una versione in `index.html`. Per questo un commit di un robot non ne risveglia un altro.
+
+**Il quiz una volta sola.** «Il Grande Quiz dell'Informatica» esiste in due repository: quello buono (`grande-quiz`) e una copia vecchia (`Quiz-Interattivo-Terminale-Fenice-OS`), che è lo stesso programma. La copia sta nell'elenco `ESCLUSI` dentro `strumenti/aggiorna-progetti.py`, e prima di scrivere `progetti.json` il robot controlla tre cose: che nessun nome escluso sia ricomparso, che i quiz elencati siano uno solo, e che due progetti non portino allo stesso indirizzo. Se una di queste non torna non scrive niente e l'esecuzione diventa rossa nella scheda Actions: il doppione si vede subito, invece di finire online.
 
 Il controllo settimanale non tocca il repository: se trova qualcosa apre un avviso nella scheda Issues con l'etichetta `controllo` (e GitHub manda un'email), lo aggiorna alla settimana dopo, e lo chiude da solo quando è tutto a posto. Il sito online lo guarda con qualche minuto di pazienza, riprovando, per non scambiare per guasto un ritardo di GitHub Pages; il resoconto comincia con una riga che dice a colpo d'occhio se il sito online è allineato a quello preparato qui.
 
