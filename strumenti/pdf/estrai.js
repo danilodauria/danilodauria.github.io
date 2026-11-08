@@ -12,6 +12,12 @@ async () => {
             metafora: h($('.metafora', chi)), percorso: $$('.percorso li', chi).map(li => ({ anno: t($('.anno', li)), titolo: t($('b', li)), testo: t(li.querySelector(':scope > div > span')), futuro: li.classList.contains('futuro') })),
             formazione: t($('.testo p.small', chi)),
             marca: { motto: t($('.motto', chi)), nome: h($('.marca-green .nome', chi)), pilastri: $$('.pilastri li', chi).map(li => [t($('b', li)), t($('span', li))]), strumenti: $$('.strumenti span', chi).map(t) } };
+  const gt = $('#green-tech');
+  d.green = gt ? { label: t($('.testa .label', gt)), h2: t($('.testa h2', gt)), lead: t($('.testa .lead', gt)),
+    servizi: $$('.servizi .serv', gt).map(x => ({ label: t($('.label', x)), titolo: t($('h3', x)), testo: t($('p:not(.label)', x)) })),
+    perche: { label: t($('.hub-perche .label', gt)), titolo: t($('.hub-perche h3', gt)),
+      punti: $$('.hub-perche .pilastri li', gt).map(li => [t($('b', li)), t($('span', li))]) },
+    nota: t($('.hub-nota', gt)) } : null;
   d.profili = [];
   for (const b of $$('#scelta button')) {
     b.click(); await new Promise(r => setTimeout(r, 20));

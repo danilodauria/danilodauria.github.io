@@ -76,6 +76,30 @@ def chi_sono():
   </div>
 </section>"""
 
+def green_tech():
+    """L'Hub Green-Tech: sul sito è subito dopo «Chi sono» e cerca partner."""
+    g = D.get("green")
+    if not g or not g.get("h2"):
+        return ""
+    serv = "".join('<div class="serv"><p class="occhiello">%s</p><h3>%s</h3><p>%s</p></div>'
+                   % (E(s["label"]), E(s["titolo"]), E(s["testo"])) for s in g["servizi"])
+    pil = "".join("<li><b>%s</b> %s</li>" % (E(a), E(b)) for a, b in g["perche"]["punti"])
+    perche = ""
+    if g["perche"]["titolo"]:
+        perche = ('<div style="margin-top:7mm"><h3 class="sotto">%s</h3><h3>%s</h3><ul class="pil">%s</ul></div>'
+                  % (E(g["perche"]["label"]), E(g["perche"]["titolo"]), pil))
+    nota = '<p class="os-avviso">%s</p>' % E(g["nota"]) if g.get("nota") else ""
+    return f"""
+<section class="capitolo">
+  <p class="occhiello">{E(g['label'])}</p>
+  <h1>{E(g['h2'])}</h1>
+  <p class="lead">{E(g['lead'])}</p>
+  <div class="servizi">{serv}</div>
+  {perche}
+  {nota}
+  <div class="qr">{qr(SITO + '#green-tech')}<p><b>Per aderire</b>Scrivete a danilodauria.site@gmail.com, oppure compilate il modulo sul sito, sezione «Hub Green-Tech»: inquadrate il codice o andate su danilodauria.github.io#green-tech.</p></div>
+</section>"""
+
 def profili():
     out = []
     for x in D["profili"]:
@@ -329,6 +353,7 @@ pagina = f"""<!doctype html><html lang="it"><head><meta charset="utf-8"><title>D
 {copertina()}
 <div class="segnaposto"></div>
 {chi_sono()}
+{green_tech()}
 {profili()}
 {progetti()}
 {libro_patto()}
