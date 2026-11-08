@@ -2,6 +2,8 @@
 
 Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 
+La pagina è una sola, `index.html`, e qui dentro c'è tutto quello che le serve: caratteri, traduzioni, dati, PDF. La tabella dice a cosa serve ogni file, così si trova subito quello da toccare.
+
 | File | Cosa contiene |
 |---|---|
 | `index.html` | La pagina completa (progetti, libro, servizi, Green-Tech, adesioni dei partner, bandi, domande frequenti, contatti) |
@@ -30,6 +32,7 @@ Sito di presentazione di **Danilo D'Auria** — Tecnologia Gentile.
 | `manifest.webmanifest`, `sw.js`, `icone/` | Il sito installabile come app, che funziona anche senza Internet |
 | `.github/workflows/controllo.yml` | Il controllo di ogni lunedì: link delle fonti, bandi in scadenza, prezzi da rivedere, traduzioni mancanti, accessibilità (WCAG 2.1 AA con axe-core, `strumenti/accessibilita/controlla.py`) e il sito davvero online (`--pubblicato`, riprovando con calma per non prendere per guasto un ritardo di GitHub Pages). Se c'è qualcosa da fare apre un avviso nella scheda «Issues» (e GitHub manda un'email) |
 | `anteprima.png` | L'immagine che compare quando si condivide il link su WhatsApp e social |
+| `README.md` | Questa mappa: a cosa serve ogni file, cosa scrivono i robot, i numeri delle pubblicazioni |
 
 ## I tre robot
 
@@ -69,7 +72,7 @@ A volte il lavoro viene preparato in un ambiente che non ha il token di GitHub: 
    git pull /percorso/aggiornamenti.bundle main
    ```
 
-   Il `verify` deve dire `is okay` ed elencare due riferimenti: quello **contenuto** (l'ultimo commit) e quello **richiesto** (il punto di partenza). Se la tua copia è più indietro di quel punto, prima `git pull origin main`, poi riparti da qui.
+   Il `verify` deve elencare due riferimenti — quello **contenuto** (l'ultimo commit) e quello **richiesto** (il punto di partenza) — senza segnalare errori. In Git Bash compare anche la riga «is okay»; su Windows con PowerShell può non comparire, e allora vale il codice di uscita: se non stampa errori, il pacchetto è buono. Se la tua copia è più indietro del punto richiesto, prima `git pull origin main`, poi riparti da qui.
 
 3. Guarda l'esito del pull: deve comparire `Fast-forward`. Se invece leggi `merge made by`, hai commit tuoi in locale: fermati e sistemali prima di portare online, perché si sta unendo storia diversa.
 
@@ -94,9 +97,9 @@ A volte il lavoro viene preparato in un ambiente che non ha il token di GitHub: 
 
    Il primo comando deve dire `200`: è il modo più rapido per sapere se il sito è già la versione nuova, perché quel foglio arriva con i caratteri. Il secondo deve finire senza voci sui caratteri presi da Google.
 
-Due cose fanno perdere tempo: il percorso **relativo** del pacchetto (dopo un `cd` punta altrove, e il pull fallisce con un messaggio poco chiaro) e il push rifiutato con `! [rejected] ... fetch first`, che il giro di ripetizioni del punto 4 risolve da solo. Dopo un `git pull --rebase` i tuoi commit hanno impronte nuove: il pacchetto vale per la copia da cui l'hai preso, non per una seconda macchina. Nessun segreto va salvato sulla macchina: al push git chiede utente e token una volta sola, e il portachiavi di sistema se li ricorda.
+Due cose fanno perdere tempo: il percorso **relativo** del pacchetto (dopo un `cd` punta altrove, e il pull fallisce con un messaggio poco chiaro) e il push rifiutato con `! [rejected] ... fetch first`, che il giro di ripetizioni del punto 4 risolve da solo. Dopo un `git pull --rebase` i tuoi commit hanno impronte nuove: il pacchetto vale per la copia da cui l'hai preso, non per una seconda macchina. Nessun segreto va salvato sulla macchina: al push git chiede utente e token una volta sola, e il portachiavi di sistema se li ricorda. Se su Windows `git` non risponde («Termine 'git' non riconosciuto»), non serve installare niente: GitHub Desktop ne porta uno suo in `%LOCALAPPDATA%\GitHubDesktop\app-<versione>\resources\app\git\cmd\git.exe`, e lo si chiama con il percorso completo.
 
-## Il push dell'8 novembre 2026
+## Il primo push dell'8 novembre 2026 (i caratteri)
 
 Il push che ha portato online i caratteri ospitati è arrivato la sera dell'8 novembre 2026, fatto dal computer di Danilo col pacchetto perché la sandbox non ha il token: **16 commit** da `3098d6f` a `818fdb7`, 67 file, `988 insertions(+), 166 deletions(-)`. Subito dopo i robot hanno aggiunto i loro due, «Progetti aggiornati in automatico» e «PDF aggiornato in automatico». Il sito vero, misurato prima e dopo:
 
@@ -113,15 +116,19 @@ Il controllo del sito pubblicato, rifatto appena GitHub Pages ha servito la vers
 
 Per aggiornare solo i bandi o le offerte basta modificare `bandi.json` o `offerte.json`: la pagina non va toccata.
 
+Statistiche senza cookie con GoatCounter (codice «danilodauria»): danilodauria.goatcounter.com.
+
+I nuovi progetti pubblicati su GitHub compaiono da soli nella sezione «Gli altri progetti» e nelle «Novità», e i numeri di versione delle schede si aggiornano da soli.
+
 ## Il riquadro delle adesioni
 
-Dentro la sezione `#green-tech` c'è un riquadro per raccogliere le adesioni dei partner (`<form id="adesioni">`): nome e cognome, email, dove (quartiere o città), che tipo di partner (8 voci nella tendina: «Scegli…» più sette tipi), cosa si può offrire, e la casella del consenso con l'informativa apribile «Come tratto i dati». In tutto 11 elementi con un id `ad-*`, più lo specchio del messaggio composto e i pulsanti «Prepara la richiesta», «Apri l'email», «Copia il messaggio».
+Dentro la sezione `#green-tech` («Hub Green-Tech», subito dopo «Chi sono») c'è un riquadro per raccogliere le adesioni dei partner (`<form id="adesioni">`): nome e cognome, email, dove (quartiere o città), che tipo di partner (8 voci nella tendina: «Scegli…» più sette tipi), cosa si può offrire, e la casella del consenso con l'informativa apribile «Come tratto i dati». In tutto 11 elementi con un id `ad-*`, più il riquadro con il messaggio composto e i pulsanti «Prepara la richiesta», «Apri l'email», «Copia il messaggio».
 
-Il modulo non ha un server: la richiesta si compone nel browser e parte dall'email di chi scrive, come per il preventivo. Il sito non salva niente e non mette i dati nell'indirizzo — se il programma non è ancora partito, il modulo ha un ripiego (`action="mailto:…"`) che apre l'email invece di fare un invio normale con i campi nella barra degli indirizzi. Il testo che si compone resta in italiano; etichette, consenso, informativa e messaggi d'errore sono tradotti.
+Il modulo non ha un server: la richiesta si compone nel browser e parte dall'email di chi scrive, come per la richiesta di preventivo. Il sito non salva niente e non mette i dati nell'indirizzo — se lo script della pagina non è ancora partito, il modulo ha un ripiego (`action="mailto:…"`) che apre l'email invece di fare un invio normale con i campi nella barra degli indirizzi. Il testo che si compone resta in italiano; etichette, consenso, informativa e messaggi d'errore sono tradotti.
 
 Per il modulo sono state tradotte **23 frasi nuove per lingua**: il sito passa così a **963 frasi** in ognuna delle sei lingue (`it, en, fr, es, de, ro`), e `python3 strumenti/i18n/componi.py` chiude con «errori: 0». Le frasi si scrivono in `i18n/fonti/<lingua>.tsv`: niente cifre, perché il motore le trasforma in segnaposto (`{n0}`) e la chiave non corrisponderebbe più — per questo l'informativa dice «come previsto dal GDPR» invece di citare l'articolo.
 
-## I numeri della sera dell'8 novembre 2026
+## Il secondo push dell'8 novembre 2026 (Green-Tech e adesioni)
 
 Il secondo push della giornata ha portato online la sezione e il riquadro: **5 commit** da `04eff18` a `698d74d`, **14 file**, `707 insertions(+), 2 deletions(-)`. Qualche minuto dopo il robot dei PDF ha aggiunto il suo `935b154` «PDF aggiornato in automatico», rifacendo profilo e profilo da stampa (303 righe cambiate, impronta del contenuto `87edc232…` → `03e09601…`); il profilo ora pesa 888 088 byte.
 
@@ -135,10 +142,6 @@ Il secondo push della giornata ha portato online la sezione e il riquadro: **5 c
 | Profilo in PDF | 20 pagine, testo vecchio | 20 pagine, testo nuovo |
 | Indirizzi nel sitemap | 39 | **39**, tutti con la loro pagina |
 
-Controllato sulla pagina vera dopo la pubblicazione: `index.html` da 779 123 byte, con sezione, modulo, consenso e menu; le sei lingue servite da GitHub Pages con 963 frasi ciascuna; service worker nuovo; `pdf/info.json` a 20/1/2/4 pagine; `controlla-pagine.py` chiude con «Tutto a posto». I PDF rigenerati il 8 novembre alle 22:38 si aprono con il testo nuovo (impronta diversa da quella di prima), ma il robot rifà solo quello che cambia: volantino, biglietti e kit sono rimasti quelli di prima, perché non contengono la sezione.
-
-Statistiche senza cookie con GoatCounter (codice «danilodauria»): danilodauria.goatcounter.com.
-
-I nuovi progetti pubblicati su GitHub compaiono da soli nella sezione «Gli altri progetti» e nelle «Novità», e i numeri di versione delle schede si aggiornano da soli.
+Controllato sulla pagina vera dopo la pubblicazione: `index.html` da 779 123 byte, con sezione, modulo, consenso e menu; le sei lingue servite da GitHub Pages con 963 frasi ciascuna; service worker nuovo; `pdf/info.json` a 20/1/2/4 pagine; `controlla-pagine.py` chiude con «Tutto a posto». I PDF rigenerati l'8 novembre alle 22:38 contengono il testo nuovo, con impronta diversa dalla precedente; il robot rifà solo ciò che cambia, quindi volantino, biglietti e kit sono quelli di prima — il loro contenuto non è cambiato.
 
 Testi e grafica © 2026 Danilo D'Auria, CC BY-NC-SA 4.0 · codice MIT.
