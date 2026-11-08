@@ -4,12 +4,20 @@
   "consulente-digitale": "1.5.2",
   "feniceos": "2.2",
   "grande-quiz": "1.0.0",
-  "naturopata-digitale": "1.3.20",
+  "naturopata-digitale": "1.3.21",
   "nonni-teach": "",
   "professore-digitale": "3.8.0",
   "psicologo-digitale": "1.3.32"
  },
  "voci": [
+  {
+   "data": "2026-11-07",
+   "titolo": "Naturopata Digitale 1.3.21",
+   "testo": "La versione più recente, con le novità descritte su GitHub.",
+   "nome": true,
+   "link": "https://danilodauria.github.io/naturopata-digitale/",
+   "id": "naturopata-digitale@1.3.21"
+  },
   {
    "data": "2026-11-06",
    "titolo": "Prenotate il check-up gratuito dal sito",
@@ -99,5 +107,5 @@
    "id": "professore-digitale@3.8.0"
   }
  ],
- "aggiornato": "2026-11-07"
+ "aggiornato": "2026-11-08"
 }

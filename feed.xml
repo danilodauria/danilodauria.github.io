@@ -5,8 +5,15 @@
   <link href="https://danilodauria.github.io/"/>
   <link rel="self" href="https://danilodauria.github.io/feed.xml"/>
   <id>https://danilodauria.github.io/</id>
-  <updated>2026-11-07T06:00:00Z</updated>
+  <updated>2026-11-08T06:00:00Z</updated>
   <author><name>Danilo D'Auria</name></author>
+  <entry>
+    <title>Naturopata Digitale 1.3.21</title>
+    <link href="https://danilodauria.github.io/naturopata-digitale/"/>
+    <id>https://danilodauria.github.io/#novita-naturopata-digitale@1.3.21</id>
+    <updated>2026-11-07T06:00:00Z</updated>
+    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
+  </entry>
   <entry>
     <title>Prenotate il check-up gratuito dal sito</title>
     <link href="https://danilodauria.github.io/#prenota"/>
