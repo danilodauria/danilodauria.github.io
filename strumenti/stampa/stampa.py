@@ -42,7 +42,9 @@ ESTRAI = """() => {
     windows: pacc(document.querySelector('.listino-os[data-os="Windows"]')),
     apple: pacc(document.querySelector('.listino-os[data-os="Apple"]')),
     telefono: t(document.querySelector('.os-extra b')),
-    altri: [...document.querySelectorAll('#servizi .servizio h4, #servizi .altri h4, #servizi article h3')].map(t).filter(Boolean).slice(0, 8)
+    altri: [...document.querySelectorAll('#servizi .servizio h4, #servizi .altri h4, #servizi article h3')].map(t).filter(Boolean).slice(0, 8),
+    hub: (() => { const x = document.querySelector('#green-tech');
+      return x ? { h2: t(x.querySelector('.testa h2')), lead: t(x.querySelector('.testa .lead')) } : null; })()
   };
 }"""
 
@@ -67,7 +69,7 @@ body { margin: 0; font-family: "Atkinson Hyperlegible", "Noto Sans", sans-serif;
 .gratis { background: #f2b33d; color: #14232e; padding: 4mm 14mm; display: flex; justify-content: space-between; align-items: center; gap: 6mm; }
 .gratis b { font-size: 17pt; }
 .gratis span { font-size: 10.5pt; }
-.vol-corpo { padding: 8mm 14mm 6mm; display: grid; grid-template-rows: auto auto; gap: 9mm; align-content: space-evenly; }
+.vol-corpo { padding: 8mm 14mm 6mm; display: grid; grid-template-rows: auto auto auto; gap: 6mm; align-content: space-evenly; }
 .listini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
 .col { border: 1.2pt solid #e3d8c6; border-radius: 3mm; padding: 5mm 5mm; }
 .col h2 { font-size: 17pt; margin: 0 0 2mm; }
@@ -79,6 +81,18 @@ body { margin: 0; font-family: "Atkinson Hyperlegible", "Noto Sans", sans-serif;
 .anche h3 { grid-column: 1 / -1; font-size: 16pt; margin: 0; }
 .anche div { font-size: 11.5pt; padding-left: 4mm; border-left: 2pt solid #e8702a; line-height: 1.35; }
 .anche div b { display: block; font-size: 12.5pt; }
+/* Hub Green-Tech: una striscia con il codice per le adesioni */
+.hub { display: grid; grid-template-columns: 1fr 20mm; gap: 5mm; align-items: center; border: 1.2pt solid #e3d8c6; border-left: 3pt solid #2a7043; border-radius: 3mm; padding: 3.5mm 5mm; background: #fdfaf4; }
+.hub b { display: block; font-size: 13pt; margin-bottom: 1mm; }
+.hub p { margin: 0; font-size: 8.6pt; line-height: 1.35; color: #4f5c68; }
+.hub-qr { text-align: center; }
+.hub-qr svg { width: 17mm; height: 17mm; display: block; margin: 0 auto; }
+.hub-qr span { display: block; font-size: 6pt; font-weight: 700; color: #14232e; line-height: 1.15; }
+.bv-f .frase span { display: block; margin-top: 1.5mm; color: #2a7043; font-weight: 700; }
+.bv-f .piede { display: flex; justify-content: space-between; align-items: flex-end; gap: 2mm; }
+.bv-f .q-mini { text-align: center; }
+.bv-f .q-mini svg { width: 13mm; height: 13mm; display: block; }
+.bv-f .q-mini span { display: block; font-size: 5.6pt; font-weight: 700; color: #14232e; line-height: 1.1; }
 .vol-piede { padding: 3mm 14mm 4mm; display: flex; justify-content: space-between; align-items: center; gap: 6mm; border-top: 1pt solid #e3d8c6; }
 .vol-piede .contatti { font-size: 12pt; line-height: 1.45; }
 .vol-piede .contatti b { font-size: 13pt; }
@@ -112,6 +126,12 @@ body { margin: 0; font-family: "Atkinson Hyperlegible", "Noto Sans", sans-serif;
 CSS += caratteri_del_sito()
 
 def volantino(L):
+    H = L.get("hub") or {}
+    hub = ""
+    if H.get("h2"):
+        hub = ('<div class="hub"><div><b class="f-disp">Cerco partner: %s</b><p>%s</p></div>'
+               '<div class="hub-qr">%s<span>Adesioni sul sito</span></div></div>'
+               % (E(H["h2"]), E(H.get("lead", "")), qr(SITO + "#green-tech")))
     def colonna(titolo, pacc, nota=""):
         righe = "".join('<div class="riga%s"><span>%s</span><b>%s</b></div>' % (" gr" if "GRATIS" in p["prezzo"] else "", E(p["nome"].split(" · ")[0]), E(p["prezzo"].replace(" a computer", ""))) for p in pacc)
         return '<div class="col"><h2 class="f-disp">%s</h2>%s%s</div>' % (E(titolo), righe, '<p class="nota">%s</p>' % E(nota) if nota else "")
@@ -139,6 +159,7 @@ def volantino(L):
       <div><b>Consigli prima di comprare</b>Cosa serve davvero e il momento giusto.</div>
       <div><b>Computer donati</b>Rigenerati e pronti per chi ne ha bisogno.</div>
     </div>
+    {hub}
   </div>
   <footer class="vol-piede">
     <div class="contatti"><b>{EMAIL}</b><br>danilodauria.github.io</div>
@@ -148,9 +169,12 @@ def volantino(L):
 </section>"""
 
 def biglietti():
+    H = L.get("hub") or {}
+    hub_p = '<span>Cerco partner per l’Hub Green-Tech a Roma Est.</span>' if H.get("h2") else ""
+    hub_q = ('<div class="q-mini">%s<span>Hub Green-Tech</span></div>' % qr(SITO + "#green-tech")) if H.get("h2") else ""
     fronte = f"""<div class="bv bv-f"><div class="alto">{FENICE}<div><div class="nome f-disp">Danilo D'Auria</div><div class="ruolo mono">Tecnico IT · Formatore</div></div></div>
-      <p class="frase">Rigenerazione dei computer, programmi liberi e corsi di informatica per tutte le età.</p>
-      <div class="contatti"><b>{EMAIL}</b><br>danilodauria.github.io</div></div>"""
+      <p class="frase">Rigenerazione dei computer, programmi liberi e corsi di informatica per tutte le età.{hub_p}</p>
+      <div class="piede"><div class="contatti"><b>{EMAIL}</b><br>danilodauria.github.io</div>{hub_q}</div></div>"""
     retro = f"""<div class="bv bv-r"><div><h3 class="f-disp">Il vostro PC può tornare a volare?</h3><p>Fate il test gratuito di un minuto: vi dico la strada giusta e quanto costa.</p><span class="gr">Check-up GRATIS</span></div>
       <div class="q">{qr(SITO + "#test")}</div></div>"""
     def taglio():
@@ -175,6 +199,7 @@ with sync_playwright() as p:
     pg.goto(URL + "?lang=it", wait_until="load"); time.sleep(1.2)
     L = pg.evaluate(ESTRAI)
     assert L["linux"] and L["windows"] and L["apple"], "listino non trovato"
+    assert L.get("hub"), "sezione Hub Green-Tech non trovata"
     lavori = {"volantino": pagina(volantino(L)), "biglietti": pagina(biglietti())}
     f_imp = os.path.join(OUT, "stampa-impronte.json")
     imp = json.load(open(f_imp)) if os.path.exists(f_imp) else {}
