@@ -83,5 +83,8 @@ vecchia = open(fm, encoding="utf-8").read() if os.path.exists(fm) else ""
 if re.sub(r"<lastmod>[^<]+</lastmod>", "", vecchia) != re.sub(r"<lastmod>[^<]+</lastmod>", "", mappa):
     open(fm, "w", encoding="utf-8").write(mappa)
 open(os.path.join(REPO, "robots.txt"), "w", encoding="utf-8").write(
+    "# Questo file chiede ai motori di ricerca di non elencare alcune pagine: non è una serratura.\n"
+    "# Su GitHub Pages tutto ciò che sta nel repository è raggiungibile da chi conosce l'indirizzo,\n"
+    "# quindi qui dentro non va mai messo niente di privato.\n"
     "# Danilo D'Auria · danilodauria.github.io\nUser-agent: *\nAllow: /\nDisallow: /scheda/\nDisallow: /vista.html\nDisallow: /strumenti/\n\nSitemap: " + SITO + "sitemap.xml\n")
 print(f"SEO: {len(offerte)} offerte, {len(faq)} domande, {len(urls)} indirizzi nella sitemap")
