@@ -141,7 +141,6 @@ b668dd	Consultanță înainte de cumpărare
 c8af89	Conținut
 19d120	Conținut deja gata în șase limbi în Profesorul Digital, util pentru lucrul cu parteneri europeni.
 1965a5	Conținut la comandă
-354956	Conține deja Profesorul Digital, LibreOffice, Thunderbird, Firefox, Magazinul de programe și Fenice Ottimizza.
 e46fb3	Verific lista actualizată…
 3ee3c6	Verific conexiunea…
 5f5964	Verific ofertele actualizate…
@@ -212,7 +211,6 @@ d21ed6	Zilele Ofertelor Prime
 0b0cda	Sfârșit de viață responsabil
 6fd50e	Se încheie actualizările gratuite pentru Windows {n0}
 b4ee65	=
-59e691	Plante sălbatice comestibile: {n0} plante comestibile și {n1} toxice de recunoscut, supraviețuire pe trei niveluri, calendarul celor {n2} luni.
 6b1f89	=
 93a7cc	Fondul pentru Republica Digitală
 07e47d	Fondul pentru Republica Digitală împreună cu Google.org
@@ -550,7 +548,6 @@ dbfe58	Recuperare de date
 cb5dd9	=
 38b36d	Regiunea Lazio
 31bda0	Regulile și prețurile licențelor au fost verificate la {d0}. Microsoft și Apple schimbă des termenele și cerințele: înainte de fiecare intervenție verific condițiile actualizate. Dreptul european la reparare este în vigoare din {d1}; în Italia transpunerea e încă în curs.
-525d8a	Raport PDF de dat specialistului, creat pe dispozitiv. Numere de ajutor mereu la vedere.
 0bb95c	Cerințele Windows {n0}, starea discului și a bateriei, licența deja existentă pe calculator.
 f71248	Rămân pe calculator. Programele nu au telemetrie și nu trimit date în rețea fără consimțământ. Chiar și inteligența artificială, când există, lucrează pe PC.
 1ef8ae	Căutarea fișierelor pe discuri, stick-uri și carduri care nu se mai deschid.
@@ -575,7 +572,6 @@ c2de49	SSD în locul discului mecanic, mai mult RAM, pastă termoconductoare nou
 823ee2	SSD de {n0} GB pentru „Turbo”
 970b41	Reduceri de vară
 dc2d6d	Reduceri de iarnă
-c336ae	Salvator de date (recuperare de fișiere), antivirus, kit de urgență cu stick bootabil, fișe de diagnostic și de lucrări de tipărit.
 122a4b	Salvator de date pentru discuri, stick-uri și carduri ilizibile, cu raport al fișierelor recuperate.
 0505a2	A salva un calculator de la groapa de gunoi și a învăța un vârstnic să folosească smartphone-ul sunt două fețe ale aceleiași monede.
 7da9b4	Expiră mâine
@@ -818,13 +814,11 @@ cb55db	=
 9c64ee	{n0} GB sau mai mult
 3dec7c	{n0} ani
 65f22c	{n0} an
-cce4f3	{n0} întrebări de quiz și Neura, care verifică interacțiunile cu medicamente, sarcina și vârsta și trimite la medic când e nevoie.
 54755b	=
 5d7402	{n0} lecții ghidate
 a767da	{n0} milioane € în total
 964b72	{n0} milioane €, de la {n1} la {n2} € pe proiect
 6296d2	{n0} pagini A{n1}, se actualizează singur când se schimbă site-ul.
-4a491a	{n0} fișe de plante medicinale cu utilizări, preparate, sosii periculoase și surse; manual în {n1} capitole.
 848ac0	{n0} · Verificare de diagnostic
 b4260a	{n0} · A doua viață
 146f30	{n0} · A doua viață Mac
@@ -964,3 +958,10 @@ a2603f	Cererea este gata: deschide-o în email sau copiaz-o.
 367f80	Copiat: acum lipește-l într-un email la danilodauria.site@gmail.com.
 3a757e	Nu pot copia de aici: selectează textul și copiază-l.
 e89dbe	Diplomă de Maestru în Arte (desen tehnic și ebenisterie), formare în regenerarea cartușelor, marketing digital (certificat Google) și prompt engineering pentru Inteligența Artificială.
+# 11/11/2026 · descrizioni dei progetti aggiornate
+d50ba4	Bibliotecă istorică despre «Discursurile» lui Mattioli, {n0} întrebări de quiz în {n1} categorii și Neura, care verifică interacțiunile cu medicamentele, sarcina, alăptarea și vârsta și trimite la medic când e nevoie.
+a21515	Conține deja Profesorul Digital, LibreOffice, Thunderbird, Firefox, Magazinul de programe (Debian și Flathub), Centrul FeniceOS și Fenice Ottimizza.
+176da2	Fitoalimurgie cu {n0} plante comestibile și {n1} toxice de recunoscut, supraviețuire pe trei niveluri cu {n2} fișe practice, {n3} fișe de bunăstare și calendarul celor {n4} luni.
+e29f2b	Raport PDF de predat specialistului, creat pe dispozitiv. Manual în douăsprezece capitole și numere de ajutor mereu la vedere.
+30c482	Salvator de date (recuperare de fișiere), antivirus, kit de urgență cu stick bootabil, senzori hardware, fișe de diagnostic și de lucrări efectuate de tipărit. Șase limbi.
+9f2017	{n0} fișe de plante medicinale, aromatice și alimentare cu utilizări, preparate, sosii periculoase, dovezi și surse; manual în {n1} capitole și glosar de {n2} termeni.

@@ -141,7 +141,6 @@ b668dd	Conseils avant d'acheter
 c8af89	Contenus
 19d120	Contenus déjà prêts en six langues dans le Professeur Numérique, utiles pour travailler avec des partenaires européens.
 1965a5	Contenus sur mesure
-354956	Il contient déjà le Professeur Numérique, LibreOffice, Thunderbird, Firefox, la Logithèque et Fenice Ottimizza.
 e46fb3	Vérification de la liste mise à jour…
 3ee3c6	Vérification de la connexion…
 5f5964	Vérification des offres mises à jour…
@@ -212,7 +211,6 @@ d21ed6	Fête des Offres Prime
 0b0cda	Fin de vie responsable
 6fd50e	Fin des mises à jour gratuites de Windows {n0}
 b4ee65	=
-59e691	Cueillette sauvage avec {n0} plantes comestibles et {n1} toxiques à reconnaître, survie en trois niveaux, calendrier des {n2} mois.
 6b1f89	=
 93a7cc	Fonds pour la République numérique
 07e47d	Fonds pour la République numérique avec Google.org
@@ -550,7 +548,6 @@ dbfe58	Récupération de données
 cb5dd9	=
 38b36d	Région Latium
 31bda0	Règles et prix des licences vérifiés le {d0}. Microsoft et Apple changent souvent les délais et les exigences : avant chaque intervention, je vérifie les conditions à jour. Le droit européen à la réparation est en vigueur depuis le {d1} ; en Italie, sa transposition est encore en cours.
-525d8a	Rapport PDF à remettre au professionnel, créé sur l'appareil. Numéros d'aide toujours visibles.
 0bb95c	Configuration requise pour Windows {n0}, santé du disque et de la batterie, licence déjà présente sur l'ordinateur.
 f71248	Elles restent sur l'ordinateur. Les logiciels n'ont pas de télémétrie et n'envoient aucune donnée sur le réseau sans consentement. Même l'intelligence artificielle, quand elle est présente, travaille sur le PC.
 1ef8ae	Recherche de fichiers sur des disques, clés et cartes qui ne s'ouvrent plus.
@@ -575,7 +572,6 @@ c2de49	Un SSD à la place du disque mécanique, plus de RAM, une nouvelle pâte 
 823ee2	SSD de {n0} Go pour le « Turbo »
 970b41	Soldes d'été
 dc2d6d	Soldes d'hiver
-c336ae	Sauve-données (récupération de fichiers), antivirus, kit d'urgence avec clé amorçable, fiches de diagnostic et de travaux à imprimer.
 122a4b	Sauve-données pour disques, clés et cartes illisibles, avec un rapport des fichiers récupérés.
 0505a2	Sauver un ordinateur de la décharge et apprendre à une personne âgée à utiliser un smartphone sont les deux faces d'une même médaille.
 7da9b4	Se termine demain
@@ -818,13 +814,11 @@ cb55db	=
 9c64ee	{n0} Go ou plus
 3dec7c	{n0} ans
 65f22c	{n0} an
-cce4f3	{n0} questions de quiz et Neura, qui contrôle les interactions avec les médicaments, la grossesse et l'âge et renvoie au médecin quand il le faut.
 54755b	=
 5d7402	{n0} leçons guidées
 a767da	{n0} millions d'€ au total
 964b72	{n0} millions d'€, de {n1} à {n2} € par projet
 6296d2	{n0} pages A{n1}, il se met à jour tout seul quand le site change.
-4a491a	{n0} fiches de plantes médicinales avec usages, préparations, sosies dangereux et sources ; manuel en {n1} chapitres.
 848ac0	{n0} · Bilan diagnostique
 b4260a	{n0} · Seconde vie
 146f30	{n0} · Seconde vie Mac
@@ -964,3 +958,10 @@ a2603f	La demande est prête : ouvrez-la dans votre email ou copiez-la.
 367f80	Copié : collez-le maintenant dans un email à danilodauria.site@gmail.com.
 3a757e	Je ne peux pas copier d'ici : sélectionnez le texte et copiez-le.
 e89dbe	Diplôme de Maître d'Art (dessin technique et ébénisterie), formation en régénération de cartouches, marketing numérique (certificat Google) et prompt engineering pour l'Intelligence Artificielle.
+# 11/11/2026 · descrizioni dei progetti aggiornate
+d50ba4	Bibliothèque historique sur les « Discours » de Mattioli, {n0} questions de quiz en {n1} catégories et Neura, qui vérifie les interactions avec les médicaments, la grossesse, l'allaitement et l'âge, et renvoie au médecin quand il le faut.
+a21515	Il contient déjà le Professeur Numérique, LibreOffice, Thunderbird, Firefox, la Logithèque (Debian et Flathub), le Centre FeniceOS et Fenice Ottimizza.
+176da2	Cueillette sauvage avec {n0} plantes comestibles et {n1} toxiques à reconnaître, survie en trois niveaux avec {n2} fiches pratiques, {n3} fiches de bien-être et calendrier des {n4} mois.
+e29f2b	Un rapport PDF à remettre au professionnel, créé sur l'appareil. Un manuel en douze chapitres et les numéros d'aide toujours visibles.
+30c482	Sauve-données (récupération de fichiers), antivirus, kit d'urgence avec clé amorçable, capteurs du matériel, fiches de diagnostic et des travaux réalisés à imprimer. Six langues.
+9f2017	{n0} fiches de plantes médicinales, aromatiques et alimentaires avec usages, préparations, sosies dangereux, preuves et sources ; manuel en {n1} chapitres et glossaire de {n2} termes.

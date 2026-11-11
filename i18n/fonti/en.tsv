@@ -141,7 +141,6 @@ b668dd	Advice before you buy
 c8af89	Content
 19d120	Content already available in six languages in the Digital Professor, useful for working with European partners.
 1965a5	Tailor-made content
-354956	It already includes the Digital Professor, LibreOffice, Thunderbird, Firefox, the Software Store and Fenice Ottimizza.
 e46fb3	Checking for the updated list…
 3ee3c6	Checking the connection…
 5f5964	Checking for updated offers…
@@ -212,7 +211,6 @@ d21ed6	Prime Big Deal Days
 0b0cda	Responsible end of life
 6fd50e	Free Windows {n0} updates come to an end
 b4ee65	=
-59e691	Foraging with {n0} edible plants and {n1} toxic ones to recognise, survival in three levels, a {n2}-month calendar.
 6b1f89	=
 93a7cc	Fund for the Digital Republic
 07e47d	Fund for the Digital Republic with Google.org
@@ -550,7 +548,6 @@ dbfe58	Data recovery
 cb5dd9	=
 38b36d	Lazio Region
 31bda0	Rules and licence prices checked on {d0}. Microsoft and Apple often change timelines and requirements: before every job I check the current conditions. The EU right to repair has been in force since {d1}; in Italy it is still being transposed.
-525d8a	A PDF report to give to the professional, created on the device. Help numbers always in view.
 0bb95c	Windows {n0} requirements, disk and battery health, licence already on the computer.
 f71248	It stays on the computer. The programs have no telemetry and send no data over the network without consent. Even the Artificial Intelligence, when present, works on the PC.
 1ef8ae	Searching for files on disks, USB sticks and cards that no longer open.
@@ -575,7 +572,6 @@ c2de49	An SSD instead of the mechanical disk, more RAM, new thermal paste, fan c
 823ee2	{n0} GB SSD for the «Turbo»
 970b41	Summer sales
 dc2d6d	Winter sales
-c336ae	Data rescue (file recovery), antivirus, emergency kit with a bootable USB stick, printable diagnosis and work sheets.
 122a4b	Data rescue for unreadable disks, USB sticks and cards, with a report of the recovered files.
 0505a2	Saving a computer from the landfill and teaching an older person to use a smartphone are two sides of the same coin.
 7da9b4	Closes tomorrow
@@ -819,13 +815,11 @@ cb55db	=
 9c64ee	{n0} GB or more
 3dec7c	{n0} years
 65f22c	{n0} year
-cce4f3	{n0} quiz questions and Neura, which checks interactions with medicines, pregnancy and age and refers you to a doctor when needed.
 54755b	=
 5d7402	{n0} guided lessons
 a767da	{n0} million € in total
 964b72	{n0} million €, from {n1} to {n2} € per project
 6296d2	{n0} A{n1} pages, it updates by itself when the site changes.
-4a491a	{n0} medicinal plant cards with uses, preparations, dangerous look-alikes and sources; a manual in {n1} chapters.
 848ac0	{n0} · Diagnostic check-up
 b4260a	{n0} · Second life
 146f30	{n0} · Mac second life
@@ -965,3 +959,10 @@ a2603f	The request is ready: open it in your email or copy it.
 367f80	Copied: now paste it into an email to danilodauria.site@gmail.com.
 3a757e	I cannot copy from here: select the text and copy it.
 e89dbe	Master of Art diploma (technical drawing and cabinetmaking), training in cartridge remanufacturing, digital marketing (Google certificate) and prompt engineering for Artificial Intelligence.
+# 11/11/2026 · descrizioni dei progetti aggiornate
+d50ba4	Historical library on Mattioli's «Discourses», {n0} quiz questions in {n1} categories and Neura, which checks interactions with medicines, pregnancy, breastfeeding and age and refers you to a doctor when needed.
+a21515	It already includes the Digital Professor, LibreOffice, Thunderbird, Firefox, the Software Store (Debian and Flathub), the FeniceOS Centre and Fenice Ottimizza.
+176da2	Foraging with {n0} edible plants and {n1} toxic ones to recognise, survival in three levels with {n2} practical cards, {n3} wellbeing cards and a {n4}-month calendar.
+e29f2b	A PDF report to hand to the professional, created on the device. A twelve-chapter handbook and helpline numbers always in view.
+30c482	Data rescue (file recovery), antivirus, emergency kit with a bootable USB stick, hardware sensors, printable diagnosis and work sheets. Six languages.
+9f2017	{n0} cards on medicinal, aromatic and food plants with uses, preparations, dangerous look-alikes, evidence and sources; a {n1}-chapter handbook and a glossary of {n2} terms.

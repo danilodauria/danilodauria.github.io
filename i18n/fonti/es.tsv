@@ -141,7 +141,6 @@ b668dd	Asesoramiento antes de comprar
 c8af89	Contenidos
 19d120	Contenidos ya listos en seis idiomas en el Profesor Digital, útiles para trabajar con socios europeos.
 1965a5	Contenidos a medida
-354956	Ya incluye el Profesor Digital, LibreOffice, Thunderbird, Firefox, la Tienda de programas y Fenice Ottimizza.
 e46fb3	Compruebo la lista actualizada…
 3ee3c6	Compruebo la conexión…
 5f5964	Compruebo las ofertas actualizadas…
@@ -212,7 +211,6 @@ d21ed6	Fiesta de Ofertas Prime
 0b0cda	Fin de vida responsable
 6fd50e	Terminan las actualizaciones gratuitas de Windows {n0}
 b4ee65	=
-59e691	Plantas silvestres comestibles: {n0} plantas comestibles y {n1} tóxicas que reconocer, supervivencia en tres niveles, calendario de los {n2} meses.
 6b1f89	=
 93a7cc	Fondo para la República Digital
 07e47d	Fondo para la República Digital con Google.org
@@ -550,7 +548,6 @@ dbfe58	Recuperación de datos
 cb5dd9	=
 38b36d	Región del Lacio
 31bda0	Reglas y precios de las licencias comprobados el {d0}. Microsoft y Apple cambian a menudo plazos y requisitos: antes de cada intervención compruebo las condiciones actualizadas. El derecho europeo a la reparación está en vigor desde el {d1}; en Italia la transposición sigue en curso.
-525d8a	Informe en PDF para entregar al profesional, creado en el dispositivo. Números de ayuda siempre a la vista.
 0bb95c	Requisitos de Windows {n0}, salud del disco y de la batería, licencia ya presente en el ordenador.
 f71248	Se quedan en el ordenador. Los programas no tienen telemetría y no envían datos a la red sin consentimiento. También la inteligencia artificial, cuando la hay, trabaja en el PC.
 1ef8ae	Búsqueda de archivos en discos, memorias USB y tarjetas que ya no se abren.
@@ -575,7 +572,6 @@ c2de49	Un SSD en lugar del disco mecánico, más RAM, pasta térmica nueva, limp
 823ee2	SSD de {n0} GB para el «Turbo»
 970b41	Rebajas de verano
 dc2d6d	Rebajas de invierno
-c336ae	Salvadatos (recuperación de archivos), antivirus, kit de emergencia con memoria USB de arranque, fichas de diagnóstico y de trabajos para imprimir.
 122a4b	Salvadatos para discos, memorias USB y tarjetas ilegibles, con informe de los archivos recuperados.
 0505a2	Salvar un ordenador del vertedero y enseñar a una persona mayor a usar el smartphone son dos caras de la misma moneda.
 7da9b4	Cierra mañana
@@ -818,13 +814,11 @@ cb55db	=
 9c64ee	{n0} GB o más
 3dec7c	{n0} años
 65f22c	{n0} año
-cce4f3	{n0} preguntas de quiz y Neura, que controla las interacciones con fármacos, el embarazo y la edad y remite al médico cuando hace falta.
 54755b	=
 5d7402	{n0} lecciones guiadas
 a767da	{n0} millones de € en total
 964b72	{n0} millones de €, de {n1} a {n2} € por proyecto
 6296d2	{n0} páginas A{n1}, se actualiza solo cuando cambia la web.
-4a491a	{n0} fichas de plantas medicinales con usos, preparaciones, plantas parecidas peligrosas y fuentes; manual en {n1} capítulos.
 848ac0	{n0} · Revisión diagnóstica
 b4260a	{n0} · Segunda vida
 146f30	{n0} · Segunda vida Mac
@@ -964,3 +958,10 @@ a2603f	La solicitud está lista: ábrela en tu correo o cópiala.
 367f80	Copiado: ahora pégalo en un correo a danilodauria.site@gmail.com.
 3a757e	No puedo copiar desde aquí: selecciona el texto y cópialo.
 e89dbe	Diploma de Maestro de Arte (dibujo técnico y ebanistería), formación en regeneración de cartuchos, marketing digital (certificado de Google) y prompt engineering para la Inteligencia Artificial.
+# 11/11/2026 · descrizioni dei progetti aggiornate
+d50ba4	Biblioteca histórica sobre los «Discursos» de Mattioli, {n0} preguntas de quiz en {n1} categorías y Neura, que comprueba las interacciones con fármacos, embarazo, lactancia y edad y remite al médico cuando hace falta.
+a21515	Ya incluye el Profesor Digital, LibreOffice, Thunderbird, Firefox, la Tienda de programas (Debian y Flathub), el Centro FeniceOS y Fenice Ottimizza.
+176da2	Fitoalimurgia con {n0} plantas comestibles y {n1} tóxicas que reconocer, supervivencia en tres niveles con {n2} fichas prácticas, {n3} fichas de bienestar y calendario de los {n4} meses.
+e29f2b	Informe en PDF para entregar al profesional, creado en el dispositivo. Manual en doce capítulos y números de ayuda siempre a la vista.
+30c482	Salvadatos (recuperación de archivos), antivirus, kit de emergencia con memoria USB de arranque, sensores del hardware, fichas de diagnóstico y de trabajos realizados para imprimir. Seis idiomas.
+9f2017	{n0} fichas de plantas medicinales, aromáticas y alimentarias con usos, preparaciones, plantas parecidas peligrosas, evidencia y fuentes; manual en {n1} capítulos y glosario de {n2} términos.
