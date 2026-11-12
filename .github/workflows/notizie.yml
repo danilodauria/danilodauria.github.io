@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: "41 4 * * *"    # ogni giorno alle 04:41 UTC (05:41 in inverno in Italia)
   workflow_dispatch:        # pulsante «Run workflow» nella scheda Actions
+    inputs:
+      elenca:
+        description: "Elenca nel resoconto tutti gli avvisi trovati sulle fonti"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -28,7 +33,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Ricontrolla bandi e offerte
-        run: python3 strumenti/notizie.py
+        run: python3 strumenti/notizie.py ${{ inputs.elenca && '--elenca' || '' }}
       - name: Salva se qualcosa è cambiato
         if: ${{ vars.PACCHETTO_IN_ARRIVO != '1' }}
         run: |

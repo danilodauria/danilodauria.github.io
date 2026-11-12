@@ -18,13 +18,14 @@ OFFERTE (offerte.json)
 
 In fondo copia i due elenchi aggiornati dentro index.html (le copie di riserva SALVATI e OFF_SALVATE),
 così anche senza linea, e nel GitHub di casa, si vede l'elenco nuovo.
-Uso: python3 strumenti/notizie.py [--senza-rete]   · Autore: Danilo D'Auria - MIT."""
+Uso: python3 strumenti/notizie.py [--senza-rete] [--elenca]   · Autore: Danilo D'Auria - MIT."""
 import datetime, hashlib, html, json, os, re, sys, time, urllib.request
 
 QUI = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(QUI)
 OGGI = datetime.date.today()
 SENZA_RETE = "--senza-rete" in sys.argv
+ELENCA = "--elenca" in sys.argv   # stampa gli avvisi delle fonti che hanno le parole giuste, già visti o no
 GIORNI_CHIUSI = 120
 GIORNI_SEGNALATI = 45
 
@@ -163,6 +164,8 @@ def main():
         primo_giro = chiave not in viste
         gia = set(viste.get(chiave, []))
         for tit, link, _ in avvisi:
+            if ELENCA and AVVISO.search(tit) and TEMA.search(tit):
+                print("  avviso alla fonte %s: %s · %s%s" % (f["nome"], tit, link, " (già in elenco)" if link in noti else ""))
             h = hashlib.sha1(link.encode()).hexdigest()[:12]
             if h in gia:
                 continue
