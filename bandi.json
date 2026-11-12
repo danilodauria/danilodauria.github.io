@@ -51,6 +51,18 @@
       "fonte": "https://www.puntoimpresadigitale.camcom.it/bandi-nazionali/bando-doppia-transizione-2026"
     },
     {
+      "id": "lazio-voucher-digitalizzazione-2026",
+      "titolo": "Voucher Digitalizzazione PMI 2026",
+      "ente": "Regione Lazio · Lazio Innova (FESR 2021-2027)",
+      "per": ["aziende"],
+      "cosa": "Contributi alle micro, piccole e medie imprese con sede operativa nel Lazio per diagnosi digitale, postazioni di lavoro, commercio elettronico, cloud e sicurezza informatica. Graduatoria su criteri oggettivi, non in ordine di arrivo.",
+      "importo": "15 milioni € in totale; fino a 50.000 € (micro), 100.000 € (piccole), 150.000 € (medie); progetti da almeno 14.000 €",
+      "scadenza": null,
+      "nota_scadenza": "domande dal 29/09/2026 sulla piattaforma GeCoWEB Plus: la data di chiusura è nel bando di Lazio Innova",
+      "aiuto": "Per la parte «Digital Workplace» e la diagnosi: analisi dei PC, rigenerazione con SSD, sistema e programmi adatti, schede tecniche da allegare.",
+      "fonte": "https://fesr.regione.lazio.it/2026/09/voucher-digitalizzazione-2026/"
+    },
+    {
       "id": "erasmus-2027-ka210",
       "titolo": "Erasmus+ 2027 · Partenariati su piccola scala per l'educazione degli adulti",
       "ente": "Commissione europea · Agenzia nazionale Erasmus+",
