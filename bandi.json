@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-05",
+  "aggiornato": "2026-11-12",
   "nota": "Elenco informativo curato per Danilo D'Auria. Verificate sempre requisiti, importi e date sul sito ufficiale prima di candidarvi.",
   "bandi": [
     {
@@ -73,40 +73,7 @@
       "scadenza": "2026-09-18",
       "aiuto": "Programmi accessibili: testo grande, alto contrasto, lettura ad alta voce.",
       "fonte": "https://www.dire.it/18-05-2026/1240864-sei-milioni-di-euro-da-fondo-repubblica-digitale-ministero-per-le-disabilita-per-inclusione-sociale-e-lavorativa/"
-    },
-    {
-      "id": "frd-prospettive-plus",
-      "titolo": "Bando Prospettive+",
-      "ente": "Fondo per la Repubblica Digitale",
-      "per": ["terzo-settore", "enti"],
-      "cosa": "Competenze digitali per disoccupati e inattivi tra 34 e 67 anni, per la riqualificazione e il lavoro.",
-      "importo": "25 milioni € in totale",
-      "scadenza": "2026-05-15",
-      "aiuto": "Percorsi di base e avanzati con il Professore Digitale, anche su PC rigenerati.",
-      "fonte": "https://www.fondazionecrt.it/fondo-per-la-repubblica-digitale-2026/"
-    },
-    {
-      "id": "lazio-facilitazione-2026",
-      "titolo": "PNRR 1.7.2 · Avviso premiale 2026 per i centri di facilitazione digitale del Lazio",
-      "ente": "Regione Lazio",
-      "per": ["enti"],
-      "cosa": "Ha prolungato fino al 30 aprile 2026 l'apertura di fino a 90 centri di facilitazione digitale dei Comuni che avevano raggiunto gli obiettivi. Utile sapere che sul territorio esiste già una rete di centri.",
-      "importo": "697.500 € in totale, fino a 7.750 € a centro",
-      "scadenza": "2026-04-30",
-      "nota_scadenza": "data di fine delle attività",
-      "aiuto": "I centri già nati possono continuare con programmi gratuiti e offline, senza licenze da rinnovare.",
-      "fonte": "https://www.regione.lazio.it/sites/default/files/documentazione/2025/DD-G16899-11-12-2025-Avviso.pdf"
-    },
-    {
-      "id": "erasmus-2026-ka210",
-      "titolo": "Erasmus+ 2026 · Partenariati su piccola scala per l'educazione degli adulti",
-      "ente": "Commissione europea · Agenzia nazionale Erasmus+",
-      "per": ["terzo-settore", "enti", "scuole"],
-      "cosa": "La tornata 2026, per progetti in partenza tra settembre e dicembre 2026.",
-      "importo": "secondo la Guida al programma 2026",
-      "scadenza": "2026-03-05",
-      "aiuto": "Si prepara il progetto per la tornata 2027.",
-      "fonte": "https://www.leargas.ie/application-process/deadlines"
     }
-  ]
+  ],
+  "controllato": "2026-11-12"
 }

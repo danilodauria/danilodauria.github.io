@@ -1,7 +1,27 @@
 {
- "en": [],
- "fr": [],
- "es": [],
- "de": [],
- "ro": []
+ "en": [
+  "Calendario informativo curato da Danilo D'Auria. Le date con la dicitura «stimata» seguono gli anni passati: i negozi le confermano poche settimane prima. Non ricevo commissioni dai negozi. Calendario aggiornato al {d0}, ricontrollato il {d1}.",
+  "Online: calendario ricontrollato il {d0}, prezzi di oggi a un clic.",
+  "Online: elenco ricontrollato il {d0}."
+ ],
+ "fr": [
+  "Calendario informativo curato da Danilo D'Auria. Le date con la dicitura «stimata» seguono gli anni passati: i negozi le confermano poche settimane prima. Non ricevo commissioni dai negozi. Calendario aggiornato al {d0}, ricontrollato il {d1}.",
+  "Online: calendario ricontrollato il {d0}, prezzi di oggi a un clic.",
+  "Online: elenco ricontrollato il {d0}."
+ ],
+ "es": [
+  "Calendario informativo curato da Danilo D'Auria. Le date con la dicitura «stimata» seguono gli anni passati: i negozi le confermano poche settimane prima. Non ricevo commissioni dai negozi. Calendario aggiornato al {d0}, ricontrollato il {d1}.",
+  "Online: calendario ricontrollato il {d0}, prezzi di oggi a un clic.",
+  "Online: elenco ricontrollato il {d0}."
+ ],
+ "de": [
+  "Calendario informativo curato da Danilo D'Auria. Le date con la dicitura «stimata» seguono gli anni passati: i negozi le confermano poche settimane prima. Non ricevo commissioni dai negozi. Calendario aggiornato al {d0}, ricontrollato il {d1}.",
+  "Online: calendario ricontrollato il {d0}, prezzi di oggi a un clic.",
+  "Online: elenco ricontrollato il {d0}."
+ ],
+ "ro": [
+  "Calendario informativo curato da Danilo D'Auria. Le date con la dicitura «stimata» seguono gli anni passati: i negozi le confermano poche settimane prima. Non ricevo commissioni dai negozi. Calendario aggiornato al {d0}, ricontrollato il {d1}.",
+  "Online: calendario ricontrollato il {d0}, prezzi di oggi a un clic.",
+  "Online: elenco ricontrollato il {d0}."
+ ]
 }

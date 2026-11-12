@@ -84,6 +84,12 @@ for nome, url in link:
 
 # ---- bandi
 for b in bandi["bandi"]:
+    if b.get("auto"):
+        attenzione.append("Bando segnalato in automatico «%s» (%s, %s): da completare con importo, scadenza e consiglio, o da togliere." % (b["titolo"], b["ente"], b["fonte"]))
+    if b.get("fonte_ko"):
+        attenzione.append("La fonte del bando «%s» non risponde più: %s" % (b["titolo"], b["fonte"]))
+    if (b.get("nota_scadenza") or "").startswith("data letta in automatico"):
+        info.append("Scadenza del bando «%s» letta in automatico dalla fonte: verificatela." % b["titolo"])
     if b.get("previsto"):
         info.append("Bando in arrivo «%s»: controllate se è stato pubblicato (%s)." % (b["titolo"], b.get("nota_scadenza", "")))
         continue

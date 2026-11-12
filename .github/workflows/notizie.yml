@@ -1,0 +1,48 @@
+# Come si ferma: scheda Actions › «Bandi e offerte» › menu «…» › Disable workflow (Enable lo riaccende).
+
+name: Bandi e offerte
+
+# Ogni mattina ricontrolla bandi e calendario delle offerte (strumenti/notizie.py):
+# data di controllo, scadenze lette dalle fonti, avvisi nuovi dalle fonti ufficiali,
+# via i bandi chiusi da più di 120 giorni e gli eventi finiti. Salva solo se qualcosa è cambiato.
+on:
+  schedule:
+    - cron: "41 4 * * *"    # ogni giorno alle 04:41 UTC (05:41 in inverno in Italia)
+  workflow_dispatch:        # pulsante «Run workflow» nella scheda Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bandi-offerte
+  cancel-in-progress: false
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Fissate all'impronta del commit, non all'etichetta: un'etichetta si può riscrivere.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Ricontrolla bandi e offerte
+        run: python3 strumenti/notizie.py
+      - name: Salva se qualcosa è cambiato
+        if: ${{ vars.PACCHETTO_IN_ARRIVO != '1' }}
+        run: |
+          if [ -z "$(git status --porcelain -- bandi.json offerte.json index.html fonti-viste.json bandi-archivio.json)" ]; then
+            echo "Nessuna novità."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add bandi.json offerte.json index.html fonti-viste.json
+            [ -f bandi-archivio.json ] && git add bandi-archivio.json
+            git commit -m "Bandi e offerte ricontrollati in automatico"
+            for prova in 1 2 3; do
+              git pull --rebase origin main && git push && exit 0
+              sleep 10
+            done
+            exit 1
+          fi
