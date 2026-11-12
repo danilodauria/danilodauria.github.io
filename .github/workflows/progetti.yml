@@ -47,6 +47,7 @@ jobs:
         if: ${{ steps.vetrine.outputs.scatti == '1' }}
         run: |
           pip install --quiet playwright==1.48.0 pillow
+          sudo apt-get install -y -qq fonts-inter fonts-noto-color-emoji >/dev/null 2>&1 || true   # stessi caratteri delle pagine
           [ -x /usr/bin/google-chrome ] || python -m playwright install --with-deps chromium
           python3 strumenti/vetrine.py --scatti
       - name: Pacchetto in arrivo
