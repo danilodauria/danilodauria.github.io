@@ -93,9 +93,13 @@ def scadenza_dalla_fonte(url):
     return stato, (min(vicine) if len(vicine) == 1 else None)
 
 
+STATO_FONTI = []
+
+
 def avvisi_della_fonte(f):
     """[(titolo, link, data_pubblicazione|None)] dalla fonte: feed RSS/Atom o pagina HTML."""
     stato, h = scarica(f["url"])
+    STATO_FONTI.append("%s %s" % (f["url"], stato or "non raggiungibile"))
     if not h:
         return None
     out = []
@@ -173,6 +177,7 @@ def main():
                 "fonte": link})
             resoconto.append("avviso nuovo: «%s» (%s)" % (tit, f["nome"]))
         viste[chiave] = sorted(gia)[-2000:]
+        STATO_FONTI[-1] += " (%d collegamenti)" % len(avvisi)
 
     # 3) pulizia: segnalati scaduti e chiusi vecchi
     restano = []
@@ -212,6 +217,7 @@ def main():
     if s2 != s:
         open(fi, "w", encoding="utf-8").write(s2)
     print("Bandi e offerte:", "; ".join(resoconto) if resoconto else "nessun cambiamento, solo la data di controllo")
+    print("Fonti:", " · ".join(STATO_FONTI) or "nessuna")
 
 
 if __name__ == "__main__":
