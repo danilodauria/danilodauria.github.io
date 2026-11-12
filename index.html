@@ -1972,6 +1972,43 @@ footer a { color: var(--hero-ink2); }
   }
   function titoloDa(nome) { return nome.split(/[-_]/).map(function (x) { return x.charAt(0).toUpperCase() + x.slice(1); }).join(" "); }
   function leggi(url) { return fetch(url, { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }); }
+  /* Versione più alta tra etichette (tag) e package.json di ogni progetto, letta da GitHub mentre si guarda il sito.
+     Risultato tenuto 20 minuti nel browser, per non chiedere troppo a GitHub. Senza linea resta la versione salvata. */
+  function numVer(t) { var m = String(t || "").match(/\d+(?:\.\d+)+/); return m ? m[0] : ""; }
+  function piuAlta(a, b) {
+    var x = a.split("."), y = b.split(".");
+    for (var i = 0; i < Math.max(x.length, y.length); i++) { var d = (+x[i] || 0) - (+y[i] || 0); if (d) return d > 0 ? a : b; }
+    return a;
+  }
+  function versioniVive(elenco, fatto) {
+    var CHIAVE = "dd-versioni-vive", cache = null, adesso = Date.now();
+    try { cache = JSON.parse(localStorage.getItem(CHIAVE) || "null"); } catch (e) {}
+    function applica(mappa) {
+      var cambiato = false;
+      elenco.forEach(function (pr) {
+        var nv = mappa[pr.nome]; if (!nv) return;
+        var vecchia = numVer(pr.versione);
+        if (!vecchia || (piuAlta(nv, vecchia) === nv && nv !== vecchia)) { pr.versione = nv; cambiato = true; }
+      });
+      if (cambiato) fatto();
+    }
+    if (cache && adesso - cache.t < 20 * 60 * 1000) { applica(cache.v || {}); return; }
+    var mappa = {}, attese = [];
+    elenco.forEach(function (pr) {
+      if (!pr.github || ESCLUSI[pr.nome]) return;
+      attese.push(leggi("https://api.github.com/repos/" + UTENTE + "/" + pr.nome + "/tags?per_page=100").then(function (tag) {
+        tag.forEach(function (t) { var n = numVer(t.name); if (n) mappa[pr.nome] = mappa[pr.nome] ? piuAlta(mappa[pr.nome], n) : n; });
+      }).catch(function () {}));
+      attese.push(leggi("https://raw.githubusercontent.com/" + UTENTE + "/" + pr.nome + "/HEAD/package.json").then(function (p) {
+        var n = numVer(p && p.version); if (n) mappa[pr.nome] = mappa[pr.nome] ? piuAlta(mappa[pr.nome], n) : n;
+      }).catch(function () {}));
+    });
+    Promise.all(attese).then(function () {
+      if (!Object.keys(mappa).length) return;
+      try { localStorage.setItem(CHIAVE, JSON.stringify({ t: adesso, v: mappa })); } catch (e) {}
+      applica(mappa);
+    });
+  }
   function caricaProgetti() {
     disegnaProgetti(PROGETTI_SALVATI.progetti, "salvato", PROGETTI_SALVATI.aggiornato);
     if (!window.fetch || navigator.onLine === false) return;
@@ -1981,6 +2018,8 @@ footer a { color: var(--hero-ink2); }
       .then(function (j) {
         if (!j || !j.progetti) throw 0;
         disegnaProgetti(j.progetti, "salvato", j.aggiornato);
+        /* 1b) versioni appena uscite: il robot passa ogni ora, qui si guarda GitHub subito */
+        versioniVive(j.progetti, function () { disegnaProgetti(j.progetti, "salvato", j.aggiornato); });
         /* 2) i progetti creati da poche ore, direttamente da GitHub */
         return leggi("https://api.github.com/users/" + UTENTE + "/repos?per_page=100&type=owner&sort=created").then(function (repos) {
           var noti = {}; j.progetti.forEach(function (pr) { noti[pr.nome] = true; });

@@ -3,11 +3,11 @@
 
 name: Aggiorna i progetti
 
-# Ogni 3 ore controlla i repository pubblici di danilodauria e aggiorna progetti.json:
+# Ogni ora controlla i repository pubblici di danilodauria e aggiorna progetti.json:
 # i nuovi progetti e le nuove versioni compaiono sul sito da soli, anche nelle Novità e nel feed.
 on:
   schedule:
-    - cron: "17 */3 * * *"  # ogni 3 ore (05:17, 08:17, … UTC): le nuove versioni arrivano in giornata
+    - cron: "17 * * * *"    # ogni ora (al minuto 17): una nuova versione arriva sul sito entro un'ora
   workflow_dispatch:        # pulsante «Run workflow» nella scheda Actions
   push:
     branches: [main]
