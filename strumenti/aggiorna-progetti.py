@@ -2,8 +2,8 @@
 """Aggiorna progetti.json con i repository pubblici di danilodauria su GitHub.
 
 Lo esegue da solo GitHub Actions (ogni giorno e a ogni modifica del sito): legge l'elenco dei
-repository, la versione di ognuno (ultima Release, oppure i file VERSION, VERSIONE, version.txt,
-package.json) e l'indirizzo del sito pubblicato. La pagina index.html legge poi progetti.json.
+repository, la versione di ognuno (la più alta tra ultima Release, etichette, file VERSION, VERSIONE,
+version.txt e package.json) e l'indirizzo del sito pubblicato. La pagina index.html legge poi progetti.json.
 Solo libreria standard di Python. Autore: Danilo D'Auria - licenza MIT."""
 import datetime, json, os, re, sys, urllib.error, urllib.request
 
@@ -51,25 +51,35 @@ def pulisci(v):
     return m.group(0) if m else ""
 
 
+def _tupla(v):
+    return tuple(int(x) for x in v.split("."))
+
+
 def versione(repo):
+    """La versione più alta tra: ultima Release, etichette (tag), file VERSION/VERSIONE/version.txt e package.json.
+
+    Prima valeva solo la Release: se un progetto smetteva di pubblicare Release e usava solo le
+    etichette (es. psd-v1.3.36), il sito restava fermo all'ultima Release (1.3.32). Ora vince la più recente."""
     nome, ramo = repo["name"], repo.get("default_branch") or "main"
+    trovate = []
     rel = chiedi("https://api.github.com/repos/%s/%s/releases/latest" % (UTENTE, nome))
     if rel and rel.get("tag_name"):
-        if pulisci(rel["tag_name"]):
-            return pulisci(rel["tag_name"])
+        trovate.append(pulisci(rel["tag_name"]))
+    tag = chiedi("https://api.github.com/repos/%s/%s/tags?per_page=100" % (UTENTE, nome)) or []
+    trovate += [pulisci(t.get("name")) for t in tag]
     for f in ("VERSION", "VERSIONE", "version.txt"):
         t = chiedi("https://raw.githubusercontent.com/%s/%s/%s/%s" % (UTENTE, nome, ramo, f), json_atteso=False)
         if t and t.strip() and len(t.strip()) < 20 and "\n" not in t.strip():
-            return pulisci(t.strip()) or t.strip()
-    pkg = chiedi("https://raw.githubusercontent.com/%s/%s/%s/package.json" % (UTENTE, nome, ramo), json_atteso=False)
-    if pkg:
-        try:
-            v = json.loads(pkg).get("version")
-            if v:
-                return v
-        except ValueError:
-            pass
-    return ""
+            trovate.append(pulisci(t.strip()))
+    for f in ("package.json", "desktop/package.json"):
+        pkg = chiedi("https://raw.githubusercontent.com/%s/%s/%s/%s" % (UTENTE, nome, ramo, f), json_atteso=False)
+        if pkg:
+            try:
+                trovate.append(pulisci(json.loads(pkg).get("version") or ""))
+            except ValueError:
+                pass
+    trovate = [v for v in trovate if v]
+    return max(trovate, key=_tupla) if trovate else ""
 
 
 def controlla_elenco(progetti):
