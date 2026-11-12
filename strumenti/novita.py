@@ -24,8 +24,21 @@ for p in progetti:
     elif v and noti[nome] != v:
         voci.append({"data": quando, "titolo": p["titolo"] + " " + v, "testo": "La versione più recente, con le novità descritte su GitHub.", "nome": True, "link": link, "id": nome + "@" + v})
     noti[nome] = v
+    # Se manca la voce dell'ultima versione (es. due versioni uscite lo stesso giorno), si rimette.
+    if v and nome in dati.get("versioni", {}) and not any(x.get("id") == nome + "@" + v for x in voci):
+        voci.append({"data": quando, "titolo": p["titolo"] + " " + v, "testo": "La versione più recente, con le novità descritte su GitHub.", "nome": True, "link": link, "id": nome + "@" + v})
+
+
+def _ver(x):
+    """Numero di versione dall'id («naturopata-digitale@1.3.41» -> (1, 3, 41)): a parità di data vince la più alta."""
+    try:
+        return tuple(int(n) for n in (x.get("id") or "").split("@")[1].split("."))
+    except (IndexError, ValueError):
+        return ()
+
+
 visti, unici = set(), []
-for x in sorted(voci, key=lambda x: (x["data"], x.get("a_mano", False)), reverse=True):
+for x in sorted(voci, key=lambda x: (x["data"], x.get("a_mano", False), _ver(x)), reverse=True):
     if x["id"] in visti:
         continue
     visti.add(x["id"]); unici.append(x)
