@@ -1,0 +1,87 @@
+{
+ "consulente-digitale": {
+  "sezioni": [
+   "aggiornamenti e driver",
+   "analisi del pc",
+   "antivirus",
+   "app per telefono",
+   "cerca stampa",
+   "cosa comprare e quando",
+   "cose da sapere storia",
+   "diagnosi e interventi",
+   "economia circolare",
+   "hardware e sensori",
+   "kit di emergenza",
+   "lingue",
+   "neura",
+   "neura apre le finestre",
+   "nonni teach",
+   "notizie",
+   "ottimizza",
+   "programmi consigliati",
+   "reset backup",
+   "salute",
+   "salvadati",
+   "scarica gli aggiornamenti",
+   "scelta iniziale",
+   "stop"
+  ],
+  "versione_foto": "1.5.2"
+ },
+ "feniceos": {
+  "versione_foto": "2.2"
+ },
+ "grande-quiz": {
+  "versione_foto": "1.0.0"
+ },
+ "naturopata-digitale": {
+  "sezioni": [
+   "benessere",
+   "biblioteca",
+   "calendario",
+   "desktop",
+   "erbario",
+   "fitoalimurgia",
+   "glossario",
+   "licenze",
+   "manuale",
+   "neura",
+   "quiz",
+   "sicurezza",
+   "sopravvivenza"
+  ],
+  "versione_foto": "da-rifare"
+ },
+ "nonni-teach": {},
+ "professore-digitale": {
+  "sezioni": [
+   "chiedi al professore",
+   "impostazioni",
+   "lavagna",
+   "lezioni",
+   "palestra",
+   "sei lingue"
+  ],
+  "versione_foto": "3.8.0"
+ },
+ "psicologo-digitale": {
+  "sezioni": [
+   "colloquio",
+   "diario",
+   "esercizi",
+   "glossario",
+   "installa",
+   "licenze",
+   "manuale",
+   "neura",
+   "nutrizione",
+   "palestra della mente",
+   "percorso",
+   "relazione",
+   "sedute",
+   "sicurezza",
+   "valutazione"
+  ],
+  "versione_foto": "da-rifare"
+ }
+}

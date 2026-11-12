@@ -4,14 +4,15 @@
 name: Aggiorna i progetti
 
 # Ogni ora controlla i repository pubblici di danilodauria e aggiorna progetti.json:
-# i nuovi progetti e le nuove versioni compaiono sul sito da soli, anche nelle Novità e nel feed.
+# i nuovi progetti e le nuove versioni compaiono sul sito da soli, anche nelle Novità e nel feed;
+# nelle schede si aggiornano numeri, argomenti nuovi e immagini (strumenti/vetrine.py).
 on:
   schedule:
     - cron: "17 * * * *"    # ogni ora (al minuto 17): una nuova versione arriva sul sito entro un'ora
   workflow_dispatch:        # pulsante «Run workflow» nella scheda Actions
   push:
     branches: [main]
-    paths-ignore: [progetti.json, novita.json, feed.xml, index.html]
+    paths-ignore: [progetti.json, novita.json, feed.xml, index.html, vetrine.json]
 
 permissions:
   contents: write
@@ -37,6 +38,17 @@ jobs:
         run: python3 strumenti/novita.py
       - name: Versioni nelle schede della home
         run: python3 strumenti/versioni-schede.py
+      - name: Testi delle schede (numeri e argomenti nuovi dal README di ogni programma)
+        id: vetrine
+        run: |
+          python3 strumenti/vetrine.py
+          if [ -s .scatti-da-fare ]; then echo "scatti=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Immagini delle schede (solo quando esce una versione nuova)
+        if: ${{ steps.vetrine.outputs.scatti == '1' }}
+        run: |
+          pip install --quiet playwright==1.48.0 pillow
+          [ -x /usr/bin/google-chrome ] || python -m playwright install --with-deps chromium
+          python3 strumenti/vetrine.py --scatti
       - name: Pacchetto in arrivo
         if: ${{ vars.PACCHETTO_IN_ARRIVO == '1' }}
         run: |
@@ -44,12 +56,12 @@ jobs:
       - name: Salva se qualcosa è cambiato
         if: ${{ vars.PACCHETTO_IN_ARRIVO != '1' }}
         run: |
-          if git diff --quiet -- progetti.json novita.json feed.xml index.html; then
+          if git diff --quiet -- progetti.json novita.json feed.xml index.html vetrine.json && [ -z "$(git status --porcelain -- vetrine.json)" ]; then
             echo "Nessuna novità."
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add progetti.json novita.json feed.xml index.html
+            git add progetti.json novita.json feed.xml index.html vetrine.json
             git commit -m "Progetti aggiornati in automatico"
             for prova in 1 2 3; do
               git pull --rebase origin main && git push && exit 0
