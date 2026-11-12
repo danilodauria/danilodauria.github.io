@@ -282,15 +282,22 @@ def controlla_file_generati():
             problema("%s: non si legge come XML (%s)" % (relativo, errore))
 
 
-def scarica(percorso_web):
-    richiesta = urllib.request.Request(INDIRIZZO + percorso_web, headers={"User-Agent": "sicurezza-sito"})
-    try:
-        with urllib.request.urlopen(richiesta, timeout=20) as risposta:
-            return risposta.status
-    except urllib.error.HTTPError as errore:
-        return errore.code
-    except (urllib.error.URLError, OSError):
-        return None
+def scarica(percorso_web, tentativi=4):
+    """Stato HTTP di una pagina del sito pubblicato. Gli errori 5xx (GitHub Pages occupato, per esempio
+    mentre pubblica) non dicono se il file c'è: si riprova, e se restano si risponde None («non so»)."""
+    import time
+    for n in range(tentativi):
+        richiesta = urllib.request.Request(INDIRIZZO + percorso_web, headers={"User-Agent": "sicurezza-sito"})
+        try:
+            with urllib.request.urlopen(richiesta, timeout=20) as risposta:
+                return risposta.status
+        except urllib.error.HTTPError as errore:
+            if errore.code < 500:
+                return errore.code
+        except (urllib.error.URLError, OSError):
+            pass
+        time.sleep(5 * (n + 1))
+    return None
 
 
 def controlla_pubblicato():
