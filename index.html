@@ -919,6 +919,9 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
 footer a { color: var(--hero-ink2); }
 @media (max-width: 820px) { .contatti .wrap { grid-template-columns: 1fr; padding-block: 52px; } section.blocco { padding-block: 56px; } }
 @media (max-width: 360px) { .barra .wrap { gap: 6px; } .accesso { gap: 3px; } .accesso button { min-width: 34px; padding: 0 5px; } .marchio { font-size: .95rem; } .menu-sezioni .wrap { grid-template-columns: 1fr; } }
+.avviso-rete { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 60; width: min(560px, calc(100% - 32px)); background: var(--foglio); color: var(--ink); border: 2px solid var(--fuoco); border-radius: 12px; padding: 14px 16px; box-shadow: 0 10px 30px rgba(0,0,0,.18); display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.avviso-rete[hidden] { display: none; }
+.avviso-rete p { flex: 1 1 100%; margin: 0; }
 </style>
 
 <header class="barra">
@@ -2692,6 +2695,57 @@ footer a { color: var(--hero-ink2); }
   try { fetch("novita.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(disegnaNovita).catch(function () {}); } catch (e) {}
 
   /* ---- PDF: sul telefono si aprono nel lettore del sito, in una nuova scheda ---- */
+  /* ---- Sito in casa: aperto dal GitHub di casa (http://localhost:8080 o dall'indirizzo del PC in rete)
+     i collegamenti a danilodauria.github.io restano in casa, quelli a GitHub vanno al GitHub di casa (porta 3000),
+     e quelli verso altri siti, se manca Internet, spiegano che serve la linea invece di dare una pagina d'errore. ---- */
+  var IN_CASA = /^https?:$/.test(location.protocol) && !/(^|\.)github\.io$/i.test(location.hostname);
+  if (IN_CASA) {
+    var SITO_ONLINE = "https://danilodauria.github.io", GITHUB_CASA = location.protocol + "//" + location.hostname + ":3000";
+    var reteFuori = navigator.onLine !== false;
+    var inCasa = function (a) {
+      if (a.hasAttribute("data-online")) return;
+      var h = a.getAttribute("href") || "", n = "";
+      if (h === SITO_ONLINE || h.indexOf(SITO_ONLINE + "/") === 0) n = h.slice(SITO_ONLINE.length) || "/";
+      else if (/^https:\/\/github\.com\/danilodauria(\/|\?|$)/i.test(h)) n = GITHUB_CASA + h.slice("https://github.com".length);
+      if (n) { a.setAttribute("data-online", h); a.setAttribute("href", n); if (!a.getAttribute("title")) a.setAttribute("title", "In casa: funziona anche senza Internet"); }
+    };
+    var tuttiInCasa = function (radice) { if (radice.querySelectorAll) radice.querySelectorAll("a[href]").forEach(inCasa); if (radice.matches && radice.matches("a[href]")) inCasa(radice); };
+    tuttiInCasa(document);
+    try { new MutationObserver(function (l) { l.forEach(function (m) { m.addedNodes.forEach(tuttiInCasa); }); }).observe(document.body, { childList: true, subtree: true }); } catch (e) {}
+    /* c'è Internet fuori di casa? (navigator.onLine dice solo se c'è la rete di casa) */
+    var provaRete = function () {
+      var finito = false, t = setTimeout(function () { if (!finito) { finito = true; reteFuori = false; } }, 4000);
+      try {
+        fetch(SITO_ONLINE + "/manifest.webmanifest?r=" + Date.now(), { mode: "no-cors", cache: "no-store" })
+          .then(function () { if (!finito) { finito = true; clearTimeout(t); reteFuori = true; } })
+          .catch(function () { if (!finito) { finito = true; clearTimeout(t); reteFuori = false; } });
+      } catch (e) { reteFuori = false; }
+    };
+    provaRete(); window.addEventListener("online", provaRete); window.addEventListener("offline", function () { reteFuori = false; });
+    var avvisoRete = document.createElement("div");
+    avvisoRete.className = "avviso-rete"; avvisoRete.setAttribute("role", "status"); avvisoRete.hidden = true;
+    document.body.appendChild(avvisoRete);
+    var chiudiAvviso = null;
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest("a[href]") : null; if (!a || reteFuori) return;
+      var x; try { x = new URL(a.href, location.href); } catch (z) { return; }
+      if (!/^https?:$/.test(x.protocol) || x.hostname === location.hostname) return;
+      e.preventDefault(); e.stopPropagation();
+      avvisoRete.innerHTML = "";
+      var p = document.createElement("p"), dove = document.createElement("b");
+      dove.className = "notranslate"; dove.setAttribute("translate", "no"); dove.textContent = x.hostname.replace(/^www\./, "");
+      var spiega = document.createElement("span"); spiega.textContent = "Questo collegamento porta fuori dal sito e serve Internet. Tutto il resto del sito funziona anche così.";
+      p.appendChild(dove); p.appendChild(document.createTextNode(" · ")); p.appendChild(spiega);
+      var b = document.createElement("button"); b.type = "button"; b.className = "btn-testo"; b.textContent = "Copia l'indirizzo";
+      b.onclick = function () { copiaTesto(x.href, p); };
+      var c = document.createElement("button"); c.type = "button"; c.className = "btn-testo"; c.textContent = "Chiudi";
+      c.onclick = function () { avvisoRete.hidden = true; };
+      avvisoRete.appendChild(p); avvisoRete.appendChild(b); avvisoRete.appendChild(c); avvisoRete.hidden = false;
+      clearTimeout(chiudiAvviso); chiudiAvviso = setTimeout(function () { avvisoRete.hidden = true; }, 12000);
+      provaRete();
+    }, true);
+  }
+
   var telefono = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer: coarse)").matches);
   if (telefono) {
     document.querySelectorAll('a[href^="pdf/"][href$=".pdf"]').forEach(function (a) {
