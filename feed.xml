@@ -5,8 +5,15 @@
   <link href="https://danilodauria.github.io/"/>
   <link rel="self" href="https://danilodauria.github.io/feed.xml"/>
   <id>https://danilodauria.github.io/</id>
-  <updated>2026-11-10T06:00:00Z</updated>
+  <updated>2026-11-12T06:00:00Z</updated>
   <author><name>Danilo D'Auria</name></author>
+  <entry>
+    <title>Psicologo Digitale 1.3.36</title>
+    <link href="https://danilodauria.github.io/psicologo-digitale/"/>
+    <id>https://danilodauria.github.io/#novita-psicologo-digitale@1.3.36</id>
+    <updated>2026-11-11T06:00:00Z</updated>
+    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
+  </entry>
   <entry>
     <title>Naturopata Digitale 1.3.37</title>
     <link href="https://danilodauria.github.io/naturopata-digitale/"/>
@@ -41,13 +48,6 @@
     <id>https://danilodauria.github.io/#novita-sito-lingue-app</id>
     <updated>2026-11-05T06:00:00Z</updated>
     <summary>Test del PC, preventivo, calcolo del risparmio e guide funzionano anche senza Internet.</summary>
-  </entry>
-  <entry>
-    <title>Psicologo Digitale 1.3.32</title>
-    <link href="https://danilodauria.github.io/psicologo-digitale/"/>
-    <id>https://danilodauria.github.io/#novita-psicologo-digitale@1.3.32</id>
-    <updated>2026-11-04T06:00:00Z</updated>
-    <summary>La versione più recente, con le novità descritte su GitHub.</summary>
   </entry>
   <entry>
     <title>Consulente Digitale 1.5.2</title>
