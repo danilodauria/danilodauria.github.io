@@ -34,7 +34,8 @@ FONTI = [
     {"nome": "Fondo per la Repubblica Digitale", "url": "https://www.fondorepubblicadigitale.it/iniziative/", "per": ["terzo-settore", "enti", "scuole"]},
     {"nome": "Agenzia Erasmus+ INDIRE", "url": "https://www.erasmusplus.it/feed/", "per": ["terzo-settore", "enti", "scuole"]},
     {"nome": "Dipartimento per la trasformazione digitale", "url": "https://innovazione.gov.it/notizie/", "per": ["enti", "terzo-settore"]},
-    {"nome": "Regione Lazio", "url": "https://www.regione.lazio.it/bandi-avvisi", "per": ["enti", "terzo-settore", "aziende"]},
+    {"nome": "Regione Lazio", "url": "https://www.regione.lazio.it/avvisi-e-bandi", "per": ["enti", "terzo-settore", "aziende"]},
+    {"nome": "Regione Lazio · Fondi europei", "url": "https://fesr.regione.lazio.it/category/bandi/feed/", "per": ["enti", "terzo-settore", "aziende"]},
 ]
 AVVISO = re.compile(r"\b(bando|bandi|avviso|call|invito a presentare|voucher|contribut|finanziament)", re.I)
 TEMA = re.compile(r"(digital|competenz|inclusion|alfabetizz|formazion|erasmus|adulti|innovazion|intelligenza artificiale|\bia\b|informatic|anzian|scuol|stem)", re.I)
