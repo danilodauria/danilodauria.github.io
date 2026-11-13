@@ -20,11 +20,11 @@
   },
   {
    "data": "2026-11-13",
-   "titolo": "Tutor Digitale",
-   "testo": "Nuovo progetto: un programma libero e gratuito, da provare.",
+   "titolo": "Tutor Digitale 1.2.0",
+   "testo": "La versione più recente, con le novità descritte su GitHub.",
    "nome": true,
    "link": "https://danilodauria.github.io/tutor-digitale/",
-   "id": "tutor-digitale@nuovo"
+   "id": "tutor-digitale@1.2.0"
   },
   {
    "data": "2026-11-10",
