@@ -6,16 +6,16 @@
   "naturopata-digitale": "1.3.41",
   "nonni-teach": "",
   "professore-digitale": "3.8.0",
-  "psicologo-digitale": "1.3.39"
+  "psicologo-digitale": "1.3.50"
  },
  "voci": [
   {
-   "data": "2026-11-12",
-   "titolo": "Psicologo Digitale 1.3.39",
+   "data": "2026-11-13",
+   "titolo": "Psicologo Digitale 1.3.50",
    "testo": "La versione più recente, con le novità descritte su GitHub.",
    "nome": true,
    "link": "https://danilodauria.github.io/psicologo-digitale/",
-   "id": "psicologo-digitale@1.3.39"
+   "id": "psicologo-digitale@1.3.50"
   },
   {
    "data": "2026-11-10",
@@ -90,5 +90,5 @@
    "id": "grande-quiz@1.0.0"
   }
  ],
- "aggiornato": "2026-11-12"
+ "aggiornato": "2026-11-13"
 }
