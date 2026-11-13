@@ -2,9 +2,9 @@
    - pagine e dati del sito: prima la rete (sempre aggiornati), se manca Internet la copia salvata;
    - tutto il resto (GitHub, comparatori…): solo rete.
    Autore: Danilo D'Auria · licenza MIT */
-var VERSIONE = "dd-2026-11-13a";
+var VERSIONE = "dd-2026-11-13b";
 var BASE = [
-  "./", "index.html", "fenice.svg", "manifest.webmanifest", "bandi.json", "offerte.json", "progetti.json", "casi.json", "novita.json", "prenota.json", "pdf/info.json",
+  "./", "index.html", "fenice.svg", "manifest.webmanifest", "bandi.json", "offerte.json", "progetti.json", "casi.json", "novita.json", "prenota.json", "lezioni.json", "pdf/info.json",
   "icone/icona-192.png", "icone/icona-512.png", "icone/apple-touch-icon.png",
   "fonti/fonti.css", "fonti/atkinson-400.woff2", "fonti/atkinson-400-ext.woff2", "fonti/atkinson-700.woff2", "fonti/atkinson-700-ext.woff2", "fonti/atkinson-400i.woff2", "fonti/atkinson-400i-ext.woff2",
   "fonti/youngserif-400.woff2", "fonti/youngserif-400-ext.woff2", "fonti/jetbrains-400.woff2", "fonti/jetbrains-400-ext.woff2", "fonti/jetbrains-600.woff2", "fonti/jetbrains-600-ext.woff2",

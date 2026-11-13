@@ -1,0 +1,8 @@
+{
+ "_nota": "Prezzi delle lezioni individuali mostrati nel sito (euro, IVA non applicabile se prestazione occasionale). Cambiate i numeri e salvate: il sito li legge da solo. Valori iniziali presi dalla media italiana (20-30 euro l'ora, Cronoshare gennaio 2026).",
+ "domicilio_ora": 25,
+ "pacchetto_5": 110,
+ "online_ora": 20,
+ "persona_in_piu_ora": 10,
+ "km_compresi": 15
+}

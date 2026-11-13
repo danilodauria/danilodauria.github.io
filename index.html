@@ -476,6 +476,8 @@ section.blocco + section.blocco { border-top: 1px solid var(--linea); }
 
 /* ---------- Listino ---------- */
 .listino { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 26px; }
+.listino.listino-lezioni { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .listino.listino-lezioni { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .pacchetto { background: var(--foglio); border: 1px solid var(--linea); border-radius: var(--r); padding: 26px; display: grid; gap: 10px; align-content: start; }
 .pacchetto.top { border-color: var(--verde); box-shadow: 0 0 0 3px color-mix(in srgb, var(--verde) 18%, transparent); }
 .pacchetto .prezzo { font-family: var(--f-display); font-size: 2.3rem; line-height: 1; color: var(--verde); font-variant-numeric: tabular-nums; }
@@ -485,7 +487,7 @@ section.blocco + section.blocco { border-top: 1px solid var(--linea); }
 .flex-nota { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; padding: 18px 22px; border-radius: var(--r); background: var(--verde-morbido); margin-bottom: 40px; }
 .flex-nota b { font-family: var(--f-display); font-weight: 400; font-size: 1.15rem; }
 .flex-nota .ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--verde); color: var(--foglio); font-family: var(--f-mono); font-weight: 600; }
-@media (max-width: 900px) { .listino { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .listino, .listino.listino-lezioni { grid-template-columns: 1fr; } }
 
 /* ---------- Chi siete? ---------- */
 .scelta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
@@ -1465,6 +1467,15 @@ footer a { color: var(--hero-ink2); }
     </div>
     <div class="flex-nota"><span class="ico" aria-hidden="true">Flex</span><div><b>Servizio di punta: ChromeOS Flex di Google</b><p style="color:var(--ink2);font-size:.96rem">Un PC o un Mac datato diventa un computer moderno, sicuro e veloce: avvio in pochi secondi, aggiornamenti automatici, ideale per web, Google Workspace e streaming.</p></div></div>
     <p style="margin:-24px 0 36px;font-weight:700"><a href="#windows-mac">Avete Windows o un Mac e volete tenerli? Ecco il percorso dalla A alla Z →</a></p>
+    <h3 style="margin-bottom:16px" id="lezioni">Lezioni individuali</h3>
+    <p class="os-intro">Computer, tablet, smartphone, Smart TV e Internet, dai primi passi a esperto: a casa vostra, al lavoro o in videochiamata, con i tempi giusti per ognuno. Uso il mio programma <a href="#p-tutor">Tutor Digitale</a>: percorso su misura, esercizi, compiti con l'App Allievo e attestato finale.</p>
+    <div class="listino listino-lezioni">
+      <div class="pacchetto"><p class="label">1 · Primo incontro</p><p class="prezzo">GRATIS</p><p>Venti minuti per conoscerci: cosa sapete già, cosa volete imparare e su quale dispositivo.</p><p class="ideale">Per decidere con calma, senza impegno.</p></div>
+      <div class="pacchetto top"><p class="label">2 · Lezione a domicilio</p><p class="prezzo"><span data-lez="domicilio_ora">25</span> € <small>l'ora</small></p><p>A casa vostra o al lavoro, sul vostro computer, tablet, smartphone o Smart TV.</p><p class="ideale">Per anziani, famiglie e chi vuole imparare passo passo.</p></div>
+      <div class="pacchetto"><p class="label">3 · Pacchetto 5 lezioni</p><p class="prezzo"><span data-lez="pacchetto_5">110</span> € <small>5 ore</small></p><p>Un percorso su misura, i compiti tra una lezione e l'altra con l'App Allievo e l'attestato finale.</p><p class="ideale">Il più conveniente: <span data-lez="pacchetto_ora">22</span> € l'ora.</p></div>
+      <div class="pacchetto"><p class="label">4 · Lezione online</p><p class="prezzo"><span data-lez="online_ora">20</span> € <small>l'ora</small></p><p>In videochiamata, con lo schermo condiviso: per chi abita lontano o per un dubbio veloce.</p><p class="ideale">Per ripassi e domande puntuali.</p></div>
+    </div>
+    <p class="os-prezzo">Due persone della stessa famiglia nella stessa lezione: <b>+<span data-lez="persona_in_piu_ora">10</span> € l'ora</b>. Spostamento compreso entro <span data-lez="km_compresi">15</span> km; oltre, si concorda prima. Prezzi in linea con la media italiana delle lezioni di informatica (20–30 € l'ora). <a href="#prenota">Prenotate il primo incontro →</a></p>
     <h3 style="margin-bottom:16px">Altri servizi</h3>
     <div class="servizi">
       <div class="serv"><p class="label">Formazione</p><h3>Corsi e laboratori</h3><p>Alfabetizzazione digitale per gruppi, associazioni, scuole e biblioteche: dal primo clic a SPID, truffe online e Intelligenza Artificiale. Con il Professore Digitale proiettato e il Grande Quiz a squadre.</p></div>
@@ -1711,7 +1722,7 @@ footer a { color: var(--hero-ink2); }
       <div class="pren-campi">
         <label>Per che cosa<select id="pr-cosa">
           <option>Un computer Windows</option><option>Un Mac</option><option>Un computer con Linux</option><option>Un iPhone o un iPad</option>
-          <option>Un telefono Android</option><option>Più computer (ufficio, aula, associazione)</option><option>Un corso o una lezione</option></select></label>
+          <option>Un telefono Android</option><option>Più computer (ufficio, aula, associazione)</option><option>Un corso o una lezione</option><option>Lezioni individuali (primo incontro gratis)</option></select></label>
         <fieldset class="pren-scelte"><legend>Dove</legend><div id="pr-dove" class="chips-scelta" role="radiogroup" aria-label="Dove"></div></fieldset>
         <fieldset class="pren-scelte"><legend>Giorni che preferite (fino a tre)</legend><div id="pr-giorni" class="chips-scelta notranslate" translate="no"></div></fieldset>
         <fieldset class="pren-scelte"><legend>Fascia oraria</legend><div id="pr-fasce" class="chips-scelta"></div></fieldset>
@@ -2688,6 +2699,15 @@ footer a { color: var(--hero-ink2); }
       if (!j) return; ["giorni_settimana", "preavviso", "quanti", "fasce", "dove", "chiusure"].forEach(function (k) { if (j[k]) PREN[k] = j[k]; });
       if (PREN.dove.every(function (x) { return x[0] !== scelte.dove; })) scelte.dove = PREN.dove[0][0];
       disegnaPren();
+    }).catch(function () {});
+  } catch (e) {}
+
+  /* ---- Prezzi delle lezioni individuali: si cambiano in lezioni.json, senza toccare la pagina ---- */
+  try {
+    fetch("lezioni.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      if (!j) return;
+      if (j.pacchetto_5) j.pacchetto_ora = Math.round(j.pacchetto_5 / 5 * 100) / 100;
+      document.querySelectorAll("[data-lez]").forEach(function (el) { var v = j[el.getAttribute("data-lez")]; if (typeof v === "number") el.textContent = String(v).replace(".", ","); });
     }).catch(function () {});
   } catch (e) {}
 
