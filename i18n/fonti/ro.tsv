@@ -127,7 +127,6 @@ bb9b24	Calculatoare care păreau de aruncat și astăzi încă lucrează. Timpi 
 ed974a	Calculatoare vechi repuse în funcțiune cu FeniceOS în loc să se cumpere altele noi.
 412d1e	Primărie, instituție sau asociație
 af0e16	Primării și instituții
-89c818	Cu Profesorul Digital instalat pe calculatorul lor, ca să continue singuri.
 438019	La verificarea gratuită vă spun sincer dacă merită regenerat sau completat cu unul nou.
 05a46b	Cu {n0} GB de memorie e nevoie de un sistem ușor; dacă se poate, adăugarea de memorie costă puțin și schimbă mult.
 921e42	Configurare la cheie
@@ -374,7 +373,6 @@ a46901	Mac, iPhone și iPad
 55721d	Mai sunt {n0} zile
 781afb	Manual și ghid interactiv FeniceOS, pachet complet offline.
 e27f52	Întreținere și securitate
-53d7f4	Harta proiectelor: din cartea Tecnologia Gentile se nasc FeniceOS, Consultantul Digital, Marele Quiz și, pentru bunăstare, Naturopatul Digital și Psihologul Digital; FeniceOS conține Profesorul Digital, care găzduiește Nonni Teach.
 dfbfce	Sub {n0} ani (din {n1} încoace)
 903e80	Mai puține deșeuri
 9226d6	Mesaj gata de trimis
@@ -629,7 +627,6 @@ d7a930	E nevoie de internet pentru a folosi programele?
 e30795	Serviciu
 cea118	Serviciul de bază: ChromeOS Flex de la Google
 d24d24	Șapte întrebări simple. La final vă spun ce variantă recomand, cât costă și ce e de făcut acum. Dacă nu știți un răspuns, alegeți „Nu știu”: îl verific eu la verificarea gratuită.
-1b2e8c	Șapte proiecte, o familie.
 57ce72	Secțiuni
 9db1d1	Se pregătește proiectul pentru sesiunea {n0}.
 d053da	Se publică doar cu acordul scris al persoanelor intervievate.
@@ -987,3 +984,18 @@ b21fb1	{n0} milioane € în total; până la {n1} € (micro), {n2} € (mici),
 a3be8a	Închide
 421703	Acest link duce în afara site-ului și are nevoie de Internet. Tot restul site-ului funcționează și așa.
 b05b63	Acasă: funcționează și fără Internet
+# 13/11/2026 · nuovo progetto Tutor Digitale
+6155cf	Acasă la ei, cu Tutorele Digital: calculator, tabletă, smartphone și Smart TV, plus Profesorul Digital instalat ca să continue singuri.
+0e87e2	Aplicația Elev
+d1e081	Aplicația Elev pentru teme la distanță cu corectare automată, coduri QR și asistență la distanță cu parolă care se schimbă.
+4a92e9	Calculator, tabletă și telefon
+1c3789	PREDĂ
+e54468	Instrumentul pentru lecții individuale și de grup despre calculator, tabletă, smartphone, Smart TV și Internet, de la primii pași la expert: acasă, la serviciu și în asociații.
+ccb1b2	Harta proiectelor: din cartea Tecnologia Gentile se nasc FeniceOS, Consultantul Digital, Marele Quiz și, pentru bunăstare, Naturopatul Digital și Psihologul Digital; FeniceOS conține Profesorul Digital, care găzduiește Nonni Teach; alături de Profesor se naște Tutorele Digital pentru lecții pe măsură.
+34b679	Proiect nou: un program liber și gratuit, de încercat.
+cdc9af	Opt proiecte, o familie.
+df895f	Fișe de clienți cu registrul lecțiilor, acord de semnat pe ecran, oferte, chitanțe și atestat final în PDF cu cod verificabil.
+b6d409	Captură de ecran a Tutorelui Digital, versiunea {n0}: pagina de start cu lecții, quiz-uri, exerciții și aplicații pentru elevi
+23b846	Tutorele Digital
+86d9b8	lecții pe măsură, acasă
+18d22a	{n0} lecții pe {n1} niveluri și {n2} trasee, modul tablă pentru TV, {n3} exerciții practice și quiz-uri care nu sunt niciodată la fel.

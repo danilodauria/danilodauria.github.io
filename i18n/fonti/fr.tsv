@@ -127,7 +127,6 @@ bb9b24	Des ordinateurs qui semblaient bons à jeter et qui travaillent encore au
 ed974a	De vieux ordinateurs remis en service avec FeniceOS au lieu d'en acheter des neufs.
 412d1e	Commune, organisme ou association
 af0e16	Communes et organismes publics
-89c818	Avec le Professeur Numérique installé sur leur ordinateur, pour continuer seuls.
 438019	Avec le bilan gratuit, je vous dis honnêtement s'il vaut mieux le régénérer ou lui adjoindre un ordinateur neuf.
 05a46b	Avec {n0} Go de mémoire, il faut un système léger ; si possible, ajouter de la mémoire coûte peu et change beaucoup.
 921e42	Configuration clés en main
@@ -374,7 +373,6 @@ a46901	Mac, iPhone et iPad
 55721d	Encore {n0} jours
 781afb	Manuel et guide interactifs de FeniceOS, paquet hors ligne complet.
 e27f52	Maintenance et sécurité
-53d7f4	Carte des projets : du livre Tecnologia Gentile naissent FeniceOS, le Consultant Numérique, le Grand Quiz et, pour le bien-être, le Naturopathe Numérique et le Psychologue Numérique ; FeniceOS contient le Professeur Numérique, qui héberge Nonni Teach.
 dfbfce	Moins de {n0} ans (depuis {n1})
 903e80	Moins de déchets
 9226d6	Message prêt à envoyer
@@ -629,7 +627,6 @@ d7a930	Faut-il Internet pour utiliser les logiciels ?
 e30795	Service
 cea118	Service phare : ChromeOS Flex de Google
 d24d24	Sept questions simples. À la fin, je vous dis quelle voie je conseille, combien elle coûte et quoi faire maintenant. Si vous ne connaissez pas une réponse, choisissez « Je ne sais pas » : je le vérifie moi-même lors du bilan gratuit.
-1b2e8c	Sept projets, une famille.
 57ce72	Sections
 9db1d1	Le projet pour la session {n0} est en préparation.
 d053da	Publié seulement avec le consentement écrit des personnes interviewées.
@@ -987,3 +984,18 @@ b21fb1	{n0} millions € au total ; jusqu'à {n1} € (micro), {n2} € (petites
 a3be8a	Fermer
 421703	Ce lien mène hors du site et nécessite Internet. Tout le reste du site fonctionne sans.
 b05b63	À la maison : fonctionne aussi sans Internet
+# 13/11/2026 · nuovo progetto Tutor Digitale
+6155cf	Chez eux, avec le Tuteur Numérique : ordinateur, tablette, smartphone et Smart TV, et le Professeur Numérique installé pour continuer seuls.
+0e87e2	App Élève
+d1e081	App Élève pour les devoirs à distance avec correction automatique, codes QR et assistance à distance avec un mot de passe qui change.
+4a92e9	Ordinateur, tablette et téléphone
+1c3789	ENSEIGNE
+e54468	L'outil pour les cours individuels et en groupe sur ordinateur, tablette, smartphone, Smart TV et Internet, des premiers pas au niveau expert : à domicile, au travail et dans les associations.
+ccb1b2	Carte des projets : du livre Tecnologia Gentile naissent FeniceOS, le Consultant Numérique, le Grand Quiz et, pour le bien-être, le Naturopathe Numérique et le Psychologue Numérique ; FeniceOS contient le Professeur Numérique, qui héberge Nonni Teach ; avec le Professeur naît le Tuteur Numérique pour des cours sur mesure.
+34b679	Nouveau projet : un logiciel libre et gratuit, à essayer.
+cdc9af	Huit projets, une famille.
+df895f	Fiches clients avec registre des cours, décharge à signer sur l'écran, devis, reçus et attestation finale en PDF avec code vérifiable.
+b6d409	Capture d'écran du Tuteur Numérique, version {n0} : la page d'accueil avec cours, quiz, exercices et app élèves
+23b846	Tuteur Numérique
+86d9b8	cours sur mesure, à domicile
+18d22a	{n0} cours en {n1} niveaux et {n2} parcours, mode tableau pour la TV, {n3} exercices pratiques et des quiz jamais identiques.

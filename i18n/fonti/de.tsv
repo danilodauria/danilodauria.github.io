@@ -127,7 +127,6 @@ bb9b24	Computer, die reif für den Müll schienen und heute noch arbeiten. Start
 ed974a	Alte Computer, die mit FeniceOS wieder in Betrieb gehen, statt neue zu kaufen.
 412d1e	Gemeinde, Einrichtung oder Verein
 af0e16	Gemeinden und Einrichtungen
-89c818	Mit dem Digitalen Professor auf dem eigenen Computer, um allein weiterzumachen.
 438019	Beim kostenlosen Check-up sage ich Ihnen ehrlich, ob sich die Aufbereitung lohnt oder ob ein neues Gerät dazukommen sollte.
 05a46b	Mit {n0} GB Arbeitsspeicher braucht es ein leichtes System; wenn möglich, kostet mehr Speicher wenig und bringt viel.
 921e42	Einrichtung schlüsselfertig
@@ -374,7 +373,6 @@ a46901	Mac, iPhone und iPad
 55721d	Noch {n0} Tage
 781afb	Interaktives Handbuch und Leitfaden zu FeniceOS, komplettes Offline-Paket.
 e27f52	Wartung und Sicherheit
-53d7f4	Projektkarte: Aus dem Buch Tecnologia Gentile entstehen FeniceOS, der Digitale Berater, das Große Quiz und, für das Wohlbefinden, der Digitale Naturheilkundler und der Digitale Psychologe; FeniceOS enthält den Digitalen Professor, der Nonni Teach beherbergt.
 dfbfce	Jünger als {n0} Jahre (ab {n1})
 903e80	Weniger Abfall
 9226d6	Nachricht zum Senden bereit
@@ -629,7 +627,6 @@ d7a930	Braucht man Internet, um die Programme zu nutzen?
 e30795	Leistung
 cea118	Vorzeigeleistung: Googles ChromeOS Flex
 d24d24	Sieben einfache Fragen. Am Ende sage ich Ihnen, welchen Weg ich empfehle, was er kostet und was jetzt zu tun ist. Wenn Sie eine Antwort nicht wissen, wählen Sie „Weiß nicht“: Das prüfe ich beim kostenlosen Check-up.
-1b2e8c	Sieben Projekte, eine Familie.
 57ce72	Bereiche
 9db1d1	Das Projekt für die Runde {n0} wird vorbereitet.
 d053da	Veröffentlicht nur mit schriftlicher Einwilligung der Interviewten.
@@ -987,3 +984,18 @@ b21fb1	insgesamt {n0} Mio. €; bis zu {n1} € (Kleinst-), {n2} € (Klein-), {
 a3be8a	Schließen
 421703	Dieser Link führt aus der Website hinaus und braucht Internet. Alles andere auf der Website funktioniert auch so.
 b05b63	Zu Hause: funktioniert auch ohne Internet
+# 13/11/2026 · nuovo progetto Tutor Digitale
+6155cf	Bei ihnen zu Hause, mit dem Digitalen Tutor: Computer, Tablet, Smartphone und Smart-TV, dazu der Digitale Professor, um allein weiterzumachen.
+0e87e2	Schüler-App
+d1e081	Schüler-App für Hausaufgaben aus der Ferne mit automatischer Korrektur, QR-Codes und Fernhilfe mit wechselndem Passwort.
+4a92e9	Computer, Tablet und Handy
+1c3789	LEHRT
+e54468	Das Werkzeug für Einzel- und Gruppenunterricht zu Computer, Tablet, Smartphone, Smart-TV und Internet, von den ersten Schritten bis zum Profi: zu Hause, bei der Arbeit und in Vereinen.
+ccb1b2	Projektkarte: Aus dem Buch Tecnologia Gentile entstehen FeniceOS, der Digitale Berater, das Große Quiz und, für das Wohlbefinden, der Digitale Naturheilkundler und der Digitale Psychologe; FeniceOS enthält den Digitalen Professor, der Nonni Teach beherbergt; mit dem Professor entsteht der Digitale Tutor für maßgeschneiderten Unterricht.
+34b679	Neues Projekt: ein freies und kostenloses Programm zum Ausprobieren.
+cdc9af	Acht Projekte, eine Familie.
+df895f	Kundenkarten mit Unterrichtsprotokoll, auf dem Bildschirm unterschreibbarer Einwilligung, Angeboten, Quittungen und Abschlusszertifikat als PDF mit prüfbarem Code.
+b6d409	Bildschirmfoto des Digitalen Tutors, Version {n0}: die Startseite mit Lektionen, Quiz, Übungen und Schüler-Apps
+23b846	Digitaler Tutor
+86d9b8	Unterricht nach Maß, zu Hause
+18d22a	{n0} Lektionen in {n1} Stufen und {n2} Lernpfaden, Tafelmodus für den Fernseher, {n3} praktische Übungen und Quiz, die nie gleich sind.

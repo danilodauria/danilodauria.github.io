@@ -35,6 +35,7 @@ SCATTI = {
     "naturopata-digitale": {"url": "https://danilodauria.github.io/naturopata-digitale/"},
     "psicologo-digitale": {"url": "https://danilodauria.github.io/psicologo-digitale/"},
     "grande-quiz": {"url": "https://danilodauria.github.io/grande-quiz/"},
+    "tutor-digitale": {"url": "https://danilodauria.github.io/tutor-digitale/"},
     "nonni-teach": {"salta": True},
 }
 # Sezioni del README che non sono argomenti da mostrare a chi visita il sito.
