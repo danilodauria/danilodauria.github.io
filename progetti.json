@@ -1,17 +1,17 @@
 {
-  "aggiornato": "2026-11-13",
-  "controllato": "2026-11-13",
+  "aggiornato": "2026-11-14",
+  "controllato": "2026-11-14",
   "progetti": [
     {
       "nome": "tutor-digitale",
       "titolo": "Tutor Digitale",
       "descrizione": "Tutor Digitale: lezioni di tecnologia su misura dai primi passi a esperto · quiz casuali, esercizi, clienti, liberatoria e attestato PDF · PWA anche offline",
-      "versione": "1.2.0",
+      "versione": "1.5.2",
       "sito": "https://danilodauria.github.io/tutor-digitale/",
       "github": "https://github.com/danilodauria/tutor-digitale",
       "linguaggio": "JavaScript",
       "creato": "2026-11-13",
-      "aggiornato": "2026-11-13"
+      "aggiornato": "2026-11-14"
     },
     {
       "nome": "psicologo-digitale",

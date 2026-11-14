@@ -85,20 +85,39 @@
   "versione_foto": "1.3.62"
  },
  "tutor-digitale": {
+  "novita": {
+   "data": "2026-11-14",
+   "sezione": "Registro presenze",
+   "testo": "Foglio mensile per Comuni, associazioni e scuole",
+   "versione": "1.5.2"
+  },
   "sezioni": [
+   "accessibilità",
    "agenda e strumenti",
+   "assistente vocale",
    "attestato",
+   "casella condivisa",
    "clienti",
+   "editor",
    "esercizi",
+   "fattura elettronica",
    "impostazioni",
+   "kit per altri tutor",
    "lezioni",
    "liberatoria",
+   "modalità aula",
    "modalità lavagna",
    "palestra",
+   "percorsi su misura",
    "preventivi e ricevute",
    "quiz",
+   "registro presenze",
+   "rustdesk",
+   "schermate guida",
+   "sincronizzazione",
+   "statistiche",
    "verifiche su carta"
   ],
-  "versione_foto": "1.2.0"
+  "versione_foto": "1.5.2"
  }
 }

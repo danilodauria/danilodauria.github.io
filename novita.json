@@ -7,9 +7,17 @@
   "nonni-teach": "",
   "professore-digitale": "3.8.0",
   "psicologo-digitale": "1.3.62",
-  "tutor-digitale": "1.2.0"
+  "tutor-digitale": "1.5.2"
  },
  "voci": [
+  {
+   "data": "2026-11-14",
+   "titolo": "Tutor Digitale 1.5.2",
+   "testo": "La versione più recente, con le novità descritte su GitHub.",
+   "nome": true,
+   "link": "https://danilodauria.github.io/tutor-digitale/",
+   "id": "tutor-digitale@1.5.2"
+  },
   {
    "data": "2026-11-13",
    "titolo": "Psicologo Digitale 1.3.62",
@@ -17,14 +25,6 @@
    "nome": true,
    "link": "https://danilodauria.github.io/psicologo-digitale/",
    "id": "psicologo-digitale@1.3.62"
-  },
-  {
-   "data": "2026-11-13",
-   "titolo": "Tutor Digitale 1.2.0",
-   "testo": "La versione più recente, con le novità descritte su GitHub.",
-   "nome": true,
-   "link": "https://danilodauria.github.io/tutor-digitale/",
-   "id": "tutor-digitale@1.2.0"
   },
   {
    "data": "2026-11-10",
@@ -99,5 +99,5 @@
    "id": "grande-quiz@1.0.0"
   }
  ],
- "aggiornato": "2026-11-13"
+ "aggiornato": "2026-11-14"
 }
