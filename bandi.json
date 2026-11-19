@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-12",
+  "aggiornato": "2026-11-19",
   "nota": "Elenco informativo curato per Danilo D'Auria. Verificate sempre requisiti, importi e date sul sito ufficiale prima di candidarvi.",
   "bandi": [
     {
@@ -85,7 +85,20 @@
       "scadenza": "2026-09-18",
       "aiuto": "Programmi accessibili: testo grande, alto contrasto, lettura ad alta voce.",
       "fonte": "https://www.dire.it/18-05-2026/1240864-sei-milioni-di-euro-da-fondo-repubblica-digitale-ministero-per-le-disabilita-per-inclusione-sociale-e-lavorativa/"
+    },
+    {
+      "id": "auto-d1648ee39a16",
+      "auto": true,
+      "trovato": "2026-11-19",
+      "titolo": "Erasmus+ 2027, pubblicata la nuova Call!",
+      "ente": "Agenzia Erasmus+ INDIRE",
+      "per": ["terzo-settore", "enti", "scuole"],
+      "cosa": "Avviso nuovo, trovato in automatico tra le fonti ufficiali: leggete requisiti, importi e date sul sito della fonte.",
+      "importo": "da leggere sulla fonte",
+      "scadenza": null,
+      "aiuto": "Se fa per voi, scrivetemi: prepariamo insieme il progetto con il kit per i bandi.",
+      "fonte": "https://www.erasmusplus.it/news/programma/call-2027/"
     }
   ],
-  "controllato": "2026-11-18"
+  "controllato": "2026-11-19"
 }
