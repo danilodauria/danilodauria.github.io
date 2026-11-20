@@ -65,6 +65,12 @@
   "versione_foto": "3.8.0"
  },
  "psicologo-digitale": {
+  "novita": {
+   "data": "2026-11-20",
+   "sezione": "Taccuino",
+   "testo": "Le domande che vuoi fare al clinico, scritte mentre leggi il manuale, parli con Neura o prepari la scheda",
+   "versione": "1.7.17"
+  },
   "sezioni": [
    "colloquio",
    "diario",
@@ -80,9 +86,10 @@
    "relazione",
    "sedute",
    "sicurezza",
+   "taccuino",
    "valutazione"
   ],
-  "versione_foto": "1.7.11"
+  "versione_foto": "1.7.17"
  },
  "tutor-digitale": {
   "novita": {

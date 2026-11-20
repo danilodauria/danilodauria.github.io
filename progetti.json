@@ -1,6 +1,6 @@
 {
-  "aggiornato": "2026-11-19",
-  "controllato": "2026-11-19",
+  "aggiornato": "2026-11-20",
+  "controllato": "2026-11-20",
   "progetti": [
     {
       "nome": "tutor-digitale",
@@ -17,12 +17,12 @@
       "nome": "psicologo-digitale",
       "titolo": "Psicologo Digitale",
       "descrizione": "Psicologo Digitale · La stanza d'ascolto — colloquio con Neura, sei questionari, percorso in otto tappe e relazione PDF per il professionista. PWA statica, offline, in italiano.",
-      "versione": "1.7.11",
+      "versione": "1.7.17",
       "sito": "https://danilodauria.github.io/psicologo-digitale/",
       "github": "https://github.com/danilodauria/psicologo-digitale",
       "linguaggio": "JavaScript",
       "creato": "2026-10-30",
-      "aggiornato": "2026-11-19"
+      "aggiornato": "2026-11-20"
     },
     {
       "nome": "naturopata-digitale",
