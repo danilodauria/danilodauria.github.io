@@ -93,10 +93,10 @@
  },
  "tutor-digitale": {
   "novita": {
-   "data": "2026-11-14",
-   "sezione": "Registro presenze",
-   "testo": "Foglio mensile per Comuni, associazioni e scuole",
-   "versione": "1.5.2"
+   "data": "2026-11-23",
+   "sezione": "Cruscotto",
+   "testo": "Chi ha bisogno di cosa oggi",
+   "versione": "1.7.0"
   },
   "sezioni": [
    "accessibilità",
@@ -105,6 +105,7 @@
    "attestato",
    "casella condivisa",
    "clienti",
+   "cruscotto",
    "editor",
    "esercizi",
    "fattura elettronica",
@@ -125,6 +126,6 @@
    "statistiche",
    "verifiche su carta"
   ],
-  "versione_foto": "1.5.2"
+  "versione_foto": "1.7.0"
  }
 }
