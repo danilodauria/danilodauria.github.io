@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-19",
+  "aggiornato": "2026-11-24",
   "nota": "Elenco informativo curato per Danilo D'Auria. Verificate sempre requisiti, importi e date sul sito ufficiale prima di candidarvi.",
   "bandi": [
     {
@@ -98,7 +98,20 @@
       "scadenza": null,
       "aiuto": "Se fa per voi, scrivetemi: prepariamo insieme il progetto con il kit per i bandi.",
       "fonte": "https://www.erasmusplus.it/news/programma/call-2027/"
+    },
+    {
+      "id": "auto-d15e65566c05",
+      "auto": true,
+      "trovato": "2026-11-24",
+      "titolo": "Erasmus+ Call 2027: infoday online per il settore Istruzione superiore",
+      "ente": "Agenzia Erasmus+ INDIRE",
+      "per": ["terzo-settore", "enti", "scuole"],
+      "cosa": "Avviso nuovo, trovato in automatico tra le fonti ufficiali: leggete requisiti, importi e date sul sito della fonte.",
+      "importo": "da leggere sulla fonte",
+      "scadenza": null,
+      "aiuto": "Se fa per voi, scrivetemi: prepariamo insieme il progetto con il kit per i bandi.",
+      "fonte": "https://www.erasmusplus.it/eventi/programma/erasmus-call-2027-infoday-online-per-il-settore-istruzione-superiore/"
     }
   ],
-  "controllato": "2026-11-23"
+  "controllato": "2026-11-24"
 }
