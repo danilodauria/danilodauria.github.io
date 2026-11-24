@@ -7,16 +7,16 @@
   "nonni-teach": "",
   "professore-digitale": "3.8.0",
   "psicologo-digitale": "1.7.17",
-  "tutor-digitale": "1.7.0"
+  "tutor-digitale": "1.12.3"
  },
  "voci": [
   {
-   "data": "2026-11-23",
-   "titolo": "Tutor Digitale 1.7.0",
+   "data": "2026-11-24",
+   "titolo": "Tutor Digitale 1.12.3",
    "testo": "La versione più recente, con le novità descritte su GitHub.",
    "nome": true,
    "link": "https://danilodauria.github.io/tutor-digitale/",
-   "id": "tutor-digitale@1.7.0"
+   "id": "tutor-digitale@1.12.3"
   },
   {
    "data": "2026-11-20",
@@ -99,5 +99,5 @@
    "id": "grande-quiz@1.0.0"
   }
  ],
- "aggiornato": "2026-11-23"
+ "aggiornato": "2026-11-24"
 }

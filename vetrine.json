@@ -93,10 +93,10 @@
  },
  "tutor-digitale": {
   "novita": {
-   "data": "2026-11-23",
-   "sezione": "Cruscotto",
-   "testo": "Chi ha bisogno di cosa oggi",
-   "versione": "1.7.0"
+   "data": "2026-11-24",
+   "sezione": "Quiz dal telefono",
+   "testo": "Per una persona sola o fino a quattro, anche senza televisore",
+   "versione": "1.12.3"
   },
   "sezioni": [
    "accessibilità",
@@ -119,13 +119,17 @@
    "percorsi su misura",
    "preventivi e ricevute",
    "quiz",
+   "quiz dal telefono",
    "registro presenze",
+   "ricerca rapida",
    "rustdesk",
    "schermate guida",
+   "segni e voce",
    "sincronizzazione",
    "statistiche",
+   "trasmetti allo schermo",
    "verifiche su carta"
   ],
-  "versione_foto": "1.7.0"
+  "versione_foto": "1.12.3"
  }
 }
