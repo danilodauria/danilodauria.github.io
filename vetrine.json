@@ -50,7 +50,7 @@
    "sicurezza",
    "sopravvivenza"
   ],
-  "versione_foto": "1.3.41"
+  "versione_foto": "1.3.42"
  },
  "nonni-teach": {},
  "professore-digitale": {
@@ -89,7 +89,7 @@
    "taccuino",
    "valutazione"
   ],
-  "versione_foto": "1.7.17"
+  "versione_foto": "1.7.18"
  },
  "tutor-digitale": {
   "novita": {
@@ -130,6 +130,6 @@
    "trasmetti allo schermo",
    "verifiche su carta"
   ],
-  "versione_foto": "1.12.3"
+  "versione_foto": "1.13.0"
  }
 }
