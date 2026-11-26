@@ -32,9 +32,9 @@
       "per": ["scuole", "terzo-settore"],
       "cosa": "Formazione e orientamento STEM e informatica per studenti delle scuole medie e superiori. Finanzia meno progetti, ma più grandi, rispetto alla prima edizione.",
       "importo": "25 milioni € in totale",
-      "scadenza": null,
+      "scadenza": "2027-01-21",
       "pubblicato": "2026-09-30",
-      "nota_scadenza": "scadenza da verificare sul sito del Fondo",
+      "nota_scadenza": "ore 13:00, domande sul portale Re@dy del Fondo",
       "aiuto": "Laboratori di informatica, Linux e Intelligenza Artificiale con il Professore Digitale, FeniceOS e Il Grande Quiz.",
       "fonte": "https://www.soldionline.it/notizie/economia-politica/polaris-mette-25-milioni-sulle-competenze-digitali-cosa-prevede"
     },
@@ -69,11 +69,11 @@
       "per": ["terzo-settore", "enti", "scuole"],
       "cosa": "Piccoli progetti europei con partner di altri Paesi per la formazione degli adulti: adatti a corsi di alfabetizzazione digitale per anziani e cittadini.",
       "importo": "secondo la Guida al programma 2027",
-      "scadenza": null,
-      "previsto": true,
-      "nota_scadenza": "l'invito esce di solito a metà novembre: quello 2026 è uscito il 14/11/2025 con scadenza il 5/3/2026. Le date 2027 non sono ancora ufficiali",
+      "scadenza": "2027-03-09",
+      "pubblicato": "2026-11-18",
+      "nota_scadenza": "ore 12:00, ora di Bruxelles. L'Agenzia nazionale può aprire una seconda tornata il 5 ottobre 2027: se lo fa, lo scrive sul suo sito",
       "aiuto": "Contenuti già pronti in sei lingue nel Professore Digitale, utili per lavorare con partner europei.",
-      "fonte": "https://www.eacea.ec.europa.eu/news-events/news/launch-2026-erasmus-call-proposals-and-programme-guide-2025-11-14_en"
+      "fonte": "https://www.erasmusplus.it/news/programma/call-2027/"
     },
     {
       "id": "frd-zenit",
@@ -85,32 +85,6 @@
       "scadenza": "2026-09-18",
       "aiuto": "Programmi accessibili: testo grande, alto contrasto, lettura ad alta voce.",
       "fonte": "https://www.dire.it/18-05-2026/1240864-sei-milioni-di-euro-da-fondo-repubblica-digitale-ministero-per-le-disabilita-per-inclusione-sociale-e-lavorativa/"
-    },
-    {
-      "id": "auto-d1648ee39a16",
-      "auto": true,
-      "trovato": "2026-11-19",
-      "titolo": "Erasmus+ 2027, pubblicata la nuova Call!",
-      "ente": "Agenzia Erasmus+ INDIRE",
-      "per": ["terzo-settore", "enti", "scuole"],
-      "cosa": "Avviso nuovo, trovato in automatico tra le fonti ufficiali: leggete requisiti, importi e date sul sito della fonte.",
-      "importo": "da leggere sulla fonte",
-      "scadenza": null,
-      "aiuto": "Se fa per voi, scrivetemi: prepariamo insieme il progetto con il kit per i bandi.",
-      "fonte": "https://www.erasmusplus.it/news/programma/call-2027/"
-    },
-    {
-      "id": "auto-d15e65566c05",
-      "auto": true,
-      "trovato": "2026-11-24",
-      "titolo": "Erasmus+ Call 2027: infoday online per il settore Istruzione superiore",
-      "ente": "Agenzia Erasmus+ INDIRE",
-      "per": ["terzo-settore", "enti", "scuole"],
-      "cosa": "Avviso nuovo, trovato in automatico tra le fonti ufficiali: leggete requisiti, importi e date sul sito della fonte.",
-      "importo": "da leggere sulla fonte",
-      "scadenza": null,
-      "aiuto": "Se fa per voi, scrivetemi: prepariamo insieme il progetto con il kit per i bandi.",
-      "fonte": "https://www.erasmusplus.it/eventi/programma/erasmus-call-2027-infoday-online-per-il-settore-istruzione-superiore/"
     }
   ],
   "controllato": "2026-11-26"

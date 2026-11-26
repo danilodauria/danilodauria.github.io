@@ -7,3 +7,4 @@ Regole complete: [HANDOFF.md](HANDOFF.md). Questo file è pubblico: niente segre
 Formato: `AAAA-MM-GG · assistente · repository · cosa è stato fatto · cosa resta da fare`
 
 - 2026-11-24 · Claude · danilodauria.github.io (+ AGENTS.md in 6 repository, + modello-progetto) · introdotto il sistema di consegna: HANDOFF.md, questo registro, AGENTS.md nei repository senza file di consegna, repository modello · nessuna riga di codice esistente toccata (solo 2 righe aggiunte alla mappa del README); da verificare dal vivo che i robot proseguano regolarmente
+- 2026-11-26 · Claude · danilodauria.github.io · bandi.json: Erasmus+ 2027 e Polaris+ aggiornati con le scadenze (9 marzo 2027, 21 gennaio 2027), tolti due avvisi segnalati in automatico (un doppione e uno per le università) · da seguire: Voucher Digitalizzazione PMI 2026, la data di chiusura dello sportello non è ancora nota
