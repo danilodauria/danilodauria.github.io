@@ -3,13 +3,29 @@
   "consulente-digitale": "1.5.2",
   "feniceos": "2.2",
   "grande-quiz": "1.0.0",
-  "naturopata-digitale": "1.3.42",
+  "naturopata-digitale": "1.3.45",
   "nonni-teach": "",
   "professore-digitale": "3.8.0",
-  "psicologo-digitale": "1.7.18",
+  "psicologo-digitale": "1.7.19",
   "tutor-digitale": "1.13.0"
  },
  "voci": [
+  {
+   "data": "2026-11-26",
+   "titolo": "Psicologo Digitale 1.7.19",
+   "testo": "La versione più recente, con le novità descritte su GitHub.",
+   "nome": true,
+   "link": "https://danilodauria.github.io/psicologo-digitale/",
+   "id": "psicologo-digitale@1.7.19"
+  },
+  {
+   "data": "2026-11-26",
+   "titolo": "Naturopata Digitale 1.3.45",
+   "testo": "La versione più recente, con le novità descritte su GitHub.",
+   "nome": true,
+   "link": "https://danilodauria.github.io/naturopata-digitale/",
+   "id": "naturopata-digitale@1.3.45"
+  },
   {
    "data": "2026-11-25",
    "titolo": "Tutor Digitale 1.13.0",
@@ -17,22 +33,6 @@
    "nome": true,
    "link": "https://danilodauria.github.io/tutor-digitale/",
    "id": "tutor-digitale@1.13.0"
-  },
-  {
-   "data": "2026-11-25",
-   "titolo": "Psicologo Digitale 1.7.18",
-   "testo": "La versione più recente, con le novità descritte su GitHub.",
-   "nome": true,
-   "link": "https://danilodauria.github.io/psicologo-digitale/",
-   "id": "psicologo-digitale@1.7.18"
-  },
-  {
-   "data": "2026-11-25",
-   "titolo": "Naturopata Digitale 1.3.42",
-   "testo": "La versione più recente, con le novità descritte su GitHub.",
-   "nome": true,
-   "link": "https://danilodauria.github.io/naturopata-digitale/",
-   "id": "naturopata-digitale@1.3.42"
   },
   {
    "data": "2026-11-06",
@@ -99,5 +99,5 @@
    "id": "grande-quiz@1.0.0"
   }
  ],
- "aggiornato": "2026-11-25"
+ "aggiornato": "2026-11-26"
 }
