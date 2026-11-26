@@ -38,6 +38,8 @@ La pagina è una sola, `index.html`, e qui dentro c'è tutto quello che le serve
 | `.github/workflows/controllo.yml` | Il controllo di ogni lunedì: link delle fonti, bandi in scadenza, prezzi da rivedere, traduzioni mancanti, accessibilità (WCAG 2.1 AA con axe-core, `strumenti/accessibilita/controlla.py`) e il sito davvero online (`--pubblicato`, riprovando con calma per non prendere per guasto un ritardo di GitHub Pages). Se c'è qualcosa da fare apre un avviso nella scheda «Issues» (e GitHub manda un'email) |
 | `.github/workflows/sicurezza.yml` | Il controllo di sicurezza a ogni push che tocca pagina, schede, JSON o robot, e ogni lunedì alle 06:13 UTC: non scrive niente, se trova qualcosa l'esecuzione diventa rossa e GitHub manda un'email |
 | `anteprima.png` | L'immagine che compare quando si condivide il link su WhatsApp e social |
+| `HANDOFF.md` | Il passaggio di consegne tra assistenti IA: regole comuni a tutti i repository, come scoprire i progetti (anche i futuri), cosa è dei robot e come proporre idee senza toccare ciò che funziona. Ogni repository ha poi il suo `AGENTS.md` che rimanda qui |
+| `HANDOFF-REGISTRO.md` | Il registro dei passaggi tra assistenti IA, solo in aggiunta: una riga per ogni intervento, la più recente in fondo |
 | `README.md` | Questa mappa: a cosa serve ogni file, cosa scrivono i robot, i numeri delle pubblicazioni |
 
 ## I tre robot
