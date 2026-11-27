@@ -1,6 +1,6 @@
 {
-  "aggiornato": "2026-11-26",
-  "controllato": "2026-11-26",
+  "aggiornato": "2026-11-27",
+  "controllato": "2026-11-27",
   "progetti": [
     {
       "nome": "tutor-digitale",
@@ -77,7 +77,7 @@
       "github": "https://github.com/danilodauria/grande-quiz",
       "linguaggio": "HTML",
       "creato": "2026-10-12",
-      "aggiornato": "2026-11-26"
+      "aggiornato": "2026-11-27"
     },
     {
       "nome": "professore-digitale",
